@@ -1,0 +1,9 @@
+node_modules/
+.idea/
+.tmp/**
+*.log
+npm-debug.log*
+public/
+server/compiled/
+webpackAssets.json
+src/apps/admin/files
