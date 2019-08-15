@@ -1,7 +1,15 @@
 /* eslint-disable max-len */
 
 export default {
-    content: {
-        title: 'Content'
+    menu: {
+        main: 'Головна',
+        about: 'Про нас',
+        news: 'News',
+        rvv: 'РВВ',
+        laws: 'Законодавство',
+        contacts: 'Контакти'
+    },
+    header: {
+        phone: '+3 8095 456 56 55 '
     }
 };
