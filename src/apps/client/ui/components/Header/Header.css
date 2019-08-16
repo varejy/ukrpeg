@@ -1,0 +1,79 @@
+@value whiteBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+@value darkGreyBasic from '../../../../../css/colors.css';
+@value limeBasic from '../../../../../css/colors.css';
+@value lightGreyBasic from '../../../../../css/colors.css';
+@value darkBlueHover from '../../../../../css/colors.css';
+
+.header{
+    width: 100%;
+    background: whiteBasic;
+}
+
+.content{
+    display: flex;
+}
+
+.logoContainer{
+    display: flex;
+    align-items: flex-end;
+    padding: 0 20px;
+}
+
+.img{
+    width: 90px;
+    height: 90px;
+}
+
+.menu{
+    max-width: 2459px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    background: url('/src/apps/client/ui/components/Header/files/gradientBg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.link{
+    text-transform: uppercase;
+    width: 100%;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    color: darkBlueBasic;
+    padding: 40px 10px;
+}
+
+.link:hover{
+    background: darkBlueHover;
+    color: whiteBasic;
+}
+
+.activeLink{
+    border-bottom: 10px solid darkBlueHover;
+}
+
+.tools{
+    display: flex;
+    max-width: 936px;
+    width: 100%;
+    flex-shrink: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.phone{
+    color: darkGreyBasic;
+}
+
+.toogleLang{
+    display: flex;
+    color: lightGreyBasic;
+    cursor: pointer;
+}
+
+.choosenLang{
+    color: limeBasic;
+}

@@ -31,16 +31,19 @@ class Footer extends Component {
 
         return <div className={styles.footer}>
             <div className={styles.content}>
-                {menu.map((link, i) => {
-                    return (
-                        <Link
-                            key={i}
-                            to={`${langRoute}${link.path}`}
-                            className={styles.link}>
-                            {menuItems[link.id]}
-                        </Link>
-                    );
-                })}
+                <nav className={styles.menu}>
+                    {menu.map((link, i) => {
+                        return (
+                            <Link
+                                key={i}
+                                to={`${langRoute}${link.path}`}
+                                className={styles.link}>
+                                {menuItems[link.id]}
+                            </Link>
+                        );
+                    })}
+                </nav>
+                <div className={styles.block} />
             </div>
         </div>;
     }

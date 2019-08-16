@@ -1,0 +1,31 @@
+@value lightGreenBasic from '../../../../../css/colors.css';
+@value darkBlueHover from '../../../../../css/colors.css';
+@value darkGreyBasic from '../../../../../css/colors.css';
+
+.footer{
+    width: 100%;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    background: lightGreenBasic;
+}
+
+.link{
+    text-decoration: none;
+    padding: 30px 40px;
+    text-transform: uppercase;
+    color: darkGreyBasic;
+}
+
+.block{
+    width: 100%;
+    background: darkBlueHover;
+    height: 30px;
+}

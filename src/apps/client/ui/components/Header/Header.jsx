@@ -15,7 +15,8 @@ import { EN, UA } from '../../../constants/constants';
 const mapStateToProps = ({ application }, ownProps) => {
     return {
         langMap: application.langMap,
-        langRoute: application.langRoute
+        langRoute: application.langRoute,
+        lang: application.lang
     };
 };
 
@@ -29,6 +30,7 @@ class Header extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         langRoute: PropTypes.string.isRequired,
+        lang: PropTypes.string.isRequired,
         setLang: PropTypes.func.isRequired
     };
 
@@ -41,14 +43,14 @@ class Header extends Component {
     }
 
     render () {
-        const { langMap, langRoute } = this.props;
+        const { langMap, langRoute, lang } = this.props;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
 
         return <div className={styles.header}>
             <div className={styles.content}>
                 <Link to={`${langRoute}/`} className={styles.logoContainer}>
-                    <img src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
+                    <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
                 </Link>
                 <nav className={styles.menu}>
                     {menu.map((link, i) => {
@@ -67,9 +69,9 @@ class Header extends Component {
                 <div className={styles.tools}>
                     <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
                     <div className={styles.toogleLang}>
-                        <button onClick={this.handleLangClick(UA)}>UA</button>
-                        <p className={styles.verticalLine} />
-                        <button onClick={this.handleLangClick(EN)}>EN</button>
+                        <button onClick={this.handleLangClick(UA)} className={lang === UA ? styles.choosenLang : null}>УКР</button>
+                        <p className={styles.verticalLine}>|</p>
+                        <button onClick={this.handleLangClick(EN)} className={lang === EN ? styles.choosenLang : null}>ENG</button>
                     </div>
                 </div>
             </div>
