@@ -33,7 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    font-family: GothamPro-Light;
+    font-family: GothamPro-Light, Arial;
     font-size: 14px;
     line-height: 14px;
     text-align: left;
@@ -46,7 +46,7 @@
     height: 120px;
     align-items: start;
     justify-content: start;
-    font-family: GothamPro;
+    font-family: GothamPro, Arial;
     font-size: 16px;
     line-height: 19px;
     text-align: left;
