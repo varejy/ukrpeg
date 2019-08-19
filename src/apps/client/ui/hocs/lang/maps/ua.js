@@ -10,7 +10,7 @@ export default {
         contacts: 'Контакти'
     },
     header: {
-        phone: '+3 8095 456 56 55 '
+        phone: '+3 8095 456 56 55'
     },
     content: {
         title: 'РВВ - в дії',

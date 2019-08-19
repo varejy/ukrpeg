@@ -39,6 +39,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
+    justify-content: space-between;
+    flex-grow: 2;
 }
 
 .link, .activeLink{
@@ -55,10 +57,16 @@
 
 .link:first-child, .activeLink:first-child{
   padding-left: 30px;
+  width: 100%;
+}
+
+.link:nth-child(2){
+  width: 100%;
 }
 
 .link:last-child, .activeLink:last-child{
   padding-right: 30px;
+  width: 100%;
 }
 
 .link:hover{
@@ -75,7 +83,7 @@
     align-items: center;
     font-size: 14px;
     letter-spacing: 1px;
-    flex-grow: 2;
+    width: auto;
     justify-content: flex-end;
     padding-left: 20px;
     padding-right: 30px;
