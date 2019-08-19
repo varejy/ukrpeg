@@ -21,7 +21,7 @@
 .photoBlock{
     width: 100%;
     height: 625px;
-    background: url('/src/apps/client/ui/components/Content/files/doubleBg.png') #FFF;
+    background: url('/src/apps/client/ui/components/Content/files/main.jpg');
     background-size: cover;
     display: flex;
     flex-direction: column;
