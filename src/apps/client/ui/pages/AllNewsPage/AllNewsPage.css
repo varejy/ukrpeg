@@ -1,3 +1,5 @@
+@value limeGreen from '../../../../../css/colors.css';
+
 .newsContainer{
     width: 100%;
     max-width: 1350px;
@@ -26,7 +28,7 @@
     height: 70px;
     width: 6px;
     margin-right: 25px;
-    background-color: #87c412;
+    background-color: limeGreen;
 }
 
 .title{
