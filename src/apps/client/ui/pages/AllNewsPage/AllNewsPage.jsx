@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './NewsPage.css';
+import styles from './AllNewsPage.css';
 import classNames from 'classnames';
 import NewsContent from '../../components/NewsContent/NewsContent';
 
@@ -57,7 +57,7 @@ const NEWS_CATEGORY_LIST = [
     }
 ];
 
-class NewsPage extends Component {
+class AllNewsPage extends Component {
     constructor (...args) {
         super(...args);
 
@@ -72,19 +72,6 @@ class NewsPage extends Component {
                 ['tabNumber' + i]: !this.state.isClicked['tabNumber' + i]
             }
         });
-    };
-
-    renderNewsList = i => {
-        return <ul className={styles.categoryNewsList}>
-            {
-                NEWS_CATEGORY_LIST[i].newsList.map((news, i) =>
-                    <li className={styles.newsCardContainer} key={i}>
-                        <div className={styles.newsDate}>{news.date}</div>
-                        <div className={styles.newsTitle}>{news.title}</div>
-                    </li>
-                )
-            }
-        </ul>;
     };
 
     render () {
@@ -105,16 +92,13 @@ class NewsPage extends Component {
                             <li key={i}>
                                 <div className={styles.newsCategory} onClick={this.handleCategoryClick(i)}>
                                     <div className={styles.newsCategoryTitle}>
-                                        <div className={styles.rectangleGreen}/>
+                                        <div className={classNames(!this.state.isClicked['tabNumber' + i]
+                                            ? styles.rectangleGreenInvisible
+                                            : styles.rectangleGreen)}
+                                        />
                                         <div className={styles.categoryTitle}>{newsCategory.id}</div>
                                     </div>
-                                    <div className={classNames(!this.state.isClicked['tabNumber' + i] ? styles.arrowButtonDown : styles.arrowButtonUp)}>
-                                        ^
-                                    </div>
                                 </div>
-                                {
-                                    this.state.isClicked['tabNumber' + i] && this.renderNewsList(i)
-                                }
                             </li>
                         )
                     }
@@ -124,4 +108,4 @@ class NewsPage extends Component {
     }
 }
 
-export default NewsPage;
+export default AllNewsPage;
