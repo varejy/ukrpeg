@@ -1,0 +1,89 @@
+@value darkBlueBasic from '../../../../../css/colors.css';
+@value semiGreyBg from '../../../../../css/colors.css';
+@value lightGreenBasic from '../../../../../css/colors.css';
+@value blackBasic from '../../../../../css/colors.css';
+@value lightGreyBorder from '../../../../../css/colors.css';
+
+.articles{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 80px;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding-left: 125px;
+    display: flex;
+}
+
+.info{
+    width: 100%;
+    padding-bottom: 35px;
+}
+
+.title{
+    padding: 25px 0 20px 25px;
+    border-left: 5px solid lightGreenBasic;
+    margin-left: -30px;
+    color: darkBlueBasic;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: .5px;
+}
+
+.wrapperArticles{
+    width:  100%;
+    max-width: 1350px;
+    padding:0 125px;
+    display: flex;
+    background: semiGreyBg;
+}
+
+.news{
+    display: flex;
+    padding:30px 0 60px 0;
+}
+
+.newsBlock{
+    padding: 0 80px 0 40px;
+}
+
+.date{
+    margin-bottom: 18px;
+    font-size: 14px;
+    color: darkBlueBasic;
+    font-weight: 300px;
+    letter-spacing: .5px;
+}
+
+.description{
+    color: blackBasic;
+    font-weight: 500;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-right: 15px;
+}
+
+.arrowBtn{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightGreyBorder;
+}
+
+.arrowBtnImg{
+    width: 24px;
+    height: 12px;
+}

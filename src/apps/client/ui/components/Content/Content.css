@@ -1,0 +1,151 @@
+@value whiteBasic from '../../../../../css/colors.css';
+@value yellowBasic from '../../../../../css/colors.css';
+@value lightGreenBorder from '../../../../../css/colors.css';
+@value limeLine from '../../../../../css/colors.css';
+
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding-left: 125px;
+    color: whiteBasic;
+}
+
+.photoBlock{
+    width: 100%;
+    height: 625px;
+    background: url('/src/apps/client/ui/components/Content/files/doubleBg.png') #FFF;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    position: relative;
+}
+
+.topBlock{
+    display: flex;
+    align-items: flex-end;
+}
+
+.moreBtn{
+    display: flex;
+    border: 1px solid lightGreenBorder;
+    margin-left: -67px;
+}
+
+.arrowBtn{
+    width: 67px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid lightGreenBorder;
+    padding: 32px 22px 25px 22px;
+}
+
+.arrowImg{
+    width: 100%;
+}
+
+.btn{
+    text-transform: uppercase;
+    padding: 32px 22px 25px 22px;
+}
+
+.mainText{
+    max-width: 550px;
+    margin-left: 135px;
+}
+
+.title{
+    font-size: 80px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.horizontalLine{
+    width: 65px;
+    height: 5px;
+    background: limeLine;
+    margin: 20px 0 25px 0;
+    border: none;
+}
+
+.description{
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.bottomBlock{
+    margin-top: 250px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.searchField{
+    width: 680px;
+    height: 100px;
+    background: url('/src/apps/client/ui/components/Content/files/searchBgOpacity.png');
+    margin-top: 140px;
+    margin-left: -125px;
+    display: flex;
+}
+
+.searchIcon{
+    width: 110px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchIconImg{
+    height: 35px;
+    width: 35px;
+}
+
+.text{
+    width: 295px;
+    height: auto;
+    align-self: flex-end;
+    margin-top: -55px;
+    margin-right: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.heading{
+    margin-bottom: 25px;
+    background: url('/src/apps/client/ui/components/Content/files/number.png');
+    height: 40px;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.info{
+    text-align: right;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: .4px;
+    color: whiteBasic;
+}
+
+.graphic{
+    background: url('/src/apps/client/ui/components/Content/files/c.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 0;
+    height: 600px;
+    width: 260px;
+}

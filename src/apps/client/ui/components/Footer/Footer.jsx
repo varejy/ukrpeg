@@ -30,7 +30,7 @@ class Footer extends Component {
         const menuItems = propOr('menu', {}, langMap);
 
         return <div className={styles.footer}>
-            <div className={styles.content}>
+            <div className={styles.wrapper}>
                 <nav className={styles.menu}>
                     {menu.map((link, i) => {
                         return (
@@ -43,8 +43,8 @@ class Footer extends Component {
                         );
                     })}
                 </nav>
-                <div className={styles.block} />
             </div>
+            <div className={styles.block} />
         </div>;
     }
 }

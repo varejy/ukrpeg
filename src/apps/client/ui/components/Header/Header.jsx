@@ -48,7 +48,7 @@ class Header extends Component {
         const text = propOr('header', {}, langMap);
 
         return <div className={styles.header}>
-            <div className={styles.content}>
+            <div className={styles.wrapper}>
                 <Link to={`${langRoute}/`} className={styles.logoContainer}>
                     <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
                 </Link>

@@ -1,0 +1,51 @@
+@value whiteBasic from '../../../../../css/colors.css';
+@value lightGreenBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+
+.companies{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding-left: 125px;
+    display: flex;
+}
+
+.info{
+    width: 100%;
+    padding: 55px 0 80px 0;
+}
+
+.title{
+    padding: 25px 0 20px 25px;
+    border-left: 5px solid lightGreenBasic;
+    margin-left: -30px;
+    color: darkBlueBasic;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: .5px;
+}
+
+.companiesList{
+    margin-top: 50px;
+    padding: 0 30px;
+    display: flex;
+    width: 100%;
+    overflow: auto;
+}
+
+.itemBox{
+    width: 20%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 140px;
+}
