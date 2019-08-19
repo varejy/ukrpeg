@@ -2,6 +2,7 @@
 @value yellowBasic from '../../../../../css/colors.css';
 @value lightGreenBorder from '../../../../../css/colors.css';
 @value limeLine from '../../../../../css/colors.css';
+@value darkBlueHover from '../../../../../css/colors.css';
 
 .content{
     width: 100%;
@@ -37,6 +38,7 @@
     display: flex;
     border: 1px solid lightGreenBorder;
     margin-left: -67px;
+    cursor: pointer;
 }
 
 .arrowBtn{
@@ -55,6 +57,10 @@
 .btn{
     text-transform: uppercase;
     padding: 32px 22px 25px 22px;
+}
+
+.btn:hover{
+    background: darkBlueHover;
 }
 
 .mainText{
@@ -98,17 +104,38 @@
     display: flex;
 }
 
-.searchIcon{
-    width: 110px;
+.searchIcon, .searchIconZoomed{
+    width: 125px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.searchIconZoomed{
+    order: 3;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
 .searchIconImg{
     height: 35px;
     width: 35px;
+}
+
+.input{
+    display: none;
+}
+
+.inputFieldZoomed{
+    border-bottom: .5px solid white;
+    height: 35px;
+    width: 520px;
+    align-self: center;
+    margin-left: 60px;
+    padding-left: 15px;
+    letter-spacing: .5px;
+    font-size: 14px;
 }
 
 .text{

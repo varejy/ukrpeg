@@ -3,6 +3,8 @@
 @value lightGreenBasic from '../../../../../css/colors.css';
 @value blackBasic from '../../../../../css/colors.css';
 @value lightGreyBorder from '../../../../../css/colors.css';
+@value lightGreyHover from '../../../../../css/colors.css';
+@value lightGreenHover from '../../../../../css/colors.css';
 
 .articles{
     width: 100%;
@@ -33,6 +35,11 @@
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
+    cursor: pointer;
+}
+
+.title:hover{
+  color:lightGreyHover;
 }
 
 .wrapperArticles{
@@ -45,11 +52,16 @@
 
 .news{
     display: flex;
-    padding:30px 0 60px 0;
 }
 
 .newsBlock{
-    padding: 0 80px 0 40px;
+    margin: 0 20px;
+    padding: 30px 35px 50px 20px;
+    cursor: pointer;
+}
+
+.newsBlock:hover{
+    border: 1px solid lightGreenHover;
 }
 
 .date{
@@ -64,6 +76,7 @@
     color: blackBasic;
     font-weight: 500;
     font-size: 14px;
+    line-height: 18px;
     font-weight: bold;
 }
 

@@ -1,6 +1,7 @@
 @value whiteBasic from '../../../../../css/colors.css';
 @value lightGreenBasic from '../../../../../css/colors.css';
 @value darkBlueBasic from '../../../../../css/colors.css';
+@value lightGreyHover from '../../../../../css/colors.css';
 
 .companies{
     width: 100%;
@@ -29,6 +30,11 @@
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
+    cursor: pointer;
+}
+
+.title:hover{
+    color:lightGreyHover;
 }
 
 .companiesList{

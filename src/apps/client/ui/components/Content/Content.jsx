@@ -17,8 +17,33 @@ class Content extends Component {
         langMap: PropTypes.object.isRequired
     };
 
+    state = {
+        inputZoom: false,
+        inputValue: ''
+    }
+
+    handleClick = e => {
+        this.setState({
+            inputZoom: true
+        });
+        this.input.focus();
+    }
+
+    handleBlur = e => {
+        this.setState({
+            inputZoom: false
+        });
+    }
+
+    handleInputChange = e => {
+        this.setState({
+            inputValue: e.target.value
+        });
+    }
+
     render () {
         const { langMap } = this.props;
+        const { inputZoom, inputValue } = this.state;
         const text = propOr('content', {}, langMap);
 
         return <div className={styles.content}>
@@ -37,11 +62,16 @@ class Content extends Component {
                             <p className={styles.description}>{text.description}</p>
                         </div>
                     </div>
-                    <div className={styles.searchField}>
-                        <div className={styles.searchIcon}>
+                    <div className={styles.searchField} onClick={this.handleClick}>
+                        <div className={!inputZoom ? styles.searchIcon : styles.searchIconZoomed}>
                             <img src='/src/apps/client/ui/components/Content/files/searchIcon.png' className={styles.searchIconImg} />
                         </div>
-                        <input />
+                        <input
+                            ref={(input) => this.input = input}
+                            value={inputValue}
+                            onChange={this.handleInputChange}
+                            onBlur={this.handleBlur}
+                            className={!inputZoom ? styles.input : styles.inputFieldZoomed} />
                     </div>
                     <div className={styles.text}>
                         <h1 className={styles.heading}></h1>
