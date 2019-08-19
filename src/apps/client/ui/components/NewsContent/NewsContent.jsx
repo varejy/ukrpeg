@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styles from './NewsContent.css';
 import PropTypes from 'prop-types';
 
-import propOr from '@tinkoff/utils/object/propOr';
-
 import { connect } from 'react-redux';
 import NewsCard from '../NewsCard/NewsCard';
 
@@ -56,9 +54,6 @@ class NewsContent extends Component {
     };
 
     render () {
-        const { langMap } = this.props;
-        const text = propOr('content', {}, langMap);
-
         return <div className={styles.newsCardsContainer}>
             {NEWS_CARDS_DATA.map((newsCard, i) =>
                 <NewsCard key={i} cardData={newsCard}/>
