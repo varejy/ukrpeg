@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styles from './NewsCard.css';
 import PropTypes from 'prop-types';
 
-import propOr from '@tinkoff/utils/object/propOr';
-
 import { connect } from 'react-redux';
 
 const mapStateToProps = ({ application }) => {
@@ -23,8 +21,7 @@ class NewsCard extends Component {
     };
 
     render () {
-        const { langMap, cardData } = this.props;
-        const text = propOr('content', {}, langMap);
+        const { cardData } = this.props;
 
         return <div className={styles.newsCardContainer}>
             <div className={styles.newsCardImage}>
