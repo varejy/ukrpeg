@@ -9,7 +9,7 @@ export default function getDateFormatted (date, lang) {
         const uaMonth = MONTHS[month];
         let dateFormattedUa = dateFormattedEn.split(' ');
         dateFormattedUa.splice(1, 1, uaMonth);
-        dateFormattedUa.join(' ');
+        dateFormattedUa = dateFormattedUa.join(' ');
         return dateFormattedUa;
     } else {
         return dateFormattedEn;

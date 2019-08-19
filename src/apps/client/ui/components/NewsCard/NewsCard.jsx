@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './NewsCard.css';
 import PropTypes from 'prop-types';
+import getDateFormatted from '../../../../../../utils/getDateFormatted';
 
 import { connect } from 'react-redux';
 
@@ -12,7 +13,6 @@ const mapStateToProps = ({ application }) => {
 
 class NewsCard extends Component {
     static propTypes = {
-        langMap: PropTypes.object.isRequired,
         cardData: PropTypes.object.isRequired
     };
 
@@ -29,7 +29,7 @@ class NewsCard extends Component {
                     <img className={styles.image} src={cardData.url} alt={cardData.title}/>
                 </div>
             </div>
-            <div className={styles.newsCardDate}>{cardData.date}</div>
+            <div className={styles.newsCardDate}>{getDateFormatted(cardData.date, 'ua')}</div>
             <div className={styles.newsCardTitle}>{cardData.title}</div>
         </div>;
     }
