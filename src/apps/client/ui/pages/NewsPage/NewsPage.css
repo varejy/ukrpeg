@@ -33,7 +33,7 @@
 .title{
     font-size: 18px;
     line-height: 18px;
-    font-family: GothamPro-Medium;
+    font-family: GothamPro-Medium, "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
 }
@@ -41,7 +41,7 @@
 .categoryTitle{
     font-size: 18px;
     line-height: 18px;
-    font-family: GothamPro-Medium;
+    font-family: GothamPro-Medium, "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
     margin-left: -30px;
@@ -107,7 +107,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    font-family: GothamPro-Light;
+    font-family: GothamPro-Light, Arial;
     font-size: 14px;
     line-height: 14px;
     text-align: left;
@@ -120,7 +120,7 @@
     width: 100%;
     align-items: start;
     justify-content: start;
-    font-family: GothamPro;
+    font-family: GothamPro, Arial;
     font-size: 16px;
     line-height: 19px;
     text-align: left;
@@ -130,7 +130,7 @@
 }
 
 .newsText{
-    font-family: GothamPro-Light;
+    font-family: GothamPro-Light, Arial;
     letter-spacing: 1px;
     text-align: left;
     font-size: 14px;
@@ -150,7 +150,7 @@
 }
 
 .next{
-    font-family: GothamPro-Medium;
+    font-family: GothamPro-Medium, "Arial Black";
     color: #87c412;
     font-size: 14px;
     line-height: normal;
@@ -158,7 +158,7 @@
 }
 
 .nextNewsDate{
-    font-family: GothamPro-Light;
+    font-family: GothamPro-Light, Arial;
     font-size: 14px;
     line-height: 14px;
     text-align: left;
@@ -176,7 +176,7 @@
 
 .nextNewsTitle{
     width: 530px;
-    font-family: GothamPro;
+    font-family: GothamPro, Arial;
     font-size: 16px;
     line-height: 19px;
     text-align: left;

@@ -13,7 +13,7 @@ const mapStateToProps = ({ application }) => {
 
 class Content extends Component {
     static propTypes = {
-        langMap: PropTypes.object.isRequired,
+        langMap: PropTypes.object.isRequired
     };
 
     render () {
