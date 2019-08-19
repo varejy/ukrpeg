@@ -33,6 +33,7 @@ class Articles extends Component {
                 ...text.articleContent[2].text[lang]
             }
         ];
+
         return <div className={styles.articles}>
             <div className={styles.wrapper}>
                 <div className={styles.info}>

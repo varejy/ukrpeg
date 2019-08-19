@@ -2,15 +2,15 @@
 
 export default {
     menu: {
-        main: 'Головна',
-        about: 'Про нас',
+        main: 'Home',
+        about: 'About us',
         news: 'News',
-        rvv: 'РВВ',
-        laws: 'Законодавство',
-        contacts: 'Контакти'
+        rvv: 'RWR',
+        laws: 'Legislation',
+        contacts: 'Contacts'
     },
     header: {
-        phone: '+3 8095 456 56 55 '
+        phone: '+3 8095 456 56 55'
     },
     content: {
         title: 'РВВ - в дії',

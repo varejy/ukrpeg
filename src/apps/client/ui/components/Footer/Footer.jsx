@@ -18,7 +18,7 @@ const mapStateToProps = ({ application }) => {
 class Footer extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
-        langRoute: PropTypes.string.isRequired
+        langRoute: PropTypes.string
     };
 
     static defaultProps = {
