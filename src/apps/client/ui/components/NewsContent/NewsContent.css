@@ -1,0 +1,6 @@
+.newsCardsContainer{
+    width: 807px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+}

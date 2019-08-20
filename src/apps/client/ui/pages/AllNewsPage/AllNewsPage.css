@@ -1,0 +1,69 @@
+@value limeGreen from '../../../../../css/colors.css';
+
+.newsContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.newsContent{
+    margin: 0 0 0 120px;
+}
+
+.newsMenuContainer{
+    width: 415px;
+}
+
+.titleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 88px;
+}
+
+.rectangleGreen{
+    height: 70px;
+    width: 6px;
+    margin-right: 25px;
+    background-color: limeGreen;
+}
+
+.title{
+    font-size: 18px;
+    line-height: 18px;
+    font-family: GothamPro-Medium, "Arial Black";
+    letter-spacing: 1.5px;
+    text-align: left;
+}
+
+.categoryTitle{
+    font-size: 18px;
+    line-height: 18px;
+    font-family: GothamPro-Medium, "Arial Black";
+    letter-spacing: 1.5px;
+    text-align: left;
+}
+
+.newsCategoryTitle, .newsCategory{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.newsCategoryTitle .rectangleGreen{
+     height: 70px;
+     width: 6px;
+     margin-right: 25px;
+     visibility: visible;
+}
+
+.newsCategoryTitle .rectangleGreenInvisible{
+    height: 70px;
+    width: 6px;
+    margin-right: 25px;
+    visibility: hidden;
+}
