@@ -1,0 +1,142 @@
+@value limeGreen from '../../../../../css/colors.css';
+
+.pageContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.titleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 108px;
+    margin-bottom: 54px;
+}
+
+.rectangleGreen{
+    height: 70px;
+    width: 6px;
+    margin-right: 25px;
+    background-color: limeGreen;
+}
+
+.title{
+    font-size: 18px;
+    line-height: 18px;
+    font-family: GothamPro-Medium, "Arial Black";
+    letter-spacing: 1.5px;
+    text-align: left;
+}
+
+.plansContent{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 60px;
+}
+
+.plansContent :last-child .stepNumber{
+    letter-spacing: 280px;
+
+    @media (max-width: 1350px) {
+        letter-spacing: 19.5vw;
+    }
+}
+
+.step{
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: start;
+    margin-bottom: 115px;
+}
+
+.stepNumber{
+    font-size: 225px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: rgba(40, 50, 65, 0.12);
+    text-align: left;
+    line-height: 150px;
+    letter-spacing: -5.6px;
+}
+
+.stepText{
+    color: #000000;
+    font-family: GothamPro-Light, Arial;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    width: 70%;
+    height: 180px;
+    justify-self: end;
+    position: absolute;
+    background-color: #ffffff;
+    top: 0;
+    left: 86px;
+    padding: 5px 7px;
+    line-height: normal;
+    margin-top: -5px;
+}
+
+.whyRVV{
+    width: 1255px;
+    border: 1px solid limeGreen;
+    padding: 26px 34px;
+    margin: 0 auto;
+}
+
+.whyRVV .titleContainer{
+    margin-left: 32px;
+}
+
+.benefits{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.benefitContainer{
+    width: 50%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    margin-bottom: 45px;
+}
+
+.benefitIconContainer{
+    margin-right: 22px;
+}
+
+.benefitIcon{
+    width: 38px;
+    height: auto;
+}
+
+.benefitText{
+    width: 80%;
+    font-family: GothamPro-Light, Arial;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: #000000;
+    text-align: left;
+}
+
+.project{
+    width: 100%;
+    height: auto;
+    background: url("./images/background.jpg") center;
+    padding: 108px 0 138px 0;
+}
+
+.projectInfo{
+    width: 100%;
+    padding: 0 134px;
+    color: #323b49;
+    font-family: GothamPro-Medium, "Arial Black";
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+}
+
