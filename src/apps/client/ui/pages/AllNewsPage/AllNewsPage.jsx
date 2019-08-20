@@ -80,7 +80,7 @@ class AllNewsPage extends Component {
         const newsArr = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
-        newsArr[0] = { ...newsArr[0], opened: true };
+        newsArr[0].opened = true;
 
         this.state = {
             news: newsArr
@@ -92,7 +92,7 @@ class AllNewsPage extends Component {
         const newNews = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
-        newNews[i] = { ...newNews[i], opened: !news[i].opened };
+        newNews[i].opened = !news[i].opened;
 
         this.setState({
             news: newNews
