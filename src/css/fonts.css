@@ -12,3 +12,23 @@
   font-family: 'HelveticaNeueCyrLight';
   src: url('./font/HelveticaNeueCyr-Light.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('./font/GothaProReg.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gotham Medium';
+  src: url('./font/GothaProMed.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gotham Light';
+  src: url('./font/GothaProLig.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./font/GothaProNarMed.ttf') format('truetype');
+}

@@ -46,27 +46,22 @@
 .link, .activeLink{
     text-transform: uppercase;
     color: darkBlueBasic;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;
     line-height: 14px;
-    letter-spacing: .4px;
+    letter-spacing: .1px;
     text-align: center;
-    padding: 45px 25px 30px 25px;
-    width: auto;
+    padding: 45px 20px 30px;
+    width: 100%;
+    font-family: 'Gotham Medium', sans-serif;
 }
 
 .link:first-child, .activeLink:first-child{
   padding-left: 30px;
-  width: 100%;
-}
-
-.link:nth-child(2){
-  width: 100%;
 }
 
 .link:last-child, .activeLink:last-child{
   padding-right: 30px;
-  width: 100%;
 }
 
 .link:hover{
@@ -82,7 +77,6 @@
     display: flex;
     align-items: center;
     font-size: 14px;
-    letter-spacing: 1px;
     width: auto;
     justify-content: flex-end;
     padding-left: 20px;
@@ -92,6 +86,7 @@
 .phone{
     color: darkGreyBasic;
     margin-right: 50px;
+    font-family: 'Gotham Light';
 }
 
 .toogleLang{
@@ -101,6 +96,7 @@
     cursor: pointer;
     font-size: 13px;
     letter-spacing: .5px;
+    font-family: 'Gotham Narrow';
 }
 
 .lang{
