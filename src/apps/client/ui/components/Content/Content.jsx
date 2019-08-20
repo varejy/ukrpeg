@@ -29,22 +29,22 @@ class Content extends Component {
         inputZoom: false
     }
 
-    handleInputChange = e => {
+    handleInputChange = event => {
         this.setState({
-            inputValue: e.target.value
+            inputValue: event.target.value
         });
     }
 
-    handleFocusInput = e => {
+    handleFocusInput = () => {
         this.setState({
             inputZoom: true
         });
     }
 
-    handleBlurInput = e => {
-        if (e.target.value !== '') {
+    handleBlurInput = event => {
+        if (event.target.value !== '') {
             this.setState({
-                inputZoom: true
+                inputZoom: !!event.target.value
             });
         } else {
             this.setState({
