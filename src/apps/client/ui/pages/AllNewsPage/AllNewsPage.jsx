@@ -77,18 +77,19 @@ class AllNewsPage extends Component {
         super(...args);
         const { news } = this.props;
 
-        this.newsModified = news.map(newsCategory => {
+        const newsArr = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
+        newsArr[0] = { ...newsArr[0], opened: true };
 
         this.state = {
-            news: this.newsModified
+            news: newsArr
         };
     }
 
     handleCategoryClick = i => () => {
         const { news } = this.props;
-        let newNews = news.map(newsCategory => {
+        const newNews = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
         newNews[i] = { ...newNews[i], opened: !news[i].opened };
