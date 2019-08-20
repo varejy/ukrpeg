@@ -18,26 +18,25 @@ class Content extends Component {
     };
 
     state = {
-        inputZoom: false,
-        inputValue: ''
-    }
-
-    handleClick = e => {
-        this.setState({
-            inputZoom: true
-        });
-        this.input.focus();
-    }
-
-    handleBlur = e => {
-        this.setState({
-            inputZoom: false
-        });
+        inputValue: '',
+        inputZoom: false
     }
 
     handleInputChange = e => {
         this.setState({
             inputValue: e.target.value
+        });
+    }
+
+    handleFocusInput = e => {
+        this.setState({
+            inputZoom: true
+        });
+    }
+
+    handleBlurInput = e => {
+        this.setState({
+            inputZoom: false
         });
     }
 
@@ -62,16 +61,16 @@ class Content extends Component {
                             <p className={styles.description}>{text.description}</p>
                         </div>
                     </div>
-                    <div className={styles.searchField} onClick={this.handleClick}>
-                        <div className={!inputZoom ? styles.searchIcon : styles.searchIconZoomed}>
+                    <div className={styles.searchField}>
+                        <div className={!inputZoom ? styles.searchIcon : styles.searchIconZoom}>
                             <img src='/src/apps/client/ui/components/Content/files/searchIcon.png' className={styles.searchIconImg} />
                         </div>
                         <input
-                            ref={(input) => this.input = input}
+                            onFocus={this.handleFocusInput}
+                            onBlur={this.handleBlurInput}
                             value={inputValue}
                             onChange={this.handleInputChange}
-                            onBlur={this.handleBlur}
-                            className={!inputZoom ? styles.input : styles.inputFieldZoomed} />
+                            className={!inputZoom ? styles.input : styles.inputZoom} />
                     </div>
                     <div className={styles.text}>
                         <h1 className={styles.heading}></h1>

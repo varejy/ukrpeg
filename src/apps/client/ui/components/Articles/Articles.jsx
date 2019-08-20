@@ -3,36 +3,32 @@ import PropTypes from 'prop-types';
 
 import propOr from '@tinkoff/utils/object/propOr';
 import styles from './Articles.css';
+import getDateFormatted from '../../../../../../utils/getDateFormatted';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ application }) => {
+const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
-        lang: application.lang
+        lang: application.lang,
+        news: news.newsList
     };
 };
 
 class Articles extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
-        lang: PropTypes.string
+        lang: PropTypes.string,
+        news: PropTypes.array
+    };
+
+    static defaultProps = {
+        news: []
     };
 
     render () {
-        const { langMap, lang } = this.props;
+        const { langMap, lang, news } = this.props;
         const text = propOr('articles', {}, langMap);
-        const news = [
-            {
-                ...text.articleContent[0].text[lang]
-            },
-            {
-                ...text.articleContent[1].text[lang]
-            },
-            {
-                ...text.articleContent[2].text[lang]
-            }
-        ];
 
         return <div className={styles.articles}>
             <div className={styles.wrapper}>
@@ -45,7 +41,7 @@ class Articles extends Component {
                     {news.map((item, index) => {
                         return (
                             <div key={index} className={styles.newsBlock}>
-                                <p className={styles.date}>{item.date}</p>
+                                <p className={styles.date}>{getDateFormatted(item.date, lang)}</p>
                                 <p className={styles.description}>{item.description}</p>
                             </div>
                         );

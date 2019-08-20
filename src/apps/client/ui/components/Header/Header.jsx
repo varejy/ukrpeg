@@ -69,9 +69,9 @@ class Header extends Component {
                 <div className={styles.tools}>
                     <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
                     <div className={styles.toogleLang}>
-                        <button onClick={this.handleLangClick(UA)} className={lang === UA ? styles.choosenLang : null}>УКР</button>
+                        <button onClick={this.handleLangClick(UA)} className={lang === UA ? styles.choosenLang : styles.lang}>УКР</button>
                         <p className={styles.verticalLine}>|</p>
-                        <button onClick={this.handleLangClick(EN)} className={lang === EN ? styles.choosenLang : null}>ENG</button>
+                        <button onClick={this.handleLangClick(EN)} className={lang === EN ? styles.choosenLang : styles.lang}>ENG</button>
                     </div>
                 </div>
             </div>

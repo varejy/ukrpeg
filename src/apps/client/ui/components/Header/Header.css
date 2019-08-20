@@ -103,6 +103,10 @@
     letter-spacing: .5px;
 }
 
+.lang{
+    cursor: pointer;
+}
+
 .choosenLang{
     color: limeBasic;
 }

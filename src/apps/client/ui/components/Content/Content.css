@@ -47,7 +47,7 @@
     justify-content: center;
     align-items: center;
     border-right: 1px solid lightGreenBorder;
-    padding: 32px 22px 25px 22px;
+    padding: 32px 22px 25px;
 }
 
 .arrowImg{
@@ -56,7 +56,7 @@
 
 .btn{
     text-transform: uppercase;
-    padding: 32px 22px 25px 22px;
+    padding: 32px 22px 25px;
 }
 
 .btn:hover{
@@ -78,7 +78,7 @@
     width: 65px;
     height: 5px;
     background: limeLine;
-    margin: 20px 0 25px 0;
+    margin: 20px 0 25px;
     border: none;
 }
 
@@ -102,20 +102,21 @@
     margin-top: 140px;
     margin-left: -125px;
     display: flex;
+    position: relative;
 }
 
-.searchIcon, .searchIconZoomed{
-    width: 125px;
+.searchIcon, .searchIconZoom{
+    max-width: 125px;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.searchIconZoomed{
-    order: 3;
-    justify-content: flex-start;
-    margin-left: 20px;
+.searchIconZoom{
+    position: absolute;
+    right: 0;
 }
 
 .searchIconImg{
@@ -123,19 +124,23 @@
     width: 35px;
 }
 
-.input{
-    display: none;
+.input, .inputZoom{
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
-.inputFieldZoomed{
-    border-bottom: .5px solid white;
-    height: 35px;
-    width: 520px;
-    align-self: center;
-    margin-left: 60px;
-    padding-left: 15px;
-    letter-spacing: .5px;
-    font-size: 14px;
+.input{
+    opacity: 0;
+}
+
+.inputZoom{
+    border-bottom: 1px solid white;
+    padding-top: 65px;
+    padding-left: 10px;
+    left: 40px;
+    bottom: 30px;
+    width: 525px;
 }
 
 .text{

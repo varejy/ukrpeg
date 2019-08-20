@@ -9,27 +9,27 @@ import { connect } from 'react-redux';
 const companies = [
     {
         id: 1,
-        alt: 'logo',
+        alt: 'Elopac logo',
         path: '/src/apps/client/ui/components/Companies/files/elopak.png'
     },
     {
         id: 2,
-        alt: 'logo',
+        alt: 'PepsiCo logo',
         path: '/src/apps/client/ui/components/Companies/files/pepsico.png'
     },
     {
         id: 3,
-        alt: 'logo',
+        alt: 'Coca Cola logo',
         path: '/src/apps/client/ui/components/Companies/files/cocacola.png'
     },
     {
         id: 4,
-        alt: 'logo',
+        alt: 'Canpak logo',
         path: '/src/apps/client/ui/components/Companies/files/canpak.png'
     },
     {
         id: 5,
-        alt: 'logo',
+        alt: 'Tetrapak logo',
         path: '/src/apps/client/ui/components/Companies/files/tetrapak.png'
     }
 ];

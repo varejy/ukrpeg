@@ -39,7 +39,7 @@
 }
 
 .title:hover{
-  color:lightGreyHover;
+  color: lightGreyHover;
 }
 
 .wrapperArticles{
@@ -61,7 +61,7 @@
 }
 
 .newsBlock:hover{
-    border: 1px solid lightGreenHover;
+    outline: 1px solid lightGreenHover;
 }
 
 .date{
