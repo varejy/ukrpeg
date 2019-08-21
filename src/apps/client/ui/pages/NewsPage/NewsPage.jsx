@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './NewsPage.css';
 import classNames from 'classnames';
-import NewsList from '../../components/NewsList/NewsList';
 
 const NEWS_CATEGORY_LIST = [
     {
@@ -127,9 +126,17 @@ class NewsPage extends Component {
                                         />
                                     </div>
                                 </div>
-                                {
-                                    this.state.isClicked['tabNumber' + i] && <NewsList index={i}/>
-                                }
+                                <ul className={classNames(styles.categoryNewsList, this.state.isClicked['tabNumber' + i] && styles.categoryNewsListAnimated)}>
+                                    {
+                                        newsCategory.newsList.map((news, j) =>
+                                            <li className={classNames(styles.newsCardContainer, this.state.isClicked['tabNumber' + i] && styles.newsCardContainerAnimated)}
+                                                key={j} style={{ transitionDelay: `${j * 0.2}s` }}>
+                                                <div className={styles.newsDate}>{news.date}</div>
+                                                <div className={styles.newsTitle}>{news.title}</div>
+                                            </li>
+                                        )
+                                    }
+                                </ul>
                             </li>
                         )
                     }

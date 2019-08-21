@@ -12,18 +12,3 @@
   font-family: 'HelveticaNeueCyrLight';
   src: url('./font/HelveticaNeueCyr-Light.ttf') format('truetype');
 }
-
-@font-face {
-  font-family: 'GothamPro';
-  src: url('./font/GothamPro.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'GothamPro-Light';
-  src: url('./font/GothamPro-Light.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'GothamPro-Medium';
-  src: url('./font/GothamPro-Medium.ttf') format('truetype');
-}
