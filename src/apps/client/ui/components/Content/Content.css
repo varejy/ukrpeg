@@ -10,6 +10,10 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+
+    @media (--media-phone-s) {
+        margin-top: 0;
+   }
 }
 
 .wrapper{
@@ -17,6 +21,10 @@
     max-width: 1350px;
     padding-left: 125px;
     color: whiteBasic;
+
+    @media (--media-phone-s) {
+        padding: 0;
+   }
 }
 
 .photoBlock{
@@ -191,4 +199,8 @@
     right: 0;
     height: 600px;
     width: 260px;
+
+    @media (--media-phone-s) {
+        display: none;
+   }
 }

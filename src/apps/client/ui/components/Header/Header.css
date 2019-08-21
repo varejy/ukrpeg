@@ -4,12 +4,17 @@
 @value limeGreen from '../../../../../css/colors.css';
 @value lightGreyBasic from '../../../../../css/colors.css';
 @value darkBlueHover from '../../../../../css/colors.css';
+@value blueMobileBg from '../../../../../css/colors.css';
 
 .header{
     width: 100%;
     background: whiteBasic;
     display: flex;
     justify-content: center;
+
+      @media (--media-phone-s) {
+          background: transparent
+     }
 }
 
 .headBg{
@@ -20,12 +25,23 @@
     display: flex;
     justify-content: center;
     z-index: 4;
+
+    @media (--media-phone-s) {
+        position: absolute;
+        background: transparent;
+   }
 }
 
 .wrapper{
     width:  100%;
     max-width: 1350px;
     display: flex;
+
+    @media (--media-phone-s) {
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 20px;
+   }
 }
 
 .logoContainer{
@@ -33,6 +49,11 @@
     min-width: 125px;
     align-items: center;
     justify-content: center;
+
+    @media (--media-phone-s) {
+        min-width: 0;
+        z-index: 4;
+   }
 }
 
 .img{
@@ -48,6 +69,10 @@
     display: flex;
     justify-content: center;
     flex-grow: 2;
+
+    @media (--media-phone-s) {
+        display: none;
+   }
 }
 
 .link, .activeLink{
@@ -92,6 +117,10 @@
     justify-content: flex-end;
     padding-left: 20px;
     padding-right: 30px;
+
+    @media (--media-phone-s) {
+        display: none;
+   }
 }
 
 .phone{
@@ -117,4 +146,69 @@
 
 .choosenLang{
     color: limeGreen;
+}
+
+.burgerMenu{
+    display: none;
+
+    @media (--media-phone-s) {
+        display: block;
+        height: 50px;
+        width: 50px;
+        border: 1px solid green;
+        padding-top: 5px;
+        position: relative;
+   }
+}
+
+.menuLines, .menuLinesCross{
+    width: 20px;
+    height: 2px;
+    background: white;
+    transition: all .2s ease-out;
+    transform: rotate(0deg);
+}
+
+.menuLinesCross:first-child{
+     transform: rotate(45deg);
+     transition: all .2s ease-out;
+}
+
+.menuLinesCross:last-child{
+     transform: rotate(-45deg);
+     transition: all .2s ease-out;
+}
+
+.menuLinesCross{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.menuLinesCross:nth-child(2) {
+    display: none;
+}
+
+.burgerMenuList{
+    position: absolute;
+    width: 100%;
+    height: -webkit-fill-available;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: blueMobileBg;
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    padding-top: 215px;
+}
+
+.burgerMenuList .link{
+    letter-spacing: .3px;
+    font-weight: 500;
+    color: whiteBasic;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 40px;
+    border: none;
 }

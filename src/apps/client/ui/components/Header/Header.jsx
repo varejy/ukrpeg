@@ -38,12 +38,23 @@ class Header extends Component {
         langRoute: ''
     };
 
+    state = {
+      burgerMenuOpen: false
+    }
+
+    handleMenuClick = event => {
+      this.setState({
+        burgerMenuOpen: !this.state.burgerMenuOpen
+      })
+    }
+
     handleLangClick = (lang) => () => {
         this.props.setLang(lang);
     }
 
     render () {
         const { langMap, langRoute, lang } = this.props;
+        const { burgerMenuOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
 
@@ -53,7 +64,7 @@ class Header extends Component {
                     <Link to={`${langRoute}/`} className={styles.logoContainer}>
                         <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
                     </Link>
-                    <nav className={styles.menu}>
+                    <nav className={!burgerMenuOpen ? styles.menu : styles.burgerMenuList}>
                         {menu.map((link, i) => {
                             return (
                                 <NavLink
@@ -74,6 +85,11 @@ class Header extends Component {
                             <p className={styles.verticalLine}>|</p>
                             <button onClick={this.handleLangClick(EN)} className={lang === EN ? styles.choosenLang : styles.lang}>ENG</button>
                         </div>
+                    </div>
+                    <div className={styles.burgerMenu} onClick={this.handleMenuClick} >
+                      <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
+                      <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
+                      <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
                     </div>
                 </div>
             </div>
