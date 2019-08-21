@@ -18,7 +18,7 @@ class About extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         lang: PropTypes.string.isRequired,
-        aboutInfo:propTypes.array
+        aboutInfo: PropTypes.array
     };
 
     static defaultProps = {
