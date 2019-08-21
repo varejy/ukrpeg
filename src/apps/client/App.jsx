@@ -12,6 +12,7 @@ import Footer from './ui/components/Footer/Footer.jsx';
 import MainPage from './ui/pages/MainPage/MainPage.jsx';
 import AllNewsPage from './ui/pages/AllNewsPage/AllNewsPage.jsx';
 import AboutPage from './ui/pages/AboutPage/AboutPage.jsx';
+import ContactPage from './ui/pages/ContactPage/ContactPage.jsx';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
@@ -60,7 +61,8 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/:lang(en)?' render={this.renderComponent(MainPage)} />
                         <Route exact path='/news/:lang(en)?' render={this.renderComponent(AllNewsPage)} />
-                        <Route exact path='/about:lang(en)?' render={this.renderComponent(AboutPage)} />
+                        <Route exact path='/about/:lang(en)?' render={this.renderComponent(AboutPage)} />
+                        <Route exact path='/contacts/:lang(en)?' render={this.renderComponent(ContactPage)} />
                     </Switch>
                 </div>
                 <Footer />

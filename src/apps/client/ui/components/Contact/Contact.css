@@ -1,0 +1,86 @@
+@value blackBasic from '../../../../../css/colors.css';
+@value lightGreenBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+
+.contact{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding: 0 125px;
+    position: relative;
+    font-family: 'Gotham Pro', sans-serif;
+    color: blackBasic;
+}
+
+.title{
+    margin-top: 75px;
+    padding: 20px 0 20px 20px;
+    border-left: 5px solid lightGreenBasic;
+    margin-left: -25px;
+    color: darkBlueBasic;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: .5px;
+}
+
+.info{
+    display: flex;
+    padding: 65px 0;
+    height: 260px;
+}
+
+.coverBlock{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blockText{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.boldText{
+    font-weight: bold;
+}
+
+.cityName{
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: .6px;
+}
+
+.emailInfo{
+    width: 50%;
+    padding-bottom: 85px;
+}
+
+.map{
+    padding-bottom: 115px;
+}
+
+.emailTitle{
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.email{
+    border: 1px solid green;
+    padding: 38px 100px;
+    font-size: 26px;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
