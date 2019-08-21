@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import styles from './AllNewsPage.css';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
 import NewsContent from '../../components/NewsContent/NewsContent';
+import PropTypes from 'prop-types';
 
 const NEWS_CATEGORY_LIST = [
     {
         id: 'Всі новини',
         newsList: [
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 16),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             },
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 17),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             },
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 18),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             }
         ]
@@ -25,15 +27,15 @@ const NEWS_CATEGORY_LIST = [
         id: 'Укрaїна',
         newsList: [
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 16),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             },
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 17),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             },
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 18),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             }
         ]
@@ -42,39 +44,64 @@ const NEWS_CATEGORY_LIST = [
         id: 'Світ',
         newsList: [
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 16),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             },
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 17),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             },
             {
-                date: '16 серпня 2019',
+                date: +new Date(2019, 7, 18),
                 title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
             }
         ]
     }
 ];
+const mapStateToProps = () => {
+    return {
+        news: NEWS_CATEGORY_LIST
+    };
+};
 
 class AllNewsPage extends Component {
+    static propTypes = {
+        news: PropTypes.array.isRequired
+    };
+
+    static defaultProps = {
+        news: []
+    };
+
     constructor (...args) {
         super(...args);
+        const { news } = this.props;
+
+        const newsArr = news.map(newsCategory => {
+            return { ...newsCategory, opened: false };
+        });
+        newsArr[0].opened = true;
 
         this.state = {
-            isClicked: {}
+            news: newsArr
         };
     }
 
     handleCategoryClick = i => () => {
+        const { news } = this.props;
+        const newNews = news.map(newsCategory => {
+            return { ...newsCategory, opened: false };
+        });
+        newNews[i].opened = !news[i].opened;
+
         this.setState({
-            isClicked: {
-                ['tabNumber' + i]: !this.state.isClicked['tabNumber' + i]
-            }
+            news: newNews
         });
     };
 
     render () {
+        const { news } = this.state;
+
         return <section className={styles.newsContainer}>
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>
@@ -88,11 +115,11 @@ class AllNewsPage extends Component {
             <div className={styles.newsMenuContainer}>
                 <ul>
                     {
-                        NEWS_CATEGORY_LIST.map((newsCategory, i) =>
+                        news.map((newsCategory, i) =>
                             <li key={i}>
                                 <div className={styles.newsCategory} onClick={this.handleCategoryClick(i)}>
                                     <div className={styles.newsCategoryTitle}>
-                                        <div className={classNames(!this.state.isClicked['tabNumber' + i]
+                                        <div className={classNames(!news[i].opened
                                             ? styles.rectangleGreenInvisible
                                             : styles.rectangleGreen)}
                                         />
@@ -108,4 +135,4 @@ class AllNewsPage extends Component {
     }
 }
 
-export default AllNewsPage;
+export default connect(mapStateToProps)(AllNewsPage);
