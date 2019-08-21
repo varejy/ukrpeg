@@ -25,9 +25,9 @@
     margin-left: -25px;
     color: darkBlueBasic;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 14px;
-    letter-spacing: .5px;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 1px;
     font-family: 'Gotham Pro';
 }
 
@@ -61,23 +61,11 @@
 
 .description{
     padding-top: 45px;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 15px;
+    line-height: 18px;
     font-weight: 300;
-    letter-spacing: .5px;
+    letter-spacing: 1px;
     font-family: 'Gotham Pro';
     color: greyTextBasic;
     padding-right: 5px;
-}
-
-.graphic{
-    background: url('/src/apps/client/ui/components/About/files/circle.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    left: 0;
-    z-index: 0;
-    top: 120px;
-    height: 600px;
-    width: 260px;
 }

@@ -49,7 +49,6 @@ class About extends Component {
                         );
                     })}
                 </div>
-                <div className={styles.graphic}></div>
             </div>
         </div>;
     }
