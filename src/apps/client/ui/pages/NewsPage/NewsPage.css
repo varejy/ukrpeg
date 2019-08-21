@@ -1,11 +1,18 @@
+@value limeGreen from '../../../../../css/colors.css';
+@value whiteBasic from '../../../../../css/colors.css';
+@value blackBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+@value lightOlive from '../../../../../css/colors.css';
+@value middleGrey from '../../../../../css/colors.css';
+
 .newsContainer{
     width: 100%;
     max-width: 1350px;
-    margin: 0 auto;
     display: flex;
     align-items: start;
     justify-content: space-between;
     position: relative;
+    margin: 130px auto 0 auto;
 }
 
 .newsContent{
@@ -27,7 +34,7 @@
     height: 70px;
     width: 6px;
     margin-right: 25px;
-    background-color: #87c412;
+    background-color: limeGreen;
 }
 
 .title{
@@ -95,10 +102,9 @@
 
 .news{
     width: 550px;
-    background-color: #ffffff;
+    background-color: whiteBasic;
     margin-top: 260px;
     position: relative;
-    z-index: 10;
     padding: 20px 18px;
 }
 
@@ -112,7 +118,7 @@
     line-height: 14px;
     text-align: left;
     letter-spacing: 1px;
-    color: #283241;
+    color: darkBlueBasic;
     margin-bottom: 16px;
 }
 
@@ -125,7 +131,7 @@
     line-height: 19px;
     text-align: left;
     letter-spacing: 0.5px;
-    color: #000000;
+    color: blackBasic;
     margin-bottom: 45px;
 }
 
@@ -134,7 +140,7 @@
     letter-spacing: 1px;
     text-align: left;
     font-size: 14px;
-    color: #000000;
+    color: blackBasic;
 }
 
 .nextNews{
@@ -143,7 +149,7 @@
     bottom: 0;
     width: 70%;
     height: 240px;
-    background-color: #eff4de;
+    background-color: lightOlive;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -151,7 +157,7 @@
 
 .next{
     font-family: GothamPro-Medium, "Arial Black";
-    color: #87c412;
+    color: limeGreen;
     font-size: 14px;
     line-height: normal;
     text-align: left;
@@ -163,7 +169,7 @@
     line-height: 14px;
     text-align: left;
     letter-spacing: 1px;
-    color: #283241;
+    color: darkBlueBasic;
 }
 
 .nextNewsHeader{
@@ -181,13 +187,13 @@
     line-height: 19px;
     text-align: left;
     letter-spacing: 0.5px;
-    color: #000000;
+    color: blackBasic;
 }
 
 .nextNewsButton{
     width: 75px;
     height: 75px;
-    border: 1px solid #87c412;
+    border: 1px solid limeGreen;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -203,13 +209,21 @@
 .categoryNewsList{
     width: 415px;
     max-height: 480px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     height: 0;
     transition: height .6s;
 }
 
-.categoryNewsListAnimated{
+.categoryNewsListAnimated1x{
+    height: 160px;
+}
+
+.categoryNewsListAnimated2x{
+    height: 320px;
+}
+
+.categoryNewsListAnimated3x{
     height: 480px;
 }
 
@@ -221,8 +235,7 @@
     width: 415px;
     padding: 0 20px;
     border-top: 1px solid rgba(122, 122, 122, 0.15);
-    border-left: 1px solid rgba(122, 122, 122, 0.15);
-    border-right: 1px solid rgba(122, 122, 122, 0.15);
+    border-left: 2px solid whiteBasic;
     cursor: pointer;
     opacity: 0;
     transition: opacity .2s;
@@ -233,16 +246,12 @@
 }
 
 .newsCardContainer:hover{
-    border-left: 1px solid #87c412;
-}
-
-.newsCardContainer:active{
-    border-left: 1px solid #87c412;
+    border-left: 2px solid limeGreen;
 }
 
 .newsCardContainer .newsDate{
     width: 100%;
-    margin: 7% 0 5% 0;
+    margin: 26px 0 18px 0;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -251,7 +260,7 @@
     line-height: 14px;
     text-align: left;
     letter-spacing: 1px;
-    color: #686868;
+    color: middleGrey;
 }
 
 .newsCardContainer .newsTitle{
@@ -264,7 +273,7 @@
     line-height: 19px;
     text-align: left;
     letter-spacing: 0.5px;
-    color: #000000;
+    color: blackBasic;
     border: none;
     margin-bottom: 0;
 }
