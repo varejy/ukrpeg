@@ -51,6 +51,7 @@
 }
 
 .link, .activeLink{
+    white-space: nowrap;
     text-transform: uppercase;
     color: darkBlueBasic;
     font-weight: 600;
@@ -97,6 +98,7 @@
     color: darkGreyBasic;
     margin-right: 50px;
     font-family: 'Gotham Pro';
+    letter-spacing: 1px;
 }
 
 .toogleLang{
