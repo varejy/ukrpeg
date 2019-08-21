@@ -48,35 +48,35 @@ class Header extends Component {
         const text = propOr('header', {}, langMap);
 
         return <div className={styles.header}>
-          <div className={styles.headBg}>
-            <div className={styles.wrapper}>
-                <Link to={`${langRoute}/`} className={styles.logoContainer}>
-                    <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
-                </Link>
-                <nav className={styles.menu}>
-                    {menu.map((link, i) => {
-                        return (
-                            <NavLink
-                                key={i}
-                                exact={link.exact}
-                                to={`${langRoute}${link.path}`}
-                                activeClassName={styles.activeLink}
-                                className={styles.link}>
-                                {menuItems[link.id]}
-                            </NavLink>
-                        );
-                    })}
-                </nav>
-                <div className={styles.tools}>
-                    <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
-                    <div className={styles.toogleLang}>
-                        <button onClick={this.handleLangClick(UA)} className={lang === UA ? styles.choosenLang : styles.lang}>УКР</button>
-                        <p className={styles.verticalLine}>|</p>
-                        <button onClick={this.handleLangClick(EN)} className={lang === EN ? styles.choosenLang : styles.lang}>ENG</button>
+            <div className={styles.headBg}>
+                <div className={styles.wrapper}>
+                    <Link to={`${langRoute}/`} className={styles.logoContainer}>
+                        <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
+                    </Link>
+                    <nav className={styles.menu}>
+                        {menu.map((link, i) => {
+                            return (
+                                <NavLink
+                                    key={i}
+                                    exact={link.exact}
+                                    to={`${langRoute}${link.path}`}
+                                    activeClassName={styles.activeLink}
+                                    className={styles.link}>
+                                    {menuItems[link.id]}
+                                </NavLink>
+                            );
+                        })}
+                    </nav>
+                    <div className={styles.tools}>
+                        <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
+                        <div className={styles.toogleLang}>
+                            <button onClick={this.handleLangClick(UA)} className={lang === UA ? styles.choosenLang : styles.lang}>УКР</button>
+                            <p className={styles.verticalLine}>|</p>
+                            <button onClick={this.handleLangClick(EN)} className={lang === EN ? styles.choosenLang : styles.lang}>ENG</button>
+                        </div>
                     </div>
                 </div>
             </div>
-          </div>
         </div>;
     }
 }

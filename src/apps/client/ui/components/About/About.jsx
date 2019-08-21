@@ -36,7 +36,6 @@ class About extends Component {
             }
         ];
 
-        console.log(content);
         return <div className={styles.about}>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>{text.title}</h1>
