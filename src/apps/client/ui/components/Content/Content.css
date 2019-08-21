@@ -105,8 +105,7 @@
     width: 680px;
     height: 100px;
     background: url('/src/apps/client/ui/components/Content/files/searchBgOpacity.png');
-    margin-top: 140px;
-    margin-left: -125px;
+    margin: 140px 0 0 -125px;
     display: flex;
     position: relative;
 }
@@ -157,14 +156,14 @@
     width: 295px;
     height: auto;
     align-self: flex-end;
-    margin-top: -55px;
-    margin-right: 230px;
+    margin: -55px 180px 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
 .heading{
+    margin: 0 60px 25px 0;
     margin-bottom: 25px;
     background: url('/src/apps/client/ui/components/Content/files/number.png');
     height: 40px;
@@ -174,13 +173,14 @@
 }
 
 .info{
-    text-align: right;
     font-size: 10px;
     font-weight: 500;
     line-height: 14px;
     letter-spacing: .4px;
     color: whiteBasic;
     font-family: 'Gotham Medium', sans-serif;
+    text-align-last: end;
+    text-align: start;
 }
 
 .graphic{

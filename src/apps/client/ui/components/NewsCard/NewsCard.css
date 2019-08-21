@@ -1,0 +1,49 @@
+@value greyMedium from '../../../../../css/colors.css';
+@value blackBasic from '../../../../../css/colors.css';
+
+.newsCardContainer{
+    width: 222px;
+    margin: 47px 47px 0 0;
+}
+
+.newsCardImage{
+    width: 222px;
+    height: 178px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.image{
+    width: 100%;
+    height: auto;
+}
+
+.newsCardDate{
+    width: 100%;
+    margin: 22px 0 17px 0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-family: GothamPro-Light, Arial;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: left;
+    letter-spacing: 1px;
+    color: greyMedium;
+}
+
+.newsCardTitle{
+    width: 100%;
+    height: 120px;
+    align-items: start;
+    justify-content: start;
+    font-family: GothamPro, Arial;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+    letter-spacing: 0.5px;
+    color: blackBasic;
+}

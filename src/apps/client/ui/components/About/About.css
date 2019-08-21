@@ -15,24 +15,26 @@
     width:  100%;
     max-width: 1350px;
     padding:0 125px;
+    position: relative;
 }
 
 .title{
     margin-top: 75px;
-    padding: 25px 0 20px 25px;
+    padding: 20px 0 20px 20px;
     border-left: 5px solid lightGreenBasic;
-    margin-left: -30px;
+    margin-left: -25px;
     color: darkBlueBasic;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
-    cursor: pointer;
-    font-family: 'Gotham Medium';
+    font-family: 'Gotham Pro';
 }
 
 .content{
-    margin-top: 60px;
+    padding: 70px 0 30px 0;
+    z-index: 1;
+    position: relative;
 }
 
 .contentBlock{
@@ -42,8 +44,13 @@
 
 .contentBlock:nth-child(2n) .img{
     order: 0;
-    margin-right: 70px;
-    margin-left: 0;
+    margin-right: 140px;
+    margin-left: -125px;
+}
+
+.contentBlock:nth-child(3) .img{
+    width: 680px;
+    margin-right: -125px;
 }
 
 .img{
@@ -53,9 +60,24 @@
 }
 
 .description{
+    padding-top: 45px;
     font-size: 14px;
+    line-height: 16px;
     font-weight: 300;
     letter-spacing: .5px;
-    font-family: 'Gotham Light';
+    font-family: 'Gotham Pro';
     color: greyTextBasic;
+    padding-right: 5px;
+}
+
+.graphic{
+    background: url('/src/apps/client/ui/components/About/files/circle.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    z-index: 0;
+    top: 120px;
+    height: 600px;
+    width: 260px;
 }

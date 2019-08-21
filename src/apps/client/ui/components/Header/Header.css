@@ -1,7 +1,7 @@
 @value whiteBasic from '../../../../../css/colors.css';
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value darkGreyBasic from '../../../../../css/colors.css';
-@value limeBasic from '../../../../../css/colors.css';
+@value limeGreen from '../../../../../css/colors.css';
 @value lightGreyBasic from '../../../../../css/colors.css';
 @value darkBlueHover from '../../../../../css/colors.css';
 
@@ -12,13 +12,20 @@
     justify-content: center;
 }
 
+.headBg{
+    background: whiteBasic;
+    width: 100%;
+    position: relative;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    z-index: 4;
+}
+
 .wrapper{
     width:  100%;
     max-width: 1350px;
     display: flex;
-    position: fixed;
-    background: whiteBasic;
-    z-index: 2;
 }
 
 .logoContainer{
@@ -39,7 +46,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-grow: 2;
 }
 
@@ -52,12 +59,15 @@
     letter-spacing: .1px;
     text-align: center;
     padding: 45px 20px 30px;
-    width: 100%;
     font-family: 'Gotham Medium', sans-serif;
+    width: 100%;
 }
 
 .link:first-child, .activeLink:first-child{
   padding-left: 30px;
+}
+
+.link:nth-child(2), .activeLink:nth-child(2){
 }
 
 .link:last-child, .activeLink:last-child{
@@ -104,5 +114,5 @@
 }
 
 .choosenLang{
-    color: limeBasic;
+    color: limeGreen;
 }

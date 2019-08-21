@@ -31,7 +31,7 @@ class About extends Component {
                 ...text.content[1]
             },
             {
-                img: '/src/apps/client/ui/components/About/files/can.png',
+                img: '/src/apps/client/ui/components/About/files/recycle.jpg',
                 ...text.content[2]
             }
         ];
@@ -50,6 +50,7 @@ class About extends Component {
                         );
                     })}
                 </div>
+                <div className={styles.graphic}></div>
             </div>
         </div>;
     }

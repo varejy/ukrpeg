@@ -48,6 +48,12 @@
     max-width: 1350px;
     padding:0 125px;
     display: flex;
+}
+
+.wrapperArticleBg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
     background: semiGreyBg;
 }
 
