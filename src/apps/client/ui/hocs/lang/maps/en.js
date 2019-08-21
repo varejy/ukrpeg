@@ -47,9 +47,9 @@ export default {
                 desc: `пн-пт 09.00 - 17.00`
             },
             adress: {
-                street: `Улица Садовая`,
-                index: `280604`,
-                phone: `телефон`,
+                street: `Улица Садовая 28`,
+                index: `06040`,
+                phone: `телефон: `,
                 phoneNumber: `(093) 747 22 02`
             },
             city: {

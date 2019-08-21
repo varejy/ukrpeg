@@ -4,7 +4,7 @@ import Contact from '../../components/Contact/Contact';
 class ContactPage extends Component {
     render () {
         return <section>
-          <Contact />
+            <Contact />
         </section>;
     }
 }

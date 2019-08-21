@@ -1,6 +1,7 @@
 @value blackBasic from '../../../../../css/colors.css';
 @value lightGreenBasic from '../../../../../css/colors.css';
 @value darkBlueBasic from '../../../../../css/colors.css';
+@value lightGreenBorder from '../../../../../css/colors.css';
 
 .contact{
     width: 100%;
@@ -25,15 +26,15 @@
     margin-left: -25px;
     color: darkBlueBasic;
     font-weight: 600;
-    font-size: 14px;
-    line-height: 14px;
-    letter-spacing: .5px;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 1px;
 }
 
 .info{
     display: flex;
     padding: 65px 0;
-    height: 260px;
+    height: 280px;
 }
 
 .coverBlock{
@@ -44,8 +45,8 @@
 }
 
 .blockText{
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 15px;
+    line-height: 22px;
     letter-spacing: 1px;
     font-weight: 500;
 }
@@ -71,14 +72,14 @@
 
 .emailTitle{
     margin-bottom: 20px;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 15px;
+    line-height: 22px;
     letter-spacing: 1px;
     font-weight: 300;
 }
 
 .email{
-    border: 1px solid green;
+    border: 1px solid lightGreenBorder;
     padding: 38px 100px;
     font-size: 26px;
     letter-spacing: 2px;
