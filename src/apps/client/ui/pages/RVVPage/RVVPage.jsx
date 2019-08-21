@@ -36,6 +36,48 @@ const BENEFITS = [
         path: 'src/apps/client/ui/pages/RVVPage/images/benefit5.png'
     }
 ];
+const COURSES_LIST = [
+    'Дослідження сфери поводження з упаковкою та її відходами в Україні.',
+    'Впровадження пілотних проектів у сфері поводження з відходами упаковки.',
+    'Розробка рекомендацій, які можуть бути запропоновані суб\'єктам виробництва та ринку, професійним і громадським організаціям, органам державної влади та місцевого самоврядування і навіть споживачам товарів в упаковці – щодо безпечного екологічного розвитку у сфері пакувальної технології та поводження з упаковкою та її відходами.'
+];
+const FACTS = [
+    {
+        text: 'новеньких сміттєвих контейнерів встановили у місті',
+        value: '200',
+        sign: '+'
+    },
+    {
+        text: 'сміття було зібрано від загального обсягу відходів',
+        value: '25',
+        sign: '%'
+    },
+    {
+        text: 'тонн було зібрано відходів упаковки упродовж першого року з дня старту проекту',
+        value: '320',
+        sign: ''
+    }
+];
+const PARTNERS_LIST = [
+    '/src/apps/client/ui/pages/RVVPage/images/elopak.png',
+    '/src/apps/client/ui/pages/RVVPage/images/pepsico.png',
+    '/src/apps/client/ui/pages/RVVPage/images/cocacola.png',
+    '/src/apps/client/ui/pages/RVVPage/images/canpack.png',
+    '/src/apps/client/ui/pages/RVVPage/images/tetrapack.png'
+];
+const PARTICIPANTS_LIST = [
+    'ТОВ «Кен-Пак (Україна)»',
+    'ПрАТ «Елопак-Фастiв»',
+    'ІП «Кока-Кола Беверіджиз Україна Лімітед»',
+    'ТОВ «Сандора»',
+    'А/Т Тютюнова компанія «В. А. Т. – Прилуки»',
+    'ТОВ «Тетра Пак»',
+    'ТОВ «Нестле Україна»',
+    'ТОВ «Проктер енд Гембл Україна»',
+    'ТОВ «Данон Дніпро»',
+    'ТОВ «Хенкель Україна»',
+    'та інші.'
+];
 const mapStateToProps = () => {
     return {
     };
@@ -100,6 +142,87 @@ class RVVPage extends Component {
                     Для УКРПЕК надзвичайно важливою була  підтримка місцевої влади – відповідний Меморандум затвердили
                     на сесії Вишгородської міської ради.
                 </div>
+            </div>
+            <div className={styles.courses}>
+                <div className={styles.patternContainer} />
+                <div className={styles.titleContainer}>
+                    <div className={styles.rectangleGreen}/>
+                    <div className={styles.title}>Основні зусилля та ресурси Коаліції зосереджені на трьох основних напрямках:</div>
+                </div>
+                <div className={styles.coursesContainer}>
+                    <div className={styles.courseInfo}>
+                        {
+                            COURSES_LIST.map((course, i) =>
+                                <div key={i} className={styles.course}>
+                                    <div className={styles.courseNumber}>{i + 1}</div>
+                                    <div className={styles.courseText}>{course}</div>
+                                </div>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+            <div className={styles.facts}>
+                <div className={styles.titleContainer}>
+                    <div className={styles.rectangleWhite}/>
+                    <div className={styles.whiteTitle}>Ключові факти</div>
+                </div>
+                <div className={styles.factsInfo}>
+                    {
+                        FACTS.map((fact, i) =>
+                            <div className={styles.factContainer} key={i}>
+                                <div className={styles.factValue}>
+                                    <div className={styles.valueNumber}>{fact.value}</div>
+                                    <div className={styles.valueSign}>{fact.sign}</div>
+                                </div>
+                                <div className={styles.factText}>{fact.text}</div>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+            <div className={styles.partners}>
+                <div className={styles.partnersList}>
+                    {
+                        PARTNERS_LIST.map((partner, i) =>
+                            <div className={styles.logoContainer} key={i}>
+                                <img className={styles.logo} src={partner} alt='logo'/>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+            <div className={styles.participants}>
+                <div className={styles.backgroundGrey}>
+                    <div className={styles.titleContainer}>
+                        <div className={styles.rectangleGreen}/>
+                        <div className={styles.title}>
+                        До складу Української Пакувально-Екологічної Коаліції входять потужні представники галузі:
+                        </div>
+                    </div>
+                    <ul className={styles.participantsList}>
+                        {
+                            PARTICIPANTS_LIST.map((participant, i) =>
+                                <li key={i} className={styles.participant}>{participant}</li>
+                            )
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div className={styles.idea}>
+                <div className={styles.ideaContainer}>
+                    <div className={styles.patternContainer} />
+                    <div className={styles.imageContainer}>
+                        <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
+                    </div>
+                    <div className={styles.ideaText}>
+                        Спільними зусиллями ми працюємо над оптимізацією роботи галузі, вдосконаленням нормативно-правової бази,
+                        підвищенням споживчої культури в сфері поводження з упаковкою та її відходами.<br/>
+                        На жаль, змінити минуле нікому не під силу, але наше майбутнє цілком залежить від того, що ми зможемо
+                        спільними зусиллями створити чи впровадити саме сьогодні.
+                    </div>
+                </div>
+                <div className={styles.backgroundGreen}/>
             </div>
         </section>;
     }

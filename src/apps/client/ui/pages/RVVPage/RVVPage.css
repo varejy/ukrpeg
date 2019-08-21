@@ -2,7 +2,6 @@
 
 .pageContainer{
     width: 100%;
-    max-width: 1350px;
     margin: 0 auto;
     overflow-x: hidden;
 }
@@ -11,8 +10,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 108px;
-    margin-bottom: 54px;
+    padding-left: 108px;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto 54px auto;
 }
 
 .rectangleGreen{
@@ -32,9 +33,11 @@
 
 .plansContent{
     width: 100%;
+    max-width: 1350px;
     display: flex;
     flex-wrap: wrap;
     padding: 0 60px;
+    margin: 0 auto;
 }
 
 .plansContent :last-child .stepNumber{
@@ -84,7 +87,7 @@
     width: 1255px;
     border: 1px solid limeGreen;
     padding: 26px 34px;
-    margin: 0 auto;
+    margin: 0 auto 55px auto;
 }
 
 .whyRVV .titleContainer{
@@ -93,8 +96,10 @@
 
 .benefits{
     width: 100%;
+    max-width: 1350px;
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .benefitContainer{
@@ -132,11 +137,261 @@
 
 .projectInfo{
     width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
     padding: 0 134px;
     color: #323b49;
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: GothamPro-Medium, Arial;
     font-size: 16px;
     line-height: 20px;
     text-align: left;
 }
 
+.courses{
+    position: relative;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 53px 0 100px 0;
+    background: #ffffff;
+}
+
+.courses .titleContainer{
+    position: relative;
+    z-index: 7;
+}
+
+.patternContainer{
+    height: 100%;
+    width: 130px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: url('./images/pattern.png') center;
+    background-size: cover;
+}
+
+.pattern{
+    height: 100%;
+    width: auto;
+}
+
+.coursesContainer{
+    position: relative;
+    left: 95px;
+    width: 90%;
+}
+
+.course{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.courseNumber{
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 91px;
+    letter-spacing: -2.3px;
+    color: #283241;
+    text-align: left;
+}
+
+.courseText{
+    font-family: GothamPro-Medium, Arial;
+    font-size: 16px;
+    padding: 0 7px;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    justify-self: flex-end;
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    left: 38px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.facts{
+    width: 100%;
+    background: url('./images/blueBackgroundPattern.png') center;
+    background-size: cover;
+    padding: 40px 0;
+}
+
+.facts .titleContainer{
+    margin-bottom: 105px;
+}
+
+.rectangleWhite{
+    height: 70px;
+    width: 6px;
+    margin-right: 25px;
+    background-color: #ffffff;
+}
+
+.whiteTitle{
+    font-size: 18px;
+    line-height: 18px;
+    font-family: GothamPro-Medium, "Arial Black";
+    letter-spacing: 1.5px;
+    text-align: left;
+    color: #ffffff;
+}
+
+.factsInfo{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1350px;
+    padding: 0 135px;
+    margin: 0 auto 184px auto;
+}
+
+.factContainer{
+    max-width: 308px;
+}
+
+.factValue{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 33px;
+}
+
+.valueNumber{
+    color: #ffffff;
+    font-size: 74px;
+    font-family: Verdana;
+    font-weight: bold;
+    line-height: 80px;
+    letter-spacing: -1.8px;
+}
+
+.valueSign{
+    color: #ffffff;
+    font-size: 43px;
+    font-family: Verdana;
+    font-weight: bold;
+    line-height: 25px;
+    letter-spacing: -1px;
+
+}
+
+.factText{
+    font-family: GothamPro-Bold, Arial;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    width: 100%;
+}
+
+.partners{
+    width: 100%;
+}
+
+.partnersList{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logoContainer{
+    padding: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    height: 100%;
+    width: auto;
+}
+
+.participants{
+    width: 100%;
+    position: relative;
+}
+
+.participants .titleContainer{
+    padding-top: 28px;
+}
+
+.participantsList{
+    position: relative;
+    left: 140px;
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+}
+
+.participant{
+    font-family: GothamPro-Medium, Arial;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #000000;
+}
+
+.backgroundGrey{
+    width: 90%;
+    background-color: rgba(40, 50, 65, 0.12);
+}
+
+.idea{
+    width: 100%;
+    position: relative;
+}
+
+.ideaContainer{
+    position: relative;
+    left: 130px;
+    background-color: #eff4de;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 70px 96px;
+    max-width: 1350px;
+    margin: 0 auto;
+    z-index: 5;
+
+}
+
+.imageContainer{
+    margin-right: 72px;
+}
+
+.ideaText{
+    width: 60%;
+    font-family: GothamPro-Light, Arial;
+    font-size: 16px;
+    line-height: normal;
+    text-align: left;
+}
+
+.idea .patternContainer{
+    left: -130px;
+}
+
+.backgroundGreen{
+    background-color: #eff4de;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+}
