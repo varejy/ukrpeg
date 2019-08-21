@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+    font-family: system-ui, sans-serif;
 }
 
 .wrapper{
@@ -28,7 +29,7 @@
     font-size: 15px;
     line-height: 17px;
     letter-spacing: 1px;
-    font-family: 'Gotham Pro';
+    font-family: 'Gotham Pro', sans-serif;
 }
 
 .content{
@@ -42,21 +43,21 @@
     margin-bottom: 40px;
 }
 
-.contentBlock:nth-child(2n) .img{
-    order: 0;
-    margin-right: 140px;
-    margin-left: -125px;
-}
-
-.contentBlock:nth-child(3) .img{
-    width: 680px;
-    margin-right: -125px;
-}
-
 .img{
     width: 540px;
     margin-left: 70px;
     order: 1;
+}
+
+.contentBlock:nth-child(2n) .img{
+   order: 0;
+   margin-right: 140px;
+   margin-left: -125px;
+}
+
+.contentBlock:nth-child(3n):nth-child(odd) .img{
+    width: 680px;
+    margin-right: -125px;
 }
 
 .description{
@@ -65,7 +66,7 @@
     line-height: 18px;
     font-weight: 300;
     letter-spacing: 1px;
-    font-family: 'Gotham Pro';
+    font-family: 'Gotham Pro', sans-serif;
     color: greyTextBasic;
     padding-right: 5px;
 }

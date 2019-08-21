@@ -51,12 +51,13 @@
 }
 
 .link, .activeLink{
+    white-space: nowrap;
     text-transform: uppercase;
     color: darkBlueBasic;
     font-weight: 600;
     font-size: 18px;
     line-height: 14px;
-    letter-spacing: .1px;
+    letter-spacing: 1px;
     text-align: center;
     padding: 45px 20px 30px;
     font-family: 'Gotham Pro', sans-serif;
