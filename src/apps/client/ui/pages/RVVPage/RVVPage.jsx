@@ -93,6 +93,11 @@ class RVVPage extends Component {
     render () {
         return <section className={styles.pageContainer}>
             <div className={styles.plans}>
+                <div className={styles.column1}/>
+                <div className={styles.column2}/>
+                <div className={styles.column3}/>
+                <div className={styles.column4}/>
+                <div className={styles.column5}/>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>
                     <div className={styles.title}>Плани</div>
@@ -108,30 +113,45 @@ class RVVPage extends Component {
                     }
                 </div>
             </div>
-            <div className={styles.whyRVV}>
-                <div className={styles.titleContainer}>
-                    <div className={styles.rectangleGreen}/>
-                    <div className={styles.title}>Навіщо потрібне РВВ:</div>
-                </div>
-                <div className={styles.benefits}>
-                    {
-                        BENEFITS.map((benefit, i) =>
-                            <div key={i} className={styles.benefitContainer}>
-                                <div className={styles.benefitIconContainer}>
-                                    <img className={styles.benefitIcon} src={benefit.path} alt={benefit.text}/>
-                                </div>
-                                <div className={styles.benefitText}>{benefit.text}</div>
-                            </div>
-                        )
-                    }
+            <div className={styles.whyRVVContainer}>
+                <div className={styles.whyRVV}>
+                    <div className={styles.column1}/>
+                    <div className={styles.column2}/>
+                    <div className={styles.column3}/>
+                    <div className={styles.column4}/>
+                    <div className={styles.column5}/>
+                    <div className={styles.titleContainer}>
+                        <div className={styles.rectangleGreen}/>
+                        <div className={styles.title}>Навіщо потрібне РВВ:</div>
+                    </div>
+                    <div className={styles.benefitsContainer}>
+                        <div className={styles.benefits}>
+                            {
+                                BENEFITS.map((benefit, i) =>
+                                    <div key={i} className={styles.benefitContainer}>
+                                        <div className={styles.benefitIconContainer}>
+                                            <img className={styles.benefitIcon} src={benefit.path} alt={benefit.text}/>
+                                        </div>
+                                        <div className={styles.benefitText}>{benefit.text}</div>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className={styles.project}>
-                <div className={styles.titleContainer}>
-                    <div className={styles.rectangleGreen}/>
-                    <div className={styles.title}>Пілотний проект у Вишгороді</div>
-                </div>
-                <div className={styles.projectInfo}>
+            <div className={styles.projectContainer}>
+                <div className={styles.project}>
+                    <div className={styles.column1}/>
+                    <div className={styles.column2}/>
+                    <div className={styles.column3}/>
+                    <div className={styles.column4}/>
+                    <div className={styles.column5}/>
+                    <div className={styles.titleContainer}>
+                        <div className={styles.rectangleGreen}/>
+                        <div className={styles.title}>Пілотний проект у Вишгороді</div>
+                    </div>
+                    <div className={styles.projectInfo}>
                     Наприкінці листопада 2017 року в місті Вишгороді Київської області презентували перший в
                     Україні екологічний проект з роздільного збирання побутових відходів, заснований на принципах
                     розширеної відповідальності виробника (надалі – РВВ). Ініціатором проекту стала  Українська
@@ -141,24 +161,33 @@ class RVVPage extends Component {
                     запровадження таких систем через ухвалення законів  і фактичну реалізацію пілотного проекту.
                     Для УКРПЕК надзвичайно важливою була  підтримка місцевої влади – відповідний Меморандум затвердили
                     на сесії Вишгородської міської ради.
+                    </div>
                 </div>
             </div>
-            <div className={styles.courses}>
-                <div className={styles.patternContainer} />
-                <div className={styles.titleContainer}>
-                    <div className={styles.rectangleGreen}/>
-                    <div className={styles.title}>Основні зусилля та ресурси Коаліції зосереджені на трьох основних напрямках:</div>
-                </div>
-                <div className={styles.coursesContainer}>
-                    <div className={styles.courseInfo}>
-                        {
-                            COURSES_LIST.map((course, i) =>
-                                <div key={i} className={styles.course}>
-                                    <div className={styles.courseNumber}>{i + 1}</div>
-                                    <div className={styles.courseText}>{course}</div>
-                                </div>
-                            )
-                        }
+            <div className={styles.container}>
+                <div className={styles.patternContainerBig} />
+                <div className={styles.courses}>
+                    <div className={styles.column1}/>
+                    <div className={styles.column2}/>
+                    <div className={styles.column3}/>
+                    <div className={styles.column4}/>
+                    <div className={styles.column5}/>
+                    <div className={styles.backgroundWhite}/>
+                    <div className={styles.titleContainer}>
+                        <div className={styles.rectangleGreen}/>
+                        <div className={styles.title}>Основні зусилля та ресурси Коаліції зосереджені на трьох основних напрямках:</div>
+                    </div>
+                    <div className={styles.coursesContainer}>
+                        <div className={styles.courseInfo}>
+                            {
+                                COURSES_LIST.map((course, i) =>
+                                    <div key={i} className={styles.course}>
+                                        <div className={styles.courseNumber}>{i + 1}</div>
+                                        <div className={styles.courseText}>{course}</div>
+                                    </div>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,19 +210,32 @@ class RVVPage extends Component {
                     }
                 </div>
             </div>
-            <div className={styles.partners}>
-                <div className={styles.partnersList}>
-                    {
-                        PARTNERS_LIST.map((partner, i) =>
-                            <div className={styles.logoContainer} key={i}>
-                                <img className={styles.logo} src={partner} alt='logo'/>
-                            </div>
-                        )
-                    }
+            <div className={styles.partnersContainer}>
+                <div className={styles.partners}>
+                    <div className={styles.column1}/>
+                    <div className={styles.column2}/>
+                    <div className={styles.column3}/>
+                    <div className={styles.column4}/>
+                    <div className={styles.column5}/>
+                    <div className={styles.partnersList}>
+                        {
+                            PARTNERS_LIST.map((partner, i) =>
+                                <div className={styles.logoContainer} key={i}>
+                                    <img className={styles.logo} src={partner} alt='logo'/>
+                                </div>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
-            <div className={styles.participants}>
-                <div className={styles.backgroundGrey}>
+            <div className={styles.participantsContainer}>
+                <div className={styles.backgroundGrey}/>
+                <div className={styles.participants}>
+                    <div className={styles.column1}/>
+                    <div className={styles.column2}/>
+                    <div className={styles.column3}/>
+                    <div className={styles.column4}/>
+                    <div className={styles.column5}/>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
                         <div className={styles.title}>
@@ -209,17 +251,24 @@ class RVVPage extends Component {
                     </ul>
                 </div>
             </div>
-            <div className={styles.idea}>
-                <div className={styles.ideaContainer}>
-                    <div className={styles.patternContainer} />
-                    <div className={styles.imageContainer}>
-                        <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
-                    </div>
-                    <div className={styles.ideaText}>
+            <div className={styles.containerIdea}>
+                <div className={styles.patternContainerBig} />
+                <div className={styles.idea}>
+                    <div className={styles.column1}/>
+                    <div className={styles.column2}/>
+                    <div className={styles.column3}/>
+                    <div className={styles.column4}/>
+                    <div className={styles.column5}/>
+                    <div className={styles.ideaContainer}>
+                        <div className={styles.imageContainer}>
+                            <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
+                        </div>
+                        <div className={styles.ideaText}>
                         Спільними зусиллями ми працюємо над оптимізацією роботи галузі, вдосконаленням нормативно-правової бази,
                         підвищенням споживчої культури в сфері поводження з упаковкою та її відходами.<br/>
                         На жаль, змінити минуле нікому не під силу, але наше майбутнє цілком залежить від того, що ми зможемо
                         спільними зусиллями створити чи впровадити саме сьогодні.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.backgroundGreen}/>

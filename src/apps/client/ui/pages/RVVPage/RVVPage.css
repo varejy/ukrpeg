@@ -4,6 +4,68 @@
     width: 100%;
     margin: 0 auto;
     overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column1{
+    width: 1px;
+    background-color: lightgrey;
+    opacity: 0.5;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 134px;
+    z-index: 10;
+}
+
+.column2{
+    width: 1px;
+    background-color: lightgrey;
+    opacity: 0.5;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 25%;
+    z-index: 10;
+    margin-left: 61px;
+}
+
+.column3{
+    width: 1px;
+    background-color: lightgrey;
+    opacity: 0.5;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 10;
+    margin-left: -10px;
+}
+
+.column4{
+    width: 1px;
+    background-color: lightgrey;
+    opacity: 0.5;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 75%;
+    z-index: 10;
+    margin-left: -75px;
+}
+
+.column5{
+    width: 1px;
+    background-color: lightgrey;
+    opacity: 0.5;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 134px;
+    z-index: 10;
 }
 
 .titleContainer{
@@ -19,16 +81,20 @@
 .rectangleGreen{
     height: 70px;
     width: 6px;
-    margin-right: 25px;
+    margin-right: 20px;
     background-color: limeGreen;
 }
 
 .title{
     font-size: 18px;
-    line-height: 18px;
     font-family: GothamPro-Medium, "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
+    line-height: 24px;
+}
+
+.plans{
+    position: relative;
 }
 
 .plansContent{
@@ -36,24 +102,32 @@
     max-width: 1350px;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 60px;
+    padding: 0 72px;
     margin: 0 auto;
+    position: relative;
+    left: -23px;
 }
 
 .plansContent :last-child .stepNumber{
-    letter-spacing: 280px;
+    letter-spacing: 390px;
 
     @media (max-width: 1350px) {
         letter-spacing: 19.5vw;
     }
 }
 
+.plansContent :last-child .stepText{
+    width: 114%;
+    padding-right: 25%;
+}
+
 .step{
-    width: 50%;
+    width: 40%;
     position: relative;
     display: flex;
     align-items: start;
     margin-bottom: 115px;
+    margin-right: 48px;
 }
 
 .stepNumber{
@@ -71,7 +145,7 @@
     font-family: GothamPro-Light, Arial;
     font-size: 16px;
     letter-spacing: 0.5px;
-    width: 70%;
+    width: 90%;
     height: 180px;
     justify-self: end;
     position: absolute;
@@ -83,15 +157,33 @@
     margin-top: -5px;
 }
 
+.whyRVVContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
 .whyRVV{
+    width: 100%;
+    max-width: 1350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.benefitsContainer{
     width: 1255px;
     border: 1px solid limeGreen;
-    padding: 26px 34px;
+    padding: 150px 30px 26px 30px;
     margin: 0 auto 55px auto;
 }
 
 .whyRVV .titleContainer{
-    margin-left: 32px;
+    position: absolute;
+    top: 26px;
+    margin: 0 auto;
+    justify-self: center;
 }
 
 .benefits{
@@ -111,7 +203,7 @@
 }
 
 .benefitIconContainer{
-    margin-right: 22px;
+    margin-right: 18px;
 }
 
 .benefitIcon{
@@ -128,11 +220,22 @@
     text-align: left;
 }
 
+.projectContainer{
+    width: 100%;
+    position: relative;
+    background: url("./images/background.jpg") center;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .project{
     width: 100%;
+    max-width: 1350px;
     height: auto;
-    background: url("./images/background.jpg") center;
     padding: 108px 0 138px 0;
+    position: relative;
 }
 
 .projectInfo{
@@ -147,41 +250,48 @@
     text-align: left;
 }
 
+.backgroundWhite{
+    width: 100%;
+    height: 100%;
+    max-width: 1350px;
+    position: absolute;
+    margin-left: 140px;
+    background-color: #ffffff;
+    z-index: 6;
+    top: 0;
+}
+
+.container{
+    width: 100%;
+    position: relative;
+}
+
 .courses{
     position: relative;
     width: 100%;
     max-width: 1350px;
     margin: 0 auto;
     padding: 53px 0 100px 0;
-    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .courses .titleContainer{
     position: relative;
     z-index: 7;
-}
-
-.patternContainer{
-    height: 100%;
-    width: 130px;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 5;
-    background: url('./images/pattern.png') center;
-    background-size: cover;
-}
-
-.pattern{
-    height: 100%;
-    width: auto;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto 58px auto;
 }
 
 .coursesContainer{
     position: relative;
     left: 95px;
-    width: 90%;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    background: #ffffff;
 }
 
 .course{
@@ -199,6 +309,7 @@
     letter-spacing: -2.3px;
     color: #283241;
     text-align: left;
+    z-index: 4;
 }
 
 .courseText{
@@ -211,11 +322,43 @@
     width: 70%;
     height: 100%;
     position: absolute;
-    left: 38px;
+    left: 40px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    z-index: 7;
+}
+
+
+.patternContainer{
+    height: 100%;
+    width: 130px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: url('./images/pattern.png') center;
+    background-size: cover;
+}
+
+.patternContainerBig{
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: url('./images/pattern.png') repeat-x;
+    background-size: auto;
+}
+
+
+.pattern{
+    height: 100%;
+    width: auto;
 }
 
 .facts{
@@ -232,7 +375,7 @@
 .rectangleWhite{
     height: 70px;
     width: 6px;
-    margin-right: 25px;
+    margin-right: 20px;
     background-color: #ffffff;
 }
 
@@ -294,8 +437,18 @@
     width: 100%;
 }
 
+.partnersContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .partners{
     width: 100%;
+    max-width: 1350px;
+    position: relative;
 }
 
 .partnersList{
@@ -320,8 +473,17 @@
     width: auto;
 }
 
+.participantsContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .participants{
     width: 100%;
+    max-width: 1350px;
     position: relative;
 }
 
@@ -331,7 +493,7 @@
 
 .participantsList{
     position: relative;
-    left: 140px;
+    left: 130px;
     width: 100%;
     max-width: 1340px;
     margin: 0 auto;
@@ -348,23 +510,43 @@
 }
 
 .backgroundGrey{
-    width: 90%;
+    width: 87.5%;
     background-color: rgba(40, 50, 65, 0.12);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    @media (min-width: 1350px) {
+        width: 87.5%;
+    }
+}
+
+.participants .titleContainer .title{
+    width: 85%;
+}
+
+.containerIdea{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .idea{
     width: 100%;
+    max-width: 1350px;
     position: relative;
 }
 
 .ideaContainer{
     position: relative;
-    left: 130px;
+    left: 135px;
     background-color: #eff4de;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 70px 96px;
+    padding: 70px 56px;
     max-width: 1350px;
     margin: 0 auto;
     z-index: 5;
@@ -372,7 +554,7 @@
 }
 
 .imageContainer{
-    margin-right: 72px;
+    margin-right: 50px;
 }
 
 .ideaText{
