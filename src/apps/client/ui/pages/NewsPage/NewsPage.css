@@ -5,6 +5,22 @@
 @value lightOlive from '../../../../../css/colors.css';
 @value middleGrey from '../../../../../css/colors.css';
 
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.pageNotFound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+}
+
 .newsContainer{
     width: 100%;
     max-width: 1350px;
@@ -139,7 +155,8 @@
     font-family: GothamPro-Light, Arial;
     letter-spacing: 1px;
     text-align: left;
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 18px;
     color: blackBasic;
 }
 
@@ -238,7 +255,7 @@
     border-left: 2px solid whiteBasic;
     cursor: pointer;
     opacity: 0;
-    transition: opacity .2s;
+    transition: opacity .4s;
 }
 
 .newsCardContainerAnimated{

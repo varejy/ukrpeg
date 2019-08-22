@@ -35,11 +35,19 @@ const mapStateToProps = ({ application }) => {
 class App extends Component {
     static propTypes = {
         lang: PropTypes.string,
-        langRoute: PropTypes.string
+        langRoute: PropTypes.string,
+        location: PropTypes.object
     };
 
     static defaultProps = {
-        langRoute: ''
+        langRoute: '',
+        location: {}
+    };
+
+    componentWillReceiveProps (nextProps) {
+        if (this.props.location !== nextProps.location) {
+            window.scrollTo(0, 0);
+        }
     };
 
     renderComponent = Component => ({ match: { params: { lang: langUrl = DEFAULT_LANG }, path }, location: { pathname } }) => {
@@ -59,8 +67,8 @@ class App extends Component {
                 <div className={styles.pageContent}>
                     <Switch>
                         <Route exact path='/:lang(en)?' render={this.renderComponent(MainPage)} />
-                        <Route exact path='/news/:lang(en)?' render={this.renderComponent(AllNewsPage)} />
-                        <Route exact path='/article/:lang(en)?' render={this.renderComponent(NewsPage)} />
+                        <Route exact path='/:lang(en)?/news' render={this.renderComponent(AllNewsPage)} />
+                        <Route exact path='/:lang(en)?/news/:id' render={this.renderComponent(NewsPage)} />
                     </Switch>
                 </div>
                 <Footer />
