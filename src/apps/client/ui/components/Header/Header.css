@@ -13,17 +13,17 @@
 }
 
 .wrapper{
-    width:  100%;
+    width: 100%;
     max-width: 1350px;
     display: flex;
     position: fixed;
     background: whiteBasic;
-    z-index: 2;
+    z-index: 15;
 }
 
 .logoContainer{
     display: flex;
-    min-width: 125px;
+    min-width: 134px;
     align-items: center;
     justify-content: center;
 }
@@ -87,11 +87,12 @@
     justify-content: flex-end;
     padding-left: 20px;
     padding-right: 30px;
+    border-bottom: 1px solid rgba(122, 122, 122, 0.2);
 }
 
 .phone{
     color: darkGreyBasic;
-    margin-right: 50px;
+    margin-right: 40px;
 }
 
 .toogleLang{
@@ -101,6 +102,9 @@
     cursor: pointer;
     font-size: 13px;
     letter-spacing: .5px;
+    height: 100%;
+    border-left: 1px solid rgba(122, 122, 122, 0.2);
+    padding-left: 22px;
 }
 
 .lang{

@@ -103,6 +103,13 @@ class AllNewsPage extends Component {
         const { news } = this.state;
 
         return <section className={styles.newsContainer}>
+            <div className={styles.gridContainer}>
+                <div className={styles.column1}/>
+                <div className={styles.column2}/>
+                <div className={styles.column3}/>
+                <div className={styles.column4}/>
+                <div className={styles.column5}/>
+            </div>
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>

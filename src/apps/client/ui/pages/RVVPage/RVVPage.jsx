@@ -109,7 +109,7 @@ class RVVPage extends Component {
                         PLANS_LIST.map((step, i) =>
                             <div key={i} className={styles.step}>
                                 <div className={styles.stepNumber}>{i + 1}</div>
-                                <div className={styles.stepText}>{step}</div>
+                                <div className={styles.stepText}><div className={styles.text}>{step}</div></div>
                             </div>
                         )
                     }
@@ -170,7 +170,7 @@ class RVVPage extends Component {
                                 COURSES_LIST.map((course, i) =>
                                     <div key={i} className={styles.course}>
                                         <div className={styles.courseNumber}>{i + 1}</div>
-                                        <div className={styles.courseText}>{course}</div>
+                                        <div className={styles.courseText}><div className={styles.text}>{course}</div></div>
                                     </div>
                                 )
                             }

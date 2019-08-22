@@ -3,7 +3,8 @@
 
 .newsCardContainer{
     width: 222px;
-    margin: 47px 47px 0 0;
+    margin: 47px 43.5px 0 0;
+    z-index: 11;
 }
 
 .newsCardImage{

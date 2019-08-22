@@ -1,4 +1,5 @@
 @value limeGreen from '../../../../../css/colors.css';
+@value lightGreyBasic from '../../../../../css/colors.css';
 
 .newsContainer{
     width: 100%;
@@ -9,19 +10,95 @@
     justify-content: space-between;
 }
 
+.newsContentContainer{
+    padding-top: 130px;
+}
+
+.gridContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+}
+
+.column1{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.2;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 134px;
+    z-index: 10;
+}
+
+.column2{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.2;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 25%;
+    z-index: 10;
+    margin-left: 61px;
+}
+
+.column3{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.2;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 10;
+    margin-left: -10px;
+}
+
+.column4{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.2;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 75%;
+    z-index: 10;
+    margin-left: -75px;
+}
+
+.column5{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.2;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 134px;
+    z-index: 10;
+}
+
 .newsContent{
-    margin: 0 0 0 120px;
+    margin: 0 0 0 135px;
 }
 
 .newsMenuContainer{
+    padding-top: 130px;
     width: 415px;
+    position: relative;
+    z-index: 11;
 }
 
 .titleContainer{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 88px;
+    margin-left: 105px;
+    position: relative;
+    z-index: 11;
 }
 
 .rectangleGreen{
@@ -52,6 +129,7 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
+    margin-left: -17px;
 }
 
 .newsCategoryTitle .rectangleGreen{
