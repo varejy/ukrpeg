@@ -96,13 +96,13 @@ class Header extends Component {
                     </nav>
                     <div className={styles.tools}>
                         <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
-                        <div className={styles.toogleLang}>
+                        <div className={!burgerMenuOpen ? styles.toogleLang : styles.toogleLangBurgerMenu}>
                             <button onClick={this.handleLangClick(UA)} className={lang === UA ? styles.choosenLang : styles.lang}>УКР</button>
                             <p className={styles.verticalLine}>|</p>
                             <button onClick={this.handleLangClick(EN)} className={lang === EN ? styles.choosenLang : styles.lang}>ENG</button>
                         </div>
                     </div>
-                    <div className={styles.burgerMenu} onClick={this.handleMenuClick} >
+                    <div className={!burgerMenuOpen ? styles.burgerMenu : styles.burgerMenuOpen} onClick={this.handleMenuClick} >
                         <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
                         <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
                         <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />

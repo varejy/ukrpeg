@@ -118,9 +118,6 @@
     padding-left: 20px;
     padding-right: 30px;
 
-    @media (--media-phone-s) {
-        display: none;
-   }
 }
 
 .phone{
@@ -128,9 +125,13 @@
     margin-right: 50px;
     font-family: 'Gotham Pro';
     letter-spacing: 1px;
+
+    @media (--media-phone-s) {
+        display: none;
+   }
 }
 
-.toogleLang{
+.toogleLang, .toogleLangBurgerMenu{
     display: flex;
     align-items: center;
     color: lightGreyBasic;
@@ -138,6 +139,17 @@
     font-size: 13px;
     letter-spacing: .5px;
     font-family: 'Gotham Narrow';
+
+    @media (--media-phone-s) {
+        display: none;
+   }
+}
+
+.toogleLangBurgerMenu{
+    @media (--media-phone-s) {
+        display: flex;
+        z-index: 4;
+   }
 }
 
 .lang{
@@ -148,7 +160,7 @@
     color: limeGreen;
 }
 
-.burgerMenu{
+.burgerMenu, .burgerMenuOpen{
     display: none;
 
     @media (--media-phone-s) {
@@ -159,6 +171,10 @@
         padding-top: 5px;
         position: relative;
    }
+}
+
+.burgerMenuOpen{
+    border: none;
 }
 
 .menuLines, .menuLinesCross{
@@ -205,6 +221,8 @@
 
 .burgerMenuList .link{
     letter-spacing: .3px;
+    font-size: 13px;
+    line-height: 14px;
     font-weight: 500;
     color: whiteBasic;
     text-align: left;
@@ -230,7 +248,7 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        padding: 0 62px;
+        padding: 0 80px;
     }
 }
 
