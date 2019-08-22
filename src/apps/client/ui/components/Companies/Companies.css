@@ -31,7 +31,7 @@
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
-    font-family: 'Gotham Medium';
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
 }
 
 .title:hover{

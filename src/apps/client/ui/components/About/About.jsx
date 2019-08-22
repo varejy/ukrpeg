@@ -22,7 +22,7 @@ class About extends Component {
     };
 
     static defaultProps = {
-        aboutInfo: ''
+        aboutInfo: []
     };
 
     render () {
