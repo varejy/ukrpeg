@@ -2,37 +2,29 @@ import express from 'express';
 
 import verification from '../../../middlewares/verification';
 
-import getProducts from './services/getProducts';
-import saveProduct from './services/saveProduct';
-import editProduct from './services/editProduct';
+import getLaws from './services/getLaws';
+import saveLaw from './services/saveLaw';
+import editLaw from './services/editLaw';
 import deleteByIds from './services/deleteByIds';
-import updateFiles from './services/updateFiles';
-import updateAvatar from './services/updateAvatar';
-import findProductsByName from './services/findProductsByName';
+import findLawsByName from './services/findLawsByName';
 
 const router = express.Router();
 
 router.use(verification);
 
 router.route('/all')
-    .get(getProducts);
+    .get(getLaws);
 
 router.route('/save')
-    .post(saveProduct);
+    .post(saveLaw);
 
 router.route('/edit')
-    .post(editProduct);
+    .post(editLaw);
 
-router.route('/delete-few')
+router.route('/delete')
     .post(deleteByIds);
 
-router.route('/update-files')
-    .post(updateFiles);
-
-router.route('/update-avatar')
-    .post(updateAvatar);
-
 router.route('/find')
-    .get(findProductsByName);
+    .get(findLawsByName);
 
 export default router;

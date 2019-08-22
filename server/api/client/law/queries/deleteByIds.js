@@ -1,5 +1,5 @@
-import Product from '../model';
+import Law from '../model';
 
 export default function deleteByIds (ids) {
-    return Product.deleteMany({ id: { $in: ids } });
+    return Law.deleteMany({ id: { $in: ids } });
 }

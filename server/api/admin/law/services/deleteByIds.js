@@ -1,14 +1,14 @@
 import { OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constants/constants';
 
-import getAllProducts from '../../../client/product/queries/getAllProducts';
-import deleteByIdsQuery from '../../../client/product/queries/deleteByIds';
+import getAllLaws from '../../../client/law/queries/getAllLaws';
+import deleteByIdsQuery from '../../../client/law/queries/deleteByIds';
 
 export default function deleteByIds (req, res) {
     const { ids } = req.body;
 
     deleteByIdsQuery(ids)
         .then(() => {
-            getAllProducts()
+            getAllLaws()
                 .then(products => {
                     res.status(OKEY_STATUS_CODE).send(products);
                 });

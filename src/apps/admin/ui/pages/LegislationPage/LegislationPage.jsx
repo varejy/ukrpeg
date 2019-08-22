@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-import CloseIcon from '@material-ui/icons/Close';
-import CheckIcon from '@material-ui/icons/Check';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
@@ -12,20 +10,18 @@ import AdminTableSortable from '../../components/AdminTableSortable/AdminTableSo
 import LawForm from '../../components/LawsForm/LawsForm';
 
 import { connect } from 'react-redux';
-import getLaws from '../../../services/getProducts';
-import deleteLawsByIds from '../../../services/deleteProductsByIds';
+import getLaws from '../../../services/getLaws';
+import deleteLawsByIds from '../../../services/deleteLawsByIds';
 
 import noop from '@tinkoff/utils/function/noop';
 
 const headerRows = [
     { id: 'name', label: 'Название' },
-    { id: 'price', label: 'Цена' },
-    { id: 'active', label: 'Active' }
+    { id: 'path', label: 'Путь' }
 ];
 const tableCells = [
     { prop: law => law.name },
-    { prop: law => law.price },
-    { prop: law => law.hidden ? <CloseIcon /> : <CheckIcon /> }
+    { prop: law => law.path }
 ];
 
 const materialStyles = theme => ({
@@ -55,9 +51,9 @@ const materialStyles = theme => ({
     }
 });
 
-const mapStateToProps = ({ products }) => {
+const mapStateToProps = ({ laws }) => {
     return {
-        laws: products.products
+        laws: laws.laws
     };
 };
 
@@ -118,7 +114,6 @@ class LegislationPage extends Component {
         });
     };
 
-
     render () {
         const { classes, laws } = this.props;
         const { loading, editableLaw, formShowed } = this.state;
@@ -135,8 +130,8 @@ class LegislationPage extends Component {
                 tableCells={tableCells}
                 values={laws}
                 headerText='Законы'
-                deleteValueWarningTitle='Вы точно хотите удалить товар?'
-                deleteValuesWarningTitle='Вы точно хотите удалить следующие товары?'
+                deleteValueWarningTitle='Вы точно хотите удалить документ?'
+                deleteValuesWarningTitle='Вы точно хотите удалить следующие документ?'
                 onDelete={this.props.deleteLaws}
                 filters={false}
                 onFormOpen={this.handleFormOpen}

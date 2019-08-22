@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import application from './application';
-import products from './products';
+import laws from './laws';
 
 const reducers = combineReducers({
     application,
-    products
+    laws
 });
 
 export default reducers;

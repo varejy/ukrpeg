@@ -1,22 +1,22 @@
 import request from 'superagent';
 import base from './base';
 
-import setProductsAction from '../actions/setProducts';
+import setLawsAction from '../actions/setLaws';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';
 
-export default function saveProduct (ids) {
+export default function deleteLawsById (ids) {
     return dispatch => {
         const token = localStorage.getItem(TOKEN_LOCAL_STORAGE_NAME);
 
         return base(
             request
-                .post('/api/admin/product/delete-few')
+                .post('/api/admin/law/delete')
                 .send({ ids })
                 .query({ token })
         )
-            .then(products => {
-                return dispatch(setProductsAction(products));
+            .then(laws => {
+                return dispatch(setLawsAction(laws));
             });
     };
 }

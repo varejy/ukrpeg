@@ -128,7 +128,7 @@ const materialStyles = theme => ({
     tabButtonSortable: {
         display: 'table-cell',
         textAlign: 'left',
-        width: '239px'
+        width: '290px'
     },
     tableCell: {
         color: 'rgba(0, 0, 0, 0.87)',
@@ -137,7 +137,7 @@ const materialStyles = theme => ({
         display: 'table-cell',
         fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
         textAlign: 'left',
-        width: '438px'
+        width: '530px'
     },
     buttonSortable: {
         position: 'relative',

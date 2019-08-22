@@ -1,6 +1,6 @@
 import { OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constants/constants';
 
-import findProductsByNameQuery from '../../../client/product/queries/findProductsByName';
+import findProductsByNameQuery from '../../../client/law/queries/findLawsByName';
 
 export default function findProductsByName (req, res) {
     const { text } = req.query;

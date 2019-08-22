@@ -1,9 +1,9 @@
 import express from 'express';
 
-import getAvailableLaw from './services/getAvailableProduct';
-import getAvailableLaws from './services/getAvailableProducts';
-import getAvailableLawsByIds from './services/getAvailableProductsByIds';
-import availableLawsSearch from './services/availableProductsSearch';
+import getAvailableLaw from './services/getAvailableLaw';
+import getAvailableLaws from './services/getAvailableLaws';
+import getAvailableLawsByIds from './services/getAvailableLawsByIds';
+import availableLawsSearch from './services/availableLawsSearch';
 
 const router = express.Router();
 

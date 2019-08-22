@@ -1,6 +1,6 @@
 import { OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constants/constants';
 
-import getProductsByIds from '../queries/getProductsByIds';
+import getProductsByIds from '../queries/getLawsByIds';
 
 export default function getAvailableProductsByIds (req, res) {
     const ids = req.body;
@@ -8,7 +8,7 @@ export default function getAvailableProductsByIds (req, res) {
     getProductsByIds(ids)
         .then(products => {
             const availableProducts = products
-                .filter(product => !product.hidden)
+                .filter(product => !product.hidden);
 
             res.status(OKEY_STATUS_CODE).send(availableProducts);
         })

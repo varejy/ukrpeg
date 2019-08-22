@@ -3,7 +3,7 @@ import base from './base';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';
 
-import setProductsAction from '../actions/setProducts';
+import setProductsAction from '../actions/setLaws';
 
 export default function search (text) {
     return dispatch => {

@@ -15,8 +15,8 @@ import ProductForm from '../../components/LawsForm/LawsForm';
 import ProductFilters from '../../components/ProductFilters/ProductFilters';
 
 import { connect } from 'react-redux';
-import getProducts from '../../../services/getProducts';
-import deleteProductsByIds from '../../../services/deleteProductsByIds';
+import getProducts from '../../../services/getLaws';
+import deleteProductsByIds from '../../../services/deleteLawsByIds';
 
 const headerRows = [
     { id: 'name', label: 'Название' },

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from '../Form/Form';
+import getSchema from './lawsFormSchema';
 
 import { connect } from 'react-redux';
-import saveProduct from '../../../services/saveProduct';
-import editProduct from '../../../services/editProduct';
+import saveProduct from '../../../services/saveLaw';
+import editProduct from '../../../services/editLaw';
 import updateProductFiles from '../../../services/updateProductFiles';
 import updateProductAvatar from '../../../services/updateProductAvatar';
 
@@ -13,7 +14,7 @@ import noop from '@tinkoff/utils/function/noop';
 import prop from '@tinkoff/utils/object/prop';
 import pick from '@tinkoff/utils/object/pick';
 
-const PRODUCTS_VALUES = ['name', 'hidden'];
+const PRODUCTS_VALUES = ['name', 'id', 'path'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveProduct: payload => dispatch(saveProduct(payload)),
@@ -24,11 +25,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 class LawsForm extends Component {
     static propTypes = {
-        classes: PropTypes.object.isRequired,
         saveProduct: PropTypes.func.isRequired,
         editProduct: PropTypes.func.isRequired,
-        updateProductFiles: PropTypes.func.isRequired,
-        updateProductAvatar: PropTypes.func.isRequired,
         onDone: PropTypes.func,
         law: PropTypes.object
     };
@@ -42,17 +40,14 @@ class LawsForm extends Component {
         super(...args);
 
         const { law } = this.props;
-        const newLaw = {
-            hidden: false,
+        this.initialValues = {
+            name: law.name || '',
+            path: law.path || '',
             ...pick(PRODUCTS_VALUES, law)
         };
 
-        this.initialValues = {
-
-        }
-
         this.state = {
-            id: prop('id', product),
+            id: prop('id', law)
         };
     }
 
@@ -60,11 +55,13 @@ class LawsForm extends Component {
         {
             name,
             hidden,
+            path,
             id
         }) => {
         return {
             name,
             hidden,
+            path,
             id
         };
     };
