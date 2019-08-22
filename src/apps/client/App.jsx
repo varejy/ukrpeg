@@ -60,9 +60,9 @@ class App extends Component {
                 <div className={styles.pageContent}>
                     <Switch>
                         <Route exact path='/:lang(en)?' render={this.renderComponent(MainPage)} />
-                        <Route exact path='/news/:lang(en)?' render={this.renderComponent(AllNewsPage)} />
-                        <Route exact path='/about/:lang(en)?' render={this.renderComponent(AboutPage)} />
-                        <Route exact path='/contacts/:lang(en)?' render={this.renderComponent(ContactPage)} />
+                        <Route exact path='/:lang(en)?/news' render={this.renderComponent(AllNewsPage)} />
+                        <Route exact path='/:lang(en)?/about' render={this.renderComponent(AboutPage)} />
+                        <Route exact path='/:lang(en)?/contacts' render={this.renderComponent(ContactPage)} />
                     </Switch>
                 </div>
                 <Footer />

@@ -192,7 +192,7 @@
 .burgerMenuList{
     position: absolute;
     width: 100%;
-    height: -webkit-fill-available;
+    height: 100vh;
     left: 0;
     top: 0;
     bottom: 0;
@@ -211,4 +211,31 @@
     padding: 0;
     margin-bottom: 40px;
     border: none;
+}
+
+.socialhidden{
+  display: none;
+}
+
+.social{
+    display: none;
+
+    @media (--media-phone-s) {
+        display: block;
+        z-index: 5;
+        color: whiteBasic;
+        position: absolute;
+        left: 0;
+        bottom: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 62px;
+    }
+}
+
+.socialItem{
+    font-size: 10px;
+    letter-spacing: .8px;
+    line-height: 14px;
 }
