@@ -10,6 +10,15 @@
     align-items: center;
 }
 
+.gridContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+}
+
 .column1{
     width: 1px;
     background-color: lightgrey;
@@ -366,6 +375,8 @@
     background: url('./images/blueBackgroundPattern.png') center;
     background-size: cover;
     padding: 40px 0;
+    position: relative;
+    z-index: 11;
 }
 
 .facts .titleContainer{
@@ -516,10 +527,6 @@
     top: 0;
     left: 0;
     height: 100%;
-
-    @media (min-width: 1350px) {
-        width: 87.5%;
-    }
 }
 
 .participants .titleContainer .title{

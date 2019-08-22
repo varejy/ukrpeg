@@ -92,12 +92,14 @@ class RVVPage extends Component {
 
     render () {
         return <section className={styles.pageContainer}>
-            <div className={styles.plans}>
+            <div className={styles.gridContainer}>
                 <div className={styles.column1}/>
                 <div className={styles.column2}/>
                 <div className={styles.column3}/>
                 <div className={styles.column4}/>
                 <div className={styles.column5}/>
+            </div>
+            <div className={styles.plans}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>
                     <div className={styles.title}>Плани</div>
@@ -115,11 +117,6 @@ class RVVPage extends Component {
             </div>
             <div className={styles.whyRVVContainer}>
                 <div className={styles.whyRVV}>
-                    <div className={styles.column1}/>
-                    <div className={styles.column2}/>
-                    <div className={styles.column3}/>
-                    <div className={styles.column4}/>
-                    <div className={styles.column5}/>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
                         <div className={styles.title}>Навіщо потрібне РВВ:</div>
@@ -142,11 +139,6 @@ class RVVPage extends Component {
             </div>
             <div className={styles.projectContainer}>
                 <div className={styles.project}>
-                    <div className={styles.column1}/>
-                    <div className={styles.column2}/>
-                    <div className={styles.column3}/>
-                    <div className={styles.column4}/>
-                    <div className={styles.column5}/>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
                         <div className={styles.title}>Пілотний проект у Вишгороді</div>
@@ -167,11 +159,6 @@ class RVVPage extends Component {
             <div className={styles.container}>
                 <div className={styles.patternContainerBig} />
                 <div className={styles.courses}>
-                    <div className={styles.column1}/>
-                    <div className={styles.column2}/>
-                    <div className={styles.column3}/>
-                    <div className={styles.column4}/>
-                    <div className={styles.column5}/>
                     <div className={styles.backgroundWhite}/>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
@@ -212,11 +199,6 @@ class RVVPage extends Component {
             </div>
             <div className={styles.partnersContainer}>
                 <div className={styles.partners}>
-                    <div className={styles.column1}/>
-                    <div className={styles.column2}/>
-                    <div className={styles.column3}/>
-                    <div className={styles.column4}/>
-                    <div className={styles.column5}/>
                     <div className={styles.partnersList}>
                         {
                             PARTNERS_LIST.map((partner, i) =>
@@ -231,11 +213,6 @@ class RVVPage extends Component {
             <div className={styles.participantsContainer}>
                 <div className={styles.backgroundGrey}/>
                 <div className={styles.participants}>
-                    <div className={styles.column1}/>
-                    <div className={styles.column2}/>
-                    <div className={styles.column3}/>
-                    <div className={styles.column4}/>
-                    <div className={styles.column5}/>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
                         <div className={styles.title}>
@@ -254,11 +231,6 @@ class RVVPage extends Component {
             <div className={styles.containerIdea}>
                 <div className={styles.patternContainerBig} />
                 <div className={styles.idea}>
-                    <div className={styles.column1}/>
-                    <div className={styles.column2}/>
-                    <div className={styles.column3}/>
-                    <div className={styles.column4}/>
-                    <div className={styles.column5}/>
                     <div className={styles.ideaContainer}>
                         <div className={styles.imageContainer}>
                             <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
