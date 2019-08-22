@@ -31,11 +31,12 @@
     border-left: 5px solid lightGreenBasic;
     margin-left: -30px;
     color: darkBlueBasic;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
+    font-family: 'Gotham Medium',"Arial Black", sans-serif;
 }
 
 .title:hover{
@@ -47,6 +48,12 @@
     max-width: 1350px;
     padding:0 125px;
     display: flex;
+}
+
+.wrapperArticleBg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
     background: semiGreyBg;
 }
 
@@ -68,8 +75,9 @@
     margin-bottom: 18px;
     font-size: 14px;
     color: darkBlueBasic;
-    font-weight: 300px;
     letter-spacing: .5px;
+    font-family: 'Gotham Pro', sans-serif;
+    font-weight: 300;
 }
 
 .description{
@@ -77,7 +85,8 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    font-weight: bold;
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
+    letter-spacing: .2px;
 }
 
 .buttons{

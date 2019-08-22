@@ -12,13 +12,20 @@
     justify-content: center;
 }
 
+.headBg{
+    background: whiteBasic;
+    width: 100%;
+    position: relative;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    z-index: 4;
+}
+
 .wrapper{
     width:  100%;
     max-width: 1350px;
     display: flex;
-    position: fixed;
-    background: whiteBasic;
-    z-index: 2;
 }
 
 .logoContainer{
@@ -39,34 +46,33 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-grow: 2;
 }
 
 .link, .activeLink{
+    white-space: nowrap;
     text-transform: uppercase;
     color: darkBlueBasic;
     font-weight: 600;
     font-size: 18px;
     line-height: 14px;
-    letter-spacing: .4px;
+    letter-spacing: 1px;
     text-align: center;
-    padding: 45px 25px 30px 25px;
-    width: auto;
+    padding: 45px 20px 30px;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    width: 100%;
 }
 
 .link:first-child, .activeLink:first-child{
   padding-left: 30px;
-  width: 100%;
 }
 
-.link:nth-child(2){
-  width: 100%;
+.link:nth-child(2), .activeLink:nth-child(2){
 }
 
 .link:last-child, .activeLink:last-child{
   padding-right: 30px;
-  width: 100%;
 }
 
 .link:hover{
@@ -82,7 +88,6 @@
     display: flex;
     align-items: center;
     font-size: 14px;
-    letter-spacing: 1px;
     width: auto;
     justify-content: flex-end;
     padding-left: 20px;
@@ -92,6 +97,7 @@
 .phone{
     color: darkGreyBasic;
     margin-right: 50px;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
 }
 
 .toogleLang{
@@ -101,6 +107,7 @@
     cursor: pointer;
     font-size: 13px;
     letter-spacing: .5px;
+    font-family: 'Gotham Narrow', "Arial Black", sans-serif;
 }
 
 .lang{
