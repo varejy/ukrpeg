@@ -14,11 +14,20 @@
     max-width: 1350px;
     padding-left: 125px;
     display: flex;
+
+    @media (--media-phone-s) {
+        padding: 20px 13px 55px;
+   }
 }
 
 .info{
     width: 100%;
     padding: 55px 0 70px 0;
+
+    @media (--media-phone-s) {
+      border: 1px solid grey;
+      padding: 20px 0 30px;
+   }
 }
 
 .title{
@@ -32,6 +41,15 @@
     letter-spacing: .5px;
     cursor: pointer;
     font-family: 'Gotham Medium';
+
+    @media (--media-phone-s) {
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 1px;
+        margin-left: 0;
+        padding: 10px 0 10px 10px;
+        border-left: 3px solid lightGreenBasic;
+   }
 }
 
 .title:hover{
@@ -44,6 +62,12 @@
     display: flex;
     width: 100%;
     overflow: auto;
+
+    @media (--media-phone-s) {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
 }
 
 .itemBox{
@@ -51,8 +75,17 @@
     height: auto;
     display: flex;
     align-items: center;
+
+    @media (--media-phone-s) {
+      width: 30%;
+      padding: 5px 10px;
+    }
 }
 
 .logo{
     width: 140px;
+
+    @media (--media-phone-s) {
+      width: 100%;
+    }
 }

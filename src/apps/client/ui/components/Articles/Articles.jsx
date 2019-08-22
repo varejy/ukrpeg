@@ -11,7 +11,8 @@ const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
         lang: application.lang,
-        news: news.newsList
+        news: news.newsList,
+        mediaWidth: application.media.width
     };
 };
 
@@ -19,15 +20,59 @@ class Articles extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         lang: PropTypes.string,
-        news: PropTypes.array
+        news: PropTypes.array,
+        mediaWidth: PropTypes.number.isRequired
     };
 
     static defaultProps = {
         news: []
     };
 
+    state = {
+        currentNews: 0,
+        sliderLeft: 0
+    }
+
+    maxSlide = this.props.news.length - 1;
+    maxLeft = this.maxSlide * this.props.mediaWidth;
+
+    handlePrevNewsClick = event => {
+        const { mediaWidth } = this.props;
+        const { currentNews } = this.state;
+
+        if (currentNews > 0) {
+            this.setState({
+                sliderLeft: (currentNews - 1) * mediaWidth,
+                currentNews: currentNews - 1
+            });
+        } else {
+            this.setState({
+                sliderLeft: this.maxSlide * mediaWidth,
+                currentNews: this.maxSlide
+            });
+        }
+    }
+
+    handleNextNewsClick = event => {
+        const { mediaWidth } = this.props;
+        const { currentNews } = this.state;
+
+        if (currentNews < this.maxSlide) {
+            this.setState({
+                sliderLeft: (currentNews + 1) * mediaWidth,
+                currentNews: currentNews + 1
+            });
+        } else {
+            this.setState({
+                sliderLeft: 0,
+                currentNews: 0
+            });
+        }
+    }
+
     render () {
-        const { langMap, lang, news } = this.props;
+        const { langMap, lang, news, mediaWidth } = this.props;
+        const { sliderLeft } = this.state;
         const text = propOr('articles', {}, langMap);
 
         return <div className={styles.articles}>
@@ -38,7 +83,7 @@ class Articles extends Component {
             </div>
             <div className={styles.wrapperArticleBg}>
                 <div className={styles.wrapperArticles}>
-                    <div className={styles.news}>
+                    <div className={styles.news} style={{ left: `${-sliderLeft}px` }} >
                         {news.map((item, index) => {
                             return (
                                 <div key={index} className={styles.newsBlock}>
@@ -49,10 +94,10 @@ class Articles extends Component {
                         })}
                     </div>
                     <div className={styles.buttons}>
-                        <button className={styles.arrowBtn}>
+                        <button className={styles.arrowBtn} onClick={this.handlePrevNewsClick}>
                             <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' />
                         </button>
-                        <button className={styles.arrowBtn}>
+                        <button className={styles.arrowBtn} onClick={this.handleNextNewsClick}>
                             <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowDown.png' />
                         </button>
                     </div>

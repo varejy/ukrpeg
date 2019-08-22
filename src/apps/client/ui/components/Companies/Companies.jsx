@@ -14,8 +14,8 @@ const companies = [
     },
     {
         id: 2,
-        alt: 'PepsiCo logo',
-        path: '/src/apps/client/ui/components/Companies/files/pepsico.png'
+        alt: 'Canpak logo',
+        path: '/src/apps/client/ui/components/Companies/files/canpak.png'
     },
     {
         id: 3,
@@ -24,8 +24,8 @@ const companies = [
     },
     {
         id: 4,
-        alt: 'Canpak logo',
-        path: '/src/apps/client/ui/components/Companies/files/canpak.png'
+        alt: 'PepsiCo logo',
+        path: '/src/apps/client/ui/components/Companies/files/pepsico.png'
     },
     {
         id: 5,

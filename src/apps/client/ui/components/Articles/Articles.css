@@ -12,6 +12,11 @@
     align-items: center;
     flex-direction: column;
     padding-bottom: 80px;
+
+    @media (--media-phone-s) {
+        position: relative;
+        padding: 0;
+   }
 }
 
 .wrapper{
@@ -19,11 +24,19 @@
     max-width: 1350px;
     padding-left: 125px;
     display: flex;
+
+    @media (--media-phone-s) {
+        padding: 0 13px;
+   }
 }
 
 .info{
     width: 100%;
     padding-bottom: 35px;
+
+    @media (--media-phone-s) {
+        padding-bottom: 10px;
+   }
 }
 
 .title{
@@ -37,6 +50,15 @@
     letter-spacing: .5px;
     cursor: pointer;
     font-family: 'Gotham Medium', sans-serif;
+
+    @media (--media-phone-s) {
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 1px;
+        margin-left: 0;
+        padding: 10px 0 10px 10px;
+        border-left: 3px solid lightGreenBasic;
+   }
 }
 
 .title:hover{
@@ -48,6 +70,11 @@
     max-width: 1350px;
     padding:0 125px;
     display: flex;
+
+    @media (--media-phone-s) {
+        padding: 0;
+        overflow: hidden;
+   }
 }
 
 .wrapperArticleBg{
@@ -59,16 +86,33 @@
 
 .news{
     display: flex;
+
+    @media (--media-phone-s) {
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: 200px;
+      height: auto;
+      position: relative;
+   }
 }
 
 .newsBlock{
     margin: 0 20px;
     padding: 30px 35px 50px 20px;
     cursor: pointer;
+
+    @media (--media-phone-s) {
+        padding-left: 25px;
+        margin: 0;
+   }
 }
 
 .newsBlock:hover{
     outline: 1px solid lightGreenHover;
+
+    @media (--media-phone-s) {
+        outline: none;
+   }
 }
 
 .date{
@@ -94,6 +138,14 @@
     flex-direction: column;
     align-self: center;
     margin-right: 15px;
+
+    @media (--media-phone-s) {
+        position: absolute;
+        top: -20px;
+        right: 90px;
+        transform: rotate(-90deg);
+        margin: 0;
+   }
 }
 
 .arrowBtn{
@@ -103,6 +155,11 @@
     align-items: center;
     justify-content: center;
     border: 1px solid lightGreyBorder;
+
+    @media (--media-phone-s) {
+        width: 40px;
+        height: 40px;
+   }
 }
 
 .arrowBtnImg{

@@ -12,6 +12,10 @@
     display: flex;
     justify-content: center;
     background: lightGreenBasic;
+
+    @media (--media-phone-s) {
+        display: none;
+   }
 }
 
 .menu{
