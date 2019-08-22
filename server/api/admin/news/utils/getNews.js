@@ -1,12 +1,15 @@
 export default function getNews (body) {
-    const { name, description, categoryId, hidden, id, date } = body;
+    const { name, description, shortDescription, categoryId, hidden, avatar, views, id, date } = body;
 
     return {
         name,
-        description,
-        categoryId,
-        hidden,
+        id,
         date,
-        id
+        avatar,
+        categoryId,
+        description,
+        hidden,
+        views,
+        shortDescription
     };
 }

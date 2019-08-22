@@ -39,9 +39,8 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 
 import noop from '@tinkoff/utils/function/noop';
 
-import AdminTableSortable from '../../components/AdminTableSortable/AdminTableSortable.jsx';
+import AdminTable from '../../components/AdminTable/AdminTable.jsx';
 import NewsForm from '../../components/NewsForm/NewsForm';
-// import ProductFilters from '../../components/ProductFilters/ProductFilters';
 import NewsCategoryForm from '../../components/NewsCategoryForm/NewsCategoryForm';
 
 const ButtonSortable = SortableHandle(({ classes }) => (
@@ -49,7 +48,7 @@ const ButtonSortable = SortableHandle(({ classes }) => (
 ));
 
 const ItemSortable = SortableElement(({ onFormOpen, onCategoryDelete, onCategoryClick, value, classes }) => (
-    <ListItem onClick={onCategoryClick(value)} className={classes.row}>
+    <ListItem onClick={onCategoryClick(value)} button className={classes.row}>
         <ButtonSortable classes={classes}/>
         <ListItemIcon>
             <FolderIcon />
@@ -174,6 +173,11 @@ const tableCells = [
     { prop: news => news.hidden ? <CloseIcon /> : <CheckIcon /> }
 ];
 
+const DEFAULT_ACTIVE_CATEGORY = {
+    name: '',
+    id: ''
+};
+
 class NewsPage extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
@@ -198,11 +202,8 @@ class NewsPage extends Component {
         super(...args);
 
         this.state = {
-            activeNewsCategory: {
-                name: ''
-            },
+            activeNewsCategory: DEFAULT_ACTIVE_CATEGORY,
             formShowed: false,
-            filtersShowed: false,
             categoryFormShowed: false,
             editableCategory: {},
             editableNews: {},
@@ -224,7 +225,7 @@ class NewsPage extends Component {
             .then(() => {
                 this.setState({
                     newsCategories: this.props.categories,
-                    activeNewsCategory: this.props.categories[0],
+                    activeNewsCategory: this.props.categories[0] || DEFAULT_ACTIVE_CATEGORY,
                     news: this.getCategoryNews(this.props.categories[0])
                 });
             });
@@ -234,12 +235,6 @@ class NewsPage extends Component {
         this.setState({
             formShowed: true,
             editableNews: news
-        });
-    };
-
-    handleFiltersOpen = () => {
-        this.setState({
-            filtersShowed: true
         });
     };
 
@@ -283,12 +278,13 @@ class NewsPage extends Component {
     };
 
     handleWarningAgree = () => {
-        const { valueForDelete } = this.state;
+        const { valueForDelete, activeNewsCategory } = this.state;
 
         this.props.deleteCategories(valueForDelete.id)
             .then(() => {
                 this.setState({
                     newsCategories: this.props.categories,
+                    activeNewsCategory: activeNewsCategory === valueForDelete && DEFAULT_ACTIVE_CATEGORY,
                     valueForDelete: null
                 });
             });
@@ -298,12 +294,6 @@ class NewsPage extends Component {
         this.setState({
             formShowed: false,
             editableNews: null
-        });
-    };
-
-    handleCloseFilters = () => {
-        this.setState({
-            filtersShowed: false
         });
     };
 
@@ -343,7 +333,6 @@ class NewsPage extends Component {
             editableNews,
             formShowed,
             valueForDelete,
-            filtersShowed,
             newsCategories,
             news,
             categoryFormShowed
@@ -352,29 +341,22 @@ class NewsPage extends Component {
         return <div className={classes.root}>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <AdminTableSortable
+                <AdminTable
                     headerRows={headerRows}
                     tableCells={tableCells}
                     values={news}
                     headerText={`Новости в категории ${activeNewsCategory.name}`}
                     deleteValueWarningTitle='Вы точно хотите удалить новость?'
                     deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
+                    filters={false}
+                    copyItem={false}
                     onFormOpen={this.handleNewsFormOpen}
-                    onFiltersOpen={this.handleFiltersOpen}
                 />
                 <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal}>
                     <Paper className={classes.modalContent}>
                         <NewsForm activeCategory={activeNewsCategory} news={editableNews} onDone={this.handleNewsFormDone} />
                     </Paper>
                 </Modal>
-                {
-                    //  Я закомментировал потому как не знаю фильтры нужны или нет, писал тебе ты не ответил
-                    /* <Modal open={filtersShowed} onClose={this.handleCloseFilters} className={classes.modal} keepMounted>
-                        <Paper className={classes.modalContent}>
-                            <ProductFilters />
-                        </Paper>
-                    </Modal> */
-                }
             </main>
             <Drawer
                 className={classes.drawer}

@@ -6,7 +6,10 @@ const VALUES = [
     'date',
     'avatar',
     'categoryId',
-    'description'
+    'description',
+    'hidden',
+    'views',
+    'shortDescription'
 ];
 
 export default function getNewsValues (news) {

@@ -1,47 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Divider from '@material-ui/core/Divider';
-import { withStyles } from '@material-ui/core/styles';
-
-import ProductAvatarFile from '../NewsAvatarFile/NewsAvatarFile.jsx';
-
 import { connect } from 'react-redux';
-import saveProduct from '../../../services/saveNews';
-import editProduct from '../../../services/editNews';
-import updateProductAvatar from '../../../services/updateNewsAvatar';
+import saveNews from '../../../services/saveNews';
+import editNews from '../../../services/editNews';
+import updateNewsAvatar from '../../../services/updateNewsAvatar';
+
+import Form from '../Form/Form';
+import getSchema from './newsItemFormSchema';
 
 import noop from '@tinkoff/utils/function/noop';
-import prop from '@tinkoff/utils/object/prop';
 import pick from '@tinkoff/utils/object/pick';
+import prop from '@tinkoff/utils/object/prop';
+import format from 'date-fns/format';
 
-const PRODUCTS_VALUES = ['name', 'hidden'];
-
-const materialStyles = theme => ({
-    divider: {
-        marginTop: 2 * theme.spacing.unit,
-        marginBottom: 2 * theme.spacing.unit
-    }
-});
+const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date'];
 
 const mapDispatchToProps = (dispatch) => ({
-    saveProduct: payload => dispatch(saveProduct(payload)),
-    editProduct: payload => dispatch(editProduct(payload)),
-    updateProductAvatar: (...payload) => dispatch(updateProductAvatar(...payload))
+    saveNews: payload => dispatch(saveNews(payload)),
+    editNews: payload => dispatch(editNews(payload)),
+    updateNewsAvatar: (...payload) => dispatch(updateNewsAvatar(...payload))
 });
 
-class ProductForm extends Component {
+class NewsForm extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        saveProduct: PropTypes.func.isRequired,
-        editProduct: PropTypes.func.isRequired,
-        updateProductAvatar: PropTypes.func.isRequired,
+        saveNews: PropTypes.func.isRequired,
+        editNews: PropTypes.func.isRequired,
+        updateNewsAvatar: PropTypes.func.isRequired,
         onDone: PropTypes.func,
         news: PropTypes.object,
         activeCategory: PropTypes.object
@@ -57,49 +43,57 @@ class ProductForm extends Component {
         super(...args);
 
         const { news } = this.props;
-        const newNews = {
+
+        this.initialValues = {
             hidden: false,
-            ...pick(PRODUCTS_VALUES, news)
+            date: format(new Date(), 'YYYY-MM-DD'),
+            avatar: {
+                files: news.avatar ? [news.avatar] : [],
+                removedFiles: []
+            },
+            ...pick(NEWS_VALUES, news)
         };
 
-        this.state = {
-            news: newNews,
-            id: prop('id', news),
-            initialAvatarFile: '',
-            removedFiles: []
-        };
+        this.id = prop('id', news);
     }
 
-    getProductPayload = (
+    getNewsItemPayload = (
         {
             name,
+            description,
+            shortDescription,
             hidden,
+            views,
+            date,
             id
         }) => {
         return {
             name,
+            description,
+            shortDescription,
             hidden,
+            views: +views,
+            date,
             categoryId: this.props.activeCategory.id,
             id
         };
     };
 
-    handleSubmit = event => {
+    handleSubmit = values => {
         event.preventDefault();
 
-        const { id, news } = this.state;
-        const productPayload = this.getProductPayload(news);
+        const newsItemPayload = this.getNewsItemPayload(values);
 
-        (id ? this.props.editProduct({ ...productPayload, id }) : this.props.saveProduct(productPayload))
-            .then(news => {
-                const { avatar } = this.state;
+        (this.id ? this.props.editNews({ ...newsItemPayload, id: this.id }) : this.props.saveNews(newsItemPayload))
+            .then(newsItem => {
+                const { files } = values.avatar;
 
-                if (avatar.content) {
+                if (files[0].content) {
                     const formData = new FormData();
 
-                    formData.append(`product-${news.id}-avatar`, avatar.content);
+                    formData.append(`news-${newsItem.id}-avatar`, files[0].content);
 
-                    return this.props.updateProductAvatar(formData, news.id);
+                    return this.props.updateNewsAvatar(formData, newsItem.id);
                 }
             })
             .then(() => {
@@ -107,66 +101,15 @@ class ProductForm extends Component {
             });
     };
 
-    handleChange = prop => event => {
-        this.setState({
-            news: {
-                ...this.state.news,
-                [prop]: event.target.value
-            }
-        });
-    };
-
-    handleCheckboxChange = prop => (event, value) => {
-        this.setState({
-            news: {
-                ...this.state.news,
-                [prop]: value
-            }
-        });
-    };
-
-    handleAvatarFileUpload = avatar => {
-        this.setState({
-            avatar
-        });
-    };
-
     render () {
-        const { classes } = this.props;
-        const { news, id, initialAvatarFile } = this.state;
-
-        return <form onSubmit={this.handleSubmit}>
-            <Typography variant='h5'>{id ? 'Редактирование новости' : 'Добавление новости'}</Typography>
-            <TextField
-                label='Название'
-                value={news.name}
-                onChange={this.handleChange('name')}
-                margin='normal'
-                variant='outlined'
-                fullWidth
-                required
-            />
-            <Divider className={classes.divider}/>
-            <ProductAvatarFile onAvatarFileUpload={this.handleAvatarFileUpload} initialAvatarFile={initialAvatarFile}/>
-            <div>
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={news.hidden}
-                            onChange={this.handleCheckboxChange('hidden')}
-                            color='primary'
-                        />
-                    }
-                    label='Скрыть новость'
-                />
-            </div>
-            <FormControl margin='normal'>
-                <Button variant='contained' color='primary' type='submit'>
-                    Сохранить
-                </Button>
-            </FormControl>
-        </form>;
+        return <Form
+            initialValues={this.initialValues}
+            schema={getSchema({
+                data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' }
+            })}
+            onSubmit={this.handleSubmit}
+        />;
     }
 }
 
-export default connect(null, mapDispatchToProps)(withStyles(materialStyles)(ProductForm));
+export default connect(null, mapDispatchToProps)(NewsForm);
