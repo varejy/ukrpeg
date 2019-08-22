@@ -36,11 +36,21 @@
     flex-direction: column;
     padding-top: 100px;
     position: relative;
+
+    @media (--media-phone-s) {
+        padding: 170px 30px;
+   }
 }
 
 .topBlock{
     display: flex;
     align-items: flex-end;
+
+    @media (--media-phone-s) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+   }
 }
 
 .moreBtn{
@@ -48,6 +58,11 @@
     border: 1px solid lightGreenBorder;
     margin-left: -67px;
     cursor: pointer;
+
+    @media (--media-phone-s) {
+        order: 1;
+        margin: 90px auto 0 auto;
+   }
 }
 
 .arrowBtn{
@@ -57,6 +72,10 @@
     align-items: center;
     border-right: 1px solid lightGreenBorder;
     padding: 32px 22px 25px;
+
+    @media (--media-phone-s) {
+        display: none;
+   }
 }
 
 .arrowImg{
@@ -68,6 +87,13 @@
     font-family: 'Gotham Pro';
     font-weight: 500;
     padding: 32px 22px 25px;
+
+    @media (--media-phone-s) {
+        padding: 15px 22px;
+        font-size: 10px;
+        letter-spacing: .5px;
+        line-height: 16px;
+   }
 }
 
 .btn:hover{
@@ -77,6 +103,10 @@
 .mainText{
     max-width: 550px;
     margin-left: 135px;
+
+    @media (--media-phone-s) {
+        margin: 0;
+   }
 }
 
 .title{
@@ -84,7 +114,11 @@
     font-weight: bold;
     text-transform: uppercase;
     font-family: Verdana, sans-serif;
-    font-weight: 700;
+
+    @media (--media-phone-s) {
+        font-size: 35px;
+        text-align: center;
+   }
 }
 
 .horizontalLine{
@@ -93,6 +127,11 @@
     background: limeLine;
     margin: 20px 0 25px;
     border: none;
+
+    @media (--media-phone-s) {
+        margin: 25px auto 30px;
+        height: 3px;
+   }
 }
 
 .description{
@@ -100,7 +139,15 @@
     letter-spacing: .5px;
     font-weight: 500;
     line-height: 28px;
-    font-family: 'Gotham Medium', sans-serif;
+    font-family: 'Gotham Pro';
+
+    @media (--media-phone-s) {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: .6px;
+        text-align: center;
+        font-family: 'Gotham Light';
+   }
 }
 
 .bottomBlock{
@@ -116,6 +163,15 @@
     margin: 140px 0 0 -125px;
     display: flex;
     position: relative;
+
+    @media (--media-phone-s) {
+        height: auto;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 60px;
+   }
 }
 
 .searchIcon, .searchIconZoom{
@@ -145,6 +201,10 @@
     letter-spacing: 1px;
     font-weight: 300;
     color: blackBasic;
+
+    @media (--media-phone-s) {
+        font-size: 14px;
+   }
 }
 
 .input{
@@ -158,6 +218,13 @@
     left: 40px;
     bottom: 30px;
     width: 525px;
+
+    @media (--media-phone-s) {
+        height: auto;
+        width: 60%;
+        bottom: 10px;
+        padding: 0 0 10px 10px;
+   }
 }
 
 .text{
@@ -168,6 +235,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
+    @media (--media-phone-s) {
+        display: none;
+   }
 }
 
 .heading{
