@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import omit from '@tinkoff/utils/object/omit';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
@@ -10,13 +8,14 @@ import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
-import AdminTable from '../../components/AdminTable/AdminTable.jsx';
-import ProductForm from '../../components/LawsForm/LawsForm';
-import ProductFilters from '../../components/ProductFilters/ProductFilters';
+import AdminTableSortable from '../../components/AdminTableSortable/AdminTableSortable.jsx';
+import LawForm from '../../components/LawsForm/LawsForm';
 
 import { connect } from 'react-redux';
-import getProducts from '../../../services/getProducts';
-import deleteProductsByIds from '../../../services/deleteProductsByIds';
+import getLaws from '../../../services/getProducts';
+import deleteLawsByIds from '../../../services/deleteProductsByIds';
+
+import noop from '@tinkoff/utils/function/noop';
 
 const headerRows = [
     { id: 'name', label: 'Название' },
@@ -24,9 +23,9 @@ const headerRows = [
     { id: 'active', label: 'Active' }
 ];
 const tableCells = [
-    { prop: product => product.name },
-    { prop: product => product.price },
-    { prop: product => product.hidden ? <CloseIcon /> : <CheckIcon /> }
+    { prop: law => law.name },
+    { prop: law => law.price },
+    { prop: law => law.hidden ? <CloseIcon /> : <CheckIcon /> }
 ];
 
 const materialStyles = theme => ({
@@ -58,25 +57,27 @@ const materialStyles = theme => ({
 
 const mapStateToProps = ({ products }) => {
     return {
-        products: products.filtered
+        laws: products.products
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    getProducts: payload => dispatch(getProducts(payload)),
-    deleteProducts: payload => dispatch(deleteProductsByIds(payload))
+    getLaws: payload => dispatch(getLaws(payload)),
+    deleteLaws: payload => dispatch(deleteLawsByIds(payload))
 });
 
-class ProductsPage extends Component {
+class LegislationPage extends Component {
     static propTypes = {
-        classes: PropTypes.object.isRequired,
-        getProducts: PropTypes.func.isRequired,
-        deleteProducts: PropTypes.func.isRequired,
-        products: PropTypes.array
+        classes: PropTypes.object,
+        getLaws: PropTypes.func,
+        deleteLaws: PropTypes.func,
+        laws: PropTypes.array
     };
 
     static defaultProps = {
-        products: []
+        laws: [],
+        getLaws: noop,
+        deleteLaws: noop
     };
 
     constructor (...args) {
@@ -85,13 +86,12 @@ class ProductsPage extends Component {
         this.state = {
             loading: true,
             formShowed: false,
-            filtersShowed: false,
-            editableProduct: null
+            editableLaw: null
         };
     }
 
     componentDidMount () {
-        this.props.getProducts()
+        this.props.getLaws()
             .then(() => {
                 this.setState({
                     loading: false
@@ -100,46 +100,28 @@ class ProductsPage extends Component {
     }
 
     handleFormDone = () => {
-        this.props.getProducts()
-            .then(this.handleCloseProductForm);
+        this.props.getLaws()
+            .then(this.handleCloseLawForm);
     };
 
-    handleFormOpen = product => () => {
+    handleFormOpen = law => () => {
         this.setState({
             formShowed: true,
-            editableProduct: product
+            editableLaw: law
         });
     };
 
-    handleProductClone = product => () => {
-        this.setState({
-            formShowed: true,
-            editableProduct: omit(['id'], product)
-        });
-    };
-
-    handleFiltersOpen = () => {
-        this.setState({
-            filtersShowed: true
-        });
-    };
-
-    handleCloseProductForm = () => {
+    handleCloseLawForm = () => {
         this.setState({
             formShowed: false,
-            editableProduct: null
+            editableLaw: null
         });
     };
 
-    handleCloseFilters = () => {
-        this.setState({
-            filtersShowed: false
-        });
-    };
 
     render () {
-        const { classes, products } = this.props;
-        const { loading, editableProduct, formShowed, filtersShowed } = this.state;
+        const { classes, laws } = this.props;
+        const { loading, editableLaw, formShowed } = this.state;
 
         if (loading) {
             return <div className={classes.loader}>
@@ -148,30 +130,24 @@ class ProductsPage extends Component {
         }
 
         return <div>
-            <AdminTable
+            <AdminTableSortable
                 headerRows={headerRows}
                 tableCells={tableCells}
-                values={products}
-                headerText='Товары'
+                values={laws}
+                headerText='Законы'
                 deleteValueWarningTitle='Вы точно хотите удалить товар?'
                 deleteValuesWarningTitle='Вы точно хотите удалить следующие товары?'
-                onDelete={this.props.deleteProducts}
-                onProductClone={this.handleProductClone}
+                onDelete={this.props.deleteLaws}
+                filters={false}
                 onFormOpen={this.handleFormOpen}
-                onFiltersOpen={this.handleFiltersOpen}
             />
-            <Modal open={formShowed} onClose={this.handleCloseProductForm} className={classes.modal}>
+            <Modal open={formShowed} onClose={this.handleCloseLawForm} className={classes.modal}>
                 <Paper className={classes.modalContent}>
-                    <ProductForm product={editableProduct} onDone={this.handleFormDone}/>
-                </Paper>
-            </Modal>
-            <Modal open={filtersShowed} onClose={this.handleCloseFilters} className={classes.modal} keepMounted>
-                <Paper className={classes.modalContent}>
-                    <ProductFilters />
+                    <LawForm law={editableLaw} onDone={this.handleFormDone}/>
                 </Paper>
             </Modal>
         </div>;
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(materialStyles)(ProductsPage));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(materialStyles)(LegislationPage));
