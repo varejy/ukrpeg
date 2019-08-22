@@ -6,50 +6,42 @@ import styles from './About.css';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ application }) => {
+const mapStateToProps = ({ application, about }) => {
     return {
-        langMap: application.langMap
+        langMap: application.langMap,
+        lang: application.lang,
+        aboutInfo: about.aboutList
     };
 };
 
 class About extends Component {
     static propTypes = {
-        langMap: PropTypes.object.isRequired
+        langMap: PropTypes.object.isRequired,
+        lang: PropTypes.string.isRequired,
+        aboutInfo: PropTypes.array
+    };
+
+    static defaultProps = {
+        aboutInfo: []
     };
 
     render () {
-        const { langMap } = this.props;
+        const { langMap, lang, aboutInfo } = this.props;
         const text = propOr('about', {}, langMap);
-
-        const content = [
-            {
-                img: '/src/apps/client/ui/components/About/files/can.png',
-                ...text.content[0]
-            },
-            {
-                img: '/src/apps/client/ui/components/About/files/bottle.png',
-                ...text.content[1]
-            },
-            {
-                img: '/src/apps/client/ui/components/About/files/recycle.jpg',
-                ...text.content[2]
-            }
-        ];
 
         return <div className={styles.about}>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>{text.title}</h1>
                 <div className={styles.content}>
-                    {content.map((item, i) => {
+                    {aboutInfo.map((item, i) => {
                         return (
                             <div key={i} className={styles.contentBlock}>
                                 <img src={item.img} className={styles.img} />
-                                <p className={styles.description}>{item.text}</p>
+                                <p className={styles.description}>{item.text[`${lang}`]}</p>
                             </div>
                         );
                     })}
                 </div>
-                <div className={styles.graphic}></div>
             </div>
         </div>;
     }
