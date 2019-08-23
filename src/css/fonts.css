@@ -1,14 +1,19 @@
 @font-face {
-  font-family: 'HelveticaNeueCyr';
-  src: url('./font/HelveticaNeueCyr-Medium.ttf') format('truetype');
+  font-family: 'Gotham Pro';
+  src: url('./font/GothaProReg.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HelveticaNeueCyrBold';
-  src: url('./font/HelveticaNeueCyr-Bold.ttf') format('truetype');
+  font-family: 'Gotham Medium';
+  src: url('./font/GothaProMed.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HelveticaNeueCyrLight';
-  src: url('./font/HelveticaNeueCyr-Light.ttf') format('truetype');
+  font-family: 'Gotham Light';
+  src: url('./font/GothaProLig.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Gotham Narrow';
+  src: url('./font/GothaProNarMed.ttf') format('truetype');
 }
