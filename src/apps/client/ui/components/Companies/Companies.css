@@ -17,12 +17,12 @@
     padding-left: 125px;
     display: flex;
 
-    @media (--media-tablet-l) {
-        padding: 20px 13px 55px;
+    @media (max-width: 1350px) {
+      padding-left: 110px;
     }
 
-    @media (--media-tablet-s) {
-        padding: 20px 13px 55px;
+    @media (--media-tablet-l) {
+      padding: 0 13px;
     }
 }
 
@@ -31,11 +31,6 @@
     padding: 55px 0 70px 0;
 
     @media (--media-tablet-l) {
-      border: 1px solid lightGreyBorder;
-      padding: 20px 0 25px;
-    }
-
-    @media (--media-tablet-s) {
       border: 1px solid lightGreyBorder;
       padding: 20px 0 25px;
     }
@@ -54,15 +49,6 @@
     font-family: 'Gotham Pro';
 
     @media (--media-tablet-l) {
-        font-size: 12px;
-        line-height: 14px;
-        letter-spacing: 1px;
-        margin-left: -2px;
-        padding: 10px 0 10px 10px;
-        border-left: 3px solid lightGreenBasic;
-   }
-
-    @media (--media-tablet-s) {
         font-size: 12px;
         line-height: 14px;
         letter-spacing: 1px;
@@ -93,14 +79,8 @@
       justify-content: center;
    }
 
-    @media (--media-tablet-s) {
-      justify-content: center;
-   }
-
     @media (--media-phone) {
-      padding: 0 30px;
       flex-wrap: wrap;
-      justify-content: center;
    }
 
     @media (--media-phone-s) {
@@ -115,8 +95,7 @@
     align-items: center;
 
     @media (--media-tablet-l) {
-        width: 30%;
-        height: 40px;
+        height: 50px;
         padding: 5px 10px;
         align-self: center;
     }
@@ -124,15 +103,10 @@
     @media (--media-tablet-s) {
         width: 30%;
         height: 40px;
-        padding: 5px 10px;
-        align-self: center;
-    }
+   }
 
     @media (--media-phone) {
-        width: 30%;
         height: 30px;
-        padding: 5px 10px;
-        align-self: center;
         margin-bottom: 15px;
     }
 
@@ -145,18 +119,6 @@
     width: 140px;
 
     @media (--media-tablet-l) {
-      height: 100%;
-      width: 100%;
-      object-fit: contain;
-    }
-
-    @media (--media-tablet-s) {
-      height: 100%;
-      width: 100%;
-      object-fit: contain;
-    }
-
-    @media (--media-phone) {
       height: 100%;
       width: 100%;
       object-fit: contain;

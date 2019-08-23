@@ -117,7 +117,8 @@
     width: 100%;
 
     @media (max-width: 1350px) {
-      font-size: 16px;
+      font-size: 15px;
+      letter-spacing: .1px;
       padding: 45px 15px 30px;
     }
 }
@@ -156,6 +157,10 @@
         padding-right: 20px;
     }
 
+    @media (max-width: 1150px) {
+        font-size: 11px;
+    }
+
     @media (--media-tablet-l) {
         padding-left: 20px;
         padding-right: 30px;
@@ -170,8 +175,8 @@
     white-space: nowrap;
 
     @media (max-width: 1350px) {
-        margin-right: 25px;
-        font-size: 13px;
+        margin-right: 20px;
+        letter-spacing: .1px;
     }
 
     @media (--media-tablet-l) {
@@ -203,10 +208,18 @@
 
 .lang{
     cursor: pointer;
+
+    @media (max-width: 1150px) {
+        font-size: 11px;
+    }
 }
 
 .choosenLang{
     color: limeGreen;
+
+    @media (max-width: 1150px) {
+        font-size: 11px;
+    }
 }
 
 .burgerMenu, .burgerMenuOpen{
@@ -306,31 +319,12 @@
     padding-top: 215px;
 
     @media (--media-tablet-l) {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        background: blueMobileBg;
-        display: flex;
-        flex-direction: column;
         padding-left: 130px;
         padding-top: 215px;
     }
 
     @media (--media-tablet-s) {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        background: blueMobileBg;
-        display: flex;
-        flex-direction: column;
-        padding-left: 130px;
-        padding-top: 215px;
+        padding-top: 150px;
     }
 
     @media (--media-phone) {
