@@ -7,8 +7,6 @@ import getSchema from './lawsFormSchema';
 import { connect } from 'react-redux';
 import saveProduct from '../../../services/saveLaw';
 import editProduct from '../../../services/editLaw';
-import updateProductFiles from '../../../services/updateProductFiles';
-import updateProductAvatar from '../../../services/updateProductAvatar';
 
 import noop from '@tinkoff/utils/function/noop';
 import prop from '@tinkoff/utils/object/prop';
@@ -19,8 +17,6 @@ const PRODUCTS_VALUES = ['name', 'id', 'path'];
 const mapDispatchToProps = (dispatch) => ({
     saveProduct: payload => dispatch(saveProduct(payload)),
     editProduct: payload => dispatch(editProduct(payload)),
-    updateProductFiles: (...payload) => dispatch(updateProductFiles(...payload)),
-    updateProductAvatar: (...payload) => dispatch(updateProductAvatar(...payload))
 });
 
 class LawsForm extends Component {
