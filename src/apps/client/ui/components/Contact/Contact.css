@@ -48,7 +48,7 @@
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 1px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .cityName{
@@ -60,6 +60,7 @@
 .emailInfo{
     width: 50%;
     padding-bottom: 85px;
+    font-weight: 600;
 }
 
 .map{
@@ -71,7 +72,6 @@
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 1px;
-    font-weight: 300;
 }
 
 .email{
@@ -79,5 +79,4 @@
     padding: 38px 100px;
     font-size: 26px;
     letter-spacing: 2px;
-    font-weight: 300;
 }
