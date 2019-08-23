@@ -3,7 +3,7 @@ import base from './base';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';
 
-import setProductsAction from '../actions/setProducts';
+import setProductsAction from '../actions/setNews';
 
 export default function search (text) {
     return dispatch => {
@@ -11,7 +11,7 @@ export default function search (text) {
 
         return base(
             request
-                .get('/api/admin/product/find')
+                .get('/api/admin/news/find')
                 .query({ token, text })
         )
             .then(products => {
