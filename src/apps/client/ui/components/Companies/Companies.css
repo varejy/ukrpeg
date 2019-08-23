@@ -18,11 +18,11 @@
     display: flex;
 
     @media (max-width: 1350px) {
-      padding-left: 110px;
+        padding-left: 110px;
     }
 
     @media (--media-tablet-l) {
-      padding: 0 13px;
+        padding: 0 13px;
     }
 }
 
@@ -31,8 +31,8 @@
     padding: 55px 0 70px 0;
 
     @media (--media-tablet-l) {
-      border: 1px solid lightGreyBorder;
-      padding: 20px 0 25px;
+        border: 1px solid lightGreyBorder;
+        padding: 20px 0 25px;
     }
 }
 
@@ -46,7 +46,7 @@
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
-    font-family: 'Gotham Pro';
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
 
     @media (--media-tablet-l) {
         font-size: 12px;
@@ -75,16 +75,16 @@
     overflow: auto;
 
     @media (--media-tablet-l) {
-      padding: 0 30px;
-      justify-content: center;
+        padding: 0 30px;
+        justify-content: center;
    }
 
     @media (--media-phone) {
-      flex-wrap: wrap;
+        flex-wrap: wrap;
    }
 
     @media (--media-phone-s) {
-      padding: 0;
+        padding: 0;
    }
 }
 

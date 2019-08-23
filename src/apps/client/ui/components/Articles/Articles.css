@@ -54,7 +54,7 @@
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
-    font-family: 'Gotham Medium', sans-serif;
+    font-family: 'Gotham Medium', 'Arial Black', sans-serif;
 
     @media (--media-tablet-l) {
         font-size: 12px;
@@ -71,7 +71,7 @@
 }
 
 .title:hover{
-  color: lightGreyHover;
+    color: lightGreyHover;
 }
 
 .wrapperArticles{
@@ -81,7 +81,7 @@
     display: flex;
 
     @media (max-width: 1350px) {
-      padding: 0 110px;
+        padding: 0 110px;
     }
 
     @media (--media-tablet-l) {
@@ -97,7 +97,7 @@
     background: semiGreyBg;
 
     @media (--media-tablet-l) {
-      background: whiteBasic;
+        background: whiteBasic;
    }
 }
 
@@ -105,14 +105,14 @@
     display: flex;
 
     @media (--media-tablet-l) {
-      flex-direction: column;
-      height: auto;
-      position: relative;
+        flex-direction: column;
+        height: auto;
+        position: relative;
    }
 
     @media (--media-tablet-s) {
-      flex-wrap: wrap;
-      max-height: 200px;
+        flex-wrap: wrap;
+        max-height: 200px;
    }
 }
 
@@ -142,13 +142,13 @@
     font-size: 14px;
     color: darkBlueBasic;
     letter-spacing: .7px;
-    font-family: 'Gotham Pro', sans-serif;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     font-weight: 300;
 
     @media (--media-tablet-l) {
-      font-size: 10px;
-      line-height: 14px;
-      margin-bottom: 10px;
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 10px;
    }
 }
 
@@ -157,7 +157,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
-    font-family: 'Gotham Pro', sans-serif;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     letter-spacing: .4px;
 }
 
@@ -191,7 +191,7 @@
 }
 
 .activeArrowBtn{
-  border-color: lightGreenHover;
+    border-color: lightGreenHover;
 }
 
 .arrowBtnImg{

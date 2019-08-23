@@ -113,7 +113,7 @@
     letter-spacing: .3px;
     text-align: center;
     padding: 45px 20px 30px;
-    font-family: 'Gotham Pro', sans-serif;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     width: 100%;
 
     @media (max-width: 1350px) {
@@ -170,7 +170,7 @@
 .phone{
     color: darkGreyBasic;
     margin-right: 50px;
-    font-family: 'Gotham Pro';
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     letter-spacing: 1px;
     white-space: nowrap;
 
@@ -191,7 +191,7 @@
     cursor: pointer;
     font-size: 13px;
     letter-spacing: .5px;
-    font-family: 'Gotham Narrow';
+    font-family: 'Gotham Narrow', 'Arial Black', sans-serif;
 
     @media (--media-tablet-l) {
         display: none;
@@ -348,25 +348,25 @@
       border: none;
 
       @media (--media-tablet-l) {
-        letter-spacing: .3px;
-        font-size: 18px;
-        line-height: 22px;
-        font-weight: 500;
-        color: whiteBasic;
-        text-align: left;
-        padding: 0;
-        margin-bottom: 40px;
-        border: none;
+          letter-spacing: .3px;
+          font-size: 18px;
+          line-height: 22px;
+          font-weight: 500;
+          color: whiteBasic;
+          text-align: left;
+          padding: 0;
+          margin-bottom: 40px;
+          border: none;
       }
 
       @media (--media-tablet-s) {
-        font-size: 16px;
-        line-height: 18px;
+          font-size: 16px;
+          line-height: 18px;
       }
 
       @media (--media-phone) {
-        font-size: 14px;
-        line-height: 16px;
+          font-size: 14px;
+          line-height: 16px;
       }
 
       @media (--media-phone-s) {
