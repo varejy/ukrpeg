@@ -1,6 +1,5 @@
 import request from 'superagent';
 import base from './base';
-
 import setLawsAction from '../actions/setLaws';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';

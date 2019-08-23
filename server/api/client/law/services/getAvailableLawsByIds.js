@@ -1,16 +1,13 @@
 import { OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constants/constants';
 
-import getProductsByIds from '../queries/getLawsByIds';
+import getLawsByIds from '../queries/getLawsByIds';
 
 export default function getAvailableProductsByIds (req, res) {
     const ids = req.body;
 
-    getProductsByIds(ids)
-        .then(products => {
-            const availableProducts = products
-                .filter(product => !product.hidden);
-
-            res.status(OKEY_STATUS_CODE).send(availableProducts);
+    getLawsByIds(ids)
+        .then(laws => {
+            res.status(OKEY_STATUS_CODE).send(laws);
         })
         .catch(() => {
             res.status(SERVER_ERROR_STATUS_CODE).end();

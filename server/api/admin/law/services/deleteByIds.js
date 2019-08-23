@@ -9,8 +9,8 @@ export default function deleteByIds (req, res) {
     deleteByIdsQuery(ids)
         .then(() => {
             getAllLaws()
-                .then(products => {
-                    res.status(OKEY_STATUS_CODE).send(products);
+                .then(laws => {
+                    res.status(OKEY_STATUS_CODE).send(laws);
                 });
         })
         .catch(() => {

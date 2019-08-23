@@ -18,7 +18,7 @@
 
 .info{
     width: 100%;
-    padding: 55px 0 80px 0;
+    padding: 55px 0 70px 0;
 }
 
 .title{
@@ -26,11 +26,12 @@
     border-left: 5px solid lightGreenBasic;
     margin-left: -30px;
     color: darkBlueBasic;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
 }
 
 .title:hover{
@@ -38,7 +39,7 @@
 }
 
 .companiesList{
-    margin-top: 50px;
+    margin-top: 10px;
     padding: 0 30px;
     display: flex;
     width: 100%;

@@ -6,6 +6,6 @@ const VALUES = [
     'path'
 ];
 
-export default function getProductValues (product) {
-    return pick(VALUES, product);
+export default function getCategoryValues (law) {
+    return pick(VALUES, law);
 }
