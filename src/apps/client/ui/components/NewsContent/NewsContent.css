@@ -1,6 +1,11 @@
 .newsCardsContainer{
-    width: 807px;
+    max-width: 807px;
     display: flex;
     flex-wrap: wrap;
     overflow-x: hidden;
+
+    @media (max-width: 620px){
+        width: 320px;
+        justify-content: center;
+    }
 }

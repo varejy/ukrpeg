@@ -138,7 +138,9 @@ class AllNewsPage extends Component {
 
         this.state = {
             news: newsArr,
-            newsCategoryRendered: newsArr[0].newsList
+            newsCategoryRendered: newsArr[0].newsList,
+            activeCategoryIndex: 0,
+            mobileMenuListVisible: false
         };
     }
 
@@ -151,12 +153,17 @@ class AllNewsPage extends Component {
 
         this.setState({
             news: newNews,
-            newsCategoryRendered: i === 0 ? newNews[0].newsList : newNews[i].newsList
+            newsCategoryRendered: i === 0 ? newNews[0].newsList : newNews[i].newsList,
+            activeCategoryIndex: i
         });
     };
 
+    handleOpenMenuList = () => {
+        this.setState({ mobileMenuListVisible: !this.state.mobileMenuListVisible });
+    };
+
     render () {
-        const { news, newsCategoryRendered } = this.state;
+        const { news, newsCategoryRendered, activeCategoryIndex, mobileMenuListVisible } = this.state;
 
         return <section className={styles.newsContainer}>
             <div className={styles.gridContainer}>
@@ -165,6 +172,7 @@ class AllNewsPage extends Component {
                 <div className={classNames(styles.column, styles.column3)}/>
                 <div className={classNames(styles.column, styles.column4)}/>
             </div>
+            <div className={styles.pagination}/>
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>
@@ -192,6 +200,36 @@ class AllNewsPage extends Component {
                         )
                     }
                 </ul>
+            </div>
+            <div className={styles.newsMenuContainerMobile}>
+                <div className={styles.mobileMenuContainer}>
+                    <div className={styles.activeCategory}>{news[activeCategoryIndex].id}</div>
+                    <div className={classNames(styles.arrowButton, {
+                        [styles.arrowButtonReverse]: mobileMenuListVisible
+                    })} onClick={this.handleOpenMenuList}>
+                        <img className={styles.arrow} src='/src/apps/client/ui/pages/NewsPage/images/downArrowGreen.png' alt='arrow'/>
+                    </div>
+                </div>
+                {
+                    <ul className={classNames(styles.categoriesList)} style={{ height: `${!mobileMenuListVisible ? 0 : 58 * news.length}px` }}>
+                        {
+                            news.map((newsCategory, i) =>
+                                <li key={i}>
+                                    <div className={classNames(styles.newsCategoryMobile, {
+                                        [styles.newsCategoryMobileAnimated]: mobileMenuListVisible
+                                    })}
+                                    onClick={this.handleCategoryClick(i)}
+                                    >
+                                        <div className={styles.newsCategoryTitleMobile}
+                                        >
+                                            <div className={styles.categoryTitleMobile}>{newsCategory.id}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            )
+                        }
+                    </ul>
+                }
             </div>
         </section>;
     }
