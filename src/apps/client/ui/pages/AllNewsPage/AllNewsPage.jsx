@@ -160,11 +160,10 @@ class AllNewsPage extends Component {
 
         return <section className={styles.newsContainer}>
             <div className={styles.gridContainer}>
-                <div className={styles.column1}/>
-                <div className={styles.column2}/>
-                <div className={styles.column3}/>
-                <div className={styles.column4}/>
-                <div className={styles.column5}/>
+                <div className={classNames(styles.column, styles.column1)}/>
+                <div className={classNames(styles.column, styles.column2)}/>
+                <div className={classNames(styles.column, styles.column3)}/>
+                <div className={classNames(styles.column, styles.column4)}/>
             </div>
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>

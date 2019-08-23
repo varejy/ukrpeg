@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import styles from './RVVPage.css';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 const PLANS_LIST = [
+    // eslint-disable-next-line max-len
     'Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою, з органами місцевого самоврядування, з організаціями що займаються збором сортуванням та переробкою відходів.',
     'Виробити схему відносин з фіскальними органами, оскільки діяльність організацій РВВ є неприбутковою.',
     'Випробувати ефективність принципів РВВ в Україні.',
     'Вивчити реакцію населення на впровадження роздільного збору.',
     'Знайти ефективні засоби комунікацій з населенням, щоб воно більш активно практикувало роздільний збір та підтримувало принципи РВВ.',
     'Зрозуміти можливості РВВ з  виконання норм збору упаковки (яку частку того чи іншого виду відходів  упаковки можна зібрати).',
+    // eslint-disable-next-line max-len
     'Виокремити найбільш ефективні методи і прийоми, які можна буде згодом поширювати на діяльність організацій розширеної відповідальності виробника по всій Україні.',
     'Провести сезоні дослідження морфологічного складу побутових відходів і окремо відходів упаковки.',
+    // eslint-disable-next-line max-len
     'Визначити на прикладі конкретного міста рівень фінансових затрат на організацію роздільного збирання, сортування і транспортування вторсировини на переробні підприємства.',
+    // eslint-disable-next-line max-len
     'Провести маркетинговий аналіз ринку України, в частині працюючих спеціалізованих організацій по збиранню, вивезенню, сортувальних і переробних підприємств, цінової політики всіх учасників цього сегменту ринку.'
 ];
 const BENEFITS = [
     {
+        // eslint-disable-next-line max-len
         text: 'Розширена відповідальність виробника (РВВ) - визнаний принцип екологічної політики  , щодо забезпечення відповідальності виробників продукції за управління стадією відходів життєвого циклу продукції та матеріалів.',
         path: 'src/apps/client/ui/pages/RVVPage/images/benefit1.png'
     },
@@ -32,6 +38,7 @@ const BENEFITS = [
         path: 'src/apps/client/ui/pages/RVVPage/images/benefit4.png'
     },
     {
+        // eslint-disable-next-line max-len
         text: 'РВВ – головний метод поводження з відходами упаковки та багатьох інших товарів у ЄС – у деяких країнах до 80% відходів упаковки збирається завдяки РВВ.',
         path: 'src/apps/client/ui/pages/RVVPage/images/benefit5.png'
     }
@@ -39,6 +46,7 @@ const BENEFITS = [
 const COURSES_LIST = [
     'Дослідження сфери поводження з упаковкою та її відходами в Україні.',
     'Впровадження пілотних проектів у сфері поводження з відходами упаковки.',
+    // eslint-disable-next-line max-len
     'Розробка рекомендацій, які можуть бути запропоновані суб\'єктам виробництва та ринку, професійним і громадським організаціям, органам державної влади та місцевого самоврядування і навіть споживачам товарів в упаковці – щодо безпечного екологічного розвитку у сфері пакувальної технології та поводження з упаковкою та її відходами.'
 ];
 const FACTS = [
@@ -93,11 +101,11 @@ class RVVPage extends Component {
     render () {
         return <section className={styles.pageContainer}>
             <div className={styles.gridContainer}>
-                <div className={styles.column1}/>
-                <div className={styles.column2}/>
-                <div className={styles.column3}/>
-                <div className={styles.column4}/>
-                <div className={styles.column5}/>
+                <div className={classNames(styles.column, styles.column1)}/>
+                <div className={classNames(styles.column, styles.column2)}/>
+                <div className={classNames(styles.column, styles.column3)}/>
+                <div className={classNames(styles.column, styles.column4)}/>
+                <div className={classNames(styles.column, styles.column5)}/>
             </div>
             <div className={styles.plans}>
                 <div className={styles.titleContainer}>
