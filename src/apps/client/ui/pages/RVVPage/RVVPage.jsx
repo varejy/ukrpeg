@@ -239,16 +239,17 @@ class RVVPage extends Component {
             <div className={styles.containerIdea}>
                 <div className={styles.patternContainerBig} />
                 <div className={styles.idea}>
-                    <div className={styles.ideaContainer}>
-                        <div className={styles.imageContainer}>
-                            <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
-                        </div>
-                        <div className={styles.ideaText}>
+                    <div className={styles.ideaContainer}/>
+                </div>
+                <div className={styles.wrapper}>
+                    <div className={styles.imageContainer}>
+                        <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
+                    </div>
+                    <div className={styles.ideaText}>
                         Спільними зусиллями ми працюємо над оптимізацією роботи галузі, вдосконаленням нормативно-правової бази,
                         підвищенням споживчої культури в сфері поводження з упаковкою та її відходами.<br/>
                         На жаль, змінити минуле нікому не під силу, але наше майбутнє цілком залежить від того, що ми зможемо
                         спільними зусиллями створити чи впровадити саме сьогодні.
-                        </div>
                     </div>
                 </div>
                 <div className={styles.backgroundGreen}/>
