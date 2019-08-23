@@ -86,7 +86,7 @@
 .title{
     font-size: 18px;
     line-height: 18px;
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
 }
@@ -94,7 +94,7 @@
 .categoryTitle{
     font-size: 18px;
     line-height: 18px;
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
 }

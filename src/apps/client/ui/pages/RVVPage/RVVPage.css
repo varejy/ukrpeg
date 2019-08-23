@@ -79,7 +79,7 @@
 
 .title{
     font-size: 18px;
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
     line-height: 24px;
@@ -135,7 +135,7 @@
 
 .stepText{
     color: blackBasic;
-    font-family: GothamPro-Light, Arial;
+    font-family: 'Gotham Light', Arial;
     font-size: 16px;
     letter-spacing: 0.5px;
     width: 90%;
@@ -212,7 +212,7 @@
 
 .benefitText{
     width: 80%;
-    font-family: GothamPro-Light, Arial;
+    font-family: 'Gotham Light', Arial;
     font-size: 16px;
     letter-spacing: 0.5px;
     color: blackBasic;
@@ -244,7 +244,7 @@
     margin: 0 auto;
     padding: 0 134px;
     color: darkGreyBasic;
-    font-family: GothamPro-Medium, Arial;
+    font-family: 'Gotham Medium', Arial;
     font-size: 16px;
     line-height: 20px;
     text-align: left;
@@ -315,7 +315,7 @@
 }
 
 .courseText{
-    font-family: GothamPro-Medium, Arial;
+    font-family: 'Gotham Medium', Arial;
     font-size: 16px;
     padding: 0 7px;
     line-height: normal;
@@ -391,7 +391,7 @@
 .whiteTitle{
     font-size: 18px;
     line-height: 18px;
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
     color: whiteBasic;
@@ -438,7 +438,7 @@
 }
 
 .factText{
-    font-family: GothamPro-Bold, Arial;
+    font-family: 'Gotham Bold', Arial;
     color: whiteBasic;
     font-size: 16px;
     line-height: normal;
@@ -514,7 +514,7 @@
 }
 
 .participant{
-    font-family: GothamPro-Medium, Arial;
+    font-family: 'Gotham Medium', Arial;
     font-size: 16px;
     line-height: 26px;
     letter-spacing: 0.5px;
@@ -570,7 +570,7 @@
 
 .ideaText{
     width: 60%;
-    font-family: GothamPro-Light, Arial;
+    font-family: 'Gotham Light', Arial;
     font-size: 16px;
     line-height: normal;
     text-align: left;
