@@ -33,11 +33,13 @@ import { connect } from 'react-redux';
 import getCategories from '../../../services/getCategories';
 import editNewsCategory from '../../../services/editNewsCategory';
 import deleteCategoriesByIds from '../../../services/deleteCategoriesByIds';
+import deleteNewsByIds from '../../../services/deleteNewsByIds';
 import getNewsAll from '../../../services/getNewsAll';
 
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
 import noop from '@tinkoff/utils/function/noop';
+import pathOr from '@tinkoff/utils/object/pathOr';
 
 import AdminTable from '../../components/AdminTable/AdminTable.jsx';
 import NewsForm from '../../components/NewsForm/NewsForm';
@@ -47,7 +49,7 @@ const ButtonSortable = SortableHandle(({ classes }) => (
     <ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, onCategoryDelete, onCategoryClick, value, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, onCategoryDelete, name, onCategoryClick, value, classes }) => (
     <ListItem onClick={onCategoryClick(value)} button className={classes.row}>
         <ButtonSortable classes={classes}/>
         <ListItemIcon>
@@ -55,7 +57,7 @@ const ItemSortable = SortableElement(({ onFormOpen, onCategoryDelete, onCategory
         </ListItemIcon>
         <ListItemText
             className={classes.listItemText}
-            primary={value.name}
+            primary={name}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
@@ -78,7 +80,9 @@ const SortableWrapp = SortableContainer((
     <List>
         {
             newsCategory.map((value, i) => {
-                return <ItemSortable key={i} value={value} index={i} {...rest}/>;
+                const name = pathOr(['texts', DEFAULT_LANG, 'name'], '', value);
+
+                return <ItemSortable key={i} name={name} value={value} index={i} {...rest}/>;
             })
         }
     </List>
@@ -94,6 +98,7 @@ const mapStateToProps = ({ application, news }) => {
 const mapDispatchToProps = (dispatch) => ({
     getCategories: payload => dispatch(getCategories(payload)),
     deleteCategories: payload => dispatch(deleteCategoriesByIds(payload)),
+    deleteNews: payload => dispatch(deleteNewsByIds(payload)),
     editNewsCategory: payload => dispatch(editNewsCategory(payload)),
     getNewsAll: payload => dispatch(getNewsAll(payload))
 });
@@ -162,14 +167,17 @@ const materialStyles = theme => ({
     }
 });
 
+const DEFAULT_LANG = 'ua';
+
 const headerRows = [
     { id: 'name', label: 'Название' },
     { id: 'data', label: 'Дата' },
     { id: 'active', label: 'Active' }
 ];
+
 const tableCells = [
-    { prop: news => news.name },
-    { prop: news => news.data },
+    { prop: news => pathOr(['texts', DEFAULT_LANG, 'name'], '', news) },
+    { prop: news => news.date },
     { prop: news => news.hidden ? <CloseIcon /> : <CheckIcon /> }
 ];
 
@@ -184,6 +192,7 @@ class NewsPage extends Component {
         categories: PropTypes.array.isRequired,
         getCategories: PropTypes.func.isRequired,
         deleteCategories: PropTypes.func.isRequired,
+        deleteNews: PropTypes.func.isRequired,
         editNewsCategory: PropTypes.func.isRequired,
         getNewsAll: PropTypes.func,
         news: PropTypes.array
@@ -271,6 +280,18 @@ class NewsPage extends Component {
         });
     }
 
+    handleNewsDelete = (news) => {
+        this.props.deleteNews(news)
+            .then(() => {
+                this.props.getNewsAll()
+                    .then(() => {
+                        this.setState({
+                            news: this.getCategoryNews()
+                        });
+                    });
+            })
+    }
+
     handleWarningDisagree = () => {
         this.setState({
             valueForDelete: null
@@ -335,6 +356,7 @@ class NewsPage extends Component {
             valueForDelete,
             newsCategories,
             news,
+            lang,
             categoryFormShowed
         } = this.state;
 
@@ -346,6 +368,7 @@ class NewsPage extends Component {
                     tableCells={tableCells}
                     values={news}
                     headerText={`Новости в категории ${activeNewsCategory.name}`}
+                    onDelete={this.handleNewsDelete}
                     deleteValueWarningTitle='Вы точно хотите удалить новость?'
                     deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
                     filters={false}
@@ -382,6 +405,7 @@ class NewsPage extends Component {
                     onCategoryClick={this.handleCategoryClick}
                     onSortEnd={this.onDragEnd}
                     newsCategory={newsCategories}
+                    lang={lang}
                     useDragHandle
                     classes={classes}
                 />

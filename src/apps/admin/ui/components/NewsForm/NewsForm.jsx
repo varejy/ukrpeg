@@ -12,6 +12,7 @@ import getSchema from './newsItemFormSchema';
 import noop from '@tinkoff/utils/function/noop';
 import pick from '@tinkoff/utils/object/pick';
 import prop from '@tinkoff/utils/object/prop';
+import pathOr from '@tinkoff/utils/object/pathOr';
 import format from 'date-fns/format';
 
 const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date'];
@@ -24,7 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class NewsForm extends Component {
     static propTypes = {
-        classes: PropTypes.object.isRequired,
         saveNews: PropTypes.func.isRequired,
         editNews: PropTypes.func.isRequired,
         updateNewsAvatar: PropTypes.func.isRequired,
@@ -51,32 +51,59 @@ class NewsForm extends Component {
                 files: news.avatar ? [news.avatar] : [],
                 removedFiles: []
             },
+            ua_name: pathOr(['texts', 'ua', 'name'], '', news),
+            en_name: pathOr(['texts', 'en', 'name'], '', news),
+            en_shortDescription: pathOr(['texts', 'en', 'shortDescription'], '', news),
+            ua_shortDescription: pathOr(['texts', 'ua', 'shortDescription'], '', news), 
+            ua_description: pathOr(['texts', 'ua', 'description'], '', news),
+            en_description: pathOr(['texts', 'en', 'description'], '', news),
+            lang: 'ua',
             ...pick(NEWS_VALUES, news)
         };
-
         this.id = prop('id', news);
+        this.state = {
+            lang: 'ua'
+        };
     }
 
     getNewsItemPayload = (
         {
-            name,
-            description,
-            shortDescription,
+            en_name: enName,
+            ua_name: uaName,
+            en_shortDescription: enShortDescription,
+            ua_shortDescription: uaShortDescription,
+            en_description: enDescription,
+            ua_description: uaDescription,
             hidden,
             views,
             date,
             id
         }) => {
         return {
-            name,
-            description,
-            shortDescription,
             hidden,
             views: +views,
-            date,
             categoryId: this.props.activeCategory.id,
-            id
+            date,
+            id,
+            texts: {
+                en: {
+                    name: enName,
+                    shortDescription: enShortDescription,
+                    description: enDescription
+                },
+                ua: {
+                    name: uaName,
+                    shortDescription: uaShortDescription,
+                    description: uaDescription
+                }
+            }
         };
+    };
+
+    handleChange = (values) => {
+        this.setState({
+            lang: values.lang
+        });
     };
 
     handleSubmit = values => {
@@ -102,11 +129,15 @@ class NewsForm extends Component {
     };
 
     render () {
+        const { lang } = this.state;
+
         return <Form
             initialValues={this.initialValues}
             schema={getSchema({
-                data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' }
+                data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' },
+                settings: { lang }
             })}
+            onChange={this.handleChange}
             onSubmit={this.handleSubmit}
         />;
     }
