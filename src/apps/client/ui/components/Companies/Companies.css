@@ -22,7 +22,7 @@
     }
 
     @media (--media-tablet-l) {
-        padding: 0 13px;
+        padding: 20px 13px 55px
     }
 }
 
