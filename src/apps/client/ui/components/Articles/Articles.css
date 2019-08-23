@@ -12,6 +12,7 @@
     align-items: center;
     flex-direction: column;
     padding-bottom: 80px;
+    margin-left: 20px;
 }
 
 .wrapper{
@@ -36,6 +37,8 @@
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
+    position: relative;
+    z-index: 11;
 }
 
 .title:hover{
@@ -68,8 +71,10 @@
     margin-bottom: 18px;
     font-size: 14px;
     color: darkBlueBasic;
-    font-weight: 300px;
+    font-weight: 300;
     letter-spacing: .5px;
+    z-index: 11;
+    position: relative;
 }
 
 .description{
@@ -78,13 +83,17 @@
     font-size: 14px;
     line-height: 18px;
     font-weight: bold;
+    z-index: 11;
+    position: relative;
 }
 
 .buttons{
     display: flex;
     flex-direction: column;
     align-self: center;
-    margin-right: 15px;
+    margin-right: 20px;
+    position: relative;
+    z-index: 11;
 }
 
 .arrowBtn{
