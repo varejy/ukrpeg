@@ -13,43 +13,35 @@ const mapStateToProps = ({ application }) => {
 
 class NewsContent extends Component {
     static propTypes = {
-        news: PropTypes.array.isRequired,
-        newsShowed: PropTypes.number.isRequired
+        newsCategoryRendered: PropTypes.array
     };
 
     static defaultProps = {
-        news: [],
-        newsShowed: 0
+        newsCategoryRendered: []
     };
 
     constructor (...args) {
         super(...args);
-        const { news, newsShowed } = this.props;
+        const { newsCategoryRendered } = this.props;
 
         this.state = {
-            news: news,
-            index: newsShowed
+            news: newsCategoryRendered
         };
     }
 
     componentWillReceiveProps (nextProps, nextContext) {
-        if (this.props.newsShowed !== nextProps.newsShowed) {
-            this.setState({ index: nextProps.newsShowed, news: nextProps.news });
+        if (this.props.newsCategoryRendered !== nextProps.newsCategoryRendered) {
+            this.setState({ news: nextProps.newsCategoryRendered });
         }
     }
 
     render () {
-        const { news, index } = this.state;
+        const { news } = this.state;
 
         return <div className={styles.newsCardsContainer}>
-            {index !== 0
-                ? news[index].newsList.map((newsCard, i) =>
+            {
+                news.map((newsCard, i) =>
                     <NewsCard key={i} cardData={newsCard}/>
-                )
-                : news.map((category) =>
-                    category.newsList.map((newsCard, i) =>
-                        <NewsCard key={i} cardData={newsCard}/>
-                    )
                 )
             }
         </div>;

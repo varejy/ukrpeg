@@ -120,7 +120,7 @@ const mapStateToProps = () => {
 
 class AllNewsPage extends Component {
     static propTypes = {
-        news: PropTypes.array.isRequired
+        news: PropTypes.array
     };
 
     static defaultProps = {
@@ -138,7 +138,7 @@ class AllNewsPage extends Component {
 
         this.state = {
             news: newsArr,
-            newsShowed: 0
+            newsCategoryRendered: newsArr[0].newsList
         };
     }
 
@@ -151,12 +151,12 @@ class AllNewsPage extends Component {
 
         this.setState({
             news: newNews,
-            newsShowed: i
+            newsCategoryRendered: i === 0 ? newNews[0].newsList : newNews[i].newsList
         });
     };
 
     render () {
-        const { news, newsShowed } = this.state;
+        const { news, newsCategoryRendered } = this.state;
 
         return <section className={styles.newsContainer}>
             <div className={styles.newsContentContainer}>
@@ -165,7 +165,7 @@ class AllNewsPage extends Component {
                     <div className={styles.title}>Останні оновлення</div>
                 </div>
                 <div className={styles.newsContent}>
-                    <NewsContent news={news} newsShowed={newsShowed}/>
+                    <NewsContent newsCategoryRendered={newsCategoryRendered}/>
                 </div>
             </div>
             <div className={styles.newsMenuContainer}>

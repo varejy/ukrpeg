@@ -5,14 +5,6 @@
 @value lightOlive from '../../../../../css/colors.css';
 @value middleGrey from '../../../../../css/colors.css';
 
-.loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    height: 100%;
-}
-
 .pageNotFound{
     display: flex;
     justify-content: center;

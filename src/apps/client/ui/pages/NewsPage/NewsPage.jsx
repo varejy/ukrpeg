@@ -123,13 +123,12 @@ const mapStateToProps = () => {
 
 class NewsPage extends Component {
     static propTypes = {
-        news: PropTypes.array.isRequired,
+        news: PropTypes.array,
         location: PropTypes.object.isRequired
     };
 
     static defaultProps = {
-        news: [],
-        location: {}
+        news: []
     };
 
     constructor (...args) {
@@ -155,10 +154,9 @@ class NewsPage extends Component {
         });
         newsArr[0].opened = true;
 
-        this.notFoundPage = article === undefined;
+        this.notFoundPage = !article;
 
         return {
-            loading: !this.notFoundPage && !article,
             article: article,
             articleId: match.params.id,
             news: newsArr
@@ -178,16 +176,10 @@ class NewsPage extends Component {
     };
 
     render () {
-        const { news, article, loading } = this.state;
+        const { news, article } = this.state;
 
         if (this.notFoundPage) {
             return <div className={styles.pageNotFound}>404</div>;
-        }
-
-        if (loading) {
-            return <div className={styles.loader}>
-                <img src='/src/apps/client/ui/icons/loader.svg' alt='loader'/>
-            </div>;
         }
 
         return <section className={styles.newsContainer}>
