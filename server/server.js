@@ -13,9 +13,11 @@ import map from '@tinkoff/utils/array/map';
 import adminAuthenticationApi from './api/admin/authentication';
 import adminNewsCategoryApi from './api/admin/newsCategory';
 import adminNewsApi from './api/admin/news';
+import adminPartnersApi from './api/admin/partners';
 
 import clientNewsCategoryApi from './api/client/newsCategory';
 import clientNewsApi from './api/client/news';
+import clientPartnersApi from './api/client/partners';
 
 import { DATABASE_URL } from './constants/constants';
 import actions from './actions';
@@ -50,8 +52,10 @@ app.use(cookieParser());
 // api
 app.use('/api/admin/authentication', adminAuthenticationApi);
 app.use('/api/admin/news', adminNewsApi);
+app.use('/api/admin/partners', adminPartnersApi);
 app.use('/api/admin/newsCategory', adminNewsCategoryApi);
 app.use('/api/client/news', clientNewsApi);
+app.use('/api/client/partners', clientPartnersApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
 
 // admin
