@@ -104,7 +104,7 @@
 
 .btn{
     text-transform: uppercase;
-    font-family: 'Gotham Pro';
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
     font-weight: 500;
     padding: 32px 22px 25px;
 
@@ -418,7 +418,7 @@
     line-height: 14px;
     letter-spacing: .4px;
     color: whiteBasic;
-    font-family: 'Gotham Medium', sans-serif;
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
     text-align-last: end;
     text-align: start;
 }

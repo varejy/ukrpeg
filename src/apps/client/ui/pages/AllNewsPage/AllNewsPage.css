@@ -3,7 +3,7 @@
 .newsContainer{
     width: 100%;
     max-width: 1350px;
-    margin: 0 auto;
+    margin: 130px auto 50px auto;
     display: flex;
     align-items: start;
     justify-content: space-between;

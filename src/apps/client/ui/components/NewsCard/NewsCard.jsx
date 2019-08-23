@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './NewsCard.css';
 import PropTypes from 'prop-types';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -24,11 +25,13 @@ class NewsCard extends Component {
         const { cardData } = this.props;
 
         return <div className={styles.newsCardContainer}>
-            <div className={styles.newsCardImage}>
-                <div className={styles.imageContainer}>
-                    <img className={styles.image} src={cardData.url} alt={cardData.title}/>
+            <Link key={cardData.id} to={`/news/${cardData.id}`}>
+                <div className={styles.newsCardImage}>
+                    <div className={styles.imageContainer}>
+                        <img className={styles.image} src={cardData.url} alt={cardData.title}/>
+                    </div>
                 </div>
-            </div>
+            </Link>
             <div className={styles.newsCardDate}>{getDateFormatted(cardData.date, 'ua')}</div>
             <div className={styles.newsCardTitle}>{cardData.title}</div>
         </div>;
