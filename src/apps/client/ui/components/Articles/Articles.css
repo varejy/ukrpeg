@@ -14,12 +14,12 @@
     flex-direction: column;
     padding-bottom: 80px;
 
-    @media (--media-phone) {
+    @media (--media-tablet-l) {
         position: relative;
         padding: 0;
    }
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         position: relative;
         padding: 0;
    }
@@ -31,11 +31,11 @@
     padding-left: 125px;
     display: flex;
 
-    @media (--media-phone) {
+    @media (--media-tablet-l) {
         padding: 0 13px;
    }
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         padding: 0 13px;
    }
 }
@@ -44,11 +44,11 @@
     width: 100%;
     padding-bottom: 35px;
 
-    @media (--media-phone) {
+    @media (--media-tablet-l) {
         padding-bottom: 10px;
    }
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         padding-bottom: 10px;
    }
 }
@@ -65,7 +65,7 @@
     cursor: pointer;
     font-family: 'Gotham Medium', sans-serif;
 
-    @media (--media-phone) {
+    @media (--media-tablet-l) {
         font-size: 10px;
         line-height: 14px;
         letter-spacing: 1px;
@@ -74,7 +74,7 @@
         border-left: 3px solid lightGreenBasic;
    }
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         font-size: 10px;
         line-height: 14px;
         letter-spacing: 1px;
@@ -94,12 +94,12 @@
     padding:0 125px;
     display: flex;
 
-    @media (--media-phone) {
+    @media (--media-tablet-l) {
         padding: 0;
         overflow: hidden;
    }
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         padding: 0;
         overflow: hidden;
    }
@@ -111,11 +111,11 @@
     justify-content: center;
     background: semiGreyBg;
 
-    @media (--media-phone) {
+    @media (--media-tablet-l) {
       background: whiteBasic;
    }
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
       background: whiteBasic;
    }
 }
@@ -123,7 +123,7 @@
 .news{
     display: flex;
 
-    @media (--media-phone) {
+    @media (--media-tablet-l) {
       flex-direction: column;
       flex-wrap: wrap;
       max-height: 200px;
@@ -131,7 +131,7 @@
       position: relative;
    }
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
       flex-direction: column;
       flex-wrap: wrap;
       max-height: 200px;
@@ -145,14 +145,7 @@
     padding: 30px 35px 50px 20px;
     cursor: pointer;
 
-    @media (--media-phone) {
-        padding-left: 25px;
-        padding-top: 20px;
-        padding-bottom: 40px;
-        margin: 0;
-   }
-
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         padding-left: 25px;
         padding-top: 20px;
         padding-bottom: 40px;
@@ -163,11 +156,7 @@
 .newsBlock:hover{
     outline: 1px solid lightGreenHover;
 
-    @media (--media-phone) {
-        outline: none;
-   }
-
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         outline: none;
    }
 }
@@ -180,13 +169,7 @@
     font-family: 'Gotham Pro', sans-serif;
     font-weight: 300;
 
-    @media (--media-phone) {
-      font-size: 10px;
-      line-height: 14px;
-      margin-bottom: 10px;
-   }
-
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
       font-size: 10px;
       line-height: 14px;
       margin-bottom: 10px;
@@ -208,15 +191,7 @@
     align-self: center;
     margin-right: 15px;
 
-    @media (--media-phone) {
-        position: absolute;
-        top: -10px;
-        right: 90px;
-        transform: rotate(-90deg);
-        margin: 0;
-   }
-
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         position: absolute;
         top: -10px;
         right: 90px;
@@ -233,12 +208,7 @@
     justify-content: center;
     border: 1px solid lightGreyBorder;
 
-    @media (--media-phone) {
-        width: 30px;
-        height: 30px;
-   }
-
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         width: 30px;
         height: 30px;
    }
@@ -252,12 +222,7 @@
     width: 24px;
     height: 12px;
 
-    @media (--media-phone) {
-        width: 15px;
-        height: 10px;
-   }
-
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         width: 15px;
         height: 10px;
    }
@@ -266,14 +231,7 @@
 .switches{
     display: none;
 
-    @media (--media-phone) {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 15px;
-   }
-
-    @media (--media-phone-s) {
+    @media (--media-tablet-s) {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -290,6 +248,6 @@
 }
 
 .switchItem{
-  background: whiteBasic;
-  border: .5px solid blackBasic;
+    background: whiteBasic;
+    border: .5px solid blackBasic;
 }
