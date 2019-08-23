@@ -72,7 +72,7 @@ class Header extends Component {
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
-                <div className={styles.wrapper}>
+                <div className={!burgerMenuOpen ? styles.wrapper : styles.wrapperBurgerMenu}>
                     <Link to={`${langRoute}/`} className={styles.logoContainer}>
                         <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
                     </Link>
