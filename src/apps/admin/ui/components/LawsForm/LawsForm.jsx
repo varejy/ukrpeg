@@ -16,7 +16,7 @@ const PRODUCTS_VALUES = ['name', 'id', 'path'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveProduct: payload => dispatch(saveProduct(payload)),
-    editProduct: payload => dispatch(editProduct(payload)),
+    editProduct: payload => dispatch(editProduct(payload))
 });
 
 class LawsForm extends Component {
