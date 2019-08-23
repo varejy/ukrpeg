@@ -54,7 +54,7 @@ class NewsForm extends Component {
             ua_name: pathOr(['texts', 'ua', 'name'], '', news),
             en_name: pathOr(['texts', 'en', 'name'], '', news),
             en_shortDescription: pathOr(['texts', 'en', 'shortDescription'], '', news),
-            ua_shortDescription: pathOr(['texts', 'ua', 'shortDescription'], '', news), 
+            ua_shortDescription: pathOr(['texts', 'ua', 'shortDescription'], '', news),
             ua_description: pathOr(['texts', 'ua', 'description'], '', news),
             en_description: pathOr(['texts', 'en', 'description'], '', news),
             lang: 'ua',

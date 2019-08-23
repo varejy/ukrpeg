@@ -289,7 +289,7 @@ class NewsPage extends Component {
                             news: this.getCategoryNews()
                         });
                     });
-            })
+            });
     }
 
     handleWarningDisagree = () => {

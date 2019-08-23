@@ -67,10 +67,10 @@ class NewsCategoryForm extends Component {
             positionIndex,
             texts: {
                 en: {
-                    name: enName,
+                    name: enName
                 },
                 ua: {
-                    name: uaName,
+                    name: uaName
                 }
             },
             id
@@ -101,7 +101,7 @@ class NewsCategoryForm extends Component {
             });
     };
 
-    render() {
+    render () {
         const { id, lang } = this.state;
 
         return <Form
@@ -112,7 +112,7 @@ class NewsCategoryForm extends Component {
             })}
             onChange={this.handleChange}
             onSubmit={this.handleSubmit}
-        />
+        />;
     }
 }
 
