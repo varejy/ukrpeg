@@ -28,13 +28,13 @@ class Contact extends Component {
                     <div className={styles.coverBlock}>
                         <div className={styles.blockText}>
                             <p>{text.info.workHours.title}</p>
-                            <p>{text.info.workHours.desc}</p>
+                            <p className={styles.boldText} >{text.info.workHours.desc}</p>
                         </div>
                         <div className={styles.blockText}>
                             <p>{text.info.adress.street}</p>
                             <p>{text.info.adress.index}</p>
                             <p>{text.info.adress.phone}
-                                <a href={`tel:${text.info.adress.phoneNumber}`}>{text.info.adress.phoneNumber}</a>
+                                <a href={`tel:${text.info.adress.phoneNumber}`} className={styles.boldText}>{text.info.adress.phoneNumber}</a>
                             </p>
                         </div>
                     </div>
