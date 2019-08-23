@@ -28,7 +28,7 @@ class Contact extends Component {
                     <div className={styles.coverBlock}>
                         <div className={styles.blockText}>
                             <p>{text.info.workHours.title}</p>
-                            <p className={styles.boldText}>{text.info.workHours.desc}</p>
+                            <p>{text.info.workHours.desc}</p>
                         </div>
                         <div className={styles.blockText}>
                             <p>{text.info.adress.street}</p>
