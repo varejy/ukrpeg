@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import styles from './AllNewsPage.css';
+import styles from './NewsPage.css';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import NewsContent from '../../components/NewsContent/NewsContent';
 import PropTypes from 'prop-types';
+import getDateFormatted from '../../../../../../utils/getDateFormatted';
+import { withRouter, matchPath } from 'react-router-dom';
+import find from '@tinkoff/utils/array/find';
 
+const PRODUCT_PATH = '/:news/:id';
 const NEWS_CATEGORY_LIST = [
     {
         id: 'Всі новини',
@@ -118,9 +121,10 @@ const mapStateToProps = () => {
     };
 };
 
-class AllNewsPage extends Component {
+class NewsPage extends Component {
     static propTypes = {
-        news: PropTypes.array
+        news: PropTypes.array,
+        location: PropTypes.object.isRequired
     };
 
     static defaultProps = {
@@ -129,34 +133,54 @@ class AllNewsPage extends Component {
 
     constructor (...args) {
         super(...args);
-        const { news } = this.props;
 
+        this.state = this.getNewState();
+    }
+
+    getNewState = (props = this.props) => {
+        const { location: { pathname }, news } = props;
+        const match = matchPath(pathname, { path: PRODUCT_PATH, exact: true });
+        let allNews = news.map((category) =>
+            category.newsList.map((news) =>
+                news
+            )
+        );
+        allNews = allNews.reduce(function (previousValue, currentValue) {
+            return previousValue.concat(currentValue);
+        }, []);
+        const article = find(news => news.id === match.params.id, allNews);
         const newsArr = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
         newsArr[0].opened = true;
 
-        this.state = {
-            news: newsArr,
-            newsCategoryRendered: newsArr[0].newsList
+        this.notFoundPage = !article;
+
+        return {
+            article: article,
+            articleId: match.params.id,
+            news: newsArr
         };
-    }
+    };
 
     handleCategoryClick = i => () => {
         const { news } = this.props;
         const newNews = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
-        newNews[i].opened = !news[i].opened;
+        newNews[i].opened = !this.state.news[i].opened;
 
         this.setState({
-            news: newNews,
-            newsCategoryRendered: i === 0 ? newNews[0].newsList : newNews[i].newsList
+            news: newNews
         });
     };
 
     render () {
-        const { news, newsCategoryRendered } = this.state;
+        const { news, article } = this.state;
+
+        if (this.notFoundPage) {
+            return <div className={styles.pageNotFound}>404</div>;
+        }
 
         return <section className={styles.newsContainer}>
             <div className={styles.newsContentContainer}>
@@ -165,7 +189,24 @@ class AllNewsPage extends Component {
                     <div className={styles.title}>Останні оновлення</div>
                 </div>
                 <div className={styles.newsContent}>
-                    <NewsContent newsCategoryRendered={newsCategoryRendered}/>
+                    <div className={styles.newsCover}><img className={styles.coverImage} src={article.url} alt={article.title}/></div>
+                    <div className={styles.news}>
+                        <div className={styles.newsDate}>{getDateFormatted(article.date, 'ua')}</div>
+                        <div className={styles.newsTitle}>{article.title}</div>
+                        <div className={styles.newsText}>{article.text}</div>
+                    </div>
+                </div>
+                <div className={styles.nextNews}>
+                    <div className={styles.nextNewsInfo}>
+                        <div className={styles.nextNewsHeader}>
+                            <div className={styles.next}>Наступна новина</div>
+                            <div className={styles.nextNewsDate}>17 cерпня 2019</div>
+                        </div>
+                        <div className={styles.nextNewsTitle}>Українська Пакувально-Екологічна Коаліція нагадала про потребу сортувати побутові відходи</div>
+                    </div>
+                    <div className={styles.nextNewsButton}>
+                        <img className={styles.arrowIcon} src='/src/apps/client/ui/pages/NewsPage/images/downArrowGreen.png' alt='arrow'/>
+                    </div>
                 </div>
             </div>
             <div className={styles.newsMenuContainer}>
@@ -175,13 +216,33 @@ class AllNewsPage extends Component {
                             <li key={i}>
                                 <div className={styles.newsCategory} onClick={this.handleCategoryClick(i)}>
                                     <div className={styles.newsCategoryTitle}>
-                                        <div className={classNames(!news[i].opened
-                                            ? styles.rectangleGreenInvisible
-                                            : styles.rectangleGreen)}
-                                        />
                                         <div className={styles.categoryTitle}>{newsCategory.id}</div>
                                     </div>
+                                    <div className={classNames(!news[i].opened ? styles.arrowButtonDown : styles.arrowButtonUp)}>
+                                        <img
+                                            className={styles.categoryArrowIcon}
+                                            src='/src/apps/client/ui/pages/NewsPage/images/downArrowBlack.png'
+                                            alt='arrow'
+                                        />
+                                    </div>
                                 </div>
+                                <ul className={classNames(styles.categoryNewsList, {
+                                    [styles.categoryNewsListAnimated1x]: news[i].opened && newsCategory.newsList.length === 1,
+                                    [styles.categoryNewsListAnimated2x]: news[i].opened && newsCategory.newsList.length === 2,
+                                    [styles.categoryNewsListAnimated3x]: news[i].opened && newsCategory.newsList.length >= 3
+                                })}>
+                                    {
+                                        newsCategory.newsList.map((newsCard, j) =>
+                                            <li className={classNames(styles.newsCardContainer, {
+                                                [styles.newsCardContainerAnimated]: news[i].opened
+                                            })}
+                                            key={j} style={{ transitionDelay: `${j * 0.2}s` }}>
+                                                <div className={styles.newsDate}>{getDateFormatted(newsCard.date, 'ua')}</div>
+                                                <div className={styles.newsTitle}>{newsCard.title}</div>
+                                            </li>
+                                        )
+                                    }
+                                </ul>
                             </li>
                         )
                     }
@@ -191,4 +252,4 @@ class AllNewsPage extends Component {
     }
 }
 
-export default connect(mapStateToProps)(AllNewsPage);
+export default withRouter(connect(mapStateToProps)(NewsPage));

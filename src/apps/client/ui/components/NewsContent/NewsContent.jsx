@@ -3,44 +3,8 @@ import styles from './NewsContent.css';
 
 import { connect } from 'react-redux';
 import NewsCard from '../NewsCard/NewsCard';
+import PropTypes from 'prop-types';
 
-const NEWS_CARDS_DATA = [
-    {
-        url: 'https://target.scene7.com/is/image/Target/GUEST_8a2d26bb-eb84-45ce-8066-0d4547d65641?wid=488&hei=488&fmt=pjpeg',
-        date: +new Date(2019, 7, 16),
-        title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-    },
-    {
-        url: 'https://target.scene7.com/is/image/Target/GUEST_8a2d26bb-eb84-45ce-8066-0d4547d65641?wid=488&hei=488&fmt=pjpeg',
-        date: +new Date(2019, 7, 16),
-        title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-    },
-    {
-        url: 'https://target.scene7.com/is/image/Target/GUEST_8a2d26bb-eb84-45ce-8066-0d4547d65641?wid=488&hei=488&fmt=pjpeg',
-        date: +new Date(2019, 7, 16),
-        title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-    },
-    {
-        url: 'https://target.scene7.com/is/image/Target/GUEST_8a2d26bb-eb84-45ce-8066-0d4547d65641?wid=488&hei=488&fmt=pjpeg',
-        date: +new Date(2019, 7, 16),
-        title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-    },
-    {
-        url: 'https://target.scene7.com/is/image/Target/GUEST_8a2d26bb-eb84-45ce-8066-0d4547d65641?wid=488&hei=488&fmt=pjpeg',
-        date: +new Date(2019, 7, 16),
-        title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-    },
-    {
-        url: 'https://target.scene7.com/is/image/Target/GUEST_8a2d26bb-eb84-45ce-8066-0d4547d65641?wid=488&hei=488&fmt=pjpeg',
-        date: +new Date(2019, 7, 16),
-        title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-    },
-    {
-        url: 'https://target.scene7.com/is/image/Target/GUEST_8a2d26bb-eb84-45ce-8066-0d4547d65641?wid=488&hei=488&fmt=pjpeg',
-        date: +new Date(2019, 7, 16),
-        title: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-    }
-];
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap
@@ -48,11 +12,38 @@ const mapStateToProps = ({ application }) => {
 };
 
 class NewsContent extends Component {
+    static propTypes = {
+        newsCategoryRendered: PropTypes.array
+    };
+
+    static defaultProps = {
+        newsCategoryRendered: []
+    };
+
+    constructor (...args) {
+        super(...args);
+        const { newsCategoryRendered } = this.props;
+
+        this.state = {
+            news: newsCategoryRendered
+        };
+    }
+
+    componentWillReceiveProps (nextProps, nextContext) {
+        if (this.props.newsCategoryRendered !== nextProps.newsCategoryRendered) {
+            this.setState({ news: nextProps.newsCategoryRendered });
+        }
+    }
+
     render () {
+        const { news } = this.state;
+
         return <div className={styles.newsCardsContainer}>
-            {NEWS_CARDS_DATA.map((newsCard, i) =>
-                <NewsCard key={i} cardData={newsCard}/>
-            )}
+            {
+                news.map((newsCard, i) =>
+                    <NewsCard key={i} cardData={newsCard}/>
+                )
+            }
         </div>;
     }
 }
