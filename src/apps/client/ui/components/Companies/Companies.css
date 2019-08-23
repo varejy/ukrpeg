@@ -2,6 +2,8 @@
 @value lightGreenBasic from '../../../../../css/colors.css';
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value lightGreyHover from '../../../../../css/colors.css';
+@value lightGreenHover from '../../../../../css/colors.css';
+@value lightGreyBorder from '../../../../../css/colors.css';
 
 .companies{
     width: 100%;
@@ -15,6 +17,10 @@
     padding-left: 125px;
     display: flex;
 
+    @media (--media-phone) {
+        padding: 20px 13px 55px;
+   }
+
     @media (--media-phone-s) {
         padding: 20px 13px 55px;
    }
@@ -24,9 +30,14 @@
     width: 100%;
     padding: 55px 0 70px 0;
 
+    @media (--media-phone) {
+      border: 1px solid lightGreyBorder;
+      padding: 20px 0 25px;
+   }
+
     @media (--media-phone-s) {
-      border: 1px solid grey;
-      padding: 20px 0 30px;
+      border: 1px solid lightGreyBorder;
+      padding: 20px 0 25px;
    }
 }
 
@@ -35,18 +46,27 @@
     border-left: 5px solid lightGreenBasic;
     margin-left: -30px;
     color: darkBlueBasic;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
-    font-family: 'Gotham Medium';
+    font-family: 'Gotham Pro';
+
+    @media (--media-phone) {
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 1px;
+        margin-left: -2px;
+        padding: 10px 0 10px 10px;
+        border-left: 3px solid lightGreenBasic;
+   }
 
     @media (--media-phone-s) {
         font-size: 10px;
         line-height: 14px;
         letter-spacing: 1px;
-        margin-left: 0;
+        margin-left: -2px;
         padding: 10px 0 10px 10px;
         border-left: 3px solid lightGreenBasic;
    }
@@ -63,6 +83,12 @@
     width: 100%;
     overflow: auto;
 
+    @media (--media-phone) {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+
     @media (--media-phone-s) {
       padding: 0;
       flex-wrap: wrap;
@@ -76,16 +102,35 @@
     display: flex;
     align-items: center;
 
+    @media (--media-phone) {
+        width: 30%;
+        height: 30px;
+        padding: 5px 10px;
+        align-self: center;
+        margin-bottom: 5px;
+    }
+
     @media (--media-phone-s) {
-      width: 30%;
-      padding: 5px 10px;
+        width: 30%;
+        height: 30px;
+        padding: 5px 10px;
+        align-self: center;
+        margin-bottom: 5px;
     }
 }
 
 .logo{
     width: 140px;
 
-    @media (--media-phone-s) {
+    @media (--media-phone) {
+      height: 100%;
       width: 100%;
+      object-fit: contain;
+    }
+
+    @media (--media-phone-s) {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
     }
 }

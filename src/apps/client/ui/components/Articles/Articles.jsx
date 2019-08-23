@@ -36,6 +36,15 @@ class Articles extends Component {
     maxSlide = this.props.news.length - 1;
     maxLeft = this.maxSlide * this.props.mediaWidth;
 
+    handleSwitchClick = i => e => {
+        const { mediaWidth } = this.props;
+
+        this.setState({
+            sliderLeft: i * mediaWidth,
+            currentNews: i
+        });
+    }
+
     handlePrevNewsClick = event => {
         const { mediaWidth } = this.props;
         const { currentNews } = this.state;
@@ -44,11 +53,6 @@ class Articles extends Component {
             this.setState({
                 sliderLeft: (currentNews - 1) * mediaWidth,
                 currentNews: currentNews - 1
-            });
-        } else {
-            this.setState({
-                sliderLeft: this.maxSlide * mediaWidth,
-                currentNews: this.maxSlide
             });
         }
     }
@@ -62,17 +66,12 @@ class Articles extends Component {
                 sliderLeft: (currentNews + 1) * mediaWidth,
                 currentNews: currentNews + 1
             });
-        } else {
-            this.setState({
-                sliderLeft: 0,
-                currentNews: 0
-            });
         }
     }
 
     render () {
         const { langMap, lang, news, mediaWidth } = this.props;
-        const { sliderLeft } = this.state;
+        const { sliderLeft, currentNews } = this.state;
         const text = propOr('articles', {}, langMap);
 
         return <div className={styles.articles}>
@@ -94,15 +93,23 @@ class Articles extends Component {
                         })}
                     </div>
                     <div className={styles.buttons}>
-                        <button className={styles.arrowBtn} onClick={this.handlePrevNewsClick}>
+                        <button className={currentNews === 0 ? styles.arrowBtn : styles.activeArrowBtn} onClick={this.handlePrevNewsClick}>
                             <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' />
                         </button>
-                        <button className={styles.arrowBtn} onClick={this.handleNextNewsClick}>
+                        <button className={currentNews === news.length - 1 ? styles.arrowBtn : styles.activeArrowBtn} onClick={this.handleNextNewsClick}>
                             <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowDown.png' />
                         </button>
                     </div>
                 </div>
             </div>
+            <ul className={styles.switches}>
+              {news.map((item, i) =>{
+                return (
+                  <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)}>
+                  </li>
+                )
+              })}
+            </ul>
         </div>;
     }
 }

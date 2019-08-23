@@ -12,9 +12,13 @@
     display: flex;
     justify-content: center;
 
-      @media (--media-phone-s) {
-          background: transparent
-     }
+    @media (--media-tablet-l) {
+      background: transparent
+    }
+
+    @media (--media-tablet-s) {
+      background: transparent
+    }
 }
 
 .headBg{
@@ -26,7 +30,12 @@
     justify-content: center;
     z-index: 4;
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-l) {
+        position: absolute;
+        background: transparent;
+   }
+
+    @media (--media-tablet-s) {
         position: absolute;
         background: transparent;
    }
@@ -37,9 +46,19 @@
     max-width: 1350px;
     display: flex;
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-l) {
         justify-content: space-between;
         align-items: center;
+        padding: 35px;
+   }
+
+    @media (--media-tablet-s) {
+        justify-content: space-between;
+        align-items: center;
+        padding: 35px;
+   }
+
+    @media (--media-phone) {
         padding: 25px 20px;
    }
 }
@@ -50,7 +69,12 @@
     align-items: center;
     justify-content: center;
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-l) {
+        min-width: 0;
+        z-index: 4;
+   }
+
+    @media (--media-tablet-s) {
         min-width: 0;
         z-index: 4;
    }
@@ -70,7 +94,7 @@
     justify-content: center;
     flex-grow: 2;
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-l) {
         display: none;
    }
 }
@@ -126,7 +150,7 @@
     font-family: 'Gotham Pro';
     letter-spacing: 1px;
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-l) {
         display: none;
    }
 }
@@ -140,13 +164,14 @@
     letter-spacing: .5px;
     font-family: 'Gotham Narrow';
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-l) {
         display: none;
    }
 }
 
 .toogleLangBurgerMenu{
-    @media (--media-phone-s) {
+
+    @media (--media-tablet-l) {
         display: flex;
         z-index: 4;
    }
@@ -163,12 +188,21 @@
 .burgerMenu, .burgerMenuOpen{
     display: none;
 
-    @media (--media-phone-s) {
+    @media (--media-tablet-l) {
         display: block;
         height: 50px;
         width: 50px;
-        border: 1px solid green;
-        padding-top: 5px;
+        border: 1px solid limeGreen;
+        padding: 10px 0;
+        position: relative;
+   }
+
+    @media (--media-tablet-s) {
+        display: block;
+        height: 50px;
+        width: 50px;
+        border: 1px solid limeGreen;
+        padding: 10px 0;
         position: relative;
    }
 }
@@ -183,6 +217,9 @@
     background: white;
     transition: all .2s ease-out;
     transform: rotate(0deg);
+    border: none;
+    border-radius: 3px;
+    margin: 5px auto;
 }
 
 .menuLinesCross:first-child{
@@ -217,26 +254,127 @@
     flex-direction: column;
     padding-left: 100px;
     padding-top: 215px;
+
+    @media (--media-tablet-l) {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: blueMobileBg;
+        display: flex;
+        flex-direction: column;
+        padding-left: 130px;
+        padding-top: 215px;
+    }
+
+    @media (--media-tablet-s) {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: blueMobileBg;
+        display: flex;
+        flex-direction: column;
+        padding-left: 130px;
+        padding-top: 215px;
+    }
+
+    @media (--media-phone) {
+        padding-left: 120px;
+    }
+
+    @media (--media-phone-s) {
+        padding-left: 100px;
+    }
 }
 
 .burgerMenuList .link{
-    letter-spacing: .3px;
-    font-size: 13px;
-    line-height: 14px;
-    font-weight: 500;
-    color: whiteBasic;
-    text-align: left;
-    padding: 0;
-    margin-bottom: 40px;
-    border: none;
+      letter-spacing: .3px;
+      font-size: 13px;
+      line-height: 14px;
+      font-weight: 500;
+      color: whiteBasic;
+      text-align: left;
+      padding: 0;
+      margin-bottom: 40px;
+      border: none;
+
+      @media (--media-tablet-l) {
+        letter-spacing: .3px;
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 500;
+        color: whiteBasic;
+        text-align: left;
+        padding: 0;
+        margin-bottom: 40px;
+        border: none;
+      }
+
+      @media (--media-tablet-s) {
+        letter-spacing: .3px;
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 500;
+        color: whiteBasic;
+        text-align: left;
+        padding: 0;
+        margin-bottom: 40px;
+        border: none;
+      }
+
+      @media (--media-phone) {
+        font-size: 14px;
+        line-height: 16px;
+      }
+
+      @media (--media-phone-s) {
+          font-size: 13px;
+          line-height: 14px;
+      }
 }
 
 .socialhidden{
-  display: none;
+    display: none;
 }
 
 .social{
     display: none;
+
+    @media (--media-tablet-l) {
+        display: block;
+        z-index: 5;
+        color: whiteBasic;
+        position: absolute;
+        left: 0;
+        bottom: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 130px;
+    }
+
+    @media (--media-tablet-s) {
+        display: block;
+        z-index: 5;
+        color: whiteBasic;
+        position: absolute;
+        left: 0;
+        bottom: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 130px;
+    }
+
+    @media (--media-phone) {
+        bottom: 80px;
+        padding: 0 120px;
+    }
 
     @media (--media-phone-s) {
         display: block;
@@ -256,4 +394,26 @@
     font-size: 10px;
     letter-spacing: .8px;
     line-height: 14px;
+
+    @media (--media-tablet-l) {
+        font-size: 14px;
+        letter-spacing: .8px;
+        line-height: 16px;
+    }
+
+    @media (--media-tablet-s) {
+        font-size: 14px;
+        letter-spacing: .8px;
+        line-height: 16px;
+    }
+
+    @media (--media-phone) {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    @media (--media-phone-s) {
+        font-size: 10px;
+        line-height: 14px;
+    }
 }
