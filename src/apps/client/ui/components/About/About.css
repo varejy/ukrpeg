@@ -94,7 +94,8 @@
 }
 
 .img{
-    width: 540px;
+    max-width: 540px;
+    object-fit: cover;
     margin-left: 70px;
     order: 1;
 
@@ -106,6 +107,7 @@
         order: 0;
         margin: 0;
         width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -124,11 +126,13 @@
          order: 0;
          margin: 0;
          width: 100%;
+         max-width: 100%;
      }
 }
 
 .contentBlock:nth-child(3n):nth-child(odd) .img{
-    width: 680px;
+    max-width: 680px;
+    object-fit: cover;
     margin-right: -125px;
 
     @media (max-width: 1350px) {
@@ -140,6 +144,7 @@
         order: 0;
         margin: 0;
         width: 100%;
+        max-width: 100%;
     }
 }
 

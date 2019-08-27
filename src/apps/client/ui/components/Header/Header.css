@@ -26,6 +26,7 @@
     width: 100%;
     position: relative;
     position: fixed;
+    left: 0;
     display: flex;
     justify-content: center;
     z-index: 4;
@@ -171,6 +172,7 @@
 }
 
 .phone{
+    white-space: nowrap;
     color: darkGreyBasic;
     margin-right: 50px;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
@@ -441,5 +443,15 @@
     @media (--media-phone-s) {
         font-size: 10px;
         line-height: 14px;
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .link, .activeLink {
+        width: auto;
+    }
+
+    .link:last-child, .activeLink:last-child{
+      width: 100%;
     }
 }
