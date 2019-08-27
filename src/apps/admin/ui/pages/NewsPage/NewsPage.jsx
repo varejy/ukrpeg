@@ -26,6 +26,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import arrayMove from '../../../utils/arrayMove';
 
@@ -126,8 +127,12 @@ const materialStyles = theme => ({
     },
     toolbarNav: {
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         padding: '5px 30px 5px 30px'
+    },
+    categoryTitle: {
+        height: '30px'
     },
     buttonSortable: {
         position: 'relative',
@@ -255,10 +260,15 @@ class NewsPage extends Component {
     };
 
     handleCategoryFormDone = () => {
+        const { activeNewsCategory } = this.state;
+
         this.props.getCategories()
             .then(() => {
+                const { categories } = this.props;
+
                 this.setState({
-                    newsCategories: this.props.categories
+                    newsCategories: categories,
+                    activeNewsCategory: categories.find(category => category.id === activeNewsCategory.id)
                 });
                 this.handleCloseCategoryForm();
             });
@@ -367,7 +377,7 @@ class NewsPage extends Component {
                     headerRows={headerRows}
                     tableCells={tableCells}
                     values={news}
-                    headerText={`Новости в категории ${activeNewsCategory.name}`}
+                    headerText={`Новости в категории ${pathOr(['texts', DEFAULT_LANG, 'name'], '', activeNewsCategory)}`}
                     onDelete={this.handleNewsDelete}
                     deleteValueWarningTitle='Вы точно хотите удалить новость?'
                     deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
@@ -390,6 +400,7 @@ class NewsPage extends Component {
                 }}
             >
                 <div className={classes.toolbarNav}>
+                    <Typography variant='h6' className={classes.categoryTitle}>Категории новостей</Typography>
                     <Tooltip title='Добавление'>
                         <IconButton aria-label='Add' onClick={this.handleCategoryFormOpen()}>
                             <AddIcon />
