@@ -1,0 +1,71 @@
+@value whiteBasic from '../../../../../css/colors.css';
+@value lightGreenBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+@value lightGreyHover from '../../../../../css/colors.css';
+@value greyTextBasic from '../../../../../css/colors.css';
+
+.about{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding:0 125px;
+    position: relative;
+}
+
+.title{
+    margin-top: 75px;
+    padding: 20px 0 20px 20px;
+    border-left: 5px solid lightGreenBasic;
+    margin-left: -25px;
+    color: darkBlueBasic;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+}
+
+.content{
+    padding: 70px 0 30px 0;
+    z-index: 1;
+    position: relative;
+}
+
+.contentBlock{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.img{
+    width: 540px;
+    margin-left: 70px;
+    order: 1;
+}
+
+.contentBlock:nth-child(2n) .img{
+   order: 0;
+   margin-right: 140px;
+   margin-left: -125px;
+}
+
+.contentBlock:nth-child(3n):nth-child(odd) .img{
+    width: 680px;
+    margin-right: -125px;
+}
+
+.description{
+    padding-top: 45px;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    color: greyTextBasic;
+    padding-right: 5px;
+}

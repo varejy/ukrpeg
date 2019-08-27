@@ -36,24 +36,26 @@ class Articles extends Component {
                     <div className={styles.title}>{text.title}</div>
                 </div>
             </div>
-            <div className={styles.wrapperArticles}>
-                <div className={styles.news}>
-                    {news.map((item, index) => {
-                        return (
-                            <div key={index} className={styles.newsBlock}>
-                                <p className={styles.date}>{getDateFormatted(item.date, lang)}</p>
-                                <p className={styles.description}>{item.description}</p>
-                            </div>
-                        );
-                    })}
-                </div>
-                <div className={styles.buttons}>
-                    <button className={styles.arrowBtn}>
-                        <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' />
-                    </button>
-                    <button className={styles.arrowBtn}>
-                        <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowDown.png' />
-                    </button>
+            <div className={styles.wrapperArticleBg}>
+                <div className={styles.wrapperArticles}>
+                    <div className={styles.news}>
+                        {news.map((item, index) => {
+                            return (
+                                <div key={index} className={styles.newsBlock}>
+                                    <p className={styles.date}>{getDateFormatted(item.date, lang)}</p>
+                                    <p className={styles.description}>{item.description}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className={styles.buttons}>
+                        <button className={styles.arrowBtn}>
+                            <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' />
+                        </button>
+                        <button className={styles.arrowBtn}>
+                            <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowDown.png' />
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>;
