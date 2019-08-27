@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import NewsContent from '../../components/NewsContent/NewsContent';
 import PropTypes from 'prop-types';
 
+const CATEGORY_HEIGHT = 58;
 const NEWS_CATEGORY_LIST = [
     {
         id: 'Всі новини',
@@ -265,7 +266,7 @@ class AllNewsPage extends Component {
                     </div>
                 </div>
                 {
-                    <ul className={classNames(styles.categoriesList)} style={{ height: `${!mobileMenuListVisible ? 0 : 58 * news.length}px` }}>
+                    <ul className={classNames(styles.categoriesList)} style={{ height: `${!mobileMenuListVisible ? 0 : CATEGORY_HEIGHT * news.length}px` }}>
                         {
                             news.map((newsCategory, i) =>
                                 <li key={i}>

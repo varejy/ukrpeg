@@ -205,6 +205,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .arrowButtonReverse{
@@ -237,6 +238,7 @@
 
 .newsCategoryMobile{
     opacity: 0;
+    cursor: pointer;
 }
 
 .newsCategoryMobileAnimated{
