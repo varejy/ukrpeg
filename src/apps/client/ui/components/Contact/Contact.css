@@ -2,6 +2,7 @@
 @value lightGreenBasic from '../../../../../css/colors.css';
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value lightGreenBorder from '../../../../../css/colors.css';
+@value lightGreyBg from '../../../../../css/colors.css';
 
 .contact{
     width: 100%;
@@ -17,6 +18,14 @@
     position: relative;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     color: blackBasic;
+
+    @media (max-width: 1350px) {
+        padding: 0 110px;
+    }
+
+    @media (--media-tablet-l) {
+        padding: 0;
+    }
 }
 
 .title{
@@ -29,6 +38,33 @@
     font-size: 15px;
     line-height: 17px;
     letter-spacing: 1px;
+
+    @media (--media-tablet-l) {
+        margin: 60px 50px;
+        padding: 20px 0 20px 22px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    @media (--media-tablet-s) {
+        margin: 40px;
+        padding: 15px 0 15px 16px;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    @media (--media-phone) {
+        margin: 40px 30px;
+        padding: 10px 0 10px 11px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    @media (--media-phone-s) {
+        margin: 40px 20px 20px;
+        font-size: 10px;
+        line-height: 12px;
+    }
 }
 
 .boldText{
@@ -39,6 +75,24 @@
     display: flex;
     padding: 65px 0;
     height: 280px;
+
+    @media (--media-tablet-l) {
+        padding: 0;
+        height: 250px;
+    }
+
+    @media (--media-tablet-s) {
+        padding: 0;
+        height: 220px;
+    }
+
+    @media (--media-phone) {
+        height: 170px;
+    }
+
+    @media (--media-phone-s) {
+        height: 150px;
+    }
 }
 
 .coverBlock{
@@ -46,6 +100,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (--media-tablet-l) {
+        background: lightGreyBg;
+        padding:40px 50px;
+    }
+
+    @media (--media-tablet-s) {
+        padding: 40px;
+    }
+
+    @media (--media-phone-s) {
+        padding: 30px;
+    }
+}
+
+.coverBlock:last-child{
+    @media (--media-tablet-l) {
+        display: none;
+    }
 }
 
 .blockText{
@@ -53,6 +126,26 @@
     line-height: 22px;
     letter-spacing: 1px;
     font-weight: 600;
+
+    @media (--media-tablet-l) {
+        font-size: 15px;
+        line-height: 17px;
+    }
+
+    @media (--media-tablet-s) {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    @media (--media-phone) {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+    @media (--media-phone-s) {
+        font-size: 11px;
+        line-height: 13px;
+    }
 }
 
 .cityName{
@@ -65,10 +158,42 @@
     width: 50%;
     padding-bottom: 85px;
     font-weight: 600;
+
+    @media (--media-tablet-l) {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    @media (--media-tablet-s) {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    @media (--media-phone) {
+        padding-bottom: 25px;
+    }
 }
 
 .map{
     padding-bottom: 115px;
+
+    @media (--media-tablet-l) {
+        padding-bottom: 40px;
+        margin: 0 50px;
+    }
+
+    @media (--media-tablet-s) {
+        padding-bottom: 30px;
+        margin: 0 40px;
+    }
+
+    @media (--media-phone) {
+        padding-bottom: 20px;
+    }
+
+    @media (--media-phone-s) {
+        margin: 0 30px;
+    }
 }
 
 .emailTitle{
@@ -76,6 +201,33 @@
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 1px;
+
+    @media (--media-tablet-l) {
+        font-size: 15px;
+        line-height: 17px;
+        padding: 30px 50px;
+        margin: 0;
+    }
+
+    @media (--media-tablet-s) {
+        font-size: 14px;
+        line-height: 16px;
+        padding: 30px 40px;
+        margin: 0;
+    }
+
+    @media (--media-phone) {
+        font-size: 13px;
+        line-height: 15px;
+        padding: 30px 40px;
+        margin: 0;
+    }
+
+    @media (--media-phone-s) {
+        font-size: 11px;
+        line-height: 13px;
+        padding: 30px;
+    }
 }
 
 .email{
@@ -83,4 +235,37 @@
     padding: 38px 100px;
     font-size: 26px;
     letter-spacing: 2px;
+
+    @media (max-width: 1350px) {
+        padding: 38px 80px;
+    }
+
+    @media (--media-tablet-l) {
+        margin: 0 50px;
+        padding: 20px 40px;
+        font-size: 28px;
+        line-height: 32px;
+        width: fit-content;
+    }
+
+    @media (--media-tablet-s) {
+        margin: 0 40px;
+        padding: 20px 30px;
+        font-size: 24px;
+        line-height: 28px;
+        width: auto;
+    }
+
+    @media (--media-phone) {
+        padding: 20px 20px;
+        font-size: 20px;
+        line-height: 23px;
+    }
+
+    @media (--media-phone-s) {
+        margin: 0 30px;
+        padding: 20px 15px;
+        font-size: 18px;
+        line-height: 21px;
+    }
 }
