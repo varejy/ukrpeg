@@ -1,11 +1,57 @@
+@value limeGreen from '../../../../../css/colors.css';
+
 .newsCardsContainer{
     max-width: 807px;
     display: flex;
     flex-wrap: wrap;
     overflow-x: hidden;
 
-    @media (max-width: 620px){
-        width: 320px;
+    @media (max-width: 780px){
+        width: 100%;
         justify-content: center;
+        position: absolute;
     }
+}
+
+.sliderContainer{
+    width: 100%;
+
+    @media (max-width: 780px){
+        overflow-y: hidden;
+        position: relative;
+    }
+}
+
+.pagination{
+    font-family: 'Gotham Pro', Arial;
+    font-size: 16px;
+    position: relative;
+    z-index: 11;
+    width: 100%;
+    height: 100px;
+    background: url('./images/pattern.png') center;
+    background-size: cover;
+    display: none;
+
+    @media (max-width: 780px){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+    }
+}
+
+.paginationNumber{
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+.paginationNumberActive{
+    border: 1px solid limeGreen;
+}
+
+.newsContent{
+    padding-bottom: 100px;
 }

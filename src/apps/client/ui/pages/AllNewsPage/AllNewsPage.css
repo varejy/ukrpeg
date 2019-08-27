@@ -9,22 +9,20 @@
     align-items: start;
     justify-content: start;
 
-    @media (max-width: 768px){
+    @media (max-width: 780px){
+        margin: 0 auto;
         flex-direction: column-reverse;
         align-items: center;
         justify-content: start;
-    }
-
-    @media (max-width: 620px){
-        margin: 0 auto;
     }
 }
 
 .newsContentContainer{
     padding-top: 130px;
 
-    @media (max-width: 768px){
+    @media (max-width: 780px){
         padding-top: 30px;
+        width: 100%;
     }
 }
 
@@ -36,7 +34,7 @@
     height: 100vh;
     z-index: 10;
 
-    @media (max-width: 768px) {
+    @media (max-width: 780px) {
         display: none;
     }
 }
@@ -64,7 +62,7 @@
 }
 
 .column3{
-    margin-left: 663.5px;
+    margin-left: 664.5px;
 
     @media (max-width: 964px){
         display: none;
@@ -86,8 +84,8 @@
 .newsContent{
     margin: 0 0 0 135px;
 
-    @media (max-width: 768px){
-       margin: 43.5px;
+    @media (max-width: 780px){
+       margin: 52px 52px 0 52px;
     }
 }
 
@@ -98,7 +96,7 @@
     position: relative;
     z-index: 11;
 
-    @media (max-width: 768px){
+    @media (max-width: 780px){
         display: none;
     }
 }
@@ -111,12 +109,9 @@
     position: relative;
     z-index: 11;
 
-    @media (max-width: 768px){
+    @media (max-width: 780px){
         margin-left: 43.5px;
-    }
-
-    @media (max-width: 620px){
-        margin-left: 90px;
+        margin-bottom: -20px;
     }
 }
 
@@ -174,7 +169,7 @@
     align-items: end;
     justify-content: start;
 
-    @media (max-width: 768px){
+    @media (max-width: 780px){
         display: flex;
     }
 }
@@ -198,7 +193,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    padding: 20px;
+    padding: 20px 22px;
 }
 
 .arrowButton{
@@ -233,7 +228,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    padding: 20px;
+    padding: 20px 22px;
 }
 
 .newsCategoryMobile{
@@ -242,16 +237,4 @@
 
 .newsCategoryMobileAnimated{
     opacity: 1;
-}
-
-.pagination{
-    width: 100%;
-    height: 100px;
-    background: url('./images/pattern.png') center;
-    background-size: cover;
-    display: none;
-
-    @media (max-width: 620px){
-        display: flex;
-    }
 }

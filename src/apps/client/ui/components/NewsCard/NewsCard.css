@@ -6,12 +6,10 @@
     margin: 47px 43.5px 0 0;
     z-index: 11;
 
-    @media (max-width: 768px){
-        margin: 47px 43.5px 20px 0;
-    }
-
-    @media (max-width: 620px){
-        margin: 0 auto 20px auto;
+    @media (max-width: 780px){
+        margin: 20px auto 20px auto;
+        width: 100%;
+        border-bottom: 1px solid rgba(122, 122, 122, 0.1)
     }
 }
 
@@ -23,6 +21,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
+    @media (max-width: 780px){
+        width: 100%;
+        height: 256px;
+        justify-content: start;
+    }
 }
 
 .image{
