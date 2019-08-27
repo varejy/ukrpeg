@@ -52,7 +52,7 @@ const ItemSortable = SortableElement(({ index, isSelectedItem, onFormOpen, handl
             <ButtonSortable imageClassName={classes.buttonSortable} />
         </TableCell>
         { tableCells.map((tableCell, i) => <TableCell className={classes.tableCell} key={i}>{tableCell.prop(value)}</TableCell>) }
-        <TableCell padding='checkbox' align='right'>
+        <TableCell className={classes.buttonTableCell} padding='checkbox' align='right'>
             <div className={classes.valueActions}>
                 <IconButton onClick={onFormOpen(value)}>
                     <EditIcon />
@@ -137,7 +137,12 @@ const materialStyles = theme => ({
         display: 'table-cell',
         fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
         textAlign: 'left',
-        width: '530px'
+        width: '622px'
+    },
+    buttonTableCell: {
+        width: '384px',
+        display: 'flex',
+        padding: '0px 45px'
     },
     buttonSortable: {
         position: 'relative',

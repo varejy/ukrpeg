@@ -5,24 +5,25 @@ import Form from '../Form/Form';
 import getSchema from './lawsFormSchema';
 
 import { connect } from 'react-redux';
-import saveProduct from '../../../services/saveLaw';
-import editProduct from '../../../services/editLaw';
+import saveLaw from '../../../services/saveLaw';
+import editLaw from '../../../services/editLaw';
 
 import noop from '@tinkoff/utils/function/noop';
 import prop from '@tinkoff/utils/object/prop';
 import pick from '@tinkoff/utils/object/pick';
+import pathOr from '@tinkoff/utils/object/pathOr';
 
-const PRODUCTS_VALUES = ['name', 'id', 'path'];
+const PRODUCTS_VALUES = ['texts', 'id', 'path'];
 
 const mapDispatchToProps = (dispatch) => ({
-    saveProduct: payload => dispatch(saveProduct(payload)),
-    editProduct: payload => dispatch(editProduct(payload))
+    saveLaw: payload => dispatch(saveLaw(payload)),
+    editLaw: payload => dispatch(editLaw(payload))
 });
 
 class LawsForm extends Component {
     static propTypes = {
-        saveProduct: PropTypes.func.isRequired,
-        editProduct: PropTypes.func.isRequired,
+        saveLaw: PropTypes.func.isRequired,
+        editLaw: PropTypes.func.isRequired,
         onDone: PropTypes.func,
         law: PropTypes.object
     };
@@ -37,25 +38,36 @@ class LawsForm extends Component {
 
         const { law } = this.props;
         this.initialValues = {
-            name: law.name || '',
+            ua_name: pathOr(['texts', 'ua', 'name'], '', law),
+            en_name: pathOr(['texts', 'en', 'name'], '', law),
             path: law.path || '',
+            lang: 'ua',
             ...pick(PRODUCTS_VALUES, law)
         };
 
         this.state = {
-            id: prop('id', law)
+            id: prop('id', law),
+            lang: 'ua'
         };
     }
 
     getProductPayload = (
         {
-            name,
+            en_name: enName,
+            ua_name: uaName,
             hidden,
             path,
             id
         }) => {
         return {
-            name,
+            texts: {
+                en: {
+                    name: enName
+                },
+                ua: {
+                    name: uaName
+                }
+            },
             hidden,
             path,
             id
@@ -68,51 +80,28 @@ class LawsForm extends Component {
         const { id } = this.state;
         const productPayload = this.getProductPayload(values);
 
-        (id ? this.props.editProduct({ ...productPayload, id }) : this.props.saveProduct(productPayload))
+        (id ? this.props.editLaw({ ...productPayload, id }) : this.props.saveLaw(productPayload))
             .then(() => {
                 this.props.onDone();
             });
     };
 
-    handleChange = prop => event => {
+    handleChange = (values) => {
         this.setState({
-            product: {
-                ...this.state.product,
-                [prop]: event.target.value
-            }
-        });
-    };
-
-    handleCheckboxChange = prop => (event, value) => {
-        this.setState({
-            product: {
-                ...this.state.product,
-                [prop]: value
-            }
-        });
-    };
-
-    handleAvatarFileUpload = avatar => {
-        this.setState({
-            avatar
-        });
-    };
-
-    handleFilesUpload = (files, removedFiles) => {
-        this.setState({
-            files,
-            removedFiles
+            lang: values.lang
         });
     };
 
     render () {
-        const { id } = this.state;
+        const { id, lang } = this.state;
 
         return <Form
             initialValues={this.initialValues}
             schema={getSchema({
-                data: { title: id ? 'Редактирование закона' : 'Добавление закона' }
+                data: { title: id ? 'Редактирование закона' : 'Добавление закона' },
+                settings: { lang }
             })}
+            onChange={this.handleChange}
             onSubmit={this.handleSubmit}
         />;
     }

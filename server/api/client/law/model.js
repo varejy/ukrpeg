@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const Law = new Schema({
     id: { type: String, required: true },
-    name: { type: String, required: true },
+    texts: { type: Object, required: true },
     path: { type: String, required: true }
 });
 

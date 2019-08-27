@@ -5,10 +5,7 @@ import getAllLaws from '../queries/getAllLaws';
 export default function getAvailableLaws (req, res) {
     getAllLaws()
         .then(laws => {
-            const availableLaws = laws
-                .filter(law => !law.hidden);
-
-            res.status(OKEY_STATUS_CODE).send(availableLaws);
+            res.status(OKEY_STATUS_CODE).send(laws);
         })
         .catch(() => {
             res.status(SERVER_ERROR_STATUS_CODE).end();

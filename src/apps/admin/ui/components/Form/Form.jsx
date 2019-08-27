@@ -23,14 +23,13 @@ const materialStyles = {
 class Form extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        schema: PropTypes.object,
+        schema: PropTypes.object.isRequired,
         initialValues: PropTypes.object,
         onChange: PropTypes.func,
         onSubmit: PropTypes.func
     };
 
     static defaultProps = {
-        schema: {},
         initialValues: {},
         onChange: noop,
         onSubmit: noop
@@ -110,7 +109,7 @@ class Form extends Component {
             const validator = validatorsList[name];
 
             if (validator && !validationMessage) {
-                validationMessage = validator(values[filedName], validatorOptions);
+                validationMessage = validator(values[filedName], validatorOptions, values);
             }
         }, validators);
 
@@ -127,7 +126,7 @@ class Form extends Component {
             ...changes
         };
 
-        this.props.onChange(values, changes);
+        this.props.onChange(newValues, changes);
         this.setState({
             values: newValues,
             validationMessages: {

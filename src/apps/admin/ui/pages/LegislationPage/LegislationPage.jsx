@@ -14,13 +14,14 @@ import getLaws from '../../../services/getLaws';
 import deleteLawsByIds from '../../../services/deleteLawsByIds';
 
 import noop from '@tinkoff/utils/function/noop';
+import pathOr from '@tinkoff/utils/object/pathOr';
 
 const headerRows = [
     { id: 'name', label: 'Название' },
     { id: 'path', label: 'Путь' }
 ];
 const tableCells = [
-    { prop: law => law.name },
+    { prop: law => pathOr(['texts', 'ua', 'name'], '', law) },
     { prop: law => law.path }
 ];
 

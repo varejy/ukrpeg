@@ -1,8 +1,8 @@
 export default function getProduct (body) {
-    const { name, id, path } = body;
+    const { texts, id, path } = body;
 
     return {
-        name,
+        texts,
         path,
         id
     };
