@@ -28,7 +28,8 @@ import styles from './App.css';
 const mapStateToProps = ({ application }) => {
     return {
         lang: application.lang,
-        langRoute: application.langRoute
+        langRoute: application.langRoute,
+        burgerMenu: application.burgerMenu
     };
 };
 
@@ -38,7 +39,8 @@ class App extends Component {
     static propTypes = {
         lang: PropTypes.string,
         langRoute: PropTypes.string,
-        location: PropTypes.object
+        location: PropTypes.object,
+        burgerMenu: PropTypes.bool.isRequired
     };
 
     static defaultProps = {
@@ -64,7 +66,7 @@ class App extends Component {
 
     render () {
         return <main>
-            <div className={styles.page}>
+            <div className={!this.props.burgerMenu ? styles.page : styles.noScrollPage}>
                 <Header/>
                 <div className={styles.pageContent}>
                     <Switch>

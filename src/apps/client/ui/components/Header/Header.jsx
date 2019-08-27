@@ -11,6 +11,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import setLang from '../../../actions/setLang';
+import setMenuOpen from '../../../actions/setMenuOpen';
 import { EN, UA } from '../../../constants/constants';
 
 const mapStateToProps = ({ application }, ownProps) => {
@@ -18,13 +19,15 @@ const mapStateToProps = ({ application }, ownProps) => {
         langMap: application.langMap,
         langRoute: application.langRoute,
         lang: application.lang,
-        pathname: ownProps.location.pathname
+        pathname: ownProps.location.pathname,
+        burgerMenu: application.burgerMenu
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        setLang: payload => dispatch(setLang(payload))
+        setLang: payload => dispatch(setLang(payload)),
+        setMenuOpen: payload => dispatch(setMenuOpen(payload))
     };
 };
 
@@ -34,7 +37,9 @@ class Header extends Component {
         langRoute: PropTypes.string,
         lang: PropTypes.string.isRequired,
         setLang: PropTypes.func.isRequired,
-        pathname: PropTypes.string
+        setMenuOpen: PropTypes.func.isRequired,
+        pathname: PropTypes.string,
+        burgerMenu: PropTypes.bool.isRequired
     };
 
     static defaultProps = {
@@ -46,9 +51,12 @@ class Header extends Component {
     }
 
     handleMenuClick = event => {
+        const { burgerMenu, setMenuOpen } = this.props;
         this.setState({
             burgerMenuOpen: !this.state.burgerMenuOpen
         });
+
+        setMenuOpen(!burgerMenu);
     }
 
     handleLangClick = (lang) => () => {
@@ -65,7 +73,7 @@ class Header extends Component {
     }
 
     render () {
-        const { langMap, langRoute, lang, pathname } = this.props;
+        const { langMap, langRoute, lang } = this.props;
         const { burgerMenuOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);

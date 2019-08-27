@@ -70,7 +70,7 @@ class Articles extends Component {
     }
 
     render () {
-        const { langMap, lang, news, mediaWidth } = this.props;
+        const { langMap, lang, news } = this.props;
         const { sliderLeft, currentNews } = this.state;
         const text = propOr('articles', {}, langMap);
 
@@ -103,12 +103,12 @@ class Articles extends Component {
                 </div>
             </div>
             <ul className={styles.switches}>
-              {news.map((item, i) =>{
-                return (
-                  <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)}>
-                  </li>
-                )
-              })}
+                {news.map((item, i) => {
+                    return (
+                        <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)}>
+                        </li>
+                    );
+                })}
             </ul>
         </div>;
     }
