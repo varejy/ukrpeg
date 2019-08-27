@@ -41,5 +41,29 @@ export default {
     },
     law: {
         title: `Нормативні документи`
+    },
+    contact: {
+        title: `Контакты`,
+        info: {
+            workHours: {
+                title: `Режим роботы:`,
+                desc: `пн-пт 09.00 - 17.00`
+            },
+            adress: {
+                street: `Улица Садовая 28`,
+                index: `06040`,
+                phone: `телефон: `,
+                phoneNumber: `(093) 747 22 02`
+            },
+            city: {
+                title: `Vyshgorod`,
+                desc: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+          sed diam nonummy nibh euismod tincidunt ut laoreet dolore`
+            },
+            mail: {
+                title: `Почта УКРПЕК`,
+                desc: `support@ukrpec.com`
+            }
+        }
     }
 };

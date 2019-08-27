@@ -60,7 +60,7 @@
     letter-spacing: 1px;
     text-align: center;
     padding: 45px 20px 30px;
-    font-family: 'Gotham Pro', sans-serif;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
     width: 100%;
 }
 
@@ -95,9 +95,11 @@
 }
 
 .phone{
+    white-space: nowrap;
     color: darkGreyBasic;
     margin-right: 50px;
-    font-family: 'Gotham Pro';
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    letter-spacing: 1px;
 }
 
 .toogleLang{
@@ -107,7 +109,7 @@
     cursor: pointer;
     font-size: 13px;
     letter-spacing: .5px;
-    font-family: 'Gotham Narrow';
+    font-family: 'Gotham Narrow', "Arial Black", sans-serif;
 }
 
 .lang{
