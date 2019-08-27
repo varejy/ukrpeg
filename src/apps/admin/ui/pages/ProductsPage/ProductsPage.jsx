@@ -11,12 +11,11 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
 import AdminTable from '../../components/AdminTable/AdminTable.jsx';
-import ProductForm from '../../components/ProductForm/ProductForm';
-import ProductFilters from '../../components/ProductFilters/ProductFilters';
+// import ProductFilters from '../../components/ProductFilters/ProductFilters';
 
 import { connect } from 'react-redux';
-import getProducts from '../../../services/getProducts';
-import deleteProductsByIds from '../../../services/deleteProductsByIds';
+import getProducts from '../../../services/getNewsAll';
+import deleteProductsByIds from '../../../services/deleteNewsByIds';
 
 const headerRows = [
     { id: 'name', label: 'Название' },

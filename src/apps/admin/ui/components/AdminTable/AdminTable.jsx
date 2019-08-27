@@ -67,7 +67,8 @@ class AdminTable extends React.Component {
         onDelete: PropTypes.func,
         onFormOpen: PropTypes.func,
         onFiltersOpen: PropTypes.func,
-        filters: PropTypes.bool
+        filters: PropTypes.bool,
+        copyItem: PropTypes.bool
     };
 
     static defaultProps = {
@@ -80,7 +81,9 @@ class AdminTable extends React.Component {
         onDelete: noop,
         onFormOpen: noop,
         onFiltersOpen: noop,
-        filters: true
+        onProductClone: noop,
+        filters: true,
+        copyItem: true
     };
 
     constructor (...args) {
@@ -217,7 +220,7 @@ class AdminTable extends React.Component {
     isSelected = id => any(value => value.id === id, this.state.selected);
 
     render () {
-        const { classes, headerRows, tableCells, values, headerText, deleteValueWarningTitle, deleteValuesWarningTitle, filters } = this.props;
+        const { classes, copyItem, headerRows, tableCells, values, headerText, deleteValueWarningTitle, deleteValuesWarningTitle, filters } = this.props;
         const { selected, rowsPerPage, page, checkboxIndeterminate, valueForDelete } = this.state;
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, values.length - page * rowsPerPage);
 
@@ -276,9 +279,11 @@ class AdminTable extends React.Component {
                                             { tableCells.map((tableCell, i) => <TableCell key={i}>{tableCell.prop(value)}</TableCell>) }
                                             <TableCell padding='checkbox' align='right'>
                                                 <div className={classes.valueActions}>
-                                                    <IconButton onClick={this.props.onProductClone(value)}>
-                                                        <DublicateIcon />
-                                                    </IconButton>
+                                                    {
+                                                        copyItem && <IconButton onClick={this.props.onProductClone(value)}>
+                                                            <DublicateIcon />
+                                                        </IconButton>
+                                                    }
                                                     <IconButton onClick={this.props.onFormOpen(value)}>
                                                         <EditIcon />
                                                     </IconButton>
