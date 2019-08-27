@@ -288,6 +288,10 @@
         padding: 32px 36px;
         position: relative;
     }
+
+    @media (max-width: 425px){
+        height: 270px;
+    }
 }
 
 .next{
