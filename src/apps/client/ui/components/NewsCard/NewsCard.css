@@ -24,7 +24,7 @@
 
     @media (max-width: 780px){
         width: 100%;
-        height: 256px;
+        height: 70vw;
         justify-content: start;
     }
 }
@@ -46,6 +46,7 @@
     text-align: left;
     letter-spacing: 1px;
     color: greyMedium;
+    overflow: hidden;
 }
 
 .newsCardTitle{
@@ -59,4 +60,5 @@
     text-align: left;
     letter-spacing: 0.5px;
     color: blackBasic;
+    overflow: hidden;
 }

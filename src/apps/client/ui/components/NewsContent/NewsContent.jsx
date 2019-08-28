@@ -8,8 +8,6 @@ import classNames from 'classnames';
 
 const TABLET_WIDTH = 780;
 const MAX_CARDS_PER_SLIDE = 6;
-const CARD_HEIGHT = 256 + 214;
-// 256 - высота картинки, 214 - заголовок, дата, отступы
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
@@ -33,9 +31,12 @@ class NewsContent extends Component {
     };
 
     handlePaginationClick = i => () => {
+        const { mediaWidth } = this.props;
+        const CARD_HEIGHT = mediaWidth * 0.7 + 214;
+
         this.setState({
             activeSlide: i,
-            top: (CARD_HEIGHT * (MAX_CARDS_PER_SLIDE - 1)) * i
+            top: (CARD_HEIGHT * MAX_CARDS_PER_SLIDE) * i
         });
         window.scrollTo(0, 0);
     };
@@ -43,6 +44,7 @@ class NewsContent extends Component {
     render () {
         const { newsCategoryRendered, mediaWidth } = this.props;
         const { activeSlide, top } = this.state;
+        const CARD_HEIGHT = mediaWidth * 0.7 + 214;
         const isMobileScreen = (mediaWidth <= TABLET_WIDTH);
         const MAX_SLIDES = Math.ceil(newsCategoryRendered.length / MAX_CARDS_PER_SLIDE);
         let PAGINATION = [];
