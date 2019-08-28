@@ -120,21 +120,18 @@
     width: 100%;
 
     @media (max-width: 1350px) {
-      font-size: 15px;
-      letter-spacing: .1px;
-      padding: 45px 15px 30px;
+        font-size: 15px;
+        letter-spacing: .1px;
+        padding: 45px 15px 30px;
     }
 }
 
 .link:first-child, .activeLink:first-child{
-  padding-left: 30px;
-}
-
-.link:nth-child(2), .activeLink:nth-child(2){
+    padding-left: 30px;
 }
 
 .link:last-child, .activeLink:last-child{
-  padding-right: 30px;
+    padding-right: 30px;
 }
 
 .link:hover{
@@ -320,6 +317,7 @@
     flex-direction: column;
     padding-left: 100px;
     padding-top: 215px;
+    overflow: scroll;
 
     @media (--media-tablet-l) {
         padding-left: 130px;
@@ -389,31 +387,22 @@
         display: block;
         z-index: 5;
         color: whiteBasic;
-        position: absolute;
-        left: 0;
-        bottom: 100px;
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        padding: 0 130px;
+        justify-content: space-around;
+        padding: 150px 120px 50px 0;
     }
 
-    @media (--media-phone) {
-        bottom: 80px;
+    @media (max-width: 560px) {
+        justify-content: space-between;
+        position: absolute;
         padding: 0 120px;
+        bottom: 40px;
+        left: 0;
     }
 
     @media (--media-phone-s) {
-        display: block;
-        z-index: 5;
-        color: whiteBasic;
-        position: absolute;
-        left: 0;
-        bottom: 50px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 80px;
+        padding: 0 100px;
     }
 }
 

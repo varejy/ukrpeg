@@ -52,6 +52,12 @@ class App extends Component {
         if (this.props.location !== nextProps.location) {
             window.scrollTo(0, 0);
         }
+
+        if (nextProps.burgerMenu) {
+            document.body.style.overflowY = 'hidden';
+        } else {
+            document.body.style.overflowY = 'auto';
+        }
     };
 
     renderComponent = Component => ({ match: { params: { lang: langUrl = DEFAULT_LANG }, path }, location: { pathname } }) => {
@@ -66,7 +72,7 @@ class App extends Component {
 
     render () {
         return <main>
-            <div className={!this.props.burgerMenu ? styles.page : styles.noScrollPage}>
+            <div className={styles.page}>
                 <Header/>
                 <div className={styles.pageContent}>
                     <Switch>

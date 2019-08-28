@@ -64,11 +64,12 @@ class Header extends Component {
     }
 
     componentWillReceiveProps (nextProps) {
-        const { pathname } = this.props;
+        const { pathname, setMenuOpen } = this.props;
         if (nextProps.pathname !== pathname) {
             this.setState({
                 burgerMenuOpen: false
             });
+            setMenuOpen(false);
         }
     }
 
