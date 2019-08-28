@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './RVVPage.css';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 const PLANS_LIST = [
@@ -86,19 +85,37 @@ const PARTICIPANTS_LIST = [
     'ТОВ «Хенкель Україна»',
     'та інші.'
 ];
-const mapStateToProps = () => {
-    return {
-    };
-};
 
 class RVVPage extends Component {
-    static propTypes = {
+    state = {
+        activeSlide: 0,
+        top: 0
     };
 
-    static defaultProps = {
+    handlePaginationClick = i => () => {
+        this.setState({
+            activeSlide: i,
+            top: 400 * i
+        });
+    };
+
+    handleArrowClick = (direction) => () => {
+        const { activeSlide } = this.state;
+        const newActiveSlide = direction === 'left' ? activeSlide - 1 : activeSlide + 1;
+
+        this.setState({
+            activeSlide: newActiveSlide,
+            top: 400 * newActiveSlide
+        });
     };
 
     render () {
+        const { top, activeSlide } = this.state;
+        let PAGINATION = [];
+        for (let i = 0; i < PLANS_LIST.length; i++) {
+            PAGINATION.push(i + 1);
+        }
+
         return <section className={styles.pageContainer}>
             <div className={styles.gridContainer}>
                 <div className={classNames(styles.column, styles.column1)}/>
@@ -106,6 +123,75 @@ class RVVPage extends Component {
                 <div className={classNames(styles.column, styles.column3)}/>
                 <div className={classNames(styles.column, styles.column4)}/>
                 <div className={classNames(styles.column, styles.column5)}/>
+            </div>
+            <div className={styles.partnersMobile}>
+                <div className={styles.titleContainer}>
+                    <div className={styles.rectangleGreen}/>
+                    <div className={styles.title}>Учасники пілотного проекту</div>
+                </div>
+                <div className={styles.partnersList}>
+                    {
+                        PARTNERS_LIST.map((partner, i) =>
+                            <div className={styles.logoContainer} key={i}>
+                                <img className={styles.logo} src={partner} alt='logo'/>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+            <div className={styles.containerPlansMobile}>
+                <div className={styles.patternContainerBig} />
+                <div className={styles.courses}>
+                    <div className={styles.backgroundWhite}/>
+                    <div className={styles.plansHeader}>
+                        <div className={styles.titleContainer}>
+                            <div className={styles.rectangleGreen}/>
+                            <div className={styles.title}>Плани</div>
+                        </div>
+                        <div className={styles.plansButtons}>
+                            <div onClick={activeSlide !== 0 ? this.handleArrowClick('left') : undefined}
+                                className={classNames(styles.buttonLeft, activeSlide === 0 ? styles.buttonDisabled : styles.buttonActive)}
+                            >
+                                <img className={styles.button} src={activeSlide === 0
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/downArrowBlack.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/downArrowGreen.png'
+                                } alt='arrowLeft'/>
+                            </div>
+                            <div onClick={activeSlide !== PLANS_LIST.length - 1 ? this.handleArrowClick('right') : undefined}
+                                className={classNames(styles.buttonRight, activeSlide === PLANS_LIST.length - 1 ? styles.buttonDisabled : styles.buttonActive)}
+                            >
+                                <img className={styles.button} src={activeSlide === PLANS_LIST.length - 1
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/downArrowBlack.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/downArrowGreen.png'
+                                } alt='arrowRight'/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.coursesContainer}>
+                        <div className={styles.courseInfo} style={{ top: `-${top}px` }}>
+                            {
+                                PLANS_LIST.map((step, i) =>
+                                    <div key={i} className={styles.course}>
+                                        <div className={styles.courseNumber}>{i + 1}</div>
+                                        <div className={styles.courseText}><div className={styles.text}>{step}</div></div>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+                    <div className={styles.plansPagination}>
+                        {
+                            PAGINATION.map((slideNumber, i) =>
+                                <div className={classNames(styles.paginationSquare, {
+                                    [styles.paginationSquareActive]: i === activeSlide
+                                })}
+                                key={i}
+                                onClick={this.handlePaginationClick(i)}
+                                />
+                            )
+                        }
+                    </div>
+                </div>
             </div>
             <div className={styles.plans}>
                 <div className={styles.titleContainer}>
@@ -257,4 +343,4 @@ class RVVPage extends Component {
     }
 }
 
-export default connect(mapStateToProps)(RVVPage);
+export default RVVPage;

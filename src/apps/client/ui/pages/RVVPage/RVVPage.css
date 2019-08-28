@@ -92,6 +92,12 @@
 .plans{
     position: relative;
     padding-top: 130px;
+    width: 100%;
+    display: block;
+
+    @media (max-width: 780px){
+        display: none;
+    }
 }
 
 .plansContent{
@@ -103,19 +109,29 @@
     margin: 0 auto;
     position: relative;
     left: -23px;
+
+    @media (max-width: 1349px) {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
 }
 
 .plansContent :last-child .stepNumber{
     letter-spacing: 390px;
 
-    @media (max-width: 1350px) {
-        letter-spacing: 19.5vw;
+    @media (max-width: 1349px) {
+        letter-spacing: 280px;
     }
 }
 
 .plansContent :last-child .stepText{
     width: 114%;
     padding-right: 25%;
+
+    @media (max-width: 1349px) {
+        width: 90.5%;
+        padding-right: 0;
+    }
 }
 
 .step{
@@ -125,6 +141,7 @@
     align-items: start;
     margin-bottom: 115px;
     margin-right: 48px;
+    min-width: 468px;
 }
 
 .stepNumber{
@@ -179,6 +196,12 @@
     border: 1px solid limeGreen;
     padding: 150px 30px 26px 30px;
     margin: 0 auto 55px auto;
+
+    @media (max-width: 780px){
+        z-index: 7;
+        border: none;
+        padding: 125px 0 26px 0;
+    }
 }
 
 .whyRVV .titleContainer{
@@ -186,6 +209,12 @@
     top: 26px;
     margin: 0 auto;
     justify-self: center;
+
+    @media (max-width: 780px){
+        width: 100%;
+        margin: 0 0 0 30px;
+        padding: 0;
+    }
 }
 
 .benefits{
@@ -194,6 +223,20 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+
+    @media (max-width: 1349px){
+        margin-left: 48px;
+    }
+
+    @media (max-width: 780px){
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 108px;
+        background: url('./images/gradientBg.png') center;
+        background-size: cover;
+        margin: 0;
+    }
 }
 
 .benefitContainer{
@@ -202,16 +245,34 @@
     align-items: start;
     justify-content: start;
     margin-bottom: 45px;
+    padding-right: 20px;
     z-index: 11;
+
+    @media (max-width: 780px){
+        flex-direction: column;
+        align-items: center;
+        padding: 0 104px;
+        margin-bottom: 160px;
+        width: 100%;
+    }
 }
 
 .benefitIconContainer{
     margin-right: 18px;
+
+    @media (max-width: 780px){
+        margin: 0 0 57px 0;
+    }
 }
 
 .benefitIcon{
     width: 38px;
     height: auto;
+
+    @media (max-width: 780px){
+        width: 75px;
+        height: auto;
+    }
 }
 
 .benefitText{
@@ -222,6 +283,14 @@
     color: blackBasic;
     text-align: left;
     z-index: 11;
+
+    @media (max-width: 780px){
+        font-family: 'Gotham Pro', Arial;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        width: 100%;
+    }
 }
 
 .projectContainer{
@@ -254,6 +323,21 @@
     text-align: left;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        padding: 0 30px;
+        width: 100%;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+.project .titleContainer{
+    @media (max-width: 780px){
+        width: 100%;
+        margin-left: 30px;
+        padding: 0;
+    }
 }
 
 .backgroundWhite{
@@ -383,6 +467,16 @@
 
 .facts .titleContainer{
     margin-bottom: 105px;
+
+    @media (max-width: 1023px){
+        margin-bottom: 50px;
+    }
+
+    @media (max-width: 780px){
+        width: 100%;
+        padding: 0;
+        margin-left: 30px;
+    }
 }
 
 .rectangleWhite{
@@ -409,10 +503,32 @@
     max-width: 1350px;
     padding: 0 135px;
     margin: 0 auto 184px auto;
+
+    @media (max-width: 1023px){
+        flex-direction: column;
+        justify-content: start;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 780px){
+        align-items: center;
+    }
 }
 
 .factContainer{
     max-width: 308px;
+
+    @media (max-width: 1349px){
+        max-width: 230px;
+        margin-bottom: 50px;
+    }
+
+    @media (max-width: 780px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-borrom: 100px;
+    }
 }
 
 .factValue{
@@ -448,6 +564,10 @@
     line-height: normal;
     letter-spacing: 0.5px;
     width: 100%;
+
+    @media (max-width: 780px){
+        text-align: center;
+    }
 }
 
 .partnersContainer{
@@ -456,6 +576,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 780px){
+        display: none;
+    }
 }
 
 .partners{
@@ -493,6 +617,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 780px){
+    }
 }
 
 .participants{
@@ -533,6 +660,14 @@
     top: 0;
     left: 0;
     height: 100%;
+
+    @media (max-width: 1023px){
+        width: 100%;
+    }
+
+    @media (max-width: 780px){
+        display: none;
+    }
 }
 
 .participants .titleContainer .title{
@@ -564,12 +699,23 @@
     margin: 0 auto;
     z-index: 5;
 
+    @media (max-width: 780px){
+        left: 0;
+        padding: 100px 80px;
+    }
 }
 
 .imageContainer{
     margin-right: 50px;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        margin: 0;
+        position: absolute;
+        top: -80px;
+        right: 80px;
+    }
 }
 
 .ideaText{
@@ -580,10 +726,25 @@
     text-align: left;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 1023px){
+        width: 50%;
+        font-size: 20px;
+        line-height: 24px;
+        font-family: 'Gotham Pro', Arial;
+    }
+
+    @media (max-width: 780px){
+        width: 100%;
+    }
 }
 
 .idea .patternContainer{
     left: -130px;
+
+    @media (max-width: 780px){
+        display: none;
+    }
 }
 
 .backgroundGreen{
@@ -593,4 +754,164 @@
     bottom: 0;
     width: 50%;
     height: 100%;
+
+    @media (max-width: 780px){
+        display: none;
+    }
 }
+
+.partnersMobile{
+    display: none;
+    background-color: whiteBasic;
+    z-index: 7;
+    border: 1px solid rgba(122, 122, 122, 0.5);
+    margin: 30px;
+
+    @media (max-width: 780px){
+        display: block;
+    }
+}
+
+.partnersMobile .logoContainer{
+    margin: 0 auto;
+    padding: 13px 26px;
+}
+
+.partnersMobile .titleContainer{
+    padding-left: 0;
+    margin: 27px 0;
+}
+
+.containerPlansMobile{
+    display: none;
+    width: 100%;
+
+    @media (max-width: 780px){
+        display: block;
+    }
+}
+
+.containerPlansMobile .titleContainer{
+    padding: 0;
+    margin-left: 30px;
+}
+
+.containerPlansMobile .patternContainerBig{
+    width: 30%;
+    height: 100%;
+}
+
+.containerPlansMobile .backgroundWhite{
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.containerPlansMobile .coursesContainer{
+    left: 24%;
+    overflow-y: hidden;
+    height: 400px;
+    position: relative;
+}
+
+.containerPlansMobile .course{
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    position: relative;
+}
+
+.containerPlansMobile .courseInfo{
+    position: absolute;
+    width: 70%;
+}
+
+.containerPlansMobile .courseNumber{
+    font-size: 160px;
+    position: absolute;
+    top: -5%;
+    left: -7%;
+}
+
+.containerPlansMobile .courseText{
+    font-size: 20px;
+    line-height: 26px;
+    left: 55px;
+    align-items: start;
+    font-family: 'Gotham Light', Arial;
+}
+
+.plansPagination{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 20px;
+    z-index: 7;
+}
+
+.paginationSquare{
+    width: 11px;
+    height: 11px;
+    border: 1px solid rgba(122, 122, 122, 0.5);
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.paginationSquareActive{
+    width: 11px;
+    height: 11px;
+    background-color: darkBlueBasic;
+}
+
+.plansHeader{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.plansButtons{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    z-index: 11;
+    position: relative;
+    right: 20%;
+}
+
+.button{
+    height: 35px;
+    width: auto;
+}
+
+.buttonLeft, .buttonRight{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.buttonLeft{
+    transform: rotate(90deg);
+}
+
+.buttonRight{
+    transform: rotate(-90deg);
+}
+
+.buttonDisabled{
+    border: 1px solid rgba(122, 122, 122, 0.2);
+    opacity: 0.2;
+}
+
+.buttonActive{
+    border: 1px solid limeGreen;
+    opacity: 1;
+}
+
