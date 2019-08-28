@@ -99,6 +99,7 @@
 }
 
 .phone{
+    white-space: nowrap;
     color: darkGreyBasic;
     margin-right: 20px;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
