@@ -43,6 +43,8 @@ class NewsForm extends Component {
         super(...args);
 
         const { news } = this.props;
+        const ua = pathOr(['texts', 'ua'], '', news);
+        const en = pathOr(['texts', 'en'], '', news)
 
         this.initialValues = {
             hidden: false,
@@ -51,12 +53,12 @@ class NewsForm extends Component {
                 files: news.avatar ? [news.avatar] : [],
                 removedFiles: []
             },
-            ua_name: pathOr(['texts', 'ua', 'name'], '', news),
-            en_name: pathOr(['texts', 'en', 'name'], '', news),
-            en_shortDescription: pathOr(['texts', 'en', 'shortDescription'], '', news),
-            ua_shortDescription: pathOr(['texts', 'ua', 'shortDescription'], '', news),
-            ua_description: pathOr(['texts', 'ua', 'description'], '', news),
-            en_description: pathOr(['texts', 'en', 'description'], '', news),
+            ua_name: ua.name || '',
+            en_name: en.name || '',
+            en_shortDescription: en.shortDescription || '',
+            ua_shortDescription: ua.shortDescription || '',
+            ua_description: ua.description || '',
+            en_description: en.description || '',
             lang: 'ua',
             ...pick(NEWS_VALUES, news)
         };
