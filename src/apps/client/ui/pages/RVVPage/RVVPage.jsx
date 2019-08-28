@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './RVVPage.css';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 const PLANS_LIST = [
@@ -86,18 +85,8 @@ const PARTICIPANTS_LIST = [
     'ТОВ «Хенкель Україна»',
     'та інші.'
 ];
-const mapStateToProps = () => {
-    return {
-    };
-};
 
 class RVVPage extends Component {
-    static propTypes = {
-    };
-
-    static defaultProps = {
-    };
-
     render () {
         return <section className={styles.pageContainer}>
             <div className={styles.gridContainer}>
@@ -258,4 +247,4 @@ class RVVPage extends Component {
     }
 }
 
-export default connect(mapStateToProps)(RVVPage);
+export default RVVPage;
