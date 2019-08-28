@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 import { SLIDE_FILE_FIELD_NAME_REGEX, OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constants/constants';
-import updateSlider from '../../../client/partners/queries/updateSlider';
+import updateSlider from '../../../client/partners/queries/updatePartner';
 import multipart from '../../../../helpers/multipart';
 
 import noop from '@tinkoff/utils/function/noop';
@@ -10,7 +10,7 @@ const SLIDER_ID = 'slider_id';
 
 const uploader = multipart(SLIDE_FILE_FIELD_NAME_REGEX);
 
-export default function updateSlides (req, res) {
+export default function updatePartners (req, res) {
     uploader(req, res, (err) => {
         if (err) {
             return res.status(SERVER_ERROR_STATUS_CODE).end();
@@ -26,8 +26,7 @@ export default function updateSlides (req, res) {
             }
 
             return {
-                title: slide.title,
-                description: slide.description,
+                name: slide.name,
                 path: slide.path
             };
         });

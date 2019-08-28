@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
+import Form from '../Form/Form';
+
+import getSchema from './partnersFormSchema';
+
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -13,7 +17,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import pick from '@tinkoff/utils/object/pick';
 
-const SLIDE_VALUES = ['title', 'description', 'path'];
+const SLIDE_VALUES = ['name', 'path'];
 
 const materialStyles = theme => ({
     uploadInput: {
@@ -75,6 +79,13 @@ class MainSlideForm extends Component {
 
         this.oldSlidePath = slide.path;
 
+        this.initialValues = {
+            name: editableSlideInfo.name,
+            logo: {
+                files: editableSlideInfo.path ? [editableSlideInfo.path] : []
+            }
+        };
+
         this.state = {
             slide: slide,
             index: editableSlideInfo.index,
@@ -116,76 +127,25 @@ class MainSlideForm extends Component {
         event.target.value = '';
     };
 
-    handleSubmit = event => {
-        event.preventDefault();
+    handleSubmit = values => {
+        values.preventDefault();
 
-        const { slide, index } = this.state;
+        console.log(value)
+
+        const { index } = this.state;
 
         this.props.onDone({
-            slide,
+            values,
             index
         });
     };
 
     render () {
-        const { classes } = this.props;
-        const { slide, isWrongDimensions } = this.state;
-
-        return <form onSubmit={this.handleSubmit}>
-            <Typography variant='h5'>Редактирование слайда</Typography>
-            <div className={classes.imageWrapper}>
-                <img
-                    onLoad={this.handleFileLoad}
-                    className={classNames(classes.image, { [classes.fileImageError]: isWrongDimensions })}
-                    src={slide.path}
-                    alt={slide.title}
-                />
-            </div>
-            <div className={classes.warning}>
-                <WarningIcon className={classNames(classes.warningIcon, {
-                    [classes.errorIcon]: isWrongDimensions
-                })} color={isWrongDimensions ? 'error' : 'inherit'} fontSize='small'/>
-                <Typography className={classes.warningText} color={isWrongDimensions ? 'error' : 'inherit'} variant='h6'>
-                    Ширина фото дожна быть {SLIDE_WIDTH}px, а высота {SLIDE_HEIGHT}px
-                </Typography>
-            </div>
-            <FormControl margin='normal'>
-                <input
-                    className={classes.uploadInput}
-                    id='editUploadInput'
-                    type='file'
-                    accept='image/*'
-                    onChange={this.handleFileUpload}
-                />
-                <label htmlFor='editUploadInput'>
-                    <Button variant='contained' component='span' color='default'>
-                        Изменить фото слайда
-                        <CloudUploadIcon className={classes.uploadIcon} />
-                    </Button>
-                </label>
-            </FormControl>
-            <TextField
-                label='Название'
-                value={slide.title}
-                onChange={this.handleChange('title')}
-                margin='normal'
-                variant='outlined'
-                fullWidth
-            />
-            <TextField
-                label='Описание'
-                value={slide.description}
-                onChange={this.handleChange('description')}
-                margin='normal'
-                variant='outlined'
-                fullWidth
-            />
-            <FormControl margin='normal'>
-                <Button variant='contained' color='primary' type='submit'>
-                    Сохранить
-                </Button>
-            </FormControl>
-        </form>;
+        return <Form
+            initialValues={this.initialValues}
+            schema={getSchema()}
+            onSubmit={this.handleSubmit}
+        />;
     }
 }
 

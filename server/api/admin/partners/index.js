@@ -2,13 +2,13 @@ import express from 'express';
 
 import verification from '../../../middlewares/verification';
 
-import updateSlides from './services/updateSlides';
+import updatePartners from './services/updatePartners';
 
 const router = express.Router();
 
 router.use(verification);
 
 router.route('/update-slides')
-    .post(updateSlides);
+    .post(updatePartners);
 
 export default router;

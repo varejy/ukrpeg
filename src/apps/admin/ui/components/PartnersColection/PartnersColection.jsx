@@ -212,12 +212,14 @@ class PartnersColection extends Component {
         this.state = {
             slides: this.props.slides.map(slide => ({
                 path: slide.path || '/wrong-path',
-                showed: slide.showed
+                showed: slide.showed,
+                name: slide.name
             })),
             removedSlides: [],
             isSorting: false,
             loading: true,
             disabled: true,
+            editableSlideInfo: null,
             formShowed: false
         };
 
@@ -354,7 +356,7 @@ class PartnersColection extends Component {
             const isOld = !slide.content;
 
             return {
-                title: slide.title,
+                name: slide.name,
                 description: slide.description,
                 path: isOld && slide.path,
                 oldSlidePath: slide.oldSlidePath
