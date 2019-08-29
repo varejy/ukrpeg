@@ -25,13 +25,12 @@
     @media (max-width: 780px){
         width: 100%;
         height: 70vw;
-        justify-content: start;
     }
 }
 
 .image{
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
 }
 
 .newsCardDate{
