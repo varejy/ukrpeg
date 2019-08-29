@@ -1,0 +1,51 @@
+@value blackBasic from '../../../../../css/colors.css';
+@value lightGreenBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+
+.law{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding:0 125px;
+    position: relative;
+}
+
+.title{
+    margin-top: 75px;
+    padding: 20px 0 20px 20px;
+    border-left: 5px solid lightGreenBasic;
+    margin-left: -25px;
+    color: darkBlueBasic;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+}
+
+.lawList{
+    list-style: decimal;
+    list-style-position: inside;
+    padding: 30px 0 100px 0;
+}
+
+.listItem{
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    line-height: 19px;
+    font-weight: 300;
+    color: blackBasic;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.listItem:last-child{
+    margin-bottom: 0;
+}
