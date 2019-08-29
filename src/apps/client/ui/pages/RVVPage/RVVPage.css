@@ -42,6 +42,11 @@
         left: 30%;
         margin: 0;
     }
+
+    @media (max-width: 500px){
+        left: 15%;
+        margin: 0;
+    }
 }
 
 .column2{
@@ -276,6 +281,11 @@
         margin-bottom: 120px;
         width: 100%;
     }
+
+    @media (max-width: 500px){
+        width: 100%;
+        margin: 0 30px 120px 30px;
+    }
 }
 
 .benefitIconContainer{
@@ -311,6 +321,11 @@
         line-height: 24px;
         text-align: center;
         width: 100%;
+    }
+
+    @media (max-width: 500px){
+        font-size: 18px;
+        line-height: 24px;
     }
 }
 
@@ -355,6 +370,12 @@
         font-size: 20px;
         line-height: 24px;
     }
+
+    @media (max-width: 500px){
+        font-size: 18px;
+        line-height: 24px;
+        padding: 0 30px;
+    }
 }
 
 .project .titleContainer{
@@ -378,6 +399,10 @@
     @media (max-width: 780px){
         width: 70%;
         right: 0;
+    }
+
+    @media (max-width: 500px){
+        width: 85%;
     }
 }
 
@@ -421,6 +446,10 @@
 
     @media (max-width: 780px){
         left: 25%;
+    }
+
+    @media (max-width: 500px){
+        left: 7.5%;
     }
 }
 
@@ -483,6 +512,11 @@
         min-height: 100px;
         height: auto;
     }
+
+    @media (max-width: 500px){
+        font-size: 18px;
+        line-height: 24px;
+    }
 }
 
 .courseText .text{
@@ -503,6 +537,10 @@
 
     @media (max-width: 780px){
         width: 30%;
+    }
+
+    @media (max-width: 500px){
+        width: 15%;
     }
 }
 
@@ -582,6 +620,10 @@
     @media (max-width: 780px){
         align-items: center;
     }
+
+    @media (max-width: 500px){
+        padding: 0 30px;
+    }
 }
 
 .factContainer{
@@ -597,6 +639,11 @@
         flex-direction: column;
         align-items: center;
         margin-bottom: 120px;
+    }
+
+    @media (max-width: 500px){
+        max-width: 100%;
+        width: 100%;
     }
 }
 
@@ -638,6 +685,11 @@
         text-align: center;
         font-family: 'Gotham Medium', Arial;
         font-size: 20px;
+        line-height: 24px;
+    }
+
+    @media (max-width: 500px){
+        font-size: 18px;
         line-height: 24px;
     }
 }
@@ -700,6 +752,13 @@
         left: 0;
         top: 0;
     }
+
+    @media (max-width: 500px){
+        display: block;
+        width: 15%;
+        left: 0;
+        top: 0;
+    }
 }
 
 .participants{
@@ -732,6 +791,10 @@
 
     @media (max-width: 780px) {
         left: 80px;
+    }
+
+    @media (max-width: 500px){
+        left: 30px;
     }
 }
 
@@ -799,6 +862,10 @@
         left: 0;
         padding: 100px 80px;
     }
+
+    @media (max-width: 500px){
+        padding: 100px 30px;
+    }
 }
 
 .imageContainer{
@@ -839,6 +906,11 @@
 
     @media (max-width: 780px){
         width: 100%;
+    }
+
+    @media (max-width: 500px){
+        font-size: 18px;
+        line-height: 24px;
     }
 }
 
@@ -903,6 +975,10 @@
 .containerPlansMobile .patternContainerBig{
     width: 30%;
     height: 100%;
+
+    @media (max-width: 500px){
+        width: 15%;
+    }
 }
 
 .containerPlansMobile .backgroundWhite{
@@ -911,6 +987,10 @@
     position: absolute;
     right: 0;
     top: 0;
+
+    @media (max-width: 500px){
+        width: 85%;
+    }
 }
 
 .containerPlansMobile .coursesContainer{
@@ -918,6 +998,10 @@
     overflow-y: hidden;
     height: 400px;
     position: relative;
+
+    @media (max-width: 500px){
+        left: 0.5%;
+    }
 }
 
 .containerPlansMobile .course{
@@ -942,7 +1026,7 @@
     font-size: 160px;
     position: absolute;
     top: -20px;
-    left: 0;
+    left: -8px;
     width: 0;
     overflow-wrap: break-word;
 }
@@ -958,6 +1042,11 @@
     @media (max-width: 780px){
         margin-bottom: 0;
     }
+
+    @media (max-width: 500px){
+        font-size: 18px;
+        line-height: 24px;
+    }
 }
 
 .plansPagination{
@@ -969,6 +1058,11 @@
     z-index: 11;
     justify-self: flex-start;
     width: 100%;
+
+    @media (max-width: 500px){
+        padding-left: 15%;
+        margin: 40px 0;
+    }
 }
 
 .paginationSquare{
@@ -978,12 +1072,22 @@
     display: inline-block;
     margin: 0 10px;
     cursor: pointer;
+
+    @media (max-width: 500px){
+        width: 6px;
+        height: 6px;
+    }
 }
 
 .paginationSquareActive{
     width: 11px;
     height: 11px;
     background-color: darkBlueBasic;
+
+    @media (max-width: 500px){
+        width: 6px;
+        height: 6px;
+    }
 }
 
 .plansHeader{
@@ -999,7 +1103,7 @@
     justify-content: start;
     z-index: 11;
     position: relative;
-    right: 20%;
+    right: 22%;
 }
 
 .button{
