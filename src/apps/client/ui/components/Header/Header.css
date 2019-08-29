@@ -46,7 +46,6 @@
     width:  100%;
     max-width: 1350px;
     display: flex;
-    background: whiteBasic;
     z-index: 15;
 
     @media (--media-tablet-l) {
