@@ -13,7 +13,3 @@ module.exports = {
     '--media-desktop-l': `(min-width: ${bp.DESKTOP_L}px)`,
     '--media-desktop-xl': `(min-width: ${bp.DESKTOP_XL}px)`
 };
-// --media-phone-s
-// --media-phone
-// --media-tablet-s
-// --media-tablet-l

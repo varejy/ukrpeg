@@ -85,10 +85,6 @@
     display: flex;
     margin-bottom: 40px;
 
-    @media (max-width: 1350px) {
-
-    }
-
     @media (--media-tablet-l) {
         flex-direction: column;
     }
