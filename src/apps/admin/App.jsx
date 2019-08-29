@@ -9,7 +9,6 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { matchPath } from 'react-router';
 
 import MainPage from './ui/pages/MainPage/MainPage.jsx';
-import ProductsPage from './ui/pages/ProductsPage/ProductsPage.jsx';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
 import Header from './ui/components/Header/Header.jsx';
 import Authentication from './ui/components/Authentication/Authentication.jsx';
@@ -79,7 +78,6 @@ class App extends Component {
             <Header />
             <Switch>
                 <Route exact path='/admin' component={MainPage} />
-                <Route exact path='/admin/products' component={ProductsPage} />
                 <Route exact path='/admin/news' component={NewsPage} />
             </Switch>
         </main>;

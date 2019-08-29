@@ -11,6 +11,7 @@ import editNewsCategory from '../../../services/editNewsCategory';
 import noop from '@tinkoff/utils/function/noop';
 import prop from '@tinkoff/utils/object/prop';
 import pick from '@tinkoff/utils/object/pick';
+import pathOr from '@tinkoff/utils/object/pathOr';
 
 const CATEGORIES_VALUES = ['name', 'id', 'hidden', 'positionIndex'];
 
@@ -21,7 +22,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class NewsCategoryForm extends Component {
     static propTypes = {
-        classes: PropTypes.object.isRequired,
         saveNewsCategory: PropTypes.func.isRequired,
         editNewsCategory: PropTypes.func.isRequired,
         onDone: PropTypes.func,
@@ -42,29 +42,45 @@ class NewsCategoryForm extends Component {
         const { category } = this.props;
 
         this.initialValues = {
-            name: category.name || '',
+            ua_name: pathOr(['texts', 'ua', 'name'], '', category),
+            en_name: pathOr(['texts', 'en', 'name'], '', category),
             hidden: category.hidden || false,
             ...pick(CATEGORIES_VALUES, category)
         };
 
         this.state = {
-            id: prop('id', category)
+            id: prop('id', category),
+            lang: 'ua'
         };
     }
 
     getCategoryPayload = (
         {
-            name,
+            en_name: enName,
+            ua_name: uaName,
             hidden,
             positionIndex,
             id
         }) => {
         return {
-            name,
             hidden,
             positionIndex,
+            texts: {
+                en: {
+                    name: enName
+                },
+                ua: {
+                    name: uaName
+                }
+            },
             id
         };
+    };
+
+    handleChange = (values) => {
+        this.setState({
+            lang: values.lang
+        });
     };
 
     handleSubmit = values => {
@@ -86,13 +102,15 @@ class NewsCategoryForm extends Component {
     };
 
     render () {
-        const { id } = this.state;
+        const { id, lang } = this.state;
 
         return <Form
             initialValues={this.initialValues}
             schema={getSchema({
-                data: { title: id ? 'Редактирование категории' : 'Добавление категории' }
+                data: { title: id ? 'Редактирование категории' : 'Добавление категории' },
+                settings: { lang }
             })}
+            onChange={this.handleChange}
             onSubmit={this.handleSubmit}
         />;
     }
