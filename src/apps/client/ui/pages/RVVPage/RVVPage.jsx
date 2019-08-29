@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styles from './RVVPage.css';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const PLANS_LIST = [
     // eslint-disable-next-line max-len
@@ -86,10 +88,20 @@ const PARTICIPANTS_LIST = [
     'та інші.'
 ];
 
+const mapStateToProps = ({ application }) => {
+    return {
+        mediaWidth: application.media.width
+    };
+};
+
 class RVVPage extends Component {
     state = {
         activeSlide: 0,
         top: 0
+    };
+
+    static propTypes = {
+        mediaWidth: PropTypes.number.isRequired
     };
 
     handlePaginationClick = i => () => {
@@ -111,6 +123,7 @@ class RVVPage extends Component {
 
     render () {
         const { top, activeSlide } = this.state;
+        const { mediaWidth } = this.props;
         let PAGINATION = [];
         for (let i = 0; i < PLANS_LIST.length; i++) {
             PAGINATION.push(i + 1);
@@ -305,6 +318,7 @@ class RVVPage extends Component {
                 </div>
             </div>
             <div className={styles.participantsContainer}>
+                <div className={styles.patternContainerBig} />
                 <div className={styles.backgroundGrey}/>
                 <div className={styles.participants}>
                     <div className={styles.titleContainer}>
@@ -327,7 +341,12 @@ class RVVPage extends Component {
                 <div className={styles.idea}>
                     <div className={styles.ideaContainer}>
                         <div className={styles.imageContainer}>
-                            <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
+                            <img className={styles.recycleImage}
+                                src={mediaWidth > 780
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/recycle.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/recycleGreen.png'
+                                }
+                                alt='recycle'/>
                         </div>
                         <div className={styles.ideaText}>
                         Спільними зусиллями ми працюємо над оптимізацією роботи галузі, вдосконаленням нормативно-правової бази,
@@ -343,4 +362,4 @@ class RVVPage extends Component {
     }
 }
 
-export default RVVPage;
+export default connect(mapStateToProps)(RVVPage);

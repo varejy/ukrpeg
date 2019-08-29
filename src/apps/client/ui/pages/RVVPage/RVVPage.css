@@ -23,10 +23,6 @@
     position: fixed;
     height: 100vh;
     z-index: 10;
-
-    @media (max-width: 768px) {
-        display: none;
-    }
 }
 
 .column{
@@ -41,25 +37,46 @@
 
 .column1{
     left: 134px;
+
+    @media (max-width: 780px) {
+        left: 30%;
+        margin: 0;
+    }
 }
 
 .column2{
     left: 25%;
     margin-left: 61px;
+
+    @media (max-width: 780px) {
+        display: none;
+    }
 }
 
 .column3{
     left: 50%;
     margin-left: -10px;
+
+    @media (max-width: 780px) {
+        display: none;
+    }
 }
 
 .column4{
     left: 75%;
     margin-left: -75px;
+
+    @media (max-width: 780px) {
+        display: none;
+    }
 }
 
 .column5{
     right: 134px;
+
+    @media (max-width: 780px) {
+        display: none;
+    }
 }
 
 .titleContainer{
@@ -79,6 +96,7 @@
     width: 6px;
     margin-right: 20px;
     background-color: limeGreen;
+    flex-shrink: 0;
 }
 
 .title{
@@ -87,6 +105,7 @@
     letter-spacing: 1.5px;
     text-align: left;
     line-height: 24px;
+    max-width: 80%;
 }
 
 .plans{
@@ -198,9 +217,10 @@
     margin: 0 auto 55px auto;
 
     @media (max-width: 780px){
-        z-index: 7;
+        z-index: 11;
         border: none;
-        padding: 125px 0 26px 0;
+        padding: 125px 0 0 0;
+        margin: 0 auto;
     }
 }
 
@@ -233,9 +253,10 @@
         flex-direction: column;
         align-items: center;
         padding-top: 108px;
-        background: url('./images/gradientBg.png') center;
+        background: url('./images/gradientBackground.png') center;
         background-size: cover;
         margin: 0;
+        z-index: 11;
     }
 }
 
@@ -252,7 +273,7 @@
         flex-direction: column;
         align-items: center;
         padding: 0 104px;
-        margin-bottom: 160px;
+        margin-bottom: 120px;
         width: 100%;
     }
 }
@@ -261,7 +282,7 @@
     margin-right: 18px;
 
     @media (max-width: 780px){
-        margin: 0 0 57px 0;
+        margin: 0 0 37px 0;
     }
 }
 
@@ -270,7 +291,7 @@
     height: auto;
 
     @media (max-width: 780px){
-        width: 75px;
+        width: 65px;
         height: auto;
     }
 }
@@ -301,6 +322,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 780px){
+        z-index: 11;
+    }
 }
 
 .project{
@@ -325,7 +350,7 @@
     z-index: 11;
 
     @media (max-width: 780px){
-        padding: 0 30px;
+        padding: 0 80px;
         width: 100%;
         font-size: 20px;
         line-height: 24px;
@@ -349,6 +374,11 @@
     background-color: whiteBasic;
     z-index: 6;
     top: 0;
+
+    @media (max-width: 780px){
+        width: 70%;
+        right: 0;
+    }
 }
 
 .container{
@@ -373,6 +403,12 @@
     width: 100%;
     max-width: 1350px;
     margin: 0 auto 58px auto;
+
+    @media (max-width: 780px){
+        width: 80%;
+        padding: 0;
+        margin-left: 30px;
+    }
 }
 
 .coursesContainer{
@@ -382,6 +418,10 @@
     max-width: 1350px;
     margin: 0 auto;
     background: whiteBasic;
+
+    @media (max-width: 780px){
+        left: 25%;
+    }
 }
 
 .course{
@@ -390,6 +430,11 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+
+    @media (max-width: 780px){
+        margin-bottom: 102px;
+        align-items: start;
+    }
 }
 
 .courseNumber{
@@ -400,6 +445,13 @@
     color: darkBlueBasic;
     text-align: left;
     z-index: 4;
+
+    @media (max-width: 780px){
+        font-size: 120px;
+        position: absolute;
+        top: -15px;
+        left: -10px;
+    }
 }
 
 .courseText{
@@ -410,21 +462,33 @@
     letter-spacing: 0.5px;
     justify-self: flex-end;
     width: 70%;
-    height: 100%;
+    min-height: 100px;
+    height: auto;
     position: absolute;
     left: 40px;
     background-color: whiteBasic;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: 7;
+    z-index: 11;
+
+    @media (max-width: 780px){
+        width: 60%;
+        font-family: 'Gotham Light', Arial;
+        font-size: 20px;
+        line-height: 24px;
+        align-items: start;
+        padding: 0 10px;
+        position: relative;
+        min-height: 100px;
+        height: auto;
+    }
 }
 
 .courseText .text{
     position: relative;
     z-index: 11;
 }
-
 
 .patternContainer{
     height: 100%;
@@ -436,6 +500,10 @@
     z-index: 5;
     background: url('./images/pattern.png') center;
     background-size: cover;
+
+    @media (max-width: 780px){
+        width: 30%;
+    }
 }
 
 .patternContainerBig{
@@ -484,6 +552,7 @@
     width: 6px;
     margin-right: 20px;
     background-color: whiteBasic;
+    flex-shrink: 0;
 }
 
 .whiteTitle{
@@ -527,7 +596,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-borrom: 100px;
+        margin-bottom: 120px;
     }
 }
 
@@ -558,7 +627,7 @@
 }
 
 .factText{
-    font-family: 'Gotham Bold', Arial;
+    font-family: 'Gotham Bold', 'Arial Black';
     color: whiteBasic;
     font-size: 16px;
     line-height: normal;
@@ -567,6 +636,9 @@
 
     @media (max-width: 780px){
         text-align: center;
+        font-family: 'Gotham Medium', Arial;
+        font-size: 20px;
+        line-height: 24px;
     }
 }
 
@@ -617,8 +689,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.participantsContainer .patternContainerBig{
+    display: none;
 
     @media (max-width: 780px){
+        display: block;
+        width: 30%;
+        left: 0;
+        top: 0;
     }
 }
 
@@ -632,6 +712,13 @@
     padding-top: 28px;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        width: 100%;
+        padding-left: 0;
+        margin-left: 30px;
+        padding-top: 53px;
+    }
 }
 
 .participantsList{
@@ -642,6 +729,10 @@
     margin: 0 auto;
     padding-bottom: 60px;
     z-index: 11;
+
+    @media (max-width: 780px) {
+        left: 80px;
+    }
 }
 
 .participant{
@@ -651,6 +742,7 @@
     letter-spacing: 0.5px;
     text-align: left;
     color: blackBasic;
+    max-width: 70%;
 }
 
 .backgroundGrey{
@@ -679,6 +771,10 @@
     position: relative;
     display: flex;
     justify-content: center;
+
+    @media (max-width: 780px){
+        z-index: 11;
+    }
 }
 
 .idea{
@@ -709,13 +805,20 @@
     margin-right: 50px;
     position: relative;
     z-index: 11;
+    width: 158px;
+    height: auto;
 
     @media (max-width: 780px){
         margin: 0;
         position: absolute;
-        top: -80px;
+        top: -75px;
         right: 80px;
     }
+}
+
+.recycleImage{
+    width: 100%;
+    height: auto;
 }
 
 .ideaText{
@@ -769,6 +872,7 @@
 
     @media (max-width: 780px){
         display: block;
+        z-index: 11;
     }
 }
 
@@ -810,7 +914,7 @@
 }
 
 .containerPlansMobile .coursesContainer{
-    left: 24%;
+    left: 22.5%;
     overflow-y: hidden;
     height: 400px;
     position: relative;
@@ -822,26 +926,38 @@
     display: flex;
     align-items: start;
     position: relative;
+    overflow: hidden;
+
+    @media (max-width: 780px){
+        margin-bottom: 0;
+    }
 }
 
 .containerPlansMobile .courseInfo{
     position: absolute;
-    width: 70%;
+    width: 100%;
 }
 
 .containerPlansMobile .courseNumber{
     font-size: 160px;
     position: absolute;
-    top: -5%;
-    left: -7%;
+    top: -20px;
+    left: 0;
+    width: 0;
+    overflow-wrap: break-word;
 }
 
 .containerPlansMobile .courseText{
     font-size: 20px;
     line-height: 26px;
-    left: 55px;
+    left: 60px;
     align-items: start;
     font-family: 'Gotham Light', Arial;
+    height: 400px;
+
+    @media (max-width: 780px){
+        margin-bottom: 0;
+    }
 }
 
 .plansPagination{
@@ -849,7 +965,10 @@
     align-items: center;
     justify-content: start;
     height: 20px;
-    z-index: 7;
+    padding-left: 30%;
+    z-index: 11;
+    justify-self: flex-start;
+    width: 100%;
 }
 
 .paginationSquare{
