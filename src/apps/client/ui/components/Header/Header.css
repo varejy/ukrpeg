@@ -17,6 +17,7 @@
     background: whiteBasic;
     width: 100%;
     position: fixed;
+    left: 0;
     display: flex;
     justify-content: center;
     z-index: 15;
@@ -125,4 +126,14 @@
 
 .choosenLang{
     color: limeGreen;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .link, .activeLink {
+        width: auto;
+    }
+
+    .link:last-child, .activeLink:last-child{
+      width: 100%;
+    }
 }
