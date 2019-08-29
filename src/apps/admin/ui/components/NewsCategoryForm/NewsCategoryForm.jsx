@@ -77,10 +77,12 @@ class NewsCategoryForm extends Component {
         };
     };
 
-    handleChange = (values) => {
-        this.setState({
-            lang: values.lang
-        });
+    handleChange = (values, changes) => {
+        if ('lang' in changes) {
+            this.setState({
+                lang: values.lang
+            });
+        }
     };
 
     handleSubmit = values => {
