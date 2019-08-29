@@ -55,7 +55,9 @@ class App extends Component {
             window.scrollTo(0, 0);
         }
 
-        document.body.style.overflowY = nextProps.burgerMenu ? 'hidden' : 'auto';
+        if (nextProps.burgerMenu !== this.props.burgerMenu) {
+            document.body.style.overflowY = nextProps.burgerMenu ? 'hidden' : 'auto';
+        }
     };
 
     renderComponent = Component => ({ match: { params: { lang: langUrl = DEFAULT_LANG }, path }, location: { pathname } }) => {
