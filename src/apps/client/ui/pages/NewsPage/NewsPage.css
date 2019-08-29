@@ -4,6 +4,7 @@
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value lightOlive from '../../../../../css/colors.css';
 @value middleGrey from '../../../../../css/colors.css';
+@value lightGreyBasic from '../../../../../css/colors.css';
 
 .pageNotFound{
     display: flex;
@@ -20,7 +21,53 @@
     align-items: start;
     justify-content: space-between;
     position: relative;
-    margin: 130px auto 0 auto;
+    margin: 0 auto 0 auto;
+}
+
+.newsContentContainer{
+    margin-top: 130px;
+}
+
+.gridContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+}
+
+.column{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.05;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+.column1{
+    left: 134px;
+}
+
+.column2{
+    left: 25%;
+    margin-left: 61px;
+}
+
+.column3{
+    left: 50%;
+    margin-left: -10px;
+}
+
+.column4{
+    left: 75%;
+    margin-left: -75px;
+}
+
+.column5{
+    right: 134px;
 }
 
 .newsContent{
@@ -29,13 +76,16 @@
 
 .newsMenuContainer{
     width: 415px;
+    margin-top: 130px;
 }
 
 .titleContainer{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 88px;
+    margin-left: 104px;
+    position: relative;
+    z-index: 11;
 }
 
 .rectangleGreen{
@@ -48,7 +98,7 @@
 .title{
     font-size: 18px;
     line-height: 18px;
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
 }
@@ -56,11 +106,13 @@
 .categoryTitle{
     font-size: 18px;
     line-height: 18px;
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
-    margin-left: -30px;
+    margin-left: -26px;
     cursor: pointer;
+    position: relative;
+    z-index: 11;
 }
 
 .newsCategoryTitle, .newsCategory{
@@ -95,7 +147,7 @@
     width: 665px;
     height: 520px;
     position: absolute;
-    top: 105px;
+    top: 235px;
     left: 0;
     overflow: hidden;
     display: flex;
@@ -114,6 +166,7 @@
     margin-top: 260px;
     position: relative;
     padding: 20px 18px;
+    margin-left: 14px;
 }
 
 .newsDate{
@@ -121,40 +174,46 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    font-family: GothamPro-Light, Arial;
+    font-family: 'Gotham Light', Arial;
     font-size: 14px;
     line-height: 14px;
     text-align: left;
     letter-spacing: 1px;
     color: darkBlueBasic;
     margin-bottom: 16px;
+    position: relative;
+    z-index: 11;
 }
 
 .newsTitle{
     width: 100%;
     align-items: start;
     justify-content: start;
-    font-family: GothamPro, Arial;
+    font-family: 'Gotham Pro', Arial;
     font-size: 16px;
     line-height: 19px;
     text-align: left;
     letter-spacing: 0.5px;
     color: blackBasic;
     margin-bottom: 45px;
+    position: relative;
+    z-index: 11;
 }
 
 .newsText{
-    font-family: GothamPro-Light, Arial;
+    font-family: 'Gotham Light', Arial;
     letter-spacing: 1px;
     text-align: left;
     font-size: 16px;
     line-height: 18px;
     color: blackBasic;
+    position: relative;
+    z-index: 11;
 }
 
 .nextNews{
     position: absolute;
-    padding: 0 100px 0 125px;
+    padding: 0 100px 0 135px;
     bottom: 0;
     width: 70%;
     height: 240px;
@@ -165,7 +224,7 @@
 }
 
 .next{
-    font-family: GothamPro-Medium, "Arial Black";
+    font-family: 'Gotham Medium', "Arial Black";
     color: limeGreen;
     font-size: 14px;
     line-height: normal;
@@ -173,12 +232,14 @@
 }
 
 .nextNewsDate{
-    font-family: GothamPro-Light, Arial;
+    font-family: 'Gotham Light', Arial;
     font-size: 14px;
     line-height: 14px;
     text-align: left;
     letter-spacing: 1px;
     color: darkBlueBasic;
+    position: relative;
+    z-index: 11;
 }
 
 .nextNewsHeader{
@@ -187,16 +248,20 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 27px;
+    position: relative;
+    z-index: 11;
 }
 
 .nextNewsTitle{
     width: 530px;
-    font-family: GothamPro, Arial;
+    font-family: 'Gotham Pro', Arial;
     font-size: 16px;
     line-height: 19px;
     text-align: left;
     letter-spacing: 0.5px;
     color: blackBasic;
+    position: relative;
+    z-index: 11;
 }
 
 .nextNewsButton{
@@ -208,6 +273,8 @@
     justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
+    position: relative;
+    z-index: 11;
 }
 
 .arrowIcon{
@@ -237,17 +304,20 @@
 }
 
 .categoryNewsList :last-child{
-    border-bottom: 1px solid rgba(122, 122, 122, 0.15);
+    border-bottom: 1px solid rgba(122, 122, 122, 0.05);
 }
 
 .newsCardContainer{
     width: 415px;
     padding: 0 20px;
-    border-top: 1px solid rgba(122, 122, 122, 0.15);
+    border-top: 1px solid rgba(122, 122, 122, 0.05);
     border-left: 2px solid whiteBasic;
     cursor: pointer;
     opacity: 0;
     transition: opacity .4s;
+    margin-left: 4px;
+    position: relative;
+    z-index: 11;
 }
 
 .newsCardContainerAnimated{
@@ -264,7 +334,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    font-family: GothamPro-Light, Arial;
+    font-family: 'Gotham Light', Arial;
     font-size: 14px;
     line-height: 14px;
     text-align: left;
@@ -277,7 +347,7 @@
     height: 100px;
     align-items: start;
     justify-content: start;
-    font-family: GothamPro, Arial;
+    font-family: 'Gotham Pro', Arial;
     font-size: 16px;
     line-height: 19px;
     text-align: left;

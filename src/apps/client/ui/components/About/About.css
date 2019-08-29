@@ -30,17 +30,14 @@
     margin-top: 75px;
     padding: 20px 0 20px 20px;
     border-left: 5px solid lightGreenBasic;
-    margin-left: -25px;
+    margin-left: -15px;
     color: darkBlueBasic;
     font-weight: 600;
     font-size: 15px;
     line-height: 17px;
     letter-spacing: 1px;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
-
-    @media (max-width: 1350px) {
-        margin-left: 0;
-    }
+    z-index: 11;
 
     @media (--media-tablet-l) {
         margin: 60px 50px;
@@ -72,8 +69,8 @@
 
 .content{
     padding: 70px 0 30px 0;
-    z-index: 1;
     position: relative;
+    z-index: 11;
 
     @media (--media-tablet-l) {
         padding: 0;
@@ -84,20 +81,18 @@
     display: flex;
     margin-bottom: 40px;
 
-    @media (max-width: 1350px) {
-
-    }
-
     @media (--media-tablet-l) {
         flex-direction: column;
     }
 }
 
 .img{
-    max-width: 540px;
+    max-width: 546px;
     object-fit: cover;
+    width: 546px;
     margin-left: 70px;
     order: 1;
+    z-index: 11;
 
     @media (max-width: 1350px) {
       width: 50%;
@@ -134,6 +129,8 @@
     max-width: 680px;
     object-fit: cover;
     margin-right: -125px;
+    position: relative;
+    left: 0;
 
     @media (max-width: 1350px) {
          margin-right: 0;
@@ -157,6 +154,9 @@
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
     color: greyTextBasic;
     padding-right: 5px;
+    z-index: 11;
+    position: relative;
+    margin-left: 11;
 
     @media (max-width: 1350px) {
          width: 50%;

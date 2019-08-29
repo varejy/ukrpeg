@@ -1,0 +1,53 @@
+@value lightGreyBasic from '../../../../../css/colors.css';
+
+.mainPageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.gridContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+}
+
+.column{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.05;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+.column1{
+    left: 134px;
+}
+
+.column2{
+    left: 25%;
+    margin-left: 61px;
+}
+
+.column3{
+    left: 50%;
+    margin-left: -10px;
+}
+
+.column4{
+    left: 75%;
+    margin-left: -75px;
+}
+
+.column5{
+    right: 134px;
+}
