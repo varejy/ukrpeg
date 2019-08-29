@@ -32,17 +32,13 @@ class RvvPage extends Component {
         });
     };
 
-    renderTableOne = () => {
+    renderPageOne = () => {
         return <Lists
-            values={testArray}
-            sortable={true}
-            form={<NewsForm />}
-            formValuesName='news'
+            values={testArray} // Сами значения
+            sortable={true} // Сортабельность
+            form={<NewsForm />} // Сюда сбрасываем нужную форму 
+            formValuesName='news' // Сюда имя пропса для формы
         />
-    }
-
-    renderSearchTwo = () => {
-        return <div>test 2</div>
     }
 
     render () {
@@ -70,8 +66,7 @@ class RvvPage extends Component {
                 index={tabsValue}
                 onChangeIndex={this.handleChangeIndex}
             >
-                {this.renderTableOne(0)}
-                {this.renderSearchTwo(1)}
+                {this.renderPageOne(0)}
             </SwipeableViews>
         </div>;
     }
