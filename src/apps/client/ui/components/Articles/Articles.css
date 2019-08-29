@@ -12,6 +12,7 @@
     align-items: center;
     flex-direction: column;
     padding-bottom: 80px;
+    margin-left: 20px;
 }
 
 .wrapper{
@@ -37,6 +38,8 @@
     letter-spacing: .5px;
     cursor: pointer;
     font-family: 'Gotham Medium',"Arial Black", sans-serif;
+    position: relative;
+    z-index: 11;
 }
 
 .title:hover{
@@ -75,9 +78,11 @@
     margin-bottom: 18px;
     font-size: 14px;
     color: darkBlueBasic;
+    font-weight: 300;
     letter-spacing: .5px;
     font-family: 'Gotham Pro', sans-serif;
-    font-weight: 300;
+    z-index: 11;
+    position: relative;
 }
 
 .description{
@@ -87,13 +92,17 @@
     line-height: 18px;
     font-family: 'Gotham Medium', "Arial Black", sans-serif;
     letter-spacing: .2px;
+    z-index: 11;
+    position: relative;
 }
 
 .buttons{
     display: flex;
     flex-direction: column;
     align-self: center;
-    margin-right: 15px;
+    margin-right: 20px;
+    position: relative;
+    z-index: 11;
 }
 
 .arrowBtn{
