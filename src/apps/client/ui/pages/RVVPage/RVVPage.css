@@ -97,7 +97,7 @@
 }
 
 .rectangleGreen{
-    height: 70px;
+    height: 60px;
     width: 6px;
     margin-right: 20px;
     background-color: limeGreen;
@@ -105,7 +105,7 @@
 }
 
 .title{
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
@@ -333,6 +333,7 @@
     width: 100%;
     position: relative;
     background: url("./images/background.jpg") center;
+    background-size: cover;
     height: auto;
     display: flex;
     align-items: center;
@@ -347,7 +348,7 @@
     width: 100%;
     max-width: 1350px;
     height: auto;
-    padding: 108px 0 138px 0;
+    padding: 108px 0 92px 0;
     position: relative;
 }
 
@@ -383,6 +384,7 @@
         width: 100%;
         margin-left: 30px;
         padding: 0;
+        margin-bottom: 30px;
     }
 }
 
@@ -586,7 +588,7 @@
 }
 
 .rectangleWhite{
-    height: 70px;
+    height: 60px;
     width: 6px;
     margin-right: 20px;
     background-color: whiteBasic;
