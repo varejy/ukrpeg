@@ -43,7 +43,8 @@
 }
 
 .img{
-    width: 540px;
+    max-width: 540px;
+    object-fit: cover;
     margin-left: 70px;
     order: 1;
 }
@@ -55,7 +56,8 @@
 }
 
 .contentBlock:nth-child(3n):nth-child(odd) .img{
-    width: 680px;
+    max-width: 680px;
+    object-fit: cover;
     margin-right: -125px;
 }
 
