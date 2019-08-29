@@ -37,6 +37,7 @@
     padding: 5px 0;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
     border-bottom: 1px solid transparent;
+    z-index: 11;
 }
 
 .link:hover{
@@ -51,4 +52,5 @@
     width: 100%;
     background: darkBlueHover;
     height: 37px;
+    z-index: 15;
 }
