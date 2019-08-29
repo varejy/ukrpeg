@@ -13,11 +13,11 @@
     justify-content: center;
 
     @media (--media-tablet-l) {
-      background: transparent
+        background: transparent
     }
 
     @media (--media-tablet-s) {
-      background: transparent
+        background: transparent
     }
 }
 
@@ -79,7 +79,7 @@
     justify-content: center;
 
     @media (max-width: 1350px) {
-      min-width: 110px;
+        min-width: 110px;
     }
 
     @media (--media-tablet-l) {
