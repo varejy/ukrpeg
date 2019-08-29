@@ -64,6 +64,12 @@
 }
 
 .wrapperBurgerMenu{
+    position: relative;
+    overflow-y: scroll;
+    background: blueMobileBg;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100%;
 }
 
 .logoContainer{
@@ -204,6 +210,7 @@
     @media (--media-tablet-l) {
         display: flex;
         z-index: 4;
+        display: none;
     }
 }
 
@@ -232,7 +239,9 @@
         width: 70px;
         border: 1px solid limeGreen;
         padding: 16px 0;
-        position: relative;
+        position: absolute;
+        right: 35px;
+        z-index: 10;
    }
 
     @media (--media-tablet-s) {
@@ -241,8 +250,15 @@
         width: 50px;
         border: 1px solid limeGreen;
         padding: 10px 0;
-        position: relative;
+        position: absolute;
+        right: 30px;
    }
+
+   @media (--media-phone-s) {
+       position: absolute;
+       top: 25px;
+       right: 25px;
+  }
 }
 
 .burgerMenuOpen{
@@ -297,8 +313,8 @@
     }
 
    @media (--media-tablet-s) {
-       top: 15px;
-       left: 15px;
+       top: 25px;
+       right: 35px;
    }
 }
 
@@ -307,34 +323,27 @@
 }
 
 .burgerMenuList{
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background: blueMobileBg;
+    position: static;
+    padding: 0;
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
-    padding-left: 100px;
-    padding-top: 215px;
-    overflow: scroll;
+    background: blueMobileBg;
+    height: auto;
 
     @media (--media-tablet-l) {
-        padding-left: 130px;
-        padding-top: 215px;
+        width: 100%;
+        padding-left: 100px;
     }
 
     @media (--media-tablet-s) {
-        padding-top: 150px;
-    }
-
-    @media (--media-phone) {
-        padding-left: 120px;
+        width: 100%;
+        padding-left: 50px;
     }
 
     @media (--media-phone-s) {
-        padding-left: 100px;
+        margin-top: 120px;
+        padding-left: 20px;
     }
 }
 
@@ -374,6 +383,7 @@
       @media (--media-phone-s) {
           font-size: 13px;
           line-height: 14px;
+          margin-bottom: 25px;
       }
 }
 
@@ -392,18 +402,28 @@
         display: flex;
         justify-content: space-around;
         padding: 150px 120px 50px 0;
+        position: absolute;
+        bottom: 60px;
     }
 
-    @media (max-width: 560px) {
+    @media (--media-tablet-s) {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        padding: 0 120px;
+    }
+
+    @media (--media-phone) {
         justify-content: space-between;
         position: absolute;
-        padding: 0 120px;
+        padding: 0 140px;
         bottom: 40px;
         left: 0;
     }
 
     @media (--media-phone-s) {
-        padding: 0 100px;
+        padding: 0 90px;
+        bottom: 40px;
     }
 }
 
