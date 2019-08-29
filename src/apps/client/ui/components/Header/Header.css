@@ -11,6 +11,7 @@
     background: whiteBasic;
     display: flex;
     justify-content: center;
+    z-index: 15;
 
     @media (--media-tablet-l) {
       background: transparent
@@ -24,7 +25,6 @@
 .headBg{
     background: whiteBasic;
     width: 100%;
-    position: relative;
     position: fixed;
     left: 0;
     display: flex;
@@ -46,6 +46,8 @@
     width:  100%;
     max-width: 1350px;
     display: flex;
+    background: whiteBasic;
+    z-index: 15;
 
     @media (--media-tablet-l) {
         justify-content: space-between;
@@ -69,7 +71,7 @@
 
 .logoContainer{
     display: flex;
-    min-width: 125px;
+    min-width: 134px;
     align-items: center;
     justify-content: center;
 
@@ -155,6 +157,7 @@
     justify-content: flex-end;
     padding-left: 20px;
     padding-right: 30px;
+    border-bottom: 1px solid rgba(122, 122, 122, 0.05);
 
     @media (max-width: 1350px) {
         padding-left: 10px;
@@ -196,6 +199,7 @@
     cursor: pointer;
     font-size: 13px;
     letter-spacing: .5px;
+    border-left: 1px solid rgba(122, 122, 122, 0.05);
     font-family: 'Gotham Narrow', 'Arial Black', sans-serif;
 
     @media (--media-tablet-l) {

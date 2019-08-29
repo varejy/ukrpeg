@@ -20,27 +20,12 @@ class NewsContent extends Component {
         newsCategoryRendered: []
     };
 
-    constructor (...args) {
-        super(...args);
-        const { newsCategoryRendered } = this.props;
-
-        this.state = {
-            news: newsCategoryRendered
-        };
-    }
-
-    componentWillReceiveProps (nextProps, nextContext) {
-        if (this.props.newsCategoryRendered !== nextProps.newsCategoryRendered) {
-            this.setState({ news: nextProps.newsCategoryRendered });
-        }
-    }
-
     render () {
-        const { news } = this.state;
+        const { newsCategoryRendered } = this.props;
 
         return <div className={styles.newsCardsContainer}>
             {
-                news.map((newsCard, i) =>
+                newsCategoryRendered.map((newsCard, i) =>
                     <NewsCard key={i} cardData={newsCard}/>
                 )
             }
