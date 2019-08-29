@@ -202,15 +202,18 @@
 
     @media (--media-tablet-l) {
         display: none;
-   }
+    }
 }
 
 .toogleLangBurgerMenu{
-
     @media (--media-tablet-l) {
         display: flex;
         z-index: 4;
-        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        justify-content: center;
     }
 }
 
