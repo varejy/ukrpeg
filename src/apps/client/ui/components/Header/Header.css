@@ -395,7 +395,6 @@
     display: none;
 
     @media (--media-tablet-l) {
-        display: block;
         z-index: 5;
         color: whiteBasic;
         width: 100%;
@@ -404,6 +403,7 @@
         padding: 150px 120px 50px 0;
         position: absolute;
         bottom: 60px;
+        display: none;
     }
 
     @media (--media-tablet-s) {
@@ -413,12 +413,14 @@
         padding: 0 120px;
     }
 
-    @media (--media-phone) {
+    @media (max-width: 560px) {
+        display: flex;
         justify-content: space-between;
         position: absolute;
-        padding: 0 140px;
+        padding: 0 120px;
         bottom: 40px;
         left: 0;
+        display: flex;
     }
 
     @media (--media-phone-s) {
