@@ -98,6 +98,10 @@ class Header extends Component {
                                 </NavLink>
                             );
                         })}
+                        <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>
+                            <p className={styles.socialItem}>instagram</p>
+                            <p className={styles.socialItem}>facebook</p>
+                        </div>
                     </nav>
                     <div className={styles.tools}>
                         <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
@@ -111,10 +115,6 @@ class Header extends Component {
                         <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
                         <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
                         <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
-                    </div>
-                    <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>
-                        <p className={styles.socialItem}>instagram</p>
-                        <p className={styles.socialItem}>facebook</p>
                     </div>
                 </div>
             </div>

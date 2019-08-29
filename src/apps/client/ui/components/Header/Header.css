@@ -85,6 +85,7 @@
     @media (--media-tablet-l) {
         min-width: 0;
         z-index: 4;
+        display: block;
    }
 
     @media (--media-tablet-s) {
@@ -210,10 +211,18 @@
         display: flex;
         z-index: 4;
         position: absolute;
-        top: 50px;
+        top: 70px;
         left: 0;
         width: 100%;
         justify-content: center;
+    }
+
+    @media (--media-phone) {
+        top: 60px;
+    }
+
+    @media (--media-phone-s) {
+        top: 50px;
     }
 }
 
@@ -248,17 +257,13 @@
    }
 
     @media (--media-tablet-s) {
-        display: block;
         height: 50px;
         width: 50px;
-        border: 1px solid limeGreen;
         padding: 10px 0;
-        position: absolute;
         right: 30px;
    }
 
    @media (--media-phone-s) {
-       position: absolute;
        top: 25px;
        right: 25px;
   }
@@ -327,26 +332,22 @@
 
 .burgerMenuList{
     position: static;
-    padding: 0;
-    margin-top: 150px;
+    padding-top: 150px;
     display: flex;
     flex-direction: column;
     background: blueMobileBg;
-    height: auto;
+    height: 100%;
 
     @media (--media-tablet-l) {
         width: 100%;
-        padding-left: 100px;
     }
 
-    @media (--media-tablet-s) {
-        width: 100%;
-        padding-left: 50px;
+    @media (--media-phone) {
+        position: relative;
     }
 
     @media (--media-phone-s) {
-        margin-top: 120px;
-        padding-left: 20px;
+        padding-top: 120px;
     }
 }
 
@@ -362,15 +363,8 @@
       border: none;
 
       @media (--media-tablet-l) {
-          letter-spacing: .3px;
           font-size: 18px;
           line-height: 22px;
-          font-weight: 500;
-          color: whiteBasic;
-          text-align: left;
-          padding: 0;
-          margin-bottom: 40px;
-          border: none;
       }
 
       @media (--media-tablet-s) {
@@ -381,6 +375,7 @@
       @media (--media-phone) {
           font-size: 14px;
           line-height: 16px;
+          padding-left: 30px;
       }
 
       @media (--media-phone-s) {
@@ -403,31 +398,14 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
-        padding: 150px 120px 50px 0;
-        position: absolute;
-        bottom: 60px;
-        display: none;
+        margin-top: 100px;
     }
 
-    @media (--media-tablet-s) {
-        position: absolute;
-        bottom: 60px;
-        left: 0;
-        padding: 0 120px;
-    }
-
-    @media (max-width: 560px) {
-        display: flex;
+    @media (--media-phone) {
         justify-content: space-between;
+        margin-top: 0;
+        padding: 0 30px;
         position: absolute;
-        padding: 0 120px;
-        bottom: 40px;
-        left: 0;
-        display: flex;
-    }
-
-    @media (--media-phone-s) {
-        padding: 0 90px;
         bottom: 40px;
     }
 }
@@ -439,7 +417,6 @@
 
     @media (--media-tablet-l) {
         font-size: 16px;
-        letter-spacing: .8px;
         line-height: 18px;
     }
 
@@ -465,6 +442,6 @@
     }
 
     .link:last-child, .activeLink:last-child{
-      width: 100%;
+        width: 100%;
     }
 }
