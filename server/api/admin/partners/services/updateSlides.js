@@ -27,7 +27,6 @@ export default function updateSlides (req, res) {
 
             return {
                 title: slide.title,
-                description: slide.description,
                 path: slide.path
             };
         });
