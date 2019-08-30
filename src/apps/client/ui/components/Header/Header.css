@@ -399,9 +399,10 @@
         display: flex;
         justify-content: space-around;
         margin-top: 100px;
+        padding-bottom: 20px;
     }
 
-    @media (--media-phone) {
+    @media (max-width: 560px) {
         justify-content: space-between;
         margin-top: 0;
         padding: 0 30px;
