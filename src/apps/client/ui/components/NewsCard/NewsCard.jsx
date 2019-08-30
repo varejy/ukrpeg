@@ -8,24 +8,27 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = ({ application }) => {
     return {
-        langMap: application.langMap
+        langMap: application.langMap,
+        langRoute: application.langRoute
     };
 };
 
 class NewsCard extends Component {
     static propTypes = {
-        cardData: PropTypes.object.isRequired
+        cardData: PropTypes.object.isRequired,
+        langRoute: PropTypes.string
     };
 
     static defaultProps = {
-        newsCard: {}
+        newsCard: {},
+        langRoute: ''
     };
 
     render () {
-        const { cardData } = this.props;
+        const { cardData, langRoute } = this.props;
 
         return <div className={styles.newsCardContainer}>
-            <Link key={cardData.id} to={`/news/${cardData.id}`}>
+            <Link key={cardData.id} to={`${langRoute}/news/${cardData.id}`}>
                 <div className={styles.newsCardImage}>
                     <div className={styles.imageContainer}>
                         <img className={styles.image} src={cardData.url} alt={cardData.title}/>

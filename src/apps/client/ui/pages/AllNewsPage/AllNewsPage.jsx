@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import NewsContent from '../../components/NewsContent/NewsContent';
 import PropTypes from 'prop-types';
+import propOr from '@tinkoff/utils/object/propOr';
 
 const NEWS_CATEGORY_LIST = [
     {
@@ -112,15 +113,17 @@ const NEWS_CATEGORY_LIST = [
         ]
     }
 ];
-const mapStateToProps = () => {
+const mapStateToProps = ({ application }) => {
     return {
-        news: NEWS_CATEGORY_LIST
+        news: NEWS_CATEGORY_LIST,
+        langMap: application.langMap
     };
 };
 
 class AllNewsPage extends Component {
     static propTypes = {
-        news: PropTypes.array
+        news: PropTypes.array,
+        langMap: PropTypes.object.isRequired
     };
 
     static defaultProps = {
@@ -157,6 +160,8 @@ class AllNewsPage extends Component {
 
     render () {
         const { news, newsCategoryRendered } = this.state;
+        const { langMap } = this.props;
+        const text = propOr('allNews', {}, langMap);
 
         return <section className={styles.newsContainer}>
             <div className={styles.gridContainer}>
@@ -168,7 +173,7 @@ class AllNewsPage extends Component {
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>
-                    <div className={styles.title}>Останні оновлення</div>
+                    <div className={styles.title}>{text.title}</div>
                 </div>
                 <div className={styles.newsContent}>
                     <NewsContent newsCategoryRendered={newsCategoryRendered}/>

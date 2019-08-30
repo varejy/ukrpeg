@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
 import { withRouter, matchPath } from 'react-router-dom';
 import find from '@tinkoff/utils/array/find';
+import propOr from '@tinkoff/utils/object/propOr';
 
-const PRODUCT_PATH = '/:news/:id';
 const NEWS_CATEGORY_LIST = [
     {
         id: 'Всі новини',
@@ -115,20 +115,26 @@ const NEWS_CATEGORY_LIST = [
         ]
     }
 ];
-const mapStateToProps = () => {
+const mapStateToProps = ({ application }) => {
     return {
-        news: NEWS_CATEGORY_LIST
+        news: NEWS_CATEGORY_LIST,
+        langRoute: application.langRoute,
+        lang: application.lang,
+        langMap: application.langMap
     };
 };
 
 class NewsPage extends Component {
     static propTypes = {
         news: PropTypes.array,
-        location: PropTypes.object.isRequired
+        location: PropTypes.object.isRequired,
+        langRoute: PropTypes.string,
+        langMap: PropTypes.object.isRequired
     };
 
     static defaultProps = {
-        news: []
+        news: [],
+        langRoute: ''
     };
 
     constructor (...args) {
@@ -138,7 +144,8 @@ class NewsPage extends Component {
     }
 
     getNewState = (props = this.props) => {
-        const { location: { pathname }, news } = props;
+        const { location: { pathname }, news, langRoute } = props;
+        const PRODUCT_PATH = `${langRoute}/:news/:id`;
         const match = matchPath(pathname, { path: PRODUCT_PATH, exact: true });
         let allNews = news.map((category) =>
             category.newsList.map((news) =>
@@ -177,6 +184,8 @@ class NewsPage extends Component {
 
     render () {
         const { news, article } = this.state;
+        const { langMap } = this.props;
+        const text = propOr('news', {}, langMap);
 
         if (this.notFoundPage) {
             return <div className={styles.pageNotFound}>404</div>;
@@ -192,7 +201,7 @@ class NewsPage extends Component {
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>
-                    <div className={styles.title}>Останні оновлення</div>
+                    <div className={styles.title}>{text.title}</div>
                 </div>
                 <div className={styles.newsContent}>
                     <div className={styles.newsCover}><img className={styles.coverImage} src={article.url} alt={article.title}/></div>
@@ -205,7 +214,7 @@ class NewsPage extends Component {
                 <div className={styles.nextNews}>
                     <div className={styles.nextNewsInfo}>
                         <div className={styles.nextNewsHeader}>
-                            <div className={styles.next}>Наступна новина</div>
+                            <div className={styles.next}>{text.nextNews}</div>
                             <div className={styles.nextNewsDate}>17 cерпня 2019</div>
                         </div>
                         <div className={styles.nextNewsTitle}>Українська Пакувально-Екологічна Коаліція нагадала про потребу сортувати побутові відходи</div>
