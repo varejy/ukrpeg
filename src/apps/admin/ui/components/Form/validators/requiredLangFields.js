@@ -12,10 +12,12 @@ const isEmptyValue = cond([
     [T, value => !value]
 ]);
 
-export default function required (value, options = {}) {
-    const isValid = !isEmptyValue(value);
+export default function requiredLangFields (value, options, values) {
+    const isValid = (options.fields || []).every((field) => {
+        return !isEmptyValue(values[field]);
+    });
 
     if (!isValid) {
-        return options.text || 'Поле обязательное';
+        return options.text || 'Заполните форму для всех языков';
     }
 }
