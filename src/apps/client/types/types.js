@@ -5,4 +5,5 @@ export const // eslint-disable-line one-var
     SET_MEDIA_INFO = 'SET_MEDIA_INFO',
     SET_NEWS = 'SET_NEWS',
     SET_ABOUT = 'SET_ABOUT',
-    SET_LAW = 'SET_LAW';
+    SET_LAW = 'SET_LAW',
+    SET_PARTNERS = 'SET_PARTNERS';
