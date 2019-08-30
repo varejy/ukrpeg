@@ -372,7 +372,7 @@ class AdminTableSortable extends React.Component {
                 >
                     <DialogTitle>{deleteValueWarningTitle}</DialogTitle>
                     <DialogContent className={classes.warningContent}>
-                        <DialogContentText>{ valueForDelete && valueForDelete.name }</DialogContentText>
+                        <DialogContentText>{ valueForDelete && valueForDelete.texts.ua.name }</DialogContentText>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleWarningDisagree} color='primary'>
