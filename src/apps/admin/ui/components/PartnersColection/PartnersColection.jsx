@@ -355,7 +355,6 @@ class PartnersColection extends Component {
 
             return {
                 title: slide.title,
-                description: slide.description,
                 path: isOld && slide.path,
                 oldSlidePath: slide.oldSlidePath
             };

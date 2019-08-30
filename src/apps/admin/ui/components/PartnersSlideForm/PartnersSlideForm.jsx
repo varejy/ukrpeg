@@ -13,7 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import pick from '@tinkoff/utils/object/pick';
 
-const SLIDE_VALUES = ['title', 'description', 'path'];
+const SLIDE_VALUES = ['title', 'path'];
 
 const materialStyles = theme => ({
     uploadInput: {
@@ -168,14 +168,6 @@ class MainSlideForm extends Component {
                 label='Название'
                 value={slide.title}
                 onChange={this.handleChange('title')}
-                margin='normal'
-                variant='outlined'
-                fullWidth
-            />
-            <TextField
-                label='Описание'
-                value={slide.description}
-                onChange={this.handleChange('description')}
                 margin='normal'
                 variant='outlined'
                 fullWidth
