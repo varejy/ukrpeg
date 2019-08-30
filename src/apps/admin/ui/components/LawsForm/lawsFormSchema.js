@@ -22,9 +22,9 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 },
                 validators: [
                     {
-                        name: 'requiredLangFields',
+                        'ссылка на закон': 'requiredLangFields',
                         options: {
-                            text: 'Заполните форму для всех языков',
+                            'подсказка': 'Заполните форму для всех языков',
                             fields: ['ua_name', 'en_name']
                         }
                     }
@@ -37,7 +37,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                     label: 'Название'
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните название закона' } }
+                    { 'ссылка на закон': 'required', options: { 'подсказка': 'Заполните название закона' } }
                 ]
             },
             {
@@ -47,7 +47,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                     label: 'Путь'
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните путь' } }
+                    { 'ссылка на закон': 'required', options: { 'подсказка': 'Заполните путь' } }
                 ]
             },
             {

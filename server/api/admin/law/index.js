@@ -6,7 +6,6 @@ import getLaws from './services/getLaws';
 import saveLaw from './services/saveLaw';
 import editLaw from './services/editLaw';
 import deleteByIds from './services/deleteByIds';
-import findLawsByName from './services/findLawsByName';
 
 const router = express.Router();
 
@@ -23,8 +22,5 @@ router.route('/edit')
 
 router.route('/delete')
     .post(deleteByIds);
-
-router.route('/find')
-    .get(findLawsByName);
 
 export default router;
