@@ -49,6 +49,7 @@ class NewsForm extends Component {
         this.initialValues = {
             hidden: false,
             date: format(new Date(), 'YYYY-MM-DD'),
+            views: 0,
             avatar: {
                 files: news.avatar ? [news.avatar] : [],
                 removedFiles: []

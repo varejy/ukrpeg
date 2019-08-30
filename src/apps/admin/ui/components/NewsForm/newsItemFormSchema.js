@@ -67,29 +67,6 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 ]
             },
             {
-                component: FormFieldInput,
-                name: 'views',
-                schema: {
-                    label: 'Просмотры',
-                    type: 'number'
-                },
-                validators: [
-                    { name: 'required', options: { text: 'Добавьте количество просмотров' } },
-                    { name: 'min', options: { minValue: 0 } }
-                ]
-            },
-            {
-                component: FormFieldDate,
-                name: 'date',
-                schema: {
-                    label: 'Дата публикации'
-                },
-                validators: [
-                    { name: 'required', options: { text: 'Добавьте количество просмотров' } },
-                    { name: 'min', options: { minValue: 0 } }
-                ]
-            },
-            {
                 component: FormFieldTitle,
                 name: 'title',
                 schema: {
