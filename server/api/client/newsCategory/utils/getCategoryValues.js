@@ -1,7 +1,7 @@
 import pick from '@tinkoff/utils/object/pick';
 
 const VALUES = [
-    'name',
+    'texts',
     'id',
     'hidden'
 ];
