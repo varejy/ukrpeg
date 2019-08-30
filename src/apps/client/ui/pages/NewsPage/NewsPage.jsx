@@ -210,7 +210,6 @@ class NewsPage extends Component {
         const newsArr = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
-        newsArr[0].opened = true;
 
         this.notFoundPage = !article;
 
@@ -219,9 +218,18 @@ class NewsPage extends Component {
             articleId: match.params.id,
             news: newsArr,
             activeCategoryIndex: 0,
-            mobileMenuListVisible: false
+            mobileMenuListVisible: false,
+            pageLoaded: false
         };
     };
+
+    componentDidMount () {
+        const { news } = this.state;
+        const newsArr = news;
+        newsArr[0].opened = true;
+
+        this.setState({ pageLoaded: true, news: newsArr });
+    }
 
     handleCategoryClick = i => () => {
         const { news } = this.props;
@@ -242,7 +250,7 @@ class NewsPage extends Component {
     };
 
     render () {
-        const { news, article, activeCategoryIndex, mobileMenuListVisible } = this.state;
+        const { news, article, activeCategoryIndex, mobileMenuListVisible, pageLoaded } = this.state;
         const { mediaWidth } = this.props;
         const isDesktop = mediaWidth > TABLET_WIDTH;
 
@@ -258,19 +266,37 @@ class NewsPage extends Component {
                 <div className={classNames(styles.column, styles.column4)}/>
             </div>
             <div className={styles.newsContentContainer}>
-                <div className={styles.titleContainer}>
+                <div className={classNames(styles.titleContainer, {
+                    [styles.titleContainerAnimated]: pageLoaded
+                })}>
                     <div className={styles.rectangleGreen}/>
                     <div className={styles.title}>Останні оновлення</div>
                 </div>
                 <div className={styles.newsContent}>
-                    <div className={styles.newsCover}
-                        style={{ top: `${isDesktop ? 235 : !mobileMenuListVisible ? 300 : 300 + CATEGORY_HEIGHT * news.length}px` }}>
+                    <div className={classNames(styles.newsCover, {
+                        [styles.newsCoverAnimated]: pageLoaded
+                    })}
+                    style={{ top: `${isDesktop ? 100 : !mobileMenuListVisible ? 300 : 300 + CATEGORY_HEIGHT * news.length}px` }}>
                         <img className={styles.coverImage} src={article.url} alt={article.title}/>
                     </div>
-                    <div className={styles.news}>
-                        <div className={styles.newsDate}>{getDateFormatted(article.date, 'ua')}</div>
-                        <div className={styles.newsTitle}>{article.title}</div>
-                        <div className={styles.newsText}>{article.text}</div>
+                    <div className={classNames(styles.news, {
+                        [styles.newsAnimated]: pageLoaded
+                    })}>
+                        <div className={classNames(styles.newsDate, {
+                            [styles.newsDateAnimated]: pageLoaded
+                        })}>
+                            {getDateFormatted(article.date, 'ua')}
+                        </div>
+                        <div className={classNames(styles.newsTitle, {
+                            [styles.newsTitleAnimated]: pageLoaded
+                        })}>
+                            {article.title}
+                        </div>
+                        <div className={classNames(styles.newsText, {
+                            [styles.newsTextAnimated]: pageLoaded
+                        })}>
+                            {article.text}
+                        </div>
                     </div>
                 </div>
                 <div className={styles.nextNews}>
@@ -291,7 +317,9 @@ class NewsPage extends Component {
                     </div>
                 </div>
             </div>
-            <div className={styles.newsMenuContainer}>
+            <div className={classNames(styles.newsMenuContainer, {
+                [styles.newsMenuContainerAnimated]: pageLoaded
+            })}>
                 <ul>
                     {
                         news.map((newsCategory, i) =>
@@ -319,8 +347,8 @@ class NewsPage extends Component {
                                                 [styles.newsCardContainerAnimated]: news[i].opened
                                             })}
                                             key={j} style={{ transitionDelay: `${j * 0.2}s` }}>
-                                                <div className={styles.newsDate}>{getDateFormatted(newsCard.date, 'ua')}</div>
-                                                <div className={styles.newsTitle}>{newsCard.title}</div>
+                                                <div className={styles.newsDateMenu}>{getDateFormatted(newsCard.date, 'ua')}</div>
+                                                <div className={styles.newsTitleMenu}>{newsCard.title}</div>
                                             </li>
                                         )
                                     }
@@ -349,8 +377,7 @@ class NewsPage extends Component {
                                     })}
                                     onClick={this.handleCategoryClick(i)}
                                     >
-                                        <div className={styles.newsCategoryTitleMobile}
-                                        >
+                                        <div className={styles.newsCategoryTitleMobile}>
                                             <div className={styles.categoryTitleMobile}>{newsCategory.id}</div>
                                         </div>
                                     </div>

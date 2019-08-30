@@ -15,6 +15,7 @@
 }
 
 .newsContainer{
+    overflow-x: hidden;
     width: 100%;
     max-width: 1350px;
     display: flex;
@@ -37,8 +38,10 @@
 
 .newsContentContainer{
     margin-top: 130px;
+    position: relative;
 
     @media (max-width: 780px){
+        position: unset;
         margin-top: 30px;
         width: 100%;
     }
@@ -98,11 +101,20 @@
 .newsMenuContainer{
     width: 415px;
     margin-top: 130px;
+    position: relative;
+    right: -415px;
+    transition: right .7s ease-in-out;
     display: block;
 
     @media (max-width: 780px){
         display: none;
+        right: 0;
+        transition: none;
     }
+}
+
+.newsMenuContainerAnimated{
+    right: 0;
 }
 
 .titleContainer{
@@ -111,11 +123,20 @@
     justify-content: flex-start;
     margin-left: 104px;
     position: relative;
+    top: -100vh;
+    transition: top 1s ease-out;
+    transition-delay: .5s;
     z-index: 11;
 
     @media (max-width: 780px){
         margin-left: 43.5px;
+        top: 0;
+        transition: none;
     }
+}
+
+.titleContainerAnimated{
+    top: 0;
 }
 
 .rectangleGreen{
@@ -182,8 +203,10 @@
     width: 665px;
     height: 520px;
     position: absolute;
-    top: 235px;
-    left: 0;
+    top: 100px;
+    left: -665px;
+    transition: left .7s ease-in-out;
+    transition-delay: .3s;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -193,7 +216,13 @@
         top: 300px;
         width: 100%;
         align-items: start;
+        left: 0;
+        transition: none;
     }
+}
+
+.newsCoverAnimated{
+    left: 0;
 }
 
 .coverImage{
@@ -206,6 +235,9 @@
     background-color: whiteBasic;
     margin-top: 260px;
     position: relative;
+    top: 100vh;
+    transition: top 1s ease-in-out;
+    transition-delay: .3s;
     padding: 20px 18px;
     margin-left: 14px;
 
@@ -213,7 +245,13 @@
         margin: 260px 0 0 0;
         width: 100%;
         padding: 32px 36px;
+        top: 0;
+        transition: none;
     }
+}
+
+.newsAnimated{
+    top: 0;
 }
 
 .newsDate{
@@ -230,6 +268,18 @@
     margin-bottom: 16px;
     position: relative;
     z-index: 11;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    transition-delay: 1.3s;
+
+    @media (max-width: 780px){
+        opacity: 1;
+        transition: none;
+    }
+}
+
+.newsDateAnimated{
+    opacity: 1;
 }
 
 .newsTitle{
@@ -245,6 +295,18 @@
     margin-bottom: 45px;
     position: relative;
     z-index: 11;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    transition-delay: 1.5s;
+
+    @media (max-width: 780px){
+        opacity: 1;
+        transition: none;
+    }
+}
+
+.newsTitleAnimated{
+    opacity: 1;
 }
 
 .newsText{
@@ -254,6 +316,49 @@
     font-size: 16px;
     line-height: 18px;
     color: blackBasic;
+    position: relative;
+    z-index: 11;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    transition-delay: 1.7s;
+
+    @media (max-width: 780px){
+        opacity: 1;
+        transition: none;
+    }
+}
+
+.newsTextAnimated{
+    opacity: 1;
+}
+
+.newsDateMenu{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-family: 'Gotham Light', Arial;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: left;
+    letter-spacing: 1px;
+    color: darkBlueBasic;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 11;
+}
+
+.newsTitleMenu{
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    font-family: 'Gotham Pro', Arial;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+    letter-spacing: 0.5px;
+    color: blackBasic;
+    margin-bottom: 45px;
     position: relative;
     z-index: 11;
 }
@@ -382,6 +487,12 @@
     overflow-x: hidden;
     height: 0;
     transition: height .6s;
+    transition-delay: .7s;
+
+    @media (max-width: 780px){
+        height: 160px;
+        transition: none;
+    }
 }
 
 .categoryNewsListAnimated1x{
@@ -411,6 +522,11 @@
     margin-left: 4px;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        opacity: 1;
+        transition: none;
+    }
 }
 
 .newsCardContainerAnimated{
@@ -421,7 +537,7 @@
     border-left: 2px solid limeGreen;
 }
 
-.newsCardContainer .newsDate{
+.newsCardContainer .newsDateMenu{
     width: 100%;
     margin: 26px 0 18px 0;
     display: flex;
@@ -435,7 +551,7 @@
     color: middleGrey;
 }
 
-.newsCardContainer .newsTitle{
+.newsCardContainer .newsTitleMenu{
     width: 100%;
     height: 100px;
     align-items: start;
@@ -459,9 +575,9 @@
     align-items: end;
     justify-content: start;
 
-@media (max-width: 780px){
-    display: flex;
-}
+    @media (max-width: 780px){
+        display: flex;
+    }
 }
 
 .mobileMenuContainer{
