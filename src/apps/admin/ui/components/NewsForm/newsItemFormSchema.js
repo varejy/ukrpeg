@@ -1,10 +1,11 @@
 import FormFieldInput from '../Form/fields/FormFieldInput/FormFieldInput.jsx';
-import FormFieldDate from '../Form/fields/FormFieldDate/FormFieldDate.jsx';
+import FormFieldEditor from '../Form/fields/FormFieldEditor/FormFieldEditor';
 import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
 import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
 import FormFieldCheckbox from '../Form/fields/FormFieldCheckbox/FormFieldCheckbox';
 import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
+import FormFieldDate from '../Form/fields/FormFielddate/FormFieldDate';
 
 export default function ({ data: { title } = {}, settings: { lang } } = {}) {
     return {
@@ -55,7 +56,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 ]
             },
             {
-                component: FormFieldInput,
+                component: FormFieldEditor,
                 name: `${lang}_description`,
                 schema: {
                     label: 'Описание',
