@@ -17,3 +17,8 @@
   font-family: 'Gotham Narrow';
   src: url('./font/GothaProNarMed.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url('./font/GothaProBla.ttf') format('truetype');
+}

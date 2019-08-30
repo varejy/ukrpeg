@@ -14,6 +14,7 @@
     max-width: 1350px;
     padding-left: 125px;
     display: flex;
+    margin-left: 12px;
 }
 
 .info{
@@ -32,6 +33,8 @@
     letter-spacing: .5px;
     cursor: pointer;
     font-family: 'Gotham Medium', "Arial Black", sans-serif;
+    position: relative;
+    z-index: 11;
 }
 
 .title:hover{
@@ -55,4 +58,6 @@
 
 .logo{
     width: 140px;
+    position: relative;
+    z-index: 11;
 }
