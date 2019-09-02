@@ -26,6 +26,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import arrayMove from '../../../utils/arrayMove';
 
@@ -33,11 +34,13 @@ import { connect } from 'react-redux';
 import getCategories from '../../../services/getCategories';
 import editNewsCategory from '../../../services/editNewsCategory';
 import deleteCategoriesByIds from '../../../services/deleteCategoriesByIds';
+import deleteNewsByIds from '../../../services/deleteNewsByIds';
 import getNewsAll from '../../../services/getNewsAll';
 
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
 import noop from '@tinkoff/utils/function/noop';
+import pathOr from '@tinkoff/utils/object/pathOr';
 
 import AdminTable from '../../components/AdminTable/AdminTable.jsx';
 import NewsForm from '../../components/NewsForm/NewsForm';
@@ -47,7 +50,7 @@ const ButtonSortable = SortableHandle(({ classes }) => (
     <ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, onCategoryDelete, onCategoryClick, value, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, onCategoryDelete, name, onCategoryClick, value, classes }) => (
     <ListItem onClick={onCategoryClick(value)} button className={classes.row}>
         <ButtonSortable classes={classes}/>
         <ListItemIcon>
@@ -55,7 +58,7 @@ const ItemSortable = SortableElement(({ onFormOpen, onCategoryDelete, onCategory
         </ListItemIcon>
         <ListItemText
             className={classes.listItemText}
-            primary={value.name}
+            primary={name}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
@@ -78,7 +81,9 @@ const SortableWrapp = SortableContainer((
     <List>
         {
             newsCategory.map((value, i) => {
-                return <ItemSortable key={i} value={value} index={i} {...rest}/>;
+                const name = pathOr(['texts', DEFAULT_LANG, 'name'], '', value);
+
+                return <ItemSortable key={i} name={name} value={value} index={i} {...rest}/>;
             })
         }
     </List>
@@ -94,6 +99,7 @@ const mapStateToProps = ({ application, news }) => {
 const mapDispatchToProps = (dispatch) => ({
     getCategories: payload => dispatch(getCategories(payload)),
     deleteCategories: payload => dispatch(deleteCategoriesByIds(payload)),
+    deleteNews: payload => dispatch(deleteNewsByIds(payload)),
     editNewsCategory: payload => dispatch(editNewsCategory(payload)),
     getNewsAll: payload => dispatch(getNewsAll(payload))
 });
@@ -121,8 +127,12 @@ const materialStyles = theme => ({
     },
     toolbarNav: {
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         padding: '5px 30px 5px 30px'
+    },
+    categoryTitle: {
+        height: '30px'
     },
     buttonSortable: {
         position: 'relative',
@@ -162,14 +172,17 @@ const materialStyles = theme => ({
     }
 });
 
+const DEFAULT_LANG = 'ua';
+
 const headerRows = [
     { id: 'name', label: 'Название' },
     { id: 'data', label: 'Дата' },
     { id: 'active', label: 'Active' }
 ];
+
 const tableCells = [
-    { prop: news => news.name },
-    { prop: news => news.data },
+    { prop: news => pathOr(['texts', DEFAULT_LANG, 'name'], '', news) },
+    { prop: news => news.date },
     { prop: news => news.hidden ? <CloseIcon /> : <CheckIcon /> }
 ];
 
@@ -184,6 +197,7 @@ class NewsPage extends Component {
         categories: PropTypes.array.isRequired,
         getCategories: PropTypes.func.isRequired,
         deleteCategories: PropTypes.func.isRequired,
+        deleteNews: PropTypes.func.isRequired,
         editNewsCategory: PropTypes.func.isRequired,
         getNewsAll: PropTypes.func,
         news: PropTypes.array
@@ -246,10 +260,15 @@ class NewsPage extends Component {
     };
 
     handleCategoryFormDone = () => {
+        const { activeNewsCategory } = this.state;
+
         this.props.getCategories()
             .then(() => {
+                const { categories } = this.props;
+
                 this.setState({
-                    newsCategories: this.props.categories
+                    newsCategories: categories,
+                    activeNewsCategory: categories.find(category => category.id === activeNewsCategory.id)
                 });
                 this.handleCloseCategoryForm();
             });
@@ -269,6 +288,18 @@ class NewsPage extends Component {
         this.setState({
             valueForDelete: category
         });
+    }
+
+    handleNewsDelete = (news) => {
+        this.props.deleteNews(news)
+            .then(() => {
+                this.props.getNewsAll()
+                    .then(() => {
+                        this.setState({
+                            news: this.getCategoryNews()
+                        });
+                    });
+            });
     }
 
     handleWarningDisagree = () => {
@@ -335,6 +366,7 @@ class NewsPage extends Component {
             valueForDelete,
             newsCategories,
             news,
+            lang,
             categoryFormShowed
         } = this.state;
 
@@ -345,7 +377,8 @@ class NewsPage extends Component {
                     headerRows={headerRows}
                     tableCells={tableCells}
                     values={news}
-                    headerText={`Новости в категории ${activeNewsCategory.name}`}
+                    headerText={`Новости в категории ${pathOr(['texts', DEFAULT_LANG, 'name'], '', activeNewsCategory)}`}
+                    onDelete={this.handleNewsDelete}
                     deleteValueWarningTitle='Вы точно хотите удалить новость?'
                     deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
                     filters={false}
@@ -367,6 +400,7 @@ class NewsPage extends Component {
                 }}
             >
                 <div className={classes.toolbarNav}>
+                    <Typography variant='h6' className={classes.categoryTitle}>Категории новостей</Typography>
                     <Tooltip title='Добавление'>
                         <IconButton aria-label='Add' onClick={this.handleCategoryFormOpen()}>
                             <AddIcon />
@@ -382,6 +416,7 @@ class NewsPage extends Component {
                     onCategoryClick={this.handleCategoryClick}
                     onSortEnd={this.onDragEnd}
                     newsCategory={newsCategories}
+                    lang={lang}
                     useDragHandle
                     classes={classes}
                 />

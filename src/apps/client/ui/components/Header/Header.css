@@ -11,14 +11,13 @@
     background: whiteBasic;
     display: flex;
     justify-content: center;
-    z-index: 15;
 
     @media (--media-tablet-l) {
-      background: transparent
+        background: transparent
     }
 
     @media (--media-tablet-s) {
-      background: transparent
+        background: transparent
     }
 }
 
@@ -29,7 +28,7 @@
     left: 0;
     display: flex;
     justify-content: center;
-    z-index: 4;
+    z-index: 12;
 
     @media (--media-tablet-l) {
         position: absolute;
@@ -65,21 +64,25 @@
 }
 
 .wrapperBurgerMenu{
+    position: fixed;
+    background: whiteBasic;
+    z-index: 15;
 }
 
 .logoContainer{
     display: flex;
-    min-width: 134px;
+    min-width: 125px;
     align-items: center;
     justify-content: center;
 
     @media (max-width: 1350px) {
-      min-width: 110px;
+        min-width: 110px;
     }
 
     @media (--media-tablet-l) {
         min-width: 0;
         z-index: 4;
+        display: block;
    }
 
     @media (--media-tablet-s) {
@@ -121,21 +124,18 @@
     width: 100%;
 
     @media (max-width: 1350px) {
-      font-size: 15px;
-      letter-spacing: .1px;
-      padding: 45px 15px 30px;
+        font-size: 15px;
+        letter-spacing: .1px;
+        padding: 45px 15px 30px;
     }
 }
 
 .link:first-child, .activeLink:first-child{
-  padding-left: 30px;
-}
-
-.link:nth-child(2), .activeLink:nth-child(2){
+    padding-left: 30px;
 }
 
 .link:last-child, .activeLink:last-child{
-  padding-right: 30px;
+    padding-right: 30px;
 }
 
 .link:hover{
@@ -202,14 +202,26 @@
 
     @media (--media-tablet-l) {
         display: none;
-   }
+    }
 }
 
 .toogleLangBurgerMenu{
-
     @media (--media-tablet-l) {
         display: flex;
         z-index: 4;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    @media (--media-phone) {
+        top: 60px;
+    }
+
+    @media (--media-phone-s) {
+        top: 50px;
     }
 }
 
@@ -238,17 +250,22 @@
         width: 70px;
         border: 1px solid limeGreen;
         padding: 16px 0;
-        position: relative;
+        position: absolute;
+        right: 35px;
+        z-index: 12;
    }
 
     @media (--media-tablet-s) {
-        display: block;
         height: 50px;
         width: 50px;
-        border: 1px solid limeGreen;
         padding: 10px 0;
-        position: relative;
+        right: 30px;
    }
+
+   @media (--media-phone-s) {
+       top: 25px;
+       right: 25px;
+  }
 }
 
 .burgerMenuOpen{
@@ -303,8 +320,8 @@
     }
 
    @media (--media-tablet-s) {
-       top: 15px;
-       left: 15px;
+       top: 25px;
+       right: 35px;
    }
 }
 
@@ -313,33 +330,23 @@
 }
 
 .burgerMenuList{
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background: blueMobileBg;
+    position: static;
+    padding-top: 150px;
     display: flex;
     flex-direction: column;
-    padding-left: 100px;
-    padding-top: 215px;
+    background: blueMobileBg;
+    height: 100%;
 
     @media (--media-tablet-l) {
-        padding-left: 130px;
-        padding-top: 215px;
-    }
-
-    @media (--media-tablet-s) {
-        padding-top: 150px;
+        width: 100%;
     }
 
     @media (--media-phone) {
-        padding-left: 120px;
+        position: relative;
     }
 
     @media (--media-phone-s) {
-        padding-left: 100px;
+        padding-top: 120px;
     }
 }
 
@@ -355,15 +362,8 @@
       border: none;
 
       @media (--media-tablet-l) {
-          letter-spacing: .3px;
           font-size: 18px;
           line-height: 22px;
-          font-weight: 500;
-          color: whiteBasic;
-          text-align: left;
-          padding: 0;
-          margin-bottom: 40px;
-          border: none;
       }
 
       @media (--media-tablet-s) {
@@ -374,11 +374,13 @@
       @media (--media-phone) {
           font-size: 14px;
           line-height: 16px;
+          padding-left: 30px;
       }
 
       @media (--media-phone-s) {
           font-size: 13px;
           line-height: 14px;
+          margin-bottom: 25px;
       }
 }
 
@@ -390,34 +392,21 @@
     display: none;
 
     @media (--media-tablet-l) {
-        display: block;
         z-index: 5;
         color: whiteBasic;
-        position: absolute;
-        left: 0;
-        bottom: 100px;
         width: 100%;
         display: flex;
+        justify-content: space-around;
+        margin-top: 100px;
+        padding-bottom: 20px;
+    }
+
+    @media (max-width: 560px) {
         justify-content: space-between;
-        padding: 0 130px;
-    }
-
-    @media (--media-phone) {
-        bottom: 80px;
-        padding: 0 120px;
-    }
-
-    @media (--media-phone-s) {
-        display: block;
-        z-index: 5;
-        color: whiteBasic;
+        margin-top: 0;
+        padding: 0 30px;
         position: absolute;
-        left: 0;
-        bottom: 50px;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 80px;
+        bottom: 0;
     }
 }
 
@@ -428,7 +417,6 @@
 
     @media (--media-tablet-l) {
         font-size: 16px;
-        letter-spacing: .8px;
         line-height: 18px;
     }
 
@@ -454,6 +442,6 @@
     }
 
     .link:last-child, .activeLink:last-child{
-      width: 100%;
+        width: 100%;
     }
 }
