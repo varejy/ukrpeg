@@ -42,10 +42,10 @@ class NewsPage extends Component {
     getNewState = (props) => {
         const { location: { pathname }, news, langRoute, categories } = props;
         const PRODUCT_PATH = `${langRoute}/:news/:id`;
-        const allNews = { news,
-            texts: {
-                en: { name: 'All news' },
-                ua: { name: 'Всі новини' } } };
+        const allNews = { texts: {
+            en: { name: 'All news' },
+            ua: { name: 'Всі новини' }
+        } };
         const categoriesFull = [allNews, ...categories];
         const categoriesArr = categoriesFull.map(newsCategory => {
             return { ...newsCategory, opened: false };
@@ -64,7 +64,7 @@ class NewsPage extends Component {
             articleId: match.params.id,
             nextArticle: nextArticle,
             categories: categoriesArr,
-            newsCategoryRendered: newsArr
+            newsCategoryRendered: news
         };
     };
 

@@ -26,10 +26,10 @@ class AllNewsPage extends Component {
     constructor (...args) {
         super(...args);
         const { news, categories } = this.props;
-        const allNews = { news,
-            texts: {
-                en: { name: 'All news' },
-                ua: { name: 'Всі новини' } } };
+        const allNews = { texts: {
+            en: { name: 'All news' },
+            ua: { name: 'Всі новини' }
+        } };
         const categoriesFull = [allNews, ...categories];
         const categoriesArr = categoriesFull.map(newsCategory => {
             return { ...newsCategory, opened: false };
