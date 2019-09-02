@@ -1,7 +1,6 @@
 import trim from '@tinkoff/utils/string/trim';
 import cond from '@tinkoff/utils/function/cond';
 import T from '@tinkoff/utils/function/T';
-
 import isString from '@tinkoff/utils/is/string';
 import isNumber from '@tinkoff/utils/is/number';
 import isArray from '@tinkoff/utils/is/array';

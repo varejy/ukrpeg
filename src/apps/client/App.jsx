@@ -29,7 +29,8 @@ import styles from './App.css';
 const mapStateToProps = ({ application }) => {
     return {
         lang: application.lang,
-        langRoute: application.langRoute
+        langRoute: application.langRoute,
+        burgerMenu: application.burgerMenu
     };
 };
 
@@ -39,7 +40,8 @@ class App extends Component {
     static propTypes = {
         lang: PropTypes.string,
         langRoute: PropTypes.string,
-        location: PropTypes.object
+        location: PropTypes.object,
+        burgerMenu: PropTypes.bool.isRequired
     };
 
     static defaultProps = {
@@ -50,6 +52,10 @@ class App extends Component {
     componentWillReceiveProps (nextProps) {
         if (this.props.location !== nextProps.location) {
             window.scrollTo(0, 0);
+        }
+
+        if (nextProps.burgerMenu !== this.props.burgerMenu) {
+            document.body.style.overflowY = nextProps.burgerMenu ? 'hidden' : 'auto';
         }
     };
 

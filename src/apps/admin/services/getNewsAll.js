@@ -5,7 +5,7 @@ import setNewsAction from '../actions/setNews';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';
 
-export default function getProducts () {
+export default function getLaws () {
     return dispatch => {
         const token = localStorage.getItem(TOKEN_LOCAL_STORAGE_NAME);
 

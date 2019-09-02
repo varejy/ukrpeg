@@ -4,8 +4,9 @@ import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
 import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
 import FormFieldCheckbox from '../Form/fields/FormFieldCheckbox/FormFieldCheckbox';
 import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
+import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
 
-export default function ({ data: { title } = {} } = {}) {
+export default function ({ data: { title } = {}, settings: { lang } } = {}) {
     return {
         fields: [
             {
@@ -17,18 +18,34 @@ export default function ({ data: { title } = {} } = {}) {
                 }
             },
             {
-                component: FormFieldInput,
-                name: 'name',
+                component: FormFieldLangs,
+                name: 'lang',
                 schema: {
-                    label: 'Название'
+                    langs: ['ua', 'en']
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните название новости' } }
+                    {
+                        name: 'requiredLangFields',
+                        options: {
+                            text: 'Заполните форму для всех языков',
+                            fields: ['en_name', 'ua_name', 'en_shortDescription', 'ua_shortDescription', 'en_description', 'ua_description']
+                        }
+                    }
                 ]
             },
             {
                 component: FormFieldInput,
-                name: 'shortDescription',
+                name: `${lang}_name`,
+                schema: {
+                    label: 'Название'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните название продутка' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: `${lang}_shortDescription`,
                 schema: {
                     label: 'Краткое описание',
                     multiline: true
@@ -39,7 +56,7 @@ export default function ({ data: { title } = {} } = {}) {
             },
             {
                 component: FormFieldInput,
-                name: 'description',
+                name: `${lang}_description`,
                 schema: {
                     label: 'Описание',
                     multiline: true

@@ -6,6 +6,7 @@ import min from './min';
 import featuresDouble from './featuresDouble';
 import featuresSingular from './featuresSingular';
 import requiredFiles from './requiredFiles';
+import requiredLangFields from './requiredLangFields';
 
 export default {
     required,
@@ -15,5 +16,6 @@ export default {
     featuresSingular,
     max,
     min,
-    requiredFiles
+    requiredFiles,
+    requiredLangFields
 };
