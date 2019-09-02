@@ -15,7 +15,7 @@ import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
 import format from 'date-fns/format';
 
-const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date'];
+const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date', 'metaTitle', 'metaDescription'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveNews: payload => dispatch(saveNews(payload)),
@@ -60,6 +60,10 @@ class NewsForm extends Component {
             ua_shortDescription: ua.shortDescription || '',
             ua_description: ua.description || '',
             en_description: en.description || '',
+            ua_metaDescription: ua.metaDescription || '',
+            en_metaDescription: en.metaDescription || '',
+            ua_metaTitle: ua.metaTitle || '',
+            en_metaTitle: en.metaTitle || '',
             lang: 'ua',
             ...pick(NEWS_VALUES, news)
         };
@@ -77,6 +81,10 @@ class NewsForm extends Component {
             ua_shortDescription: uaShortDescription,
             en_description: enDescription,
             ua_description: uaDescription,
+            en_metaTitle: enMetaTitle,
+            ua_metaTitle: uaMetaTitle,
+            en_metaDescription: enMetaDescription,
+            ua_metaDescription: uaMetaDescription,
             hidden,
             views,
             date,
@@ -92,12 +100,16 @@ class NewsForm extends Component {
                 en: {
                     name: enName,
                     shortDescription: enShortDescription,
-                    description: enDescription
+                    description: enDescription,
+                    metaTitle: enMetaTitle,
+                    metaDescription: enMetaDescription
                 },
                 ua: {
                     name: uaName,
                     shortDescription: uaShortDescription,
-                    description: uaDescription
+                    description: uaDescription,
+                    metaTitle: uaMetaTitle,
+                    metaDescription: uaMetaDescription
                 }
             }
         };

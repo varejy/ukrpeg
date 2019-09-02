@@ -5,7 +5,6 @@ import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
 import FormFieldCheckbox from '../Form/fields/FormFieldCheckbox/FormFieldCheckbox';
 import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
-import FormFieldDate from '../Form/fields/FormFielddate/FormFieldDate';
 
 export default function ({ data: { title } = {}, settings: { lang } } = {}) {
     return {
@@ -64,6 +63,28 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 },
                 validators: [
                     { name: 'required', options: { text: 'Заполните описание' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: `${lang}_metaTitle`,
+                schema: {
+                    label: 'metaTitle',
+                    multiline: true
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните metaTitle' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: `${lang}_metaDescription`,
+                schema: {
+                    label: 'metaDescription',
+                    multiline: true
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните metaDescription' } }
                 ]
             },
             {
