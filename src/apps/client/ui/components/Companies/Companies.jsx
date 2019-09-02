@@ -31,7 +31,7 @@ class Companies extends Component {
                         {companies.map((item, i) => {
                             return (
                                 <li key={i} className={styles.itemBox}>
-                                    <img src={item.path} className={styles.logo} />
+                                    <img src={item.path} className={styles.logo} alt={item.title} />
                                 </li>
                             );
                         })}
