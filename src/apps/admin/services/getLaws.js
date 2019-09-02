@@ -1,7 +1,7 @@
 import request from 'superagent';
 import base from './base';
 
-import setNewsAction from '../actions/setNews';
+import setLawsAction from '../actions/setLaws';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';
 
@@ -11,11 +11,11 @@ export default function getLaws () {
 
         return base(
             request
-                .get('/api/admin/news/all')
+                .get('/api/admin/law/all')
                 .query({ token })
         )
-            .then(newsAll => {
-                return dispatch(setNewsAction(newsAll));
+            .then(laws => {
+                return dispatch(setLawsAction(laws));
             });
     };
 }
