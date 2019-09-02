@@ -201,24 +201,6 @@ class MetaForm extends Component {
                             onChange={this.handleChange('metaTitle')}
                         />
                     </div>
-                    {metaAutoGenerate.enabled &&
-                        <div className={classes.metaAdd}>
-                            <Tooltip
-                                title={metaAutoGenerate.available
-                                    ? 'Добавить значение по умолчанию'
-                                    : 'Заполните поля "Название", "Компания" и "Цена" для добавления значения по умолчанию'}
-                                placement='bottom'
-                            >
-                                <Fab
-                                    color={metaAutoGenerate.available ? 'primary' : GREY}
-                                    size='small'
-                                    onClick={metaAutoGenerate.available ? this.handleDefaultTitleAdd : undefined}
-                                >
-                                    <AutoRenew/>
-                                </Fab>
-                            </Tooltip>
-                        </div>
-                    }
                 </div>
                 <div className={classes.metaAddTitleDescription}>
                     <div className={classes.metaForm}>
@@ -232,24 +214,6 @@ class MetaForm extends Component {
                             onChange={this.handleChange('metaDescription')}
                         />
                     </div>
-                    {true &&
-                        <div className={classes.metaAdd}>
-                            <Tooltip
-                                title={metaAutoGenerate.available
-                                    ? 'Добавить значение по умолчанию'
-                                    : 'Заполните поля "Название", "Компания" и "Цена" для добавления значения по умолчанию'}
-                                placement='bottom'
-                            >
-                                <Fab
-                                    color={metaAutoGenerate.available ? 'primary' : GREY}
-                                    size='small'
-                                    onClick={metaAutoGenerate.available ? this.handleDefaultDescriptionAdd : undefined}
-                                >
-                                    <AutoRenew />
-                                </Fab>
-                            </Tooltip>
-                        </div>
-                    }
                 </div>
                 <div className={classes.metaAddKeywords}>
                     <TextField
@@ -267,25 +231,6 @@ class MetaForm extends Component {
                             </Fab>
                         </Tooltip>
                     </div>
-                    {metaAutoGenerate.enabled &&
-                        <div className={classes.metaAdd}>
-                            <Tooltip
-                                title={metaAutoGenerate.available
-                                    ? 'Добавить ключевые слова по умолчанию'
-                                    : metaAutoGenerate.tooltip}
-                                placement='bottom'
-                            >
-                                <Fab
-                                    size='small'
-                                    color={metaAutoGenerate.available ? 'primary' : GREY}
-                                    onClick={metaAutoGenerate.available ? this.handleDefaultKeywordsAdd : undefined}
-                                    aria-label="Add"
-                                >
-                                    <AutoRenew />
-                                </Fab>
-                            </Tooltip>
-                        </div>
-                    }
                 </div>
                 <div className={classes.keywordsWrapper}>
                     {
