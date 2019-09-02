@@ -9,14 +9,16 @@ import { connect } from 'react-redux';
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
-        langRoute: application.langRoute
+        langRoute: application.langRoute,
+        lang: application.lang
     };
 };
 
 class NewsCard extends Component {
     static propTypes = {
         cardData: PropTypes.object.isRequired,
-        langRoute: PropTypes.string
+        langRoute: PropTypes.string,
+        lang: PropTypes.string.isRequired
     };
 
     static defaultProps = {
@@ -25,18 +27,18 @@ class NewsCard extends Component {
     };
 
     render () {
-        const { cardData, langRoute } = this.props;
+        const { cardData, langRoute, lang } = this.props;
 
         return <div className={styles.newsCardContainer}>
             <Link key={cardData.id} to={`${langRoute}/news/${cardData.id}`}>
                 <div className={styles.newsCardImage}>
                     <div className={styles.imageContainer}>
-                        <img className={styles.image} src={cardData.url} alt={cardData.title}/>
+                        <img className={styles.image} src={cardData.avatar} alt={cardData.title}/>
                     </div>
                 </div>
             </Link>
             <div className={styles.newsCardDate}>{getDateFormatted(cardData.date, 'ua')}</div>
-            <div className={styles.newsCardTitle}>{cardData.title}</div>
+            <div className={styles.newsCardTitle}>{cardData.texts[lang].name}</div>
         </div>;
     }
 }

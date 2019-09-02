@@ -156,8 +156,8 @@
 }
 
 .coverImage{
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
 }
 
 .news{
@@ -275,6 +275,11 @@
     flex-shrink: 0;
     position: relative;
     z-index: 11;
+}
+
+.nextNewsButtonDisabled{
+    opacity: 0.2;
+    border: 1px solid rgba(122, 122, 122, 1);
 }
 
 .arrowIcon{

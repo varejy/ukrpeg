@@ -2,7 +2,8 @@ import {
     SET_LANG,
     SET_LANG_MAP,
     SET_LANG_ROUTE,
-    SET_MEDIA_INFO
+    SET_MEDIA_INFO,
+    SET_NEWS_CATEGORIES
 } from '../types/types';
 import { DEFAULT_LANG, DEFAULT_LANG_ROUTE } from '../constants/constants';
 
@@ -13,7 +14,8 @@ const initialState = {
     },
     langMap: {},
     lang: DEFAULT_LANG,
-    langRoute: DEFAULT_LANG_ROUTE
+    langRoute: DEFAULT_LANG_ROUTE,
+    categories: []
 };
 
 export default function (state = initialState, action) {
@@ -26,6 +28,8 @@ export default function (state = initialState, action) {
         return { ...state, langMap: action.payload };
     case SET_LANG_ROUTE:
         return { ...state, langRoute: action.payload };
+    case SET_NEWS_CATEGORIES:
+        return { ...state, categories: action.payload };
     default:
         return state;
     }
