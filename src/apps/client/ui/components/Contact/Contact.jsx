@@ -5,6 +5,7 @@ import propOr from '@tinkoff/utils/object/propOr';
 import styles from './Contact.css';
 
 import { connect } from 'react-redux';
+import mapStyles from './map';
 
 const mapStateToProps = ({ application }) => {
     return {
@@ -15,6 +16,33 @@ const mapStateToProps = ({ application }) => {
 class Contact extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired
+    };
+
+    componentDidMount () {
+        this.setMap();
+    }
+
+    setMap = () => {
+        const address = new window.google.maps.LatLng(50.388399, 30.4368207);
+        const mapOptions = {
+            zoom: 15,
+            minZoom: 11,
+            center: address,
+            styles: mapStyles,
+            fullscreenControl: false,
+            mapTypeControl: false
+        };
+        const map = new window.google.maps.Map(document.getElementById('map'), mapOptions);
+        const marker = new window.google.maps.Marker({
+            position: address,
+            icon: {
+                url: 'src/apps/client/ui/components/Contact/files/marker.png',
+                labelOrigin: new window.google.maps.Point(13, -8)
+            },
+            title: 'Ukrpeg'
+        });
+
+        marker.setMap(map);
     };
 
     render () {
@@ -47,9 +75,7 @@ class Contact extends Component {
                     <p className={styles.emailTitle}>{text.info.mail.title}</p>
                     <p className={styles.email}><a href={`mailto:${text.info.mail.desc}`}>{text.info.mail.desc}</a></p>
                 </div>
-                <div className={styles.map}>
-                  map
-                </div>
+                <div className={styles.map} id='map' />
             </div>
         </div>;
     }
