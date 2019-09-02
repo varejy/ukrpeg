@@ -79,11 +79,6 @@ const PAGES = [
     { header: 'Законодавства', page: 'contacts' },
     { header: 'Контакти', page: 'contacts' }
 ];
-const mapStateToProps = ({ application }) => {
-    return {
-        categories: application.categories
-    };
-};
 
 const mapDispatchToProps = (dispatch) => ({
     getAllSeo: payload => dispatch(getAllSeo(payload))
@@ -92,31 +87,25 @@ const mapDispatchToProps = (dispatch) => ({
 class SeoPage extends Component {
   static propTypes = {
       classes: PropTypes.object.isRequired,
-      getAllSeo: PropTypes.func.isRequired,
-      products: PropTypes.array
+      getAllSeo: PropTypes.func.isRequired
   };
 
-    static defaultProps = {
-        products: [],
-        categories: []
-    };
+  constructor (...args) {
+      super(...args);
 
-    constructor (...args) {
-        super(...args);
+      this.state = {
+          loading: true
+      };
+  }
 
-        this.state = {
-            loading: true
-        };
-    }
-
-    componentDidMount () {
-        this.props.getAllSeo()
-            .then(() => {
-                this.setState({
-                    loading: false
-                });
-            });
-    }
+  componentDidMount () {
+      this.props.getAllSeo()
+          .then(() => {
+              this.setState({
+                  loading: false
+              });
+          });
+  }
 
     renderEditPagesSeo = () => {
         const { classes } = this.props;
@@ -147,4 +136,4 @@ class SeoPage extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(materialStyles)(SeoPage));
+export default connect(null, mapDispatchToProps)(withStyles(materialStyles)(SeoPage));
