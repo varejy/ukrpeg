@@ -15,7 +15,7 @@ import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
 import format from 'date-fns/format';
 
-const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date', 'metaTitle', 'metaDescription'];
+const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date', 'metaTitle', 'metaDescription', 'metaKeywords'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveNews: payload => dispatch(saveNews(payload)),
@@ -64,6 +64,8 @@ class NewsForm extends Component {
             en_metaDescription: en.metaDescription || '',
             ua_metaTitle: ua.metaTitle || '',
             en_metaTitle: en.metaTitle || '',
+            ua_metaKeywords: ua.metaKeywords || '',
+            en_metaKeywords: en.metaKeywords || '',
             lang: 'ua',
             ...pick(NEWS_VALUES, news)
         };
@@ -85,6 +87,8 @@ class NewsForm extends Component {
             ua_metaTitle: uaMetaTitle,
             en_metaDescription: enMetaDescription,
             ua_metaDescription: uaMetaDescription,
+            en_metaKeywords: enMetaKeywords,
+            ua_metaKeywords: uaMetaKeywords,
             hidden,
             views,
             date,
@@ -102,14 +106,16 @@ class NewsForm extends Component {
                     shortDescription: enShortDescription,
                     description: enDescription,
                     metaTitle: enMetaTitle,
-                    metaDescription: enMetaDescription
+                    metaDescription: enMetaDescription,
+                    metKeywords: enMetaKeywords
                 },
                 ua: {
                     name: uaName,
                     shortDescription: uaShortDescription,
                     description: uaDescription,
                     metaTitle: uaMetaTitle,
-                    metaDescription: uaMetaDescription
+                    metaDescription: uaMetaDescription,
+                    metaKeywords: uaMetaKeywords
                 }
             }
         };
@@ -148,6 +154,7 @@ class NewsForm extends Component {
 
         return <Form
             initialValues={this.initialValues}
+            lang={lang}
             schema={getSchema({
                 data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' },
                 settings: { lang }

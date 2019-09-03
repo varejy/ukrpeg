@@ -5,6 +5,7 @@ import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
 import FormFieldCheckbox from '../Form/fields/FormFieldCheckbox/FormFieldCheckbox';
 import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
+import FormFieldKeywords from '../Form/fields/FormFieldKeywords/FormFieldKeywords';
 
 export default function ({ data: { title } = {}, settings: { lang } } = {}) {
     return {
@@ -85,6 +86,17 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 },
                 validators: [
                     { name: 'required', options: { text: 'Заполните metaDescription' } }
+                ]
+            },
+            {
+                component: FormFieldKeywords,
+                name: `${lang}_metaKeywords`,
+                schema: {
+                    label: 'metaKeywords',
+                    multiline: false
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните metaKeywords' } }
                 ]
             },
             {
