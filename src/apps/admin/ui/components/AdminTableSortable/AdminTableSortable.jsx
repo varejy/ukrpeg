@@ -52,7 +52,7 @@ const ItemSortable = SortableElement(({ index, isSelectedItem, onFormOpen, handl
             <ButtonSortable imageClassName={classes.buttonSortable} />
         </TableCell>
         { tableCells.map((tableCell, i) => <TableCell className={classes.tableCell} key={i}>{tableCell.prop(value)}</TableCell>) }
-        <TableCell padding='checkbox' align='right'>
+        <TableCell className={classes.buttonTableCell} padding='checkbox' align='right'>
             <div className={classes.valueActions}>
                 <IconButton onClick={onFormOpen(value)}>
                     <EditIcon />
@@ -128,7 +128,7 @@ const materialStyles = theme => ({
     tabButtonSortable: {
         display: 'table-cell',
         textAlign: 'left',
-        width: '239px'
+        width: '290px'
     },
     tableCell: {
         color: 'rgba(0, 0, 0, 0.87)',
@@ -137,7 +137,12 @@ const materialStyles = theme => ({
         display: 'table-cell',
         fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
         textAlign: 'left',
-        width: '438px'
+        width: '622px'
+    },
+    buttonTableCell: {
+        width: '384px',
+        display: 'flex',
+        padding: '0px 45px'
     },
     buttonSortable: {
         position: 'relative',
@@ -367,7 +372,7 @@ class AdminTableSortable extends React.Component {
                 >
                     <DialogTitle>{deleteValueWarningTitle}</DialogTitle>
                     <DialogContent className={classes.warningContent}>
-                        <DialogContentText>{ valueForDelete && valueForDelete.name }</DialogContentText>
+                        <DialogContentText>{ valueForDelete && valueForDelete.texts.ua.name }</DialogContentText>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleWarningDisagree} color='primary'>
