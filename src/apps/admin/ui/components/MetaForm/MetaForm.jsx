@@ -168,7 +168,7 @@ class MetaForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const { metaTitle, metaDescription } = this.state;
+        const { metaTitle, metaDescription, metaKeywords } = this.state;
 
         this.setState({
             isLoading: true,
@@ -178,7 +178,7 @@ class MetaForm extends Component {
         this.props.onSubmit({
             metaTitle,
             metaDescription,
-            metaKeywords: this.getKeywords()
+            metaKeywords
         }).then(() => this.setState({ isLoading: false }));
     };
 
