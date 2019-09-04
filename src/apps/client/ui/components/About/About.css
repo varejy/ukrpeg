@@ -92,6 +92,7 @@
     width: 546px;
     margin-left: 70px;
     order: 1;
+    position: relative;
     z-index: 11;
 
     @media (max-width: 1350px) {
@@ -157,6 +158,8 @@
     z-index: 11;
     position: relative;
     margin-left: 11;
+    position: relative;
+    z-index: 11;
 
     @media (max-width: 1350px) {
          width: 50%;
