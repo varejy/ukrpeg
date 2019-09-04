@@ -114,7 +114,7 @@
     z-index: 11;
 
     @media (max-width: 780px){
-        margin-left: 43.5px;
+        margin-left: 30px;
     }
 }
 
@@ -174,7 +174,7 @@
 
     @media (max-width: 780px){
         width: 100%;
-        margin: 0 0 390px 0;
+        margin: 0;
     }
 }
 
@@ -212,7 +212,7 @@
     @media (max-width: 780px){
         margin: 260px 0 0 0;
         width: 100%;
-        padding: 32px 36px;
+        padding: 32px 30px;
     }
 }
 
@@ -285,8 +285,12 @@
         width: 100%;
         flex-direction: column;
         justify-content: start;
-        padding: 32px 36px;
+        padding: 32px 30px;
         position: relative;
+    }
+
+    @media (max-width: 425px){
+        height: 270px;
     }
 }
 
@@ -361,7 +365,7 @@
     @media (max-width: 780px){
         position: absolute;
         bottom: 32px;
-        right: 36px;
+        right: 30px;
         border: 1px solid rgba(000, 000, 000, 0.2);
     }
 }
@@ -453,7 +457,7 @@
 .newsMenuContainerMobile {
     width: 100%;
     margin-top: 130px;
-    border: 1px solid rgba(122, 122, 122, 0.5);
+    border: 1px solid rgba(122, 122, 122, 0.2);
     display: none;
     flex-direction: column;
     align-items: end;
@@ -479,7 +483,7 @@
     text-align: left;
     color: rgba(122, 122, 122, 0.5);
     width: 70%;
-    border-right: 1px solid rgba(122, 122, 122, 0.5);
+    border-right: 1px solid rgba(122, 122, 122, 0.2);
     display: flex;
     align-items: center;
     justify-content: start;
@@ -505,7 +509,7 @@
 
 .categoriesList{
     width: 100%;
-    border-top: 1px solid rgba(122, 122, 122, 0.5);
+    border-top: 1px solid rgba(122, 122, 122, 0.2);
 }
 
 .categoryTitleMobile{
