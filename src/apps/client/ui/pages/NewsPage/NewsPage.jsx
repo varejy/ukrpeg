@@ -4,11 +4,14 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
-import { withRouter, matchPath } from 'react-router-dom';
+import { withRouter, matchPath, Link } from 'react-router-dom';
 import find from '@tinkoff/utils/array/find';
+import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 
 const TABLET_WIDTH = 780;
 const CATEGORY_HEIGHT = 58;
+const DESKTOP_TOP = 235;
+const MOBILE_TOP = 300;
 const PRODUCT_PATH = '/:news/:id';
 const NEWS_CATEGORY_LIST = [
     {
@@ -174,7 +177,14 @@ const NEWS_CATEGORY_LIST = [
 const mapStateToProps = ({ application }) => {
     return {
         news: NEWS_CATEGORY_LIST,
-        mediaWidth: application.media.width
+        mediaWidth: application.media.width,
+        activeCategoryIndex: application.activeCategoryIndex
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setActiveCategoryIndex: payload => dispatch(setActiveCategoryIndex(payload))
     };
 };
 
@@ -182,7 +192,9 @@ class NewsPage extends Component {
     static propTypes = {
         news: PropTypes.array,
         location: PropTypes.object.isRequired,
-        mediaWidth: PropTypes.number.isRequired
+        mediaWidth: PropTypes.number.isRequired,
+        activeCategoryIndex: PropTypes.number.isRequired,
+        setActiveCategoryIndex: PropTypes.func.isRequired
     };
 
     static defaultProps = {
@@ -196,7 +208,7 @@ class NewsPage extends Component {
     }
 
     getNewState = (props = this.props) => {
-        const { location: { pathname }, news } = props;
+        const { location: { pathname }, news, activeCategoryIndex } = props;
         const match = matchPath(pathname, { path: PRODUCT_PATH, exact: true });
         let allNews = news.map((category) =>
             category.newsList.map((news) =>
@@ -218,7 +230,7 @@ class NewsPage extends Component {
             article: article,
             articleId: match.params.id,
             news: newsArr,
-            activeCategoryIndex: 0,
+            activeCategoryIndex: activeCategoryIndex,
             mobileMenuListVisible: false
         };
     };
@@ -235,6 +247,12 @@ class NewsPage extends Component {
             activeCategoryIndex: i,
             mobileMenuListVisible: !this.state.mobileMenuListVisible
         });
+    };
+
+    handleCategoryClickMobile = i => () => {
+        const { setActiveCategoryIndex } = this.props;
+
+        setActiveCategoryIndex(i);
     };
 
     handleOpenMenuList = () => {
@@ -264,7 +282,7 @@ class NewsPage extends Component {
                 </div>
                 <div className={styles.newsContent}>
                     <div className={styles.newsCover}
-                        style={{ top: `${isDesktop ? 235 : !mobileMenuListVisible ? 300 : 300 + CATEGORY_HEIGHT * news.length}px` }}>
+                        style={{ top: `${isDesktop ? DESKTOP_TOP : !mobileMenuListVisible ? MOBILE_TOP : MOBILE_TOP + CATEGORY_HEIGHT * news.length}px` }}>
                         <img className={styles.coverImage} src={article.url} alt={article.title}/>
                     </div>
                     <div className={styles.news}>
@@ -344,16 +362,18 @@ class NewsPage extends Component {
                         {
                             news.map((newsCategory, i) =>
                                 <li key={i}>
-                                    <div className={classNames(styles.newsCategoryMobile, {
-                                        [styles.newsCategoryMobileAnimated]: mobileMenuListVisible
-                                    })}
-                                    onClick={this.handleCategoryClick(i)}
-                                    >
-                                        <div className={styles.newsCategoryTitleMobile}
+                                    <Link key={news.id} to='/news'>
+                                        <div className={classNames(styles.newsCategoryMobile, {
+                                            [styles.newsCategoryMobileAnimated]: mobileMenuListVisible
+                                        })}
+                                        onClick={this.handleCategoryClickMobile(i)}
                                         >
-                                            <div className={styles.categoryTitleMobile}>{newsCategory.id}</div>
+                                            <div className={styles.newsCategoryTitleMobile}
+                                            >
+                                                <div className={styles.categoryTitleMobile}>{newsCategory.id}</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </li>
                             )
                         }
@@ -364,4 +384,4 @@ class NewsPage extends Component {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(NewsPage));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewsPage));

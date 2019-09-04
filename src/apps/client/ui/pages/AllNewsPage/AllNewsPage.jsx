@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import NewsContent from '../../components/NewsContent/NewsContent';
 import PropTypes from 'prop-types';
+import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 
 const CATEGORY_HEIGHT = 58;
 const NEWS_CATEGORY_LIST = [
@@ -167,15 +168,24 @@ const NEWS_CATEGORY_LIST = [
         ]
     }
 ];
-const mapStateToProps = () => {
+const mapStateToProps = ({ application }) => {
     return {
-        news: NEWS_CATEGORY_LIST
+        news: NEWS_CATEGORY_LIST,
+        activeCategoryIndex: application.activeCategoryIndex
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setActiveCategoryIndex: payload => dispatch(setActiveCategoryIndex(payload))
     };
 };
 
 class AllNewsPage extends Component {
     static propTypes = {
-        news: PropTypes.array
+        news: PropTypes.array,
+        activeCategoryIndex: PropTypes.number.isRequired,
+        setActiveCategoryIndex: PropTypes.func.isRequired
     };
 
     static defaultProps = {
@@ -184,7 +194,7 @@ class AllNewsPage extends Component {
 
     constructor (...args) {
         super(...args);
-        const { news } = this.props;
+        const { news, activeCategoryIndex } = this.props;
 
         const newsArr = news.map(newsCategory => {
             return { ...newsCategory, opened: false };
@@ -193,8 +203,8 @@ class AllNewsPage extends Component {
 
         this.state = {
             news: newsArr,
-            newsCategoryRendered: newsArr[0].newsList,
-            activeCategoryIndex: 0,
+            newsCategoryRendered: newsArr[activeCategoryIndex].newsList,
+            activeCategoryIndex: activeCategoryIndex,
             mobileMenuListVisible: false
         };
     }
@@ -212,6 +222,8 @@ class AllNewsPage extends Component {
             activeCategoryIndex: i,
             mobileMenuListVisible: !this.state.mobileMenuListVisible
         });
+
+        setActiveCategoryIndex(i);
     };
 
     handleOpenMenuList = () => {
@@ -290,4 +302,4 @@ class AllNewsPage extends Component {
     }
 }
 
-export default connect(mapStateToProps)(AllNewsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AllNewsPage);
