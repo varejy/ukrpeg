@@ -48,7 +48,7 @@ class NewsContent extends Component {
 
         this.setState({
             activeSlide: i,
-            top: (CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN) * i
+            top: (CARD_HEIGHT * MAX_CARDS_PER_SLIDE) * i
         });
         window.scrollTo(0, 0);
     };
