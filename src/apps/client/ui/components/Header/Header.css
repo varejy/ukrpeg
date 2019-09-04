@@ -66,9 +66,12 @@
 }
 
 .wrapperBurgerMenu{
-    position: fixed;
-    background: whiteBasic;
-    z-index: 15;
+    position: relative;
+    overflow-y: scroll;
+    background: blueMobileBg;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100%;
 }
 
 .logoContainer{
@@ -274,7 +277,7 @@
     border: none;
 }
 
-.menuLines, .menuLinesCross{
+.menuLines, .menuLinesCross, .menuLinesPages{
     width: 20px;
     height: 2px;
     background: white;
@@ -299,6 +302,10 @@
         border-radius: 3px;
         margin: 5px auto;
     }
+}
+
+.menuLinesPages{
+      background: limeGreen;
 }
 
 .menuLinesCross:first-child{

@@ -74,7 +74,7 @@ class Header extends Component {
     }
 
     render () {
-        const { langMap, langRoute, lang } = this.props;
+        const { langMap, langRoute, lang, pathname } = this.props;
         const { burgerMenuOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
@@ -112,9 +112,9 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className={!burgerMenuOpen ? styles.burgerMenu : styles.burgerMenuOpen} onClick={this.handleMenuClick} >
-                        <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (pathname === '/' ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (pathname === '/' ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (pathname === '/' ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
                     </div>
                 </div>
             </div>
