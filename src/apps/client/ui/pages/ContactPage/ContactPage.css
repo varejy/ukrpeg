@@ -1,6 +1,6 @@
 @value lightGreyBasic from '../../../../../css/colors.css';
 
-.AboutPageContainer{
+.contactPageContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
