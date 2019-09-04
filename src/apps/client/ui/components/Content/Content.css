@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+    z-index: 11;
 
     @media (--media-tablet-l) {
         margin-top: 0;
