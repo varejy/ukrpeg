@@ -1,0 +1,605 @@
+@value limeGreen from '../../../../../css/colors.css';
+@value blackBasic from '../../../../../css/colors.css';
+@value whiteBasic from '../../../../../css/colors.css';
+@value lightGreyBasic from '../../../../../css/colors.css';
+@value darkGreyBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+@value olive from '../../../../../css/colors.css';
+
+.pageContainer{
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gridContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
+}
+
+.column{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.05;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+.column1{
+    left: 134px;
+}
+
+.column2{
+    left: 25%;
+    margin-left: 61px;
+}
+
+.column3{
+    left: 50%;
+    margin-left: -10px;
+}
+
+.column4{
+    left: 75%;
+    margin-left: -75px;
+}
+
+.column5{
+    right: 134px;
+}
+
+.titleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 108px;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto 54px auto;
+    z-index: 11;
+    position: relative;
+}
+
+.rectangleGreen{
+    height: 60px;
+    width: 6px;
+    margin-right: 20px;
+    background-color: limeGreen;
+}
+
+.title{
+    font-size: 16px;
+    font-family: 'Gotham Medium', "Arial Black";
+    letter-spacing: 1.5px;
+    text-align: left;
+    line-height: 24px;
+}
+
+.plans{
+    position: relative;
+    padding-top: 130px;
+}
+
+.plansContent{
+    width: 100%;
+    max-width: 1350px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 72px;
+    margin: 0 auto;
+    position: relative;
+    left: -23px;
+}
+
+.plansContent :last-child .stepNumber{
+    letter-spacing: 390px;
+
+    @media (max-width: 1350px) {
+        letter-spacing: 19.5vw;
+    }
+}
+
+.plansContent :last-child .stepText{
+    width: 114%;
+    padding-right: 25%;
+}
+
+.step{
+    width: 40%;
+    position: relative;
+    display: flex;
+    align-items: start;
+    margin-bottom: 115px;
+    margin-right: 48px;
+}
+
+.stepNumber{
+    font-size: 225px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: rgba(40, 50, 65, 0.12);
+    text-align: left;
+    line-height: 150px;
+    letter-spacing: -5.6px;
+}
+
+.stepText{
+    color: blackBasic;
+    font-family: 'Gotham Light', Arial;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    width: 90%;
+    height: 180px;
+    justify-self: end;
+    position: absolute;
+    background-color: whiteBasic;
+    top: 0;
+    left: 86px;
+    padding: 5px 7px;
+    line-height: normal;
+    margin-top: -5px;
+}
+
+.stepText .text{
+    position: relative;
+    z-index: 11;
+}
+
+.whyRVVContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.whyRVV{
+    width: 100%;
+    max-width: 1350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.benefitsContainer{
+    width: 1255px;
+    border: 1px solid limeGreen;
+    padding: 150px 30px 26px 30px;
+    margin: 0 auto 55px auto;
+}
+
+.whyRVV .titleContainer{
+    position: absolute;
+    top: 26px;
+    margin: 0 auto;
+    justify-self: center;
+}
+
+.benefits{
+    width: 100%;
+    max-width: 1350px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.benefitContainer{
+    width: 50%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    margin-bottom: 45px;
+    z-index: 11;
+}
+
+.benefitIconContainer{
+    margin-right: 18px;
+}
+
+.benefitIcon{
+    width: 38px;
+    height: auto;
+}
+
+.benefitText{
+    width: 80%;
+    font-family: 'Gotham Light', Arial;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    color: blackBasic;
+    text-align: left;
+    z-index: 11;
+}
+
+.projectContainer{
+    width: 100%;
+    position: relative;
+    background: url("./images/background.jpg") center;
+    background-size: cover;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project{
+    width: 100%;
+    max-width: 1350px;
+    height: auto;
+    padding: 108px 0 92px 0;
+    position: relative;
+}
+
+.project .titleContainer{
+    margin-bottom: 30px;
+}
+
+.project .titleContainer .title{
+    color: darkGreyBasic;
+}
+
+.projectInfo{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 134px;
+    color: darkGreyBasic;
+    font-family: 'Gotham Bold', Arial;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: left;
+    position: relative;
+    z-index: 11;
+}
+
+.backgroundWhite{
+    width: 100%;
+    height: 100%;
+    max-width: 1350px;
+    position: absolute;
+    margin-left: 140px;
+    background-color: whiteBasic;
+    z-index: 6;
+    top: 0;
+}
+
+.container{
+    width: 100%;
+    position: relative;
+}
+
+.courses{
+    position: relative;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 53px 0 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.courses .titleContainer{
+    position: relative;
+    z-index: 11;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto 58px auto;
+}
+
+.coursesContainer{
+    position: relative;
+    left: 95px;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    background: whiteBasic;
+}
+
+.course{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.courseNumber{
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 91px;
+    letter-spacing: -2.3px;
+    color: darkBlueBasic;
+    text-align: left;
+    z-index: 4;
+}
+
+.courseText{
+    font-family: 'Gotham Medium', Arial;
+    font-size: 16px;
+    padding: 0 7px;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    justify-self: flex-end;
+    max-width: 70%;
+    height: 100%;
+    position: absolute;
+    left: 40px;
+    background-color: whiteBasic;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 7;
+}
+
+
+.patternContainer{
+    height: 100%;
+    width: 130px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: url('./images/pattern.png') center;
+    background-size: cover;
+}
+
+.patternContainerBig{
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: url('./images/pattern.png') repeat-x;
+    background-size: auto;
+}
+
+
+.pattern{
+    height: 100%;
+    width: auto;
+}
+
+.facts{
+    width: 100%;
+    background: url('./images/blueBackgroundPattern.png') center;
+    background-size: cover;
+    padding: 40px 0;
+    position: relative;
+    z-index: 11;
+}
+
+.facts .titleContainer{
+    margin-bottom: 105px;
+}
+
+.rectangleWhite{
+    height: 60px;
+    width: 6px;
+    margin-right: 20px;
+    background-color: whiteBasic;
+}
+
+.whiteTitle{
+    font-size: 18px;
+    line-height: 18px;
+    font-family: 'Gotham Medium', "Arial Black";
+    letter-spacing: 1.5px;
+    text-align: left;
+    color: whiteBasic;
+}
+
+.factsInfo{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1350px;
+    padding: 0 135px;
+    margin: 0 auto 184px auto;
+}
+
+.factContainer{
+    max-width: 308px;
+}
+
+.factValue{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 33px;
+}
+
+.valueNumber{
+    color: whiteBasic;
+    font-size: 74px;
+    font-family: Verdana;
+    font-weight: bold;
+    line-height: 80px;
+    letter-spacing: -1.8px;
+}
+
+.valueSign{
+    color: whiteBasic;
+    font-size: 43px;
+    font-family: Verdana;
+    font-weight: bold;
+    line-height: 25px;
+    letter-spacing: -1px;
+
+}
+
+.factText{
+    font-family: 'Gotham Bold', Arial;
+    color: whiteBasic;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    width: 100%;
+}
+
+.partnersContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partners{
+    width: 100%;
+    max-width: 1350px;
+    position: relative;
+}
+
+.partnersList{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logoContainer{
+    padding: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+
+.logo{
+    height: 100%;
+    width: auto;
+}
+
+.participantsContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.participants{
+    width: 100%;
+    max-width: 1350px;
+    position: relative;
+}
+
+.participants .titleContainer{
+    padding-top: 28px;
+    position: relative;
+    z-index: 11;
+}
+
+.participantsList{
+    position: relative;
+    left: 130px;
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    z-index: 11;
+}
+
+.participant{
+    font-family: 'Gotham Medium', Arial;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: blackBasic;
+}
+
+.backgroundGrey{
+    width: 87.5%;
+    background-color: rgba(40, 50, 65, 0.12);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.participants .titleContainer .title{
+    width: 85%;
+}
+
+.containerIdea{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.idea{
+    width: 100%;
+    max-width: 1350px;
+    position: relative;
+}
+
+.ideaContainer{
+    position: relative;
+    left: 135px;
+    background-color: olive;
+    max-width: 1350px;
+    margin: 0 auto;
+    z-index: 5;
+    height: 295px;
+}
+
+.wrapper{
+    padding: 70px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    left: 175px;
+    max-width: 1350px;
+    margin: 0 auto;
+    z-index: 11;
+    position: absolute;
+    top: 0;
+}
+
+.imageContainer{
+    margin-right: 50px;
+    position: relative;
+    z-index: 11;
+}
+
+.ideaText{
+    width: 60%;
+    font-family: 'Gotham Light', Arial;
+    font-size: 16px;
+    line-height: normal;
+    text-align: left;
+    position: relative;
+    z-index: 11;
+}
+
+.idea .patternContainer{
+    left: -130px;
+}
+
+.backgroundGreen{
+    background-color: olive;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+}

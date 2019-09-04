@@ -356,8 +356,7 @@ class PartnersColection extends Component {
             const isOld = !slide.content;
 
             return {
-                name: slide.name,
-                description: slide.description,
+                title: slide.title,
                 path: isOld && slide.path,
                 oldSlidePath: slide.oldSlidePath
             };

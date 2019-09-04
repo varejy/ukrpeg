@@ -26,7 +26,7 @@ export default function updatePartners (req, res) {
             }
 
             return {
-                name: slide.name,
+                title: slide.title,
                 path: slide.path
             };
         });

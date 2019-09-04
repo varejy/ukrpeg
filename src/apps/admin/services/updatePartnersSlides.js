@@ -10,7 +10,7 @@ export default function updateSlides (data) {
 
     return dispatch => base(
         request
-            .post('/api/admin/partners/update-slides')
+            .post('/api/admin/partners/update-partners')
             .query({ token })
             .send(data)
     )

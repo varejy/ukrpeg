@@ -12,6 +12,10 @@
     display: flex;
     justify-content: center;
     background: lightGreenBasic;
+
+    @media (--media-tablet-l) {
+        display: none;
+   }
 }
 
 .menu{
@@ -31,12 +35,13 @@
     letter-spacing: 1px;
     font-weight: 500;
     padding: 5px 0;
-    font-family: 'Gotham Medium', "Arial Black", sans-serif;
+    font-family: 'Gotham Medium', 'Arial Black', sans-serif;
     border-bottom: 1px solid transparent;
+    z-index: 11;
 }
 
 .link:hover{
-  border-bottom: 1px solid darkGreyBasic;
+    border-bottom: 1px solid darkGreyBasic;
 }
 
 .link:last-child{
@@ -47,4 +52,5 @@
     width: 100%;
     background: darkBlueHover;
     height: 37px;
+    z-index: 15;
 }

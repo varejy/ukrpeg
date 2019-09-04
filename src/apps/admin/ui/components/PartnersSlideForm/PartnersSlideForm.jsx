@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import classNames from 'classnames';
-
 import Form from '../Form/Form';
-
 import getSchema from './partnersFormSchema';
 
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import WarningIcon from '@material-ui/icons/Warning';
 import { withStyles } from '@material-ui/core/styles';
 
 import pick from '@tinkoff/utils/object/pick';
 
-const SLIDE_VALUES = ['name', 'path'];
+const SLIDE_VALUES = ['title', 'path'];
 
 const materialStyles = theme => ({
     uploadInput: {

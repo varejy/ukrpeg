@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.use(verification);
 
-router.route('/update-slides')
+router.route('/update-partners')
     .post(updatePartners);
 
 export default router;
