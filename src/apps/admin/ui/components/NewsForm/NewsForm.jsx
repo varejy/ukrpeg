@@ -15,7 +15,7 @@ import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
 import format from 'date-fns/format';
 
-const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date', 'metaTitle', 'metaDescription', 'metaKeywords'];
+const NEWS_VALUES = ['hidden'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveNews: payload => dispatch(saveNews(payload)),
@@ -64,8 +64,8 @@ class NewsForm extends Component {
             en_metaDescription: en.metaDescription || '',
             ua_metaTitle: ua.metaTitle || '',
             en_metaTitle: en.metaTitle || '',
-            ua_metaKeywords: ua.metaKeywords || '',
-            en_metaKeywords: en.metaKeywords || '',
+            ua_metaKeywords: { words: ua.metaKeywords && ua.metaKeywords.split(', ') || [], input: '' },
+            en_metaKeywords: { words: en.metaKeywords && en.metaKeywords.split(', ') || [], input: '' },
             lang: 'ua',
             ...pick(NEWS_VALUES, news)
         };
@@ -107,7 +107,7 @@ class NewsForm extends Component {
                     description: enDescription,
                     metaTitle: enMetaTitle,
                     metaDescription: enMetaDescription,
-                    metKeywords: enMetaKeywords
+                    metaKeywords: enMetaKeywords.words.join(', ')
                 },
                 ua: {
                     name: uaName,
@@ -115,7 +115,7 @@ class NewsForm extends Component {
                     description: uaDescription,
                     metaTitle: uaMetaTitle,
                     metaDescription: uaMetaDescription,
-                    metaKeywords: uaMetaKeywords
+                    metaKeywords: uaMetaKeywords.words.join(', ')
                 }
             }
         };

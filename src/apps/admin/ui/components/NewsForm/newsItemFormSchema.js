@@ -5,7 +5,8 @@ import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
 import FormFieldCheckbox from '../Form/fields/FormFieldCheckbox/FormFieldCheckbox';
 import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
-import FormFieldKeywords from '../Form/fields/FormFieldKeywords/FormFieldKeywords';
+import FormFieldDivider from '../Form/fields/FormFieldDivider/FormFieldDivider';
+import FormFieldKeywords from '../Form/fields/FormFieldWords/FormFieldWords';
 
 export default function ({ data: { title } = {}, settings: { lang } } = {}) {
     return {
@@ -67,10 +68,34 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 ]
             },
             {
+                component: FormFieldFiles,
+                name: 'avatar',
+                schema: {
+                    fileWidth: 521,
+                    fileHeight: 244,
+                    max: 1
+                },
+                validators: [
+                    { name: 'requiredFiles', options: { text: 'Добавьте аватар' } }
+                ]
+            },
+            {
+                component: FormFieldDivider,
+                name: 'divider'
+            },
+            {
+                component: FormFieldTitle,
+                name: 'title',
+                schema: {
+                    label: 'Сео',
+                    variant: 'h6'
+                }
+            },
+            {
                 component: FormFieldInput,
                 name: `${lang}_metaTitle`,
                 schema: {
-                    label: 'metaTitle',
+                    label: 'Тайтл',
                     multiline: true
                 },
                 validators: [
@@ -81,7 +106,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 component: FormFieldInput,
                 name: `${lang}_metaDescription`,
                 schema: {
-                    label: 'metaDescription',
+                    label: 'Описание',
                     multiline: true
                 },
                 validators: [
@@ -92,31 +117,11 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 component: FormFieldKeywords,
                 name: `${lang}_metaKeywords`,
                 schema: {
-                    label: 'metaKeywords',
+                    label: 'Ключевые слова',
                     multiline: false
                 },
                 validators: [
                     { name: 'required', options: { text: 'Заполните metaKeywords' } }
-                ]
-            },
-            {
-                component: FormFieldTitle,
-                name: 'title',
-                schema: {
-                    label: 'Аватар',
-                    variant: 'h6'
-                }
-            },
-            {
-                component: FormFieldFiles,
-                name: 'avatar',
-                schema: {
-                    fileWidth: 521,
-                    fileHeight: 244,
-                    max: 1
-                },
-                validators: [
-                    { name: 'requiredFiles', options: { text: 'Добавьте аватар' } }
                 ]
             },
             {
