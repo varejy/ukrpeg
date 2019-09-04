@@ -39,6 +39,9 @@ export default {
             }
         ]
     },
+    law: {
+        title: `Нормативні документи`
+    },
     contact: {
         title: `Контакты`,
         info: {

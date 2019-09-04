@@ -1,11 +1,11 @@
 import pick from '@tinkoff/utils/object/pick';
 
 const VALUES = [
-    'name',
+    'texts',
     'id',
     'hidden'
 ];
 
-export default function getCategoryValues (product) {
-    return pick(VALUES, product);
+export default function getCategoryValues (category) {
+    return pick(VALUES, category);
 }

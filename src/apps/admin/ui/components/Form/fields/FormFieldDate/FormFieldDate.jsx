@@ -29,7 +29,7 @@ export default class FormFieldDate extends Component {
     };
 
     render () {
-        const { value, validationMessage } = this.props;
+        const { value, validationMessage, schema } = this.props;
 
         return <TextField
             label={schema.label}

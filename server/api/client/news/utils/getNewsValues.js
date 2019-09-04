@@ -1,15 +1,13 @@
 import pick from '@tinkoff/utils/object/pick';
 
 const VALUES = [
-    'name',
     'id',
     'date',
     'avatar',
     'categoryId',
-    'description',
     'hidden',
     'views',
-    'shortDescription'
+    'texts'
 ];
 
 export default function getNewsValues (news) {
