@@ -128,12 +128,14 @@ class FormFieldFiles extends Component {
         classes: PropTypes.object.isRequired,
         value: PropTypes.object,
         schema: PropTypes.object,
-        onChange: PropTypes.func
+        onChange: PropTypes.func,
+        name: PropTypes.string
     };
 
     static defaultProps = {
         value: {},
-        schema: {}
+        schema: {},
+        name: ''
     };
 
     constructor (...args) {

@@ -329,7 +329,6 @@ class PartnersColection extends Component {
 
     handleFormDone = (slide, index) => {
         const { slides } = this.state;
-        console.log(slide)
         const newSlides = [...slides];
 
         newSlides[index] = slide;

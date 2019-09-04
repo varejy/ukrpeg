@@ -44,7 +44,7 @@ class NewsForm extends Component {
 
         const { news } = this.props;
         const ua = pathOr(['texts', 'ua'], '', news);
-        const en = pathOr(['texts', 'en'], '', news)
+        const en = pathOr(['texts', 'en'], '', news);
 
         this.initialValues = {
             hidden: false,

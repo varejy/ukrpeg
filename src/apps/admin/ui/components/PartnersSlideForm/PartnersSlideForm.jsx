@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import Form from '../Form/Form';
 import getSchema from './partnersFormSchema';
 
-import pick from '@tinkoff/utils/object/pick';
-
-const SLIDE_VALUES = ['name', 'path'];
-
 class MainSlideForm extends Component {
     static propTypes = {
         editableSlide: PropTypes.object.isRequired,
@@ -22,7 +18,6 @@ class MainSlideForm extends Component {
         super(props);
 
         const { editableSlide: { slide, index } } = this.props;
-        console.log(slide)
 
         this.initialValues = {
             name: slide.name || '',
@@ -34,12 +29,11 @@ class MainSlideForm extends Component {
 
         this.state = {
             slide,
-            index,
+            index
         };
     }
 
     handleChange = (values, changes) => {
-        console.log(values)
         this.initialValues = {
             values
         };
@@ -47,12 +41,11 @@ class MainSlideForm extends Component {
 
     handleSubmit = values => {
         const { index } = this.state;
-        console.log(values)
         const sendValues = {
             name: values.name,
             wrongDimensions: values.wrongDimensions,
             path: values.avatar.files[0]
-        }
+        };
         this.props.onDone(sendValues, index);
     };
 
