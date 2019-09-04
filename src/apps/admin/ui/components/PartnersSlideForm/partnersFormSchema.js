@@ -16,7 +16,7 @@ export default function () {
             },
             {
                 component: FormFieldFiles,
-                name: 'logo',
+                name: 'avatar',
                 schema: {
                     fileWidth: 240,
                     fileHeight: 135,

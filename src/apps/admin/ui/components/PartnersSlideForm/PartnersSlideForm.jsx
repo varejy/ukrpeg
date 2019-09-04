@@ -22,10 +22,11 @@ class MainSlideForm extends Component {
         super(props);
 
         const { editableSlide: { slide, index } } = this.props;
+        console.log(slide)
 
         this.initialValues = {
             name: slide.name || '',
-            logo: {
+            avatar: {
                 files: slide.path ? [slide.path] : []
             },
             wrongDimensions: slide.wrongDimensions
@@ -38,6 +39,7 @@ class MainSlideForm extends Component {
     }
 
     handleChange = (values, changes) => {
+        console.log(values)
         this.initialValues = {
             values
         };
@@ -45,10 +47,11 @@ class MainSlideForm extends Component {
 
     handleSubmit = values => {
         const { index } = this.state;
+        console.log(values)
         const sendValues = {
             name: values.name,
             wrongDimensions: values.wrongDimensions,
-            path: values.logo.files[0]
+            path: values.avatar.files[0]
         }
         this.props.onDone(sendValues, index);
     };

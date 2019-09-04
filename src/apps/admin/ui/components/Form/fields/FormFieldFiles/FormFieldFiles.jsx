@@ -258,20 +258,21 @@ class FormFieldFiles extends Component {
     };
 
     render () {
-        const { classes } = this.props;
+        const { classes, name } = this.props;
         const { files, isSorting } = this.state;
+        const inputId = `${name}-${+Date.now()}`;
 
         return <div>
             <div className={classes.upload}>
                 <input
                     className={classes.uploadInput}
-                    id='uploadInput'
+                    id={inputId}
                     type='file'
                     accept='image/*'
                     onChange={this.handleFilesUpload}
                     multiple
                 />
-                <label htmlFor='uploadInput'>
+                <label htmlFor={inputId}>
                     <Button variant='contained' component='span' color='default'>
                         Загрузить
                         <CloudUploadIcon className={classes.uploadIcon} />
