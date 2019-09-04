@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     overflow-x: hidden;
 
-    @media (max-width: 960px){
+    @media (max-width: 1080px){
         width: 100%;
         justify-content: center;
         position: absolute;
@@ -21,9 +21,11 @@
 .sliderContainer{
     width: 100%;
 
-    @media (max-width: 960px){
+    @media (max-width: 1080px){
         overflow-y: hidden;
         position: relative;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -38,7 +40,7 @@
     background-size: cover;
     display: none;
 
-    @media (max-width: 960px){
+    @media (max-width: 1080px){
         display: flex;
         align-items: center;
         justify-content: center;

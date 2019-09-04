@@ -6,7 +6,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const TABLET_WIDTH = 960;
+const TABLET_WIDTH = 1080;
 const MAX_CARDS_PER_SLIDE = 6;
 const NEWS_PHOTO_HEIGHT_COEFFICIENT = 0.7;
 const NEWS_CARD_TEXT_AND_MARGINS_HEIGHT = 214;
