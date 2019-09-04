@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+    z-index: 11;
 }
 
 .wrapper{
@@ -32,12 +33,16 @@
     margin-top: 75px;
     padding: 20px 0 20px 20px;
     border-left: 5px solid lightGreenBasic;
-    margin-left: -25px;
+    margin-left: -15px;
     color: darkBlueBasic;
     font-weight: 600;
     font-size: 15px;
     line-height: 17px;
     letter-spacing: 1px;
+
+    @media (max-width: 1350px){
+        margin-left: 0;
+    }
 
     @media (--media-tablet-l) {
         margin: 60px 50px;
@@ -73,8 +78,12 @@
 
 .info{
     display: flex;
-    padding: 65px 0;
+    padding: 65px 0 65px 10px;
     height: 280px;
+
+    @media (max-width: 1350px){
+        padding: 65px 0 65px 25px;
+    }
 
     @media (--media-tablet-l) {
         padding: 0;
@@ -157,11 +166,17 @@
 .emailInfo{
     width: 50%;
     padding-bottom: 85px;
+    padding-left: 10px;
     font-weight: 600;
+
+    @media (max-width: 1350px){
+        padding-left: 25px;
+    }
 
     @media (--media-tablet-l) {
         width: 100%;
         padding-bottom: 30px;
+        padding-left: 0;
     }
 
     @media (--media-tablet-s) {
@@ -175,10 +190,16 @@
 }
 
 .map{
+    padding-left: 10px;
     padding-bottom: 115px;
+
+    @media (max-width: 1350px){
+        padding-left: 25px;
+    }
 
     @media (--media-tablet-l) {
         padding-bottom: 40px;
+        padding-left: 0;
         margin: 0 50px;
     }
 
