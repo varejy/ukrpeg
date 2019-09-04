@@ -23,9 +23,9 @@ class Contact extends Component {
     }
 
     setMap = () => {
-        const address = new window.google.maps.LatLng(50.388399, 30.4368207);
+        const address = new window.google.maps.LatLng(50.4320917, 30.5698671);
         const mapOptions = {
-            zoom: 15,
+            zoom: 13,
             minZoom: 11,
             center: address,
             styles: mapStyles,

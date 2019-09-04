@@ -209,11 +209,15 @@
 
     @media (--media-phone) {
         margin-bottom: 20px;
-        height: 335px;
+        height: 400px;
     }
 
     @media (--media-phone-s) {
         margin: 0 30px 20px;
+    }
+
+    @media (max-width: 320px) {
+        height: 335px;
     }
 }
 
