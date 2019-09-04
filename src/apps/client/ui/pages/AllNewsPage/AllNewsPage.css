@@ -97,6 +97,7 @@
     display: block;
     padding-top: 130px;
     width: 415px;
+    flex-shrink: 0;
     position: relative;
     z-index: 11;
 

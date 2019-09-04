@@ -73,12 +73,12 @@
 
 .logoContainer{
     display: flex;
-    min-width: 125px;
+    min-width: 134px;
     align-items: center;
     justify-content: center;
 
     @media (max-width: 1350px) {
-        min-width: 110px;
+        min-width: 134px;
     }
 
     @media (--media-tablet-l) {
@@ -177,7 +177,7 @@
 .phone{
     white-space: nowrap;
     color: darkGreyBasic;
-    margin-right: 50px;
+    margin-right: 20px;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     letter-spacing: 1px;
     white-space: nowrap;
@@ -209,6 +209,15 @@
 
 .toogleLang{
     height: 100%;
+    padding-left: 22px;
+
+    @media (max-width: 1349px){
+        padding-right: 10px;
+    }
+
+    @media (max-width: 1150px) {
+        padding-right: 19px;
+    }
 }
 
 .toogleLangBurgerMenu{
