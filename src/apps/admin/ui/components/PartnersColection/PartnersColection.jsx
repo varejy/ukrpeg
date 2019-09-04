@@ -327,8 +327,9 @@ class PartnersColection extends Component {
         });
     };
 
-    handleFormDone = ({ slide, index }) => {
+    handleFormDone = (slide, index) => {
         const { slides } = this.state;
+        console.log(slide)
         const newSlides = [...slides];
 
         newSlides[index] = slide;
@@ -356,7 +357,7 @@ class PartnersColection extends Component {
             const isOld = !slide.content;
 
             return {
-                title: slide.title,
+                name: slide.name,
                 path: isOld && slide.path,
                 oldSlidePath: slide.oldSlidePath
             };
@@ -438,7 +439,7 @@ class PartnersColection extends Component {
             </form>
             <Modal open={formShowed} onClose={this.handleClosetForm} className={classes.modal}>
                 <Paper className={classes.modalContent}>
-                    <PartnersSlideForm editableSlideInfo={editableSlideInfo} onDone={this.handleFormDone}/>
+                    <PartnersSlideForm editableSlide={editableSlideInfo} onDone={this.handleFormDone}/>
                 </Paper>
             </Modal>
         </div>;

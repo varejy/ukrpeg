@@ -4,140 +4,63 @@ import PropTypes from 'prop-types';
 import Form from '../Form/Form';
 import getSchema from './partnersFormSchema';
 
-import { withStyles } from '@material-ui/core/styles';
-
 import pick from '@tinkoff/utils/object/pick';
 
-const SLIDE_VALUES = ['title', 'path'];
-
-const materialStyles = theme => ({
-    uploadInput: {
-        display: 'none'
-    },
-    upload: {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: theme.spacing.unit
-    },
-    uploadIcon: {
-        marginLeft: theme.spacing.unit
-    },
-    imageWrapper: {
-        marginTop: '20px',
-        width: '100%'
-    },
-    image: {
-        width: '100%'
-    },
-    warning: {
-        display: 'flex',
-        alignItems: 'center',
-        marginLeft: '20px'
-    },
-    warningIcon: {
-        color: '#ffae42',
-        marginRight: '10px'
-    },
-    errorIcon: {
-        color: '#f44336',
-        marginRight: '10px'
-    },
-    warningText: {
-        fontSize: '16px'
-    },
-    fileImageError: {
-        outline: 'solid 4px #f44336'
-    }
-});
-
-const SLIDE_WIDTH = 240;
-const SLIDE_HEIGHT = 135;
+const SLIDE_VALUES = ['name', 'path'];
 
 class MainSlideForm extends Component {
     static propTypes = {
-        classes: PropTypes.object.isRequired,
-        editableSlideInfo: PropTypes.object.isRequired,
+        editableSlide: PropTypes.object.isRequired,
         onDone: PropTypes.func.isRequired
     };
 
-    constructor (...args) {
-        super(...args);
+    static defaultProps = {
+        editableSlide: {}
+    };
 
-        const { editableSlideInfo } = this.props;
-        const slide = {
-            ...pick(SLIDE_VALUES, editableSlideInfo.slide)
-        };
+    constructor (props) {
+        super(props);
 
-        this.oldSlidePath = slide.path;
+        const { editableSlide: { slide, index } } = this.props;
 
         this.initialValues = {
-            name: editableSlideInfo.name,
+            name: slide.name || '',
             logo: {
-                files: editableSlideInfo.path ? [editableSlideInfo.path] : []
-            }
+                files: slide.path ? [slide.path] : []
+            },
+            wrongDimensions: slide.wrongDimensions
         };
 
         this.state = {
-            slide: slide,
-            index: editableSlideInfo.index,
-            isWrongDimensions: false
+            slide,
+            index,
         };
     }
 
-    handleChange = prop => event => {
-        this.setState({
-            slide: {
-                ...this.state.slide,
-                [prop]: event.target.value
-            }
-        });
-    };
-
-    handleFileLoad = (event) => {
-        if (event.target.naturalWidth !== SLIDE_WIDTH || event.target.naturalHeight !== SLIDE_HEIGHT) {
-            this.setState({
-                isWrongDimensions: true
-            });
-        } else {
-            this.setState({
-                isWrongDimensions: false
-            });
-        }
-    };
-
-    handleFileUpload = (event) => {
-        this.setState({
-            slide: {
-                ...this.state.slide,
-                content: event.target.files[0],
-                path: URL.createObjectURL(event.target.files[0]),
-                oldSlidePath: this.oldSlidePath
-            }
-        });
-
-        event.target.value = '';
+    handleChange = (values, changes) => {
+        this.initialValues = {
+            values
+        };
     };
 
     handleSubmit = values => {
-        values.preventDefault();
-
-        console.log(value)
-
         const { index } = this.state;
-
-        this.props.onDone({
-            values,
-            index
-        });
+        const sendValues = {
+            name: values.name,
+            wrongDimensions: values.wrongDimensions,
+            path: values.logo.files[0]
+        }
+        this.props.onDone(sendValues, index);
     };
 
     render () {
         return <Form
             initialValues={this.initialValues}
             schema={getSchema()}
+            onChange={this.handleChange}
             onSubmit={this.handleSubmit}
         />;
     }
 }
 
-export default withStyles(materialStyles)(MainSlideForm);
+export default MainSlideForm;
