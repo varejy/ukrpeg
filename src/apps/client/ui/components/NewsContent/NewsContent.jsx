@@ -6,10 +6,11 @@ import NewsCard from '../NewsCard/NewsCard';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const TABLET_WIDTH = 780;
+const TABLET_WIDTH = 960;
 const MAX_CARDS_PER_SLIDE = 6;
 const NEWS_PHOTO_HEIGHT_COEFFICIENT = 0.7;
 const NEWS_CARD_TEXT_AND_MARGINS_HEIGHT = 214;
+const SIXTH_CHILD_MARGIN = 21;
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
@@ -38,7 +39,7 @@ class NewsContent extends Component {
 
         this.setState({
             activeSlide: i,
-            top: (CARD_HEIGHT * MAX_CARDS_PER_SLIDE) * i
+            top: (CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN) * i
         });
         window.scrollTo(0, 0);
     };
@@ -56,7 +57,7 @@ class NewsContent extends Component {
 
         return <div className={styles.newsContent} >
             <div className={styles.sliderContainer}
-                style={{ height: `${isMobileScreen ? `${CARD_HEIGHT * MAX_CARDS_PER_SLIDE}px` : 'auto'}`
+                style={{ height: `${isMobileScreen ? `${CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN}px` : 'auto'}`
                 }}>
                 <div className={styles.newsCardsContainer}
                     style={{ top: `-${top}px` }}>

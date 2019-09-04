@@ -1,4 +1,5 @@
 @value limeGreen from '../../../../../css/colors.css';
+@value whiteBasic from '../../../../../css/colors.css';
 
 .newsCardsContainer{
     max-width: 807px;
@@ -6,17 +7,21 @@
     flex-wrap: wrap;
     overflow-x: hidden;
 
-    @media (max-width: 780px){
+    @media (max-width: 960px){
         width: 100%;
         justify-content: center;
         position: absolute;
+
+        :nth-child(6n){
+            border: 1px solid whiteBasic;
+        }
     }
 }
 
 .sliderContainer{
     width: 100%;
 
-    @media (max-width: 780px){
+    @media (max-width: 960px){
         overflow-y: hidden;
         position: relative;
     }
@@ -33,7 +38,7 @@
     background-size: cover;
     display: none;
 
-    @media (max-width: 780px){
+    @media (max-width: 960px){
         display: flex;
         align-items: center;
         justify-content: center;
