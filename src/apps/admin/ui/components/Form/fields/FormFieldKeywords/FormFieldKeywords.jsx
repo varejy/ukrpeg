@@ -53,10 +53,10 @@ class FormFieldKeywords extends Component {
     constructor (...args) {
         super(...args);
 
-        const { news, name, lang, value } = this.props;
-        console.log(news, name, lang, `${lang}_metaKeywords`, value);
+        const { news, lang } = this.props;
+
         this.state = {
-            keywords: news[name],
+            keywords: news[`${lang}_metaKeywords`],
             keywordsInput: '',
             lang: lang
         };
@@ -66,7 +66,7 @@ class FormFieldKeywords extends Component {
         const { lang } = nextProps;
 
         if (this.props.lang !== nextProps.lang) {
-            this.setState({ lang: lang });
+            this.setState({ lang: lang, keywords: this.props.news[`${lang}_metaKeywords`] });
         }
     }
 
