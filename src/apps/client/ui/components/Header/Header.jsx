@@ -73,6 +73,12 @@ class Header extends Component {
         }
     }
 
+    handleLogoClick = event => {
+        this.setState({
+            burgerMenuOpen: false
+        });
+    }
+
     render () {
         const { langMap, langRoute, lang, pathname } = this.props;
         const { burgerMenuOpen } = this.state;
@@ -82,7 +88,7 @@ class Header extends Component {
         return <div className={styles.header}>
             <div className={styles.headBg}>
                 <div className={!burgerMenuOpen ? styles.wrapper : styles.wrapperBurgerMenu}>
-                    <Link to={`${langRoute}/`} className={styles.logoContainer}>
+                    <Link to={`${langRoute}/`} className={styles.logoContainer} onClick={this.handleLogoClick}>
                         <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
                     </Link>
                     <nav className={!burgerMenuOpen ? styles.menu : styles.burgerMenuList}>

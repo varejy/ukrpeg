@@ -89,11 +89,6 @@
         z-index: 4;
         display: block;
    }
-
-    @media (--media-tablet-s) {
-        min-width: 0;
-        z-index: 4;
-   }
 }
 
 .img{
