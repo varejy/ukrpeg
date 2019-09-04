@@ -33,6 +33,15 @@ class NewsContent extends Component {
         newsCategoryRendered: []
     };
 
+    componentWillReceiveProps (nextProps, nextContext) {
+        if (this.props.newsCategoryRendered !== nextProps.newsCategoryRendered) {
+            this.setState({
+                activeSlide: 0,
+                top: 0
+            });
+        }
+    }
+
     handlePaginationClick = i => () => {
         const { mediaWidth } = this.props;
         const CARD_HEIGHT = mediaWidth * NEWS_PHOTO_HEIGHT_COEFFICIENT + NEWS_CARD_TEXT_AND_MARGINS_HEIGHT;
@@ -54,10 +63,15 @@ class NewsContent extends Component {
         for (let i = 0; i < MAX_SLIDES; i++) {
             PAGINATION.push(i + 1);
         }
+        const LAST_SLIDE_CARDS_AMOUNT = newsCategoryRendered.length >= 6 ? newsCategoryRendered.length % MAX_SLIDES : newsCategoryRendered.length;
+        const SLIDER_CONTAINER_HEIGHT = CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN;
+        const LAST_SLIDE_CONTAINER_HEIGHT = !LAST_SLIDE_CARDS_AMOUNT
+            ? CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN
+            : CARD_HEIGHT * LAST_SLIDE_CARDS_AMOUNT - SIXTH_CHILD_MARGIN;
 
         return <div className={styles.newsContent} >
             <div className={styles.sliderContainer}
-                style={{ height: `${isMobileScreen ? `${CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN}px` : 'auto'}`
+                style={{ height: `${isMobileScreen ? `${activeSlide === MAX_SLIDES - 1 ? LAST_SLIDE_CONTAINER_HEIGHT : SLIDER_CONTAINER_HEIGHT}px` : 'auto'}`
                 }}>
                 <div className={styles.newsCardsContainer}
                     style={{ top: `-${top}px` }}>
