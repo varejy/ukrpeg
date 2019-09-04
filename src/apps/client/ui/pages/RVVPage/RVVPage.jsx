@@ -87,7 +87,7 @@ const PARTICIPANTS_LIST = [
     'ТОВ «Хенкель Україна»',
     'та інші.'
 ];
-
+const SLIDE_HEIGHT = 400;
 const mapStateToProps = ({ application }) => {
     return {
         mediaWidth: application.media.width
@@ -107,7 +107,7 @@ class RVVPage extends Component {
     handlePaginationClick = i => () => {
         this.setState({
             activeSlide: i,
-            top: 400 * i
+            top: SLIDE_HEIGHT * i
         });
     };
 
@@ -117,7 +117,7 @@ class RVVPage extends Component {
 
         this.setState({
             activeSlide: newActiveSlide,
-            top: 400 * newActiveSlide
+            top: SLIDE_HEIGHT * newActiveSlide
         });
     };
 

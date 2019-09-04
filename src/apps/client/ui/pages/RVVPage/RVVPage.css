@@ -23,6 +23,10 @@
     position: fixed;
     height: 100vh;
     z-index: 10;
+
+    @media (max-width: 780px) {
+        display: none;
+    }
 }
 
 .column{
