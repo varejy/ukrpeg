@@ -46,6 +46,8 @@
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
+    position: relative;
+    z-index: 11;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
 
     @media (--media-tablet-l) {
@@ -117,6 +119,8 @@
 
 .logo{
     width: 140px;
+    position: relative;
+    z-index: 11;
 
     @media (--media-tablet-l) {
       height: 100%;

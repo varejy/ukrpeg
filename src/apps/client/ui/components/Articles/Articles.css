@@ -54,6 +54,8 @@
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
+    position: relative;
+    z-index: 11;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
 
     @media (--media-tablet-l) {
@@ -141,6 +143,8 @@
     margin-bottom: 18px;
     font-size: 14px;
     color: darkBlueBasic;
+    z-index: 11;
+    position: relative;
     letter-spacing: .7px;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     font-weight: 300;
