@@ -39,7 +39,7 @@
 .title{
     padding: 25px 0 20px 25px;
     border-left: 5px solid lightGreenBasic;
-    margin-left: -30px;
+    margin-left: -20px;
     color: darkBlueBasic;
     font-weight: 600;
     font-size: 14px;
@@ -49,6 +49,10 @@
     position: relative;
     z-index: 11;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+
+    @media (max-width: 1350px){
+        margin-left: -5px;
+    }
 
     @media (--media-tablet-l) {
         font-size: 12px;
