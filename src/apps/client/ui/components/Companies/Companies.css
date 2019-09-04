@@ -119,8 +119,8 @@
 
 .logo{
     width: 140px;
-    position: relative;
     z-index: 11;
+    position: relative;
 
     @media (--media-tablet-l) {
       height: 100%;

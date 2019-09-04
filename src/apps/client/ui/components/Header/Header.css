@@ -11,6 +11,7 @@
     background: whiteBasic;
     display: flex;
     justify-content: center;
+    z-index: 15;
 
     @media (--media-tablet-l) {
         background: transparent
@@ -45,6 +46,7 @@
     width:  100%;
     max-width: 1350px;
     display: flex;
+    z-index: 15;
 
     @media (--media-tablet-l) {
         justify-content: space-between;
