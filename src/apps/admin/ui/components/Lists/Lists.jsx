@@ -14,9 +14,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import Paper from '@material-ui/core/Paper';
 
 // icons
 import ReorderIcon from '@material-ui/icons/Reorder';
@@ -32,17 +32,24 @@ import arrayMove from '../../../utils/arrayMove';
 // Tinkoff
 import noop from '@tinkoff/utils/function/noop';
 
+const MAX_LENGTH_NAMES = 59;
+
 
 const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, onDelete, sortable, value, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, getCorrectName, onDelete, sortable, isImage, value, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
+        {
+            isImage && <ListItemAvatar>
+                <Avatar alt={value.imgAlt} src={value.imgPath} />
+            </ListItemAvatar>
+        }
         <ListItemText
             className={classes.listItemText}
-            primary={value.title}
+            primary={getCorrectName(value.title)}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
@@ -100,12 +107,15 @@ const materialStyles = theme => ({
     },
     row: {
         backgroundColor: 'white',
+        border: '#e4e4e4 solid 1px',
+        borderRadius: "5px",
+        margin: '5px 0px',
         zIndex: 1201,
         '&:hover $valueActions': {
             visibility: 'visible'
         },
         '&:hover': {
-            backgroundColor: 'rgba(0, 0, 0, 0.07)'
+            backgroundColor: 'rgba(0, 0, 0, 0.04)'
         }
     },
     valueActions: {
@@ -133,11 +143,13 @@ class Lists extends Component {
         formValuesName: PropTypes.string,
         editValues: PropTypes.func,
         onFormOpen: PropTypes.func,
-        onDelete: PropTypes.func
+        onDelete: PropTypes.func,
+        isImage: PropTypes.bool
     };
 
     static defaultProps = {
         sortable: false,
+        isImage: false,
         formValuesName: '',
         editValues: noop,
         onFormOpen: noop,
@@ -152,26 +164,8 @@ class Lists extends Component {
 
         this.state = {
             values,
-            valueForDelete: null,
-            formShowed: false,
-            editableValue: null
+            valueForDelete: null
         }
-    }
-
-    handleFormOpen = value => () => {
-        const { form, formValuesName } = this.props;
-
-        this.setState({
-            formShowed: true,
-            form: {
-                ...form,
-                props: {
-                    ...form.props,
-                    [formValuesName]: value
-                }
-            },
-            editableValue: value
-        });
     }
 
     handleDelete = value => () => {
@@ -180,12 +174,6 @@ class Lists extends Component {
         })
     }
 
-    handleCloseForm = () => {
-        this.setState({
-            formShowed: false,
-            editableValue: null
-        });
-    }
 
     handleWarningDisagree = () => {
         this.setState({
@@ -204,10 +192,6 @@ class Lists extends Component {
             })
     }
 
-    handleFormDone = () => {
-        
-    }
-
     onDragEnd = ({ oldIndex, newIndex }) => {
         const { values } = this.state;
         const newValues = arrayMove(values, oldIndex, newIndex);
@@ -223,26 +207,27 @@ class Lists extends Component {
         });
     };
 
+    getCorrectName = name => {
+        return name.length > MAX_LENGTH_NAMES ? `${name.substring(0, MAX_LENGTH_NAMES)}...` : name;
+    };
+
     render() {
-        const { values, valueForDelete, formShowed, form } = this.state;
-        const { sortable, classes } = this.props;
+        const { values, valueForDelete } = this.state;
+        const { sortable, isImage, classes, onFormOpen } = this.props;
 
         return <div>
             <SortableWrapp
-                axis='xy'
-                onFormOpen={this.handleFormOpen}
+                axis='y'
+                onFormOpen={onFormOpen}
                 onDelete={this.handleDelete}
+                getCorrectName={this.getCorrectName}
                 onSortEnd={this.onDragEnd}
                 sortable={sortable}
+                isImage={isImage}
                 values={values}
                 useDragHandle
                 classes={classes}
             />
-            <Modal open={formShowed} onClose={this.handleCloseForm} className={classes.modal} >
-                <Paper className={classes.modalContent}>
-                    { form }
-                </Paper>
-            </Modal>
             <Dialog
                 open={!!valueForDelete}
                 onClose={this.handleWarningDisagree}
