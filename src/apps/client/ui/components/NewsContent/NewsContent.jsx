@@ -63,7 +63,9 @@ class NewsContent extends Component {
         for (let i = 0; i < MAX_SLIDES; i++) {
             PAGINATION.push(i + 1);
         }
-        const LAST_SLIDE_CARDS_AMOUNT = newsCategoryRendered.length >= 6 ? newsCategoryRendered.length % MAX_SLIDES : newsCategoryRendered.length;
+        const LAST_SLIDE_CARDS_AMOUNT = newsCategoryRendered.length >= MAX_CARDS_PER_SLIDE
+            ? newsCategoryRendered.length % MAX_SLIDES
+            : newsCategoryRendered.length;
         const SLIDER_CONTAINER_HEIGHT = CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN;
         const LAST_SLIDE_CONTAINER_HEIGHT = !LAST_SLIDE_CARDS_AMOUNT
             ? CARD_HEIGHT * MAX_CARDS_PER_SLIDE - SIXTH_CHILD_MARGIN
