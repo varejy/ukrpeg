@@ -84,7 +84,6 @@ class Header extends Component {
         const { burgerMenuOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
-        console.log(matchPath);
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
