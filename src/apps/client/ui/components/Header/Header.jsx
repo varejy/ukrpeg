@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import propOr from '@tinkoff/utils/object/propOr';
 import styles from './Header.css';
-import { withRouter } from 'react-router';
+import { withRouter, matchPath } from 'react-router';
 
 import { menu } from '../../../constants/routes';
 import { Link, NavLink } from 'react-router-dom';
@@ -84,6 +84,7 @@ class Header extends Component {
         const { burgerMenuOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
+        console.log(matchPath);
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
@@ -118,9 +119,9 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className={!burgerMenuOpen ? styles.burgerMenu : styles.burgerMenuOpen} onClick={this.handleMenuClick} >
-                        <hr className={!burgerMenuOpen ? (pathname === '/' ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? (pathname === '/' ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? (pathname === '/' ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (matchPath(pathname, { path: '/:lang(en)?', exact: true }) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (matchPath(pathname, { path: '/:lang(en)?', exact: true }) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (matchPath(pathname, { path: '/:lang(en)?', exact: true }) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
                     </div>
                 </div>
             </div>
