@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import SwipeableViews from 'react-swipeable-views';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import Lists from '../../components/Lists/Lists';
+
+import noop from '@tinkoff/utils/function/noop';
+
+import RvvCardPilotProject from '../../components/RvvCardPilotProject/RvvCardPilotProject';
+import RvvCardsKeyFacts from '../../components/RvvCardsKeyFacts/RvvCardsKeyFacts';
 
 import { withStyles } from '@material-ui/core/styles';
 
 const arrayForOnePage = [
     {
-        title: 'Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою, з органами місцевого самоврядування, з організаціями що займаються збором сортуванням та переробкою відходів.'
+        title: '2312 Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою, з органами місцевого самоврядування, з організаціями що займаються збором сортуванням та переробкою відходів.',
+        positionIndex: 1
     },
     {
-        title: 'Виробити схему відносин з фіскальними органами, оскільки діяльність організацій РВВ є неприбутковою.'
+        title: 'Виробити схему відносин з фіскальними органами, оскільки діяльність організацій РВВ є неприбутковою.',
+        positionIndex: 2
+    },
+    {
+        title: 'Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою, з органами місцевого самоврядування, з організаціями що займаються збором сортуванням та переробкою відходів.',
+        positionIndex: 3
     }
 ];
 
@@ -32,6 +42,39 @@ const arrayForTwoPage = [
     }
 ];
 
+const arrayForFourPage = [
+    {
+        title: 'Дослідження сфери поводження з упаковкою та її відходами в Україні.',
+        positionIndex: 1
+    },
+    {
+        title: 'Впровадження пілотних проектів у сфері поводження з відходами упаковки.',
+        positionIndex: 2
+    },
+    {
+        title: "Розробка рекомендацій, які можуть бути запропоновані суб'єктам виробництва та ринку, професійним і громадським організаціям, органам державної влади та місцевого самоврядування і навіть споживачам товарів в упаковці – щодо безпечного екологічного розвитку у сфері пакувальної технології та поводження з упаковкою та її відходами.",
+        positionIndex: 3
+    }
+];
+
+const arrayForFivePage = [
+    {
+        title: '200+',
+        description: 'новеньких сміттєвих контейнерів встановили у місті',
+        positionIndex: 1
+    },
+    {
+        title: '25%',
+        description: 'сміття було зібрано від загального обсягу відходів',
+        positionIndex: 2
+    },
+    {
+        title: '320',
+        description: 'тонн було зібрано відходів упаковки упродовж першого року з дня старту проекту',
+        positionIndex: 3
+    }
+];
+
 const materialStyles = theme => ({
     modal: {
         display: 'flex',
@@ -39,35 +82,36 @@ const materialStyles = theme => ({
         alignItems: 'center'
     },
     modalContent: {
-        position: 'absolute',
+        margin: '30px 20%',
         width: '1200px',
         backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
+        border: '#e4e4e4 solid 1px',
+        borderRadius: '5px',
         padding: theme.spacing.unit * 4,
         outline: 'none',
         overflowY: 'auto',
         maxHeight: '100vh'
     },
-    planWrapp: {
+    wrapp: {
         width: '50%',
-        margin: '20px auto',
-        padding: '20px',
-        border: '#e4e4e4 solid 1px',
-        borderRadius: "5px"
-    },
-    title: {
-        height: '30px',
-        margin: '0 0 10px 7px'
-    },
+        margin: '20px auto'
+    }
 });
 
 class RvvPage extends Component {
-    constructor(...args) {
+    static propTypes = {
+        classes: PropTypes.object.isRequired
+    };
+
+    static defaultProps = {
+    };
+
+    constructor (...args) {
         super(...args);
 
         this.state = {
             tabsValue: 0
-        }
+        };
     }
 
     handlePlanFormOpen () {
@@ -83,30 +127,62 @@ class RvvPage extends Component {
     renderPageOne = () => {
         const { classes } = this.props;
 
-        return <div className={classes.planWrapp}>
-            <Typography variant='h5' className={classes.title}>Планы</Typography>
-            <Divider/>
+        return <div className={classes.wrapp}>
             <Lists
                 values={arrayForOnePage}
                 sortable={true}
+                numeration={true}
+                maxLength={10}
+                title='Планы'
                 onFormOpen={this.handlePlanFormOpen}
             />
-        </div>
+        </div>;
     }
 
     renderPageTwo = () => {
         const { classes } = this.props;
 
-        return <div className={classes.planWrapp}>
-            <Typography variant='h5' className={classes.title}>Зачем нужен РВВ</Typography>
-            <Divider/>
+        return <div className={classes.wrapp}>
             <Lists
                 values={arrayForTwoPage}
                 sortable={true}
                 isImage={true}
+                nameToolTip={true}
+                title='Зачем нужен РВВ'
                 onFormOpen={this.handlePlanFormOpen}
             />
-        </div>
+        </div>;
+    }
+
+    renderPageThree = () => {
+        const { classes } = this.props;
+
+        return (
+            <div className={classes.modalContent}>
+                <RvvCardPilotProject onDone={noop} />
+            </div>
+        );
+    }
+
+    renderPageFour = () => {
+        const { classes } = this.props;
+
+        return <div className={classes.wrapp}>
+            <Lists
+                values={arrayForFourPage}
+                sortable={true}
+                numeration={true}
+                maxLength={9}
+                title='Основные силы'
+                onFormOpen={this.handlePlanFormOpen}
+            />
+        </div>;
+    }
+
+    renderPageFive = () => {
+        return <div>
+            <RvvCardsKeyFacts values={arrayForFivePage}/>
+        </div>;
     }
 
     render () {
@@ -116,7 +192,6 @@ class RvvPage extends Component {
             <AppBar position="static" color="default">
                 <Tabs
                     value={tabsValue}
-                    onChange={this.handleChange}
                     indicatorColor="primary"
                     textColor="primary"
                     variant="fullWidth"
@@ -136,6 +211,9 @@ class RvvPage extends Component {
             >
                 {this.renderPageOne(0)}
                 {this.renderPageTwo(1)}
+                {this.renderPageThree(2)}
+                {this.renderPageFour(3)}
+                {this.renderPageFive(4)}
             </SwipeableViews>
         </div>;
     }

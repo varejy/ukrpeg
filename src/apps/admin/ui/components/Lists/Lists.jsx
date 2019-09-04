@@ -14,6 +14,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -34,17 +36,21 @@ import noop from '@tinkoff/utils/function/noop';
 
 const MAX_LENGTH_NAMES = 59;
 
-
 const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, getCorrectName, onDelete, sortable, isImage, value, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, getCorrectName, onDelete, sortable, numeration, isImage, value, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
         {
+            numeration && <div className={classes.indexItem}>
+                {value.positionIndex}.
+            </div>
+        }
+        {
             isImage && <ListItemAvatar>
-                <Avatar alt={value.imgAlt} src={value.imgPath} />
+                <Avatar className={classes.avatar} alt={value.imgAlt} src={value.imgPath} />
             </ListItemAvatar>
         }
         <ListItemText
@@ -108,7 +114,7 @@ const materialStyles = theme => ({
     row: {
         backgroundColor: 'white',
         border: '#e4e4e4 solid 1px',
-        borderRadius: "5px",
+        borderRadius: '5px',
         margin: '5px 0px',
         zIndex: 1201,
         '&:hover $valueActions': {
@@ -133,31 +139,64 @@ const materialStyles = theme => ({
         outline: 'none',
         overflowY: 'auto',
         maxHeight: '100vh'
+    },
+    avatar: {
+        borderRadius: '50px',
+        border: '2px solid #3f51b5',
+        boxShadow: 'inset black 0px 0px 5px 0px'
+    },
+    indexItem: {
+        color: '#3f51b5',
+        fontFamily: 'sans-serif'
+    },
+    header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginBottom: '10px',
+        alignItems: 'center'
+    },
+    listWrapp: {
+        padding: '8px 20px 20px',
+        border: '#e4e4e4 solid 1px',
+        borderRadius: '5px'
+    },
+    title: {
+        height: '30px'
     }
 });
 
 class Lists extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        sortable: PropTypes.bool,
+        values: PropTypes.array,
         formValuesName: PropTypes.string,
         editValues: PropTypes.func,
         onFormOpen: PropTypes.func,
         onDelete: PropTypes.func,
-        isImage: PropTypes.bool
+        sortable: PropTypes.bool,
+        isImage: PropTypes.bool,
+        numeration: PropTypes.bool,
+        nameToolTip: PropTypes.bool,
+        maxLength: PropTypes.number,
+        title: PropTypes.string
     };
 
     static defaultProps = {
         sortable: false,
+        maxLength: Infinity,
         isImage: false,
+        numeration: false,
+        nameToolTip: false,
         formValuesName: '',
+        title: '',
+        values: [],
         editValues: noop,
         onFormOpen: noop,
         onFormClose: noop,
         onDelete: noop
     };
 
-    constructor(...args) {
+    constructor (...args) {
         super(...args);
 
         const { values } = this.props;
@@ -165,20 +204,19 @@ class Lists extends Component {
         this.state = {
             values,
             valueForDelete: null
-        }
+        };
     }
 
     handleDelete = value => () => {
         this.setState({
             valueForDelete: value
-        })
+        });
     }
-
 
     handleWarningDisagree = () => {
         this.setState({
             valueForDelete: null
-        })
+        });
     }
 
     handleWarningAgree = () => {
@@ -188,8 +226,8 @@ class Lists extends Component {
             .then(() => {
                 this.setState({
                     valueForDelete: null
-                })
-            })
+                });
+            });
     }
 
     onDragEnd = ({ oldIndex, newIndex }) => {
@@ -211,23 +249,36 @@ class Lists extends Component {
         return name.length > MAX_LENGTH_NAMES ? `${name.substring(0, MAX_LENGTH_NAMES)}...` : name;
     };
 
-    render() {
+    render () {
         const { values, valueForDelete } = this.state;
-        const { sortable, isImage, classes, onFormOpen } = this.props;
+        const { sortable, isImage, numeration, maxLength, classes, onFormOpen, title } = this.props;
+        const checkMaxItemLength = () => values.length === maxLength;
 
         return <div>
-            <SortableWrapp
-                axis='y'
-                onFormOpen={onFormOpen}
-                onDelete={this.handleDelete}
-                getCorrectName={this.getCorrectName}
-                onSortEnd={this.onDragEnd}
-                sortable={sortable}
-                isImage={isImage}
-                values={values}
-                useDragHandle
-                classes={classes}
-            />
+            <div className={classes.listWrapp}>
+                <div className={classes.header}>
+                    <Typography variant='h5' className={classes.title}>{title}</Typography>
+                    <Tooltip title='Добавить'>
+                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen}>
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
+                </div>
+                <Divider />
+                <SortableWrapp
+                    axis='y'
+                    onFormOpen={onFormOpen}
+                    onDelete={this.handleDelete}
+                    getCorrectName={this.getCorrectName}
+                    onSortEnd={this.onDragEnd}
+                    sortable={sortable}
+                    isImage={isImage}
+                    numeration={numeration}
+                    values={values}
+                    useDragHandle
+                    classes={classes}
+                />
+            </div>
             <Dialog
                 open={!!valueForDelete}
                 onClose={this.handleWarningDisagree}
