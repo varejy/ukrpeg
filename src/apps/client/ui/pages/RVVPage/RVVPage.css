@@ -75,14 +75,14 @@
 }
 
 .rectangleGreen{
-    height: 70px;
+    height: 60px;
     width: 6px;
     margin-right: 20px;
     background-color: limeGreen;
 }
 
 .title{
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
@@ -228,6 +228,7 @@
     width: 100%;
     position: relative;
     background: url("./images/background.jpg") center;
+    background-size: cover;
     height: auto;
     display: flex;
     align-items: center;
@@ -238,8 +239,16 @@
     width: 100%;
     max-width: 1350px;
     height: auto;
-    padding: 108px 0 138px 0;
+    padding: 108px 0 92px 0;
     position: relative;
+}
+
+.project .titleContainer{
+    margin-bottom: 30px;
+}
+
+.project .titleContainer .title{
+    color: darkGreyBasic;
 }
 
 .projectInfo{
@@ -248,9 +257,9 @@
     margin: 0 auto;
     padding: 0 134px;
     color: darkGreyBasic;
-    font-family: 'Gotham Medium', Arial;
-    font-size: 16px;
-    line-height: 20px;
+    font-family: 'Gotham Bold', Arial;
+    font-size: 18px;
+    line-height: 26px;
     text-align: left;
     position: relative;
     z-index: 11;
@@ -325,7 +334,7 @@
     line-height: normal;
     letter-spacing: 0.5px;
     justify-self: flex-end;
-    width: 70%;
+    max-width: 70%;
     height: 100%;
     position: absolute;
     left: 40px;
@@ -334,11 +343,6 @@
     align-items: center;
     justify-content: flex-start;
     z-index: 7;
-}
-
-.courseText .text{
-    position: relative;
-    z-index: 11;
 }
 
 
@@ -386,7 +390,7 @@
 }
 
 .rectangleWhite{
-    height: 70px;
+    height: 60px;
     width: 6px;
     margin-right: 20px;
     background-color: whiteBasic;
@@ -556,14 +560,23 @@
     position: relative;
     left: 135px;
     background-color: olive;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 70px 56px;
     max-width: 1350px;
     margin: 0 auto;
     z-index: 5;
+    height: 295px;
+}
 
+.wrapper{
+    padding: 70px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    left: 175px;
+    max-width: 1350px;
+    margin: 0 auto;
+    z-index: 11;
+    position: absolute;
+    top: 0;
 }
 
 .imageContainer{

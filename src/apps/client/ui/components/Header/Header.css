@@ -4,6 +4,7 @@
 @value limeGreen from '../../../../../css/colors.css';
 @value lightGreyBasic from '../../../../../css/colors.css';
 @value darkBlueHover from '../../../../../css/colors.css';
+@value blueMobileBg from '../../../../../css/colors.css';
 
 .header{
     width: 100%;
@@ -11,21 +12,60 @@
     display: flex;
     justify-content: center;
     z-index: 15;
+
+    @media (--media-tablet-l) {
+        background: transparent
+    }
+
+    @media (--media-tablet-s) {
+        background: transparent
+    }
 }
 
 .headBg{
     background: whiteBasic;
     width: 100%;
     position: fixed;
+    left: 0;
     display: flex;
     justify-content: center;
     z-index: 15;
+
+    @media (--media-tablet-l) {
+        position: absolute;
+        background: transparent;
+   }
+
+    @media (--media-tablet-s) {
+        position: absolute;
+        background: transparent;
+   }
 }
 
-.wrapper{
-    width: 100%;
+.wrapper, .wrapperBurgerMenu{
+    width:  100%;
     max-width: 1350px;
     display: flex;
+    z-index: 15;
+
+    @media (--media-tablet-l) {
+        justify-content: space-between;
+        align-items: center;
+        padding: 35px;
+   }
+
+    @media (--media-tablet-s) {
+        justify-content: space-between;
+        align-items: center;
+        padding: 35px;
+   }
+
+    @media (--media-phone) {
+        padding: 25px 20px;
+   }
+}
+
+.wrapperBurgerMenu{
     position: fixed;
     background: whiteBasic;
     z-index: 15;
@@ -36,6 +76,21 @@
     min-width: 134px;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 1350px) {
+        min-width: 134px;
+    }
+
+    @media (--media-tablet-l) {
+        min-width: 0;
+        z-index: 4;
+        display: block;
+   }
+
+    @media (--media-tablet-s) {
+        min-width: 0;
+        z-index: 4;
+   }
 }
 
 .img{
@@ -51,6 +106,10 @@
     display: flex;
     justify-content: center;
     flex-grow: 2;
+
+    @media (--media-tablet-l) {
+        display: none;
+    }
 }
 
 .link, .activeLink{
@@ -60,22 +119,25 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 14px;
-    letter-spacing: 1px;
+    letter-spacing: .3px;
     text-align: center;
     padding: 45px 20px 30px;
-    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     width: 100%;
+
+    @media (max-width: 1350px) {
+        font-size: 15px;
+        letter-spacing: .1px;
+        padding: 45px 15px 30px;
+    }
 }
 
 .link:first-child, .activeLink:first-child{
-  padding-left: 30px;
-}
-
-.link:nth-child(2), .activeLink:nth-child(2){
+    padding-left: 30px;
 }
 
 .link:last-child, .activeLink:last-child{
-  padding-right: 30px;
+    padding-right: 30px;
 }
 
 .link:hover{
@@ -96,32 +158,305 @@
     padding-left: 20px;
     padding-right: 30px;
     border-bottom: 1px solid rgba(122, 122, 122, 0.05);
+
+    @media (max-width: 1350px) {
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+
+    @media (max-width: 1150px) {
+        font-size: 11px;
+    }
+
+    @media (--media-tablet-l) {
+        padding-left: 20px;
+        padding-right: 30px;
+   }
 }
 
 .phone{
+    white-space: nowrap;
     color: darkGreyBasic;
     margin-right: 20px;
-    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     letter-spacing: 1px;
+    white-space: nowrap;
+
+    @media (max-width: 1350px) {
+        margin-right: 20px;
+        letter-spacing: .1px;
+    }
+
+    @media (--media-tablet-l) {
+        display: none;
+   }
 }
 
-.toogleLang{
+.toogleLang, .toogleLangBurgerMenu{
     display: flex;
     align-items: center;
     color: lightGreyBasic;
     cursor: pointer;
     font-size: 13px;
     letter-spacing: .5px;
-    height: 100%;
     border-left: 1px solid rgba(122, 122, 122, 0.05);
+    font-family: 'Gotham Narrow', 'Arial Black', sans-serif;
+
+    @media (--media-tablet-l) {
+        display: none;
+    }
+}
+
+.toogleLang{
+    height: 100%;
     padding-left: 22px;
-    font-family: 'Gotham Narrow', "Arial Black", sans-serif;
+
+    @media (max-width: 1349px){
+        padding-right: 10px;
+    }
+
+    @media (max-width: 1150px) {
+        padding-right: 19px;
+    }
+}
+
+.toogleLangBurgerMenu{
+    @media (--media-tablet-l) {
+        display: flex;
+        z-index: 4;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    @media (--media-phone) {
+        top: 60px;
+    }
+
+    @media (--media-phone-s) {
+        top: 50px;
+    }
 }
 
 .lang{
     cursor: pointer;
+
+    @media (max-width: 1150px) {
+        font-size: 11px;
+    }
 }
 
 .choosenLang{
     color: limeGreen;
+
+    @media (max-width: 1150px) {
+        font-size: 11px;
+    }
+}
+
+.burgerMenu, .burgerMenuOpen{
+    display: none;
+
+    @media (--media-tablet-l) {
+        display: block;
+        height: 70px;
+        width: 70px;
+        border: 1px solid limeGreen;
+        padding: 16px 0;
+        position: absolute;
+        right: 35px;
+        z-index: 12;
+   }
+
+    @media (--media-tablet-s) {
+        height: 50px;
+        width: 50px;
+        padding: 10px 0;
+        right: 30px;
+   }
+
+   @media (--media-phone-s) {
+       top: 25px;
+       right: 25px;
+  }
+}
+
+.burgerMenuOpen{
+    border: none;
+}
+
+.menuLines, .menuLinesCross{
+    width: 20px;
+    height: 2px;
+    background: white;
+    transition: all .2s ease-out;
+    transform: rotate(0deg);
+    border: none;
+    border-radius: 3px;
+    margin: 5px auto;
+
+    @media (--media-tablet-l) {
+        margin: 8px auto;
+        width: 30px;
+    }
+
+    @media (--media-tablet-s) {
+        width: 20px;
+        height: 2px;
+        background: white;
+        transition: all .2s ease-out;
+        transform: rotate(0deg);
+        border: none;
+        border-radius: 3px;
+        margin: 5px auto;
+    }
+}
+
+.menuLinesCross:first-child{
+     transform: rotate(45deg);
+     transition: all .2s ease-out;
+}
+
+.menuLinesCross:last-child{
+     transform: rotate(-45deg);
+     transition: all .2s ease-out;
+}
+
+.menuLinesCross{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    @media (--media-tablet-l) {
+        top: 30px;
+        left: 20px;
+    }
+
+   @media (--media-tablet-s) {
+       top: 25px;
+       right: 35px;
+   }
+}
+
+.menuLinesCross:nth-child(2) {
+    display: none;
+}
+
+.burgerMenuList{
+    position: static;
+    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    background: blueMobileBg;
+    height: 100%;
+
+    @media (--media-tablet-l) {
+        width: 100%;
+    }
+
+    @media (--media-phone) {
+        position: relative;
+    }
+
+    @media (--media-phone-s) {
+        padding-top: 120px;
+    }
+}
+
+.burgerMenuList .link{
+      letter-spacing: .3px;
+      font-size: 13px;
+      line-height: 14px;
+      font-weight: 500;
+      color: whiteBasic;
+      text-align: left;
+      padding: 0;
+      margin-bottom: 40px;
+      border: none;
+
+      @media (--media-tablet-l) {
+          font-size: 18px;
+          line-height: 22px;
+      }
+
+      @media (--media-tablet-s) {
+          font-size: 16px;
+          line-height: 18px;
+      }
+
+      @media (--media-phone) {
+          font-size: 14px;
+          line-height: 16px;
+          padding-left: 30px;
+      }
+
+      @media (--media-phone-s) {
+          font-size: 13px;
+          line-height: 14px;
+          margin-bottom: 25px;
+      }
+}
+
+.socialhidden{
+    display: none;
+}
+
+.social{
+    display: none;
+
+    @media (--media-tablet-l) {
+        z-index: 5;
+        color: whiteBasic;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 100px;
+        padding-bottom: 20px;
+    }
+
+    @media (max-width: 560px) {
+        justify-content: space-between;
+        margin-top: 0;
+        padding: 0 30px;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+.socialItem{
+    font-size: 10px;
+    letter-spacing: .8px;
+    line-height: 14px;
+
+    @media (--media-tablet-l) {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    @media (--media-tablet-s) {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    @media (--media-phone) {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    @media (--media-phone-s) {
+        font-size: 10px;
+        line-height: 14px;
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .link, .activeLink {
+        width: auto;
+    }
+
+    .link:last-child, .activeLink:last-child{
+        width: 100%;
+    }
 }
