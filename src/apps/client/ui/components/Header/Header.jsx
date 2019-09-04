@@ -84,6 +84,7 @@ class Header extends Component {
         const { burgerMenuOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
+        const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
@@ -118,9 +119,9 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className={!burgerMenuOpen ? styles.burgerMenu : styles.burgerMenuOpen} onClick={this.handleMenuClick} >
-                        <hr className={!burgerMenuOpen ? (matchPath(pathname, { path: '/:lang(en)?', exact: true }) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? (matchPath(pathname, { path: '/:lang(en)?', exact: true }) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? (matchPath(pathname, { path: '/:lang(en)?', exact: true }) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
                     </div>
                 </div>
             </div>
