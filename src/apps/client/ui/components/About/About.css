@@ -92,7 +92,14 @@
     width: 546px;
     margin-left: 70px;
     order: 1;
+<<<<<<< HEAD
     z-index: 11;
+||||||| merged common ancestors
+<<<<<<<<< Temporary merge branch 1
+=======
+    position: relative;
+    z-index: 11;
+>>>>>>> 0d95b2f0e18b61c24b3e60222de26bf2609bd3d2
 
     @media (max-width: 1350px) {
       width: 50%;
@@ -129,8 +136,13 @@
     max-width: 680px;
     object-fit: cover;
     margin-right: -125px;
+<<<<<<< HEAD
     position: relative;
     left: 0;
+||||||| merged common ancestors
+<<<<<<<<< Temporary merge branch 1
+=======
+>>>>>>> 0d95b2f0e18b61c24b3e60222de26bf2609bd3d2
 
     @media (max-width: 1350px) {
          margin-right: 0;
@@ -154,9 +166,16 @@
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
     color: greyTextBasic;
     padding-right: 5px;
+<<<<<<< HEAD
     z-index: 11;
     position: relative;
     margin-left: 11;
+||||||| merged common ancestors
+<<<<<<<<< Temporary merge branch 1
+=======
+    position: relative;
+    z-index: 11;
+>>>>>>> 0d95b2f0e18b61c24b3e60222de26bf2609bd3d2
 
     @media (max-width: 1350px) {
          width: 50%;

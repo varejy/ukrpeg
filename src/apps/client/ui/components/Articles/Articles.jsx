@@ -45,32 +45,29 @@ class Articles extends Component {
         });
     }
 
-    handlePrevNewsClick = event => {
+    handleClickSlide = direction => event => {
         const { mediaWidth } = this.props;
         const { currentNews } = this.state;
 
-        if (currentNews > 0) {
-            this.setState({
-                sliderLeft: (currentNews - 1) * mediaWidth,
-                currentNews: currentNews - 1
-            });
-        }
-    }
-
-    handleNextNewsClick = event => {
-        const { mediaWidth } = this.props;
-        const { currentNews } = this.state;
-
-        if (currentNews < this.maxSlide) {
-            this.setState({
-                sliderLeft: (currentNews + 1) * mediaWidth,
-                currentNews: currentNews + 1
-            });
+        if (direction === 'next') {
+            if (currentNews < this.maxSlide) {
+                this.setState({
+                    sliderLeft: (currentNews + 1) * mediaWidth,
+                    currentNews: currentNews + 1
+                });
+            }
+        } else if (direction === 'prev') {
+            if (currentNews > 0) {
+                this.setState({
+                    sliderLeft: (currentNews - 1) * mediaWidth,
+                    currentNews: currentNews - 1
+                });
+            }
         }
     }
 
     render () {
-        const { langMap, lang, news, mediaWidth } = this.props;
+        const { langMap, lang, news } = this.props;
         const { sliderLeft, currentNews } = this.state;
         const text = propOr('articles', {}, langMap);
 
@@ -93,22 +90,22 @@ class Articles extends Component {
                         })}
                     </div>
                     <div className={styles.buttons}>
-                        <button className={currentNews === 0 ? styles.arrowBtn : styles.activeArrowBtn} onClick={this.handlePrevNewsClick}>
+                        <button className={currentNews === 0 ? styles.arrowBtn : styles.activeArrowBtn} onClick={this.handleClickSlide('prev')}>
                             <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' />
                         </button>
-                        <button className={currentNews === news.length - 1 ? styles.arrowBtn : styles.activeArrowBtn} onClick={this.handleNextNewsClick}>
+                        <button className={currentNews === news.length - 1 ? styles.arrowBtn : styles.activeArrowBtn} onClick={this.handleClickSlide('next')}>
                             <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowDown.png' />
                         </button>
                     </div>
                 </div>
             </div>
             <ul className={styles.switches}>
-              {news.map((item, i) =>{
-                return (
-                  <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)}>
-                  </li>
-                )
-              })}
+                {news.map((item, i) => {
+                    return (
+                        <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)}>
+                        </li>
+                    );
+                })}
             </ul>
         </div>;
     }

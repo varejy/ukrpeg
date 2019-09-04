@@ -144,6 +144,7 @@
     font-size: 14px;
     color: darkBlueBasic;
     z-index: 11;
+    position: relative;
     letter-spacing: .7px;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     font-weight: 300;
