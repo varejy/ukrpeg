@@ -26,7 +26,7 @@ const materialStyles = {
     keywordsInput: {
         width: '100%'
     },
-    metaKeyword: {
+    words: {
         margin: '5px 5px 5px 0'
     }
 };
@@ -127,7 +127,7 @@ class FormFieldWords extends Component {
                         variant='outlined'
                         color='primary'
                         onDelete={this.handleKeywordDelete(i)}
-                        className={classes.metaKeyword}
+                        className={classes.words}
                     />)
                 }
             </div>

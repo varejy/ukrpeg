@@ -60,12 +60,12 @@ class NewsForm extends Component {
             ua_shortDescription: ua.shortDescription || '',
             ua_description: ua.description || '',
             en_description: en.description || '',
-            ua_metaDescription: ua.metaDescription || '',
-            en_metaDescription: en.metaDescription || '',
-            ua_metaTitle: ua.metaTitle || '',
-            en_metaTitle: en.metaTitle || '',
-            ua_metaKeywords: { words: ua.metaKeywords && ua.metaKeywords.split(', ') || [], input: '' },
-            en_metaKeywords: { words: en.metaKeywords && en.metaKeywords.split(', ') || [], input: '' },
+            ua_seoTitle: ua.seoTitle || '',
+            en_seoTitle: en.seoTitle || '',
+            ua_seoDescription: ua.seoDescription || '',
+            en_seoDescription: en.seoDescription || '',
+            ua_seoKeywords: { words: ua.seoKeywords && ua.seoKeywords.split(', ') || [], input: '' },
+            en_seoKeywords: { words: en.seoKeywords && en.seoKeywords.split(', ') || [], input: '' },
             lang: 'ua',
             ...pick(NEWS_VALUES, news)
         };
@@ -83,12 +83,12 @@ class NewsForm extends Component {
             ua_shortDescription: uaShortDescription,
             en_description: enDescription,
             ua_description: uaDescription,
-            en_metaTitle: enMetaTitle,
-            ua_metaTitle: uaMetaTitle,
-            en_metaDescription: enMetaDescription,
-            ua_metaDescription: uaMetaDescription,
-            en_metaKeywords: enMetaKeywords,
-            ua_metaKeywords: uaMetaKeywords,
+            en_seoTitle: enSeoTitle,
+            ua_seoTitle: uaSeoTitle,
+            en_seoDescription: enSeoDescription,
+            ua_seoDescription: uaSeoDescription,
+            en_seoKeywords: enSeoKeywords,
+            ua_seoKeywords: uaSeoKeywords,
             hidden,
             views,
             date,
@@ -105,17 +105,17 @@ class NewsForm extends Component {
                     name: enName,
                     shortDescription: enShortDescription,
                     description: enDescription,
-                    metaTitle: enMetaTitle,
-                    metaDescription: enMetaDescription,
-                    metaKeywords: enMetaKeywords.words.join(', ')
+                    seoTitle: enSeoTitle,
+                    seoDescription: enSeoDescription,
+                    seoKeywords: enSeoKeywords.words.join(', ')
                 },
                 ua: {
                     name: uaName,
                     shortDescription: uaShortDescription,
                     description: uaDescription,
-                    metaTitle: uaMetaTitle,
-                    metaDescription: uaMetaDescription,
-                    metaKeywords: uaMetaKeywords.words.join(', ')
+                    seoTitle: uaSeoTitle,
+                    seoDescription: uaSeoDescription,
+                    seoKeywords: uaSeoKeywords.words.join(', ')
                 }
             }
         };

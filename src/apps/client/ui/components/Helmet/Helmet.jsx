@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import { matchPath, withRouter } from 'react-router-dom';
 import find from '@tinkoff/utils/array/find';
-import propOr from '@tinkoff/utils/object/propOr';
 
 const NEWS_PATH = '/:lang(en)?/news/:id';
 const STATIC_ROUTES = [
@@ -16,18 +15,25 @@ const STATIC_ROUTES = [
     { id: 'news', path: '/news', exact: true },
     { id: 'rvv', path: '/rvv', exact: true },
     { id: 'laws', path: '/laws', exact: true },
-    { id: 'contacts', path: '/contacts', exact: true }
+    { id: 'contacts', path: '/contacts', exact: true },
+    { id: 'search', path: '/search', exact: true }
 ];
 const NOT_FOUND_META = {
-    title: '404',
-    description: '404',
-    metaKeywords: '404'
+    seoTitle: '404',
+    seoDescription: '404',
+    seoKeywords: '404'
+};
+const DEFAULT_STATIC_META = {
+    seoTitle: 'Рвв',
+    seoDescription: 'Рвв',
+    seoKeywords: 'Рвв'
 };
 
 const mapStateToProps = ({ application, news }) => {
     return {
         news: news.news,
-        lang: application.lang
+        lang: application.lang,
+        staticSeo: application.staticSeo
     };
 };
 
@@ -35,12 +41,14 @@ class Helmet extends Component {
     static propTypes = {
         location: PropTypes.object,
         news: PropTypes.array,
-        lang: PropTypes.string.isRequired
+        lang: PropTypes.string.isRequired,
+        staticSeo: PropTypes.array
     };
 
     static defaultProps = {
         location: {},
-        news: []
+        news: [],
+        staticSeo: []
     };
 
     constructor (...args) {
@@ -52,21 +60,34 @@ class Helmet extends Component {
     }
 
     getMeta = (props = this.props) => {
-        const { location: { pathname }, news, lang } = props;
-        const meta = propOr('meta', {}, this.state);
+        const { location: { pathname }, news, staticSeo, lang } = props;
         const newsPage = matchPath(pathname, { path: NEWS_PATH, exact: true });
+        const staticRouteMatch = find(route => matchPath(pathname, route), STATIC_ROUTES);
+
+        if (staticRouteMatch) {
+            const staticSeoPage = find(page => page.name === staticRouteMatch.id, staticSeo);
+
+            if (staticSeoPage) {
+                return {
+                    seoTitle: staticSeoPage.texts[lang].seoTitle,
+                    seoDescription: staticSeoPage.texts[lang].seoDescription,
+                    seoKeywords: staticSeoPage.texts[lang].metaKeywords
+                };
+            }
+
+            return DEFAULT_STATIC_META;
+        }
 
         if (newsPage) {
             const article = find(article => article.id === newsPage.params.id, news);
 
             if (article) {
                 return {
-                    metaTitle: article.texts[lang].metaTitle,
-                    metaDescription: article.texts[lang].metaDescription
+                    seoTitle: article.texts[lang].seoTitle,
+                    seoDescription: article.texts[lang].seoDescription,
+                    seoKeywords: article.texts[lang].seoKeywords
                 };
             }
-
-            return meta;
         }
 
         return NOT_FOUND_META;
@@ -86,8 +107,9 @@ class Helmet extends Component {
         const { meta } = this.state;
 
         return <ReactHelmet>
-            <title>{meta.metaTitle}</title>
-            <meta name='metaDescription' content={meta.metaDescription} />
+            <title>{meta.seoTitle}</title>
+            <meta name='description' content={meta.seoDescription} />
+            <meta name='keywords' content={meta.seoKeywords} />
         </ReactHelmet>;
     }
 }

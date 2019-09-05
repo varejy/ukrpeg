@@ -5,7 +5,8 @@ import {
     SET_MEDIA_INFO,
     SET_NEWS_CATEGORIES,
     SET_MENU_OPEN,
-    SET_ACTIVE_CATEGORY_INDEX
+    SET_ACTIVE_CATEGORY_INDEX,
+    SET_SEO
 } from '../types/types';
 import { DEFAULT_LANG, DEFAULT_LANG_ROUTE } from '../constants/constants';
 
@@ -38,6 +39,8 @@ export default function (state = initialState, action) {
         return { ...state, burgerMenu: action.payload };
     case SET_ACTIVE_CATEGORY_INDEX:
         return { ...state, activeCategoryIndex: action.payload };
+    case SET_SEO:
+            return { ...state, staticSeo: action.payload };
     default:
         return state;
     }

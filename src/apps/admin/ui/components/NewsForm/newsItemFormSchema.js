@@ -93,36 +93,33 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
             },
             {
                 component: FormFieldInput,
-                name: `${lang}_metaTitle`,
+                name: `${lang}_seoTitle`,
                 schema: {
                     label: 'Тайтл',
                     multiline: true
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните metaTitle' } }
+                    { name: 'required', options: { text: 'Заполните сео тайтл' } }
                 ]
             },
             {
                 component: FormFieldInput,
-                name: `${lang}_metaDescription`,
+                name: `${lang}_seoDescription`,
                 schema: {
                     label: 'Описание',
                     multiline: true
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните metaDescription' } }
+                    { name: 'required', options: { text: 'Заполните сео описание' } }
                 ]
             },
             {
                 component: FormFieldKeywords,
-                name: `${lang}_metaKeywords`,
+                name: `${lang}_seoKeywords`,
                 schema: {
                     label: 'Ключевые слова',
                     multiline: false
-                },
-                validators: [
-                    { name: 'required', options: { text: 'Заполните metaKeywords' } }
-                ]
+                }
             },
             {
                 component: FormFieldCheckbox,

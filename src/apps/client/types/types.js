@@ -8,4 +8,5 @@ export const // eslint-disable-line one-var
     SET_LAW = 'SET_LAW',
     SET_NEWS_CATEGORIES = 'SET_NEWS_CATEGORIES',
     SET_MENU_OPEN = 'SET_MENU_OPEN',
+    SET_SEO = 'SET_SEO',
     SET_ACTIVE_CATEGORY_INDEX = 'SET_ACTIVE_CATEGORY_INDEX';
