@@ -6,7 +6,8 @@ import {
     SET_NEWS_CATEGORIES,
     SET_MENU_OPEN,
     SET_ACTIVE_CATEGORY_INDEX,
-    SET_SEO
+    SET_SEO,
+    SET_LAW
 } from '../types/types';
 import { DEFAULT_LANG, DEFAULT_LANG_ROUTE } from '../constants/constants';
 
@@ -20,7 +21,8 @@ const initialState = {
     langRoute: DEFAULT_LANG_ROUTE,
     categories: [],
     burgerMenu: false,
-    activeCategoryIndex: 0
+    activeCategoryIndex: 0,
+    lawList: []
 };
 
 export default function (state = initialState, action) {
@@ -41,6 +43,8 @@ export default function (state = initialState, action) {
         return { ...state, activeCategoryIndex: action.payload };
     case SET_SEO:
         return { ...state, staticSeo: action.payload };
+    case SET_LAW:
+        return { ...state, lawList: action.payload };
     default:
         return state;
     }
