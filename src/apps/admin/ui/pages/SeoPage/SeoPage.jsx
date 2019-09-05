@@ -71,12 +71,13 @@ const materialStyles = () => ({
 });
 
 const PAGES = [
-    { header: 'Головна', page: 'main' },
-    { header: 'Про нас', page: 'about' },
-    { header: 'Новини', page: 'news' },
-    { header: 'Рвв', page: 'rvv' },
-    { header: 'Законодавства', page: 'contacts' },
-    { header: 'Контакти', page: 'contacts' }
+    { title: 'Головна', page: 'main' },
+    { title: 'Про нас', page: 'about' },
+    { title: 'Новини', page: 'news' },
+    { title: 'Рвв', page: 'rvv' },
+    { title: 'Законодавства', page: 'contacts' },
+    { title: 'Контакти', page: 'contacts' },
+    { title: 'Поиск', page: 'search' }
 ];
 
 const mapDispatchToProps = (dispatch) => ({

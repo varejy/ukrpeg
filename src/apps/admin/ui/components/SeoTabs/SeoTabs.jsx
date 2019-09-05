@@ -6,7 +6,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import MetaForm from '../SeoForm/SeoForm.jsx';
+import SeoForm from '../SeoForm/SeoForm.jsx';
 
 import { connect } from 'react-redux';
 import getAllSeo from '../../../services/getAllSeo';
@@ -76,7 +76,7 @@ class SeoTabs extends Component {
             name: page
         };
 
-        return <MetaForm
+        return <SeoForm
             values={values}
             onDone={this.handleStaticSeoFormDone}
         />;
@@ -94,7 +94,7 @@ class SeoTabs extends Component {
                             aria-controls={`panel${i}bh-content`}
                             id={`panel${i}bh-header`}
                         >
-                            <Typography className={classes.heading}>{pages[i].header}</Typography>
+                            <Typography className={classes.heading}>{pages[i].title}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             {this.renderSeoForm(i)}
