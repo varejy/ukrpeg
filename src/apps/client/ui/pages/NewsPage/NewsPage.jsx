@@ -162,13 +162,23 @@ class NewsPage extends Component {
                     <div className={styles.title}>{text.title}</div>
                 </div>
                 <div className={styles.newsContent}>
-                    <div className={styles.newsCover}
+                    <div className={classNames(styles.newsCover)}
                         style={{ top: `${isDesktop ? DESKTOP_TOP : mobileMenuListVisible ? MOBILE_TOP + CATEGORY_HEIGHT * categories.length : MOBILE_TOP}px` }}>
-                        <img className={styles.coverImage} src={article.avatar} alt={article.texts[lang].name}/>
+                        <img className={classNames(styles.coverImage, {
+                            [styles.coverImageAnimated]: animation
+                        })} src={article.avatar} alt={article.texts[lang].name}/>
                     </div>
-                    <div className={styles.news}>
-                        <div className={styles.newsDate}>{getDateFormatted(article.date, 'ua')}</div>
-                        <div className={styles.newsTitle}>{article.texts[lang].name}</div>
+                    <div className={classNames(styles.news, {
+                        [styles.newsAnimated]: animation
+                    })}>
+                        <div className={classNames(styles.newsDate, {
+                            [styles.newsDateAnimated]: animation
+                        })}>
+                            {getDateFormatted(article.date, 'ua')}
+                        </div>
+                        <div className={classNames(styles.newsTitle, {
+                            [styles.newsTitleAnimated]: animation
+                        })}>{article.texts[lang].name}</div>
                         <div className={classNames(styles.newsText, {
                             [styles.newsTextAnimated]: animation
                         })}>{article.texts[lang].description}</div>
