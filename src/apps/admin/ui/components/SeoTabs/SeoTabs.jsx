@@ -10,6 +10,8 @@ import SeoForm from '../SeoForm/SeoForm.jsx';
 
 import { connect } from 'react-redux';
 import getAllSeo from '../../../services/getAllSeo';
+import updateSeo from '../../../services/updateSeo';
+
 import find from '@tinkoff/utils/array/find';
 
 const materialStyles = () => ({
@@ -30,7 +32,8 @@ const mapStateToProps = ({ seo }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    getAllStaticSeo: payload => dispatch(getAllSeo(payload))
+    getAllStaticSeo: payload => dispatch(getAllSeo(payload)),
+    updateStaticSeo: payload => dispatch(updateSeo(payload))
 });
 
 class SeoTabs extends Component {
@@ -38,6 +41,7 @@ class SeoTabs extends Component {
       classes: PropTypes.object.isRequired,
       pages: PropTypes.array.isRequired,
       getAllStaticSeo: PropTypes.func.isRequired,
+      updateStaticSeo: PropTypes.func.isRequired,
       allStaticSeo: PropTypes.array
   };
 
@@ -62,8 +66,9 @@ class SeoTabs extends Component {
         });
     };
 
-    handleStaticSeoFormDone = () => {
-        return this.props.getAllStaticSeo();
+    handleStaticSeoFormDone = (pageName) => values => {
+        return this.props.updateStaticSeo({ ...values, name: pageName })
+            .then(this.props.getAllStaticSeo);
     };
 
     renderSeoForm = i => {
@@ -78,7 +83,7 @@ class SeoTabs extends Component {
 
         return <SeoForm
             values={values}
-            onDone={this.handleStaticSeoFormDone}
+            onSubmit={this.handleStaticSeoFormDone(page)}
         />;
     };
 

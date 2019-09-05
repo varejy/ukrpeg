@@ -16,6 +16,8 @@ import RVVPage from './ui/pages/RVVPage/RVVPage.jsx';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
 import AboutPage from './ui/pages/AboutPage/AboutPage.jsx';
 import ContactPage from './ui/pages/ContactPage/ContactPage.jsx';
+import LawPage from './ui/pages/LawPage/LawPage.jsx';
+import SearchPage from './ui/pages/SearchPage/SearchPage.jsx';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
@@ -83,6 +85,8 @@ class App extends Component {
                         <Route exact path='/:lang(en)?/news/:id' render={this.renderComponent(NewsPage)} />
                         <Route exact path='/:lang(en)?/about' render={this.renderComponent(AboutPage)} />
                         <Route exact path='/:lang(en)?/contacts' render={this.renderComponent(ContactPage)} />
+                        <Route exact path='/:lang(en)?/laws' render={this.renderComponent(LawPage)} />
+                        <Route exact path='/:lang(en)?/search' render={this.renderComponent(SearchPage)} />
                     </Switch>
                 </div>
                 <Footer />

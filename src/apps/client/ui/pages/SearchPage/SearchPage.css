@@ -1,0 +1,205 @@
+@value whiteBasic from '../../../../../css/colors.css';
+@value blackBasic from '../../../../../css/colors.css';
+@value lightGreySearchBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+@value lightGreenBasic from '../../../../../css/colors.css';
+
+.search{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    z-index: 11;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding: 0 134px;
+}
+
+.searchResults{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.inputBlock{
+    height: 286px;
+    background: lightGreySearchBasic;
+    width: auto;
+}
+
+.searchField{
+    width: 680px;
+    height: 100px;
+    background: url('/src/apps/client/ui/pages/SearchPage/files/searchBgOpacity.png');
+    margin: 100px 0 0 -145px;
+    display: flex;
+    position: relative;
+}
+
+.searchIcon, .searchIconZoom{
+    max-width: 125px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
+}
+
+.searchIconImg{
+    height: 35px;
+    width: 35px;
+}
+
+.input, .inputZoom{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 26px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    color: blackBasic;
+}
+
+.input{
+    opacity: 0;
+}
+
+.inputZoom{
+    padding-top: 65px;
+    padding-left: 20px;
+    left: 125px;
+    bottom: 30px;
+    width: 525px;
+}
+
+.results{
+    margin-top: 35px;
+    padding-right: 7px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    color: blackBasic;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+}
+
+.totalResults{
+    margin-right: -140px;
+    margin-top: 75px;
+    max-width: 410px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    color: darkBlueBasic;
+}
+
+.title{
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 1px;
+    padding-left: 20px;
+}
+
+.amount{
+    padding: 25px 0 25px 20px;
+    font-size: 60px;
+    font-family: Verdana;
+    font-weight: 600;
+    background: lightGreySearchBasic;
+}
+
+.amountPagesWrapper, .amountNewsWrapper {
+    border-bottom: 2px solid lightGreySearchBasic;
+}
+
+.amountPages, .amountNews{
+    display: flex;
+    justify-content: space-between;
+    max-width: 135px;
+    padding: 45px 0 40px 20px;
+}
+
+.resultsPages, .resultsNews{
+    width: 100%;
+    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    color: darkBlueBasic;
+}
+
+.resultTitle{
+    padding: 20px 0 20px 20px;
+    border-left: 5px solid lightGreenBasic;
+    margin-left: -25px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 11;
+}
+
+.resultPagesList{
+    min-height: 245px;
+    padding: 45px 0;
+}
+
+.resultPageItem{
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 14px;
+    letter-spacing: .3px;
+    margin-bottom: 35px;
+}
+
+.resultPageItem:last-child{
+    margin-bottom: 0;
+}
+
+.resultNewsList{
+    max-width: 810px;
+    padding-bottom: 50px;
+}
+
+.resultNewsItem{
+    padding: 25px 250px 40px 35px;
+}
+
+.resultNewsItemNotOdd {
+    background: lightGreySearchBasic;
+}
+
+.date{
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: darkBlueBasic;
+    z-index: 11;
+    position: relative;
+    letter-spacing: .7px;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+    font-weight: 300;
+}
+
+.news{
+    color: blackBasic;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    z-index: 11;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+    letter-spacing: .4px;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+}
