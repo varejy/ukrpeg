@@ -122,6 +122,7 @@
     padding: 45px 20px 30px;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     width: 100%;
+    border-bottom: 13px solid transparent;
 
     @media (max-width: 1350px) {
         font-size: 15px;
@@ -288,7 +289,7 @@
 
 .burgerMenuOpen{
     border: none;
-   
+
     @media (--media-tablet-s) {
          top: 50px;
    }
