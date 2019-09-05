@@ -7,3 +7,4 @@ export const DATABASE_URL = 'mongodb://localhost/react-bootstrap-app-admin';
 
 export const NEWS_AVATAR_FIELD_NAME_REGEX = /news-.*-avatar/g;
 export const SLIDE_FILE_FIELD_NAME_REGEX = /slide-file-/g;
+export const EDITOR_FILE_NAME_REGEX = /editoe-file-/g;

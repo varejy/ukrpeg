@@ -15,14 +15,14 @@ import adminLawApi from './api/admin/law';
 import adminNewsCategoryApi from './api/admin/newsCategory';
 import adminNewsApi from './api/admin/news';
 import adminPartnersApi from './api/admin/partners';
+import adminSeoApi from './api/admin/seo';
+import adminEditorApi from './api/admin/editor';
 
 import clientNewsCategoryApi from './api/client/newsCategory';
 import clientLawApi from './api/client/law';
 import clientNewsApi from './api/client/news';
 import clientPartnersApi from './api/client/partners';
-
 import clientSeoApi from './api/client/seo';
-import adminSeoApi from './api/admin/seo';
 
 import { DATABASE_URL } from './constants/constants';
 import actions from './actions';
@@ -60,11 +60,12 @@ app.use('/api/admin/law', adminLawApi);
 app.use('/api/admin/news', adminNewsApi);
 app.use('/api/admin/partners', adminPartnersApi);
 app.use('/api/admin/newsCategory', adminNewsCategoryApi);
+app.use('/api/admin/seo', adminSeoApi);
+app.use('/api/admin/editor', adminEditorApi);
 app.use('/api/client/news', clientNewsApi);
 app.use('/api/client/partners', clientPartnersApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
 app.use('/api/client/law', clientLawApi);
-app.use('/api/admin/seo', adminSeoApi);
 app.use('/api/client/seo', clientSeoApi);
 
 // admin
