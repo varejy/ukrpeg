@@ -136,7 +136,7 @@
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
 
     @media (--media-phone-s) {
-        margin: 0 20px;
+        margin: 20px;
         justify-content: flex-start;
     }
 }
@@ -150,6 +150,10 @@
     flex-direction: column;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
     color: darkBlueBasic;
+
+    @media (--media-phone-s) {
+        flex-direction: row;
+    }
 }
 
 .title{
@@ -158,6 +162,10 @@
     line-height: 14px;
     letter-spacing: 1px;
     padding-left: 20px;
+
+    @media (--media-phone-s) {
+        display: none;
+    }
 }
 
 .amount{
@@ -166,11 +174,19 @@
     font-family: Verdana;
     font-weight: 600;
     background: lightGreySearchBasic;
+
+    @media (--media-phone-s) {
+        display: none;
+    }
 }
 
 .amoutnPages, .amountNews{
     padding: 45px 0 40px 20px;;
     border-bottom: 2px solid lightGreySearchBasic;
+
+    @media (--media-phone-s) {
+        padding: 0;
+    }
 }
 
 .resultsPages, .resultsNews{
