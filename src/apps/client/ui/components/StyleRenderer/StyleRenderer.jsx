@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import getInstagramTemplate from './utils/getInstagramTemplate';
-
 import styles from './StyleRenderer.css';
 
 export default class StyleRenderer extends Component {
