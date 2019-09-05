@@ -8,6 +8,7 @@ import queryString from 'query-string';
 import propOr from '@tinkoff/utils/object/propOr';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
 import { Link, withRouter } from 'react-router-dom';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 import { connect } from 'react-redux';
 import searchByText from '../../../services/client/searchByText';
@@ -17,6 +18,7 @@ import styles from './SearchPage.css';
 const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
+        langRoute: application.langRoute,
         news: news.news,
         lang: application.lang,
         search: application.search
@@ -34,8 +36,9 @@ class SearchPage extends Component {
         searchByText: PropTypes.func.isRequired,
         langMap: PropTypes.object.isRequired,
         lang: PropTypes.string,
-        langRoute: PropTypes.string,
-        location: PropTypes.object
+        location: PropTypes.object,
+        history: PropTypes.object.isRequired,
+        langRoute: PropTypes.string
     };
 
     static defaultProps = {
@@ -44,7 +47,8 @@ class SearchPage extends Component {
     };
 
     state = {
-        inputValue: ''
+        news: [],
+        pages: []
     };
 
     constructor (props) {
@@ -59,46 +63,44 @@ class SearchPage extends Component {
     }
 
     componentDidMount () {
-        this.searchByText();
-    }
-
-    searchByText (props = this.props) {
-        const { location: { search } } = props;
+        const { location: { search } } = this.props;
         const query = queryString.parse(search);
 
-        this.setState({
-            loading: true
-        });
-
-        this.props.searchByText(query.text)
-            .then(({ pages, news }) => {
+        this.searchByText(query.text)
+            .then(() => {
                 this.setState({
-                    text: query.text,
-                    news,
-                    pages,
                     loading: false
                 });
             });
     }
 
-    componentWillReceiveProps (nextProps) {
-        if (nextProps.location !== this.props.location) {
-            this.searchByText(nextProps);
-        }
+    searchByText (text) {
+        return this.props.searchByText(text)
+            .then(({ pages, news }) => {
+                this.setState({
+                    news,
+                    pages,
+                    searchedText: text
+                });
+            });
     }
 
-    handleInputChange = event => {
-        this.props.searchByText(event.target.value).then((values) => {
-            this.setState({
-                news: values.news
-            });
-        });
+    handleInputSubmit = inputValue => {
+        if (inputValue) {
+            const { langRoute } = this.props;
+
+            this.searchByText(inputValue)
+                .then(() => {
+                    this.props.history.push(`${langRoute}/search?text=${inputValue}`);
+                });
+        }
     };
 
     render () {
         const { langMap, lang, langRoute } = this.props;
-        const { news, pages, inputValue, loading } = this.state;
+        const { news, pages, loading, searchedText } = this.state;
         const text = propOr('search', {}, langMap);
+        const searchResultNumber = news.length + pages.length;
 
         if (loading) {
             return <div className={styles.loader}>
@@ -110,20 +112,12 @@ class SearchPage extends Component {
             <div className={styles.wrapper}>
                 <div className={styles.searchResults}>
                     <div className={styles.inputBlock}>
-                        <div className={styles.searchField}>
-                            <div className={styles.searchIconZoom}>
-                                <img src='/src/apps/client/ui/pages/SearchPage/files/searchIcon.png' className={styles.searchIconImg} />
-                            </div>
-                            <input
-                                value={inputValue}
-                                onChange={this.handleInputChange}
-                                className={styles.inputZoom} />
-                        </div>
-                        <p className={styles.results}>{text.searchResults} {inputValue}</p>
+                        <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit} />
+                        <p className={styles.results}>{text.getSearchResultText(searchedText, searchResultNumber)}</p>
                     </div>
                     <div className={styles.totalResults}>
                         <h1 className={styles.title}>{text.title}</h1>
-                        <div className={styles.amount}>{news.length + pages.length}</div>
+                        <div className={styles.amount}>{searchResultNumber}</div>
                         <div className={styles.amountPagesWrapper}>
                             <div className={styles.amountPages}>
                                 <div>{`${text.pages}:`}</div>
