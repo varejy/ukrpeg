@@ -8,7 +8,8 @@ import noop from '@tinkoff/utils/function/noop';
 
 const materialStyles = {
     buttonRoot: {
-        display: 'inline-flex'
+        display: 'inline-flex',
+        marginTop: '16px'
     }
 };
 
@@ -30,6 +31,7 @@ class FormFieldButton extends Component {
                 variant='contained'
                 color={schema.color || 'primary'}
                 type={schema.type || 'button'}
+                disabled={schema.disabled}
                 onClick={schema.onClick || noop}
             >
                 { schema.label }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './RVVPage.css';
 import classNames from 'classnames';
+import propOr from '@tinkoff/utils/object/propOr';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -23,25 +24,25 @@ const PLANS_LIST = [
 const BENEFITS = [
     {
         // eslint-disable-next-line max-len
-        text: 'Розширена відповідальність виробника (РВВ) - визнаний принцип екологічної політики  , щодо забезпечення відповідальності виробників продукції за управління стадією відходів життєвого циклу продукції та матеріалів.',
-        path: 'src/apps/client/ui/pages/RVVPage/images/benefit1.png'
+        description: 'Розширена відповідальність виробника (РВВ) - визнаний принцип екологічної політики  , щодо забезпечення відповідальності виробників продукції за управління стадією відходів життєвого циклу продукції та матеріалів.',
+        path: '/src/apps/client/ui/pages/RVVPage/images/benefit1.png'
     },
     {
-        text: 'РВВ – передбачена у Національній стратегії управління відходами, отже з\'явиться в Україні.',
-        path: 'src/apps/client/ui/pages/RVVPage/images/benefit2.png'
+        description: 'РВВ – передбачена у Національній стратегії управління відходами, отже з\'явиться в Україні.',
+        path: '/src/apps/client/ui/pages/RVVPage/images/benefit2.png'
     },
     {
-        text: 'РВВ дозволяє збирати відходи товарів та упаковки без державних коштів – лише за кошти виробників.',
-        path: 'src/apps/client/ui/pages/RVVPage/images/benefit3.png'
+        description: 'РВВ дозволяє збирати відходи товарів та упаковки без державних коштів – лише за кошти виробників.',
+        path: '/src/apps/client/ui/pages/RVVPage/images/benefit3.png'
     },
     {
-        text: 'РВВ – принцип, який підтримують в Україні відповідальні виробники та імпортери.',
-        path: 'src/apps/client/ui/pages/RVVPage/images/benefit4.png'
+        description: 'РВВ – принцип, який підтримують в Україні відповідальні виробники та імпортери.',
+        path: '/src/apps/client/ui/pages/RVVPage/images/benefit4.png'
     },
     {
         // eslint-disable-next-line max-len
-        text: 'РВВ – головний метод поводження з відходами упаковки та багатьох інших товарів у ЄС – у деяких країнах до 80% відходів упаковки збирається завдяки РВВ.',
-        path: 'src/apps/client/ui/pages/RVVPage/images/benefit5.png'
+        description: 'РВВ – головний метод поводження з відходами упаковки та багатьох інших товарів у ЄС – у деяких країнах до 80% відходів упаковки збирається завдяки РВВ.',
+        path: '/src/apps/client/ui/pages/RVVPage/images/benefit5.png'
     }
 ];
 const COURSES_LIST = [
@@ -90,7 +91,8 @@ const PARTICIPANTS_LIST = [
 const SLIDE_HEIGHT = 400;
 const mapStateToProps = ({ application }) => {
     return {
-        mediaWidth: application.media.width
+        mediaWidth: application.media.width,
+        langMap: application.langMap
     };
 };
 
@@ -101,6 +103,7 @@ class RVVPage extends Component {
     };
 
     static propTypes = {
+        langMap: PropTypes.object.isRequired,
         mediaWidth: PropTypes.number.isRequired
     };
 
@@ -123,7 +126,8 @@ class RVVPage extends Component {
 
     render () {
         const { top, activeSlide } = this.state;
-        const { mediaWidth } = this.props;
+        const { mediaWidth, langMap } = this.props;
+        const text = propOr('rvv', {}, langMap);
         let PAGINATION = [];
         for (let i = 0; i < PLANS_LIST.length; i++) {
             PAGINATION.push(i + 1);
@@ -209,7 +213,7 @@ class RVVPage extends Component {
             <div className={styles.plans}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>
-                    <div className={styles.title}>Плани</div>
+                    <div className={styles.title}>{text.titleFirst}</div>
                 </div>
                 <div className={styles.plansContent}>
                     {
@@ -226,7 +230,7 @@ class RVVPage extends Component {
                 <div className={styles.whyRVV}>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
-                        <div className={styles.title}>Навіщо потрібне РВВ:</div>
+                        <div className={styles.title}>{text.titleSecond}</div>
                     </div>
                     <div className={styles.benefitsContainer}>
                         <div className={styles.benefits}>
@@ -234,9 +238,9 @@ class RVVPage extends Component {
                                 BENEFITS.map((benefit, i) =>
                                     <div key={i} className={styles.benefitContainer}>
                                         <div className={styles.benefitIconContainer}>
-                                            <img className={styles.benefitIcon} src={benefit.path} alt={benefit.text}/>
+                                            <img className={styles.benefitIcon} src={benefit.path} alt={benefit.description}/>
                                         </div>
-                                        <div className={styles.benefitText}>{benefit.text}</div>
+                                        <div className={styles.benefitText}>{benefit.description}</div>
                                     </div>
                                 )
                             }
@@ -248,7 +252,7 @@ class RVVPage extends Component {
                 <div className={styles.project}>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
-                        <div className={styles.title}>Пілотний проект у Вишгороді</div>
+                        <div className={styles.title}>{text.titleThird}</div>
                     </div>
                     <div className={styles.projectInfo}>
                     Наприкінці листопада 2017 року в місті Вишгороді Київської області презентували перший в
@@ -269,7 +273,7 @@ class RVVPage extends Component {
                     <div className={styles.backgroundWhite}/>
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
-                        <div className={styles.title}>Основні зусилля та ресурси Коаліції зосереджені на трьох основних напрямках:</div>
+                        <div className={styles.title}>{text.titleFourth}</div>
                     </div>
                     <div className={styles.coursesContainer}>
                         <div className={styles.courseInfo}>
@@ -288,7 +292,7 @@ class RVVPage extends Component {
             <div className={styles.facts}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleWhite}/>
-                    <div className={styles.whiteTitle}>Ключові факти</div>
+                    <div className={styles.whiteTitle}>{text.titleFifth}</div>
                 </div>
                 <div className={styles.factsInfo}>
                     {
@@ -324,7 +328,7 @@ class RVVPage extends Component {
                     <div className={styles.titleContainer}>
                         <div className={styles.rectangleGreen}/>
                         <div className={styles.title}>
-                        До складу Української Пакувально-Екологічної Коаліції входять потужні представники галузі:
+                            {text.titleSixth}
                         </div>
                     </div>
                     <ul className={styles.participantsList}>

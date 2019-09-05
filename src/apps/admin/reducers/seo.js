@@ -1,16 +1,15 @@
 import {
-    SET_LAWS
+    SET_SEO
 } from '../types/types';
 
 const initialState = {
-    laws: []
+    allSeo: []
 };
 
 export default function (state = initialState, action) {
-    switch (action.type) {
-    case SET_LAWS:
-        return { ...state, laws: action.payload };
-    default:
+    if (action.type === SET_SEO) {
+        return { ...state, allSeo: action.payload };
+    } else {
         return state;
     }
 }

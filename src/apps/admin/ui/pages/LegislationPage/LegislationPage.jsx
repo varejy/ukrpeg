@@ -52,9 +52,9 @@ const materialStyles = theme => ({
     }
 });
 
-const mapStateToProps = ({ laws }) => {
+const mapStateToProps = ({ application }) => {
     return {
-        laws: laws.laws
+        laws: application.lawList
     };
 };
 

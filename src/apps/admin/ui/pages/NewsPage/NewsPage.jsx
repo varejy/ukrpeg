@@ -288,10 +288,10 @@ class NewsPage extends Component {
         this.setState({
             valueForDelete: category
         });
-    }
+    };
 
     handleNewsDelete = (news) => {
-        this.props.deleteNews(news)
+        return this.props.deleteNews(news)
             .then(() => {
                 this.props.getNewsAll()
                     .then(() => {
@@ -300,7 +300,7 @@ class NewsPage extends Component {
                         });
                     });
             });
-    }
+    };
 
     handleWarningDisagree = () => {
         this.setState({
@@ -385,7 +385,7 @@ class NewsPage extends Component {
                     copyItem={false}
                     onFormOpen={this.handleNewsFormOpen}
                 />
-                <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal}>
+                <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal} disableEnforceFocus>
                     <Paper className={classes.modalContent}>
                         <NewsForm activeCategory={activeNewsCategory} news={editableNews} onDone={this.handleNewsFormDone} />
                     </Paper>
@@ -421,7 +421,7 @@ class NewsPage extends Component {
                     classes={classes}
                 />
             </Drawer>
-            <Modal open={categoryFormShowed} onClose={this.handleCloseCategoryForm} className={classes.modal} >
+            <Modal open={categoryFormShowed} onClose={this.handleCloseCategoryForm} className={classes.modal} disableEnforceFocus>
                 <Paper className={classes.modalContent}>
                     <NewsCategoryForm categories={newsCategories} category={editableCategory} onDone={this.handleCategoryFormDone}/>
                 </Paper>
