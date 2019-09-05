@@ -8,6 +8,7 @@ import queryString from 'query-string';
 import propOr from '@tinkoff/utils/object/propOr';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
 import { Link, withRouter } from 'react-router-dom';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 import { connect } from 'react-redux';
 import searchByText from '../../../services/client/searchByText';
@@ -59,23 +60,24 @@ class SearchPage extends Component {
     }
 
     componentDidMount () {
-        this.searchByText();
-    }
-
-    searchByText (props = this.props) {
-        const { location: { search } } = props;
+        const { location: { search } } = this.props;
         const query = queryString.parse(search);
 
+        this.searchByText(query);
+    }
+
+    searchByText (text) {
         this.setState({
             loading: true
         });
 
-        this.props.searchByText(query.text)
+        this.props.searchByText(text)
             .then(({ pages, news }) => {
                 this.setState({
-                    text: query.text,
+                    text: text,
                     news,
                     pages,
+                    searchedText: text,
                     loading: false
                 });
             });
@@ -87,12 +89,10 @@ class SearchPage extends Component {
         }
     }
 
-    handleInputChange = event => {
-        this.props.searchByText(event.target.value).then((values) => {
-            this.setState({
-                news: values.news
-            });
-        });
+    handleInputSubmit = inputValue => {
+        if (inputValue) {
+            this.props.history.push(`/search?text=${inputValue}`);
+        }
     };
 
     render () {
@@ -110,15 +110,7 @@ class SearchPage extends Component {
             <div className={styles.wrapper}>
                 <div className={styles.searchResults}>
                     <div className={styles.inputBlock}>
-                        <div className={styles.searchField}>
-                            <div className={styles.searchIconZoom}>
-                                <img src='/src/apps/client/ui/pages/SearchPage/files/searchIcon.png' className={styles.searchIconImg} />
-                            </div>
-                            <input
-                                value={inputValue}
-                                onChange={this.handleInputChange}
-                                className={styles.inputZoom} />
-                        </div>
+                        <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit} />
                         <p className={styles.results}>{text.searchResults} {inputValue}</p>
                     </div>
                     <div className={styles.totalResults}>
