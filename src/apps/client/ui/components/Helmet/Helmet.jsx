@@ -71,7 +71,7 @@ class Helmet extends Component {
                 return {
                     seoTitle: staticSeoPage.texts[lang].seoTitle,
                     seoDescription: staticSeoPage.texts[lang].seoDescription,
-                    seoKeywords: staticSeoPage.texts[lang].metaKeywords
+                    seoKeywords: staticSeoPage.texts[lang].seoKeywords
                 };
             }
 
