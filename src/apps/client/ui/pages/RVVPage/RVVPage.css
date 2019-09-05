@@ -281,7 +281,7 @@
     @media (max-width: 780px){
         flex-direction: column;
         align-items: center;
-        padding: 0 104px;
+        padding: 0 10%;
         margin-bottom: 120px;
         width: 100%;
     }
@@ -392,6 +392,12 @@
     }
 }
 
+.project .titleContainer .title{
+    @media (max-width: 780px){
+        color: darkGreyBasic;
+    }
+}
+
 .backgroundWhite{
     width: 100%;
     height: 100%;
@@ -405,10 +411,6 @@
     @media (max-width: 780px){
         width: 70%;
         right: 0;
-    }
-
-    @media (max-width: 500px){
-        width: 85%;
     }
 }
 
@@ -454,8 +456,12 @@
         left: 25%;
     }
 
-    @media (max-width: 500px){
-        left: 7.5%;
+    @media (max-width: 650px){
+        left: 22.5%;
+    }
+
+    @media (max-width: 425px){
+        left: 19.5%;
     }
 }
 
@@ -543,10 +549,6 @@
 
     @media (max-width: 780px){
         width: 30%;
-    }
-
-    @media (max-width: 500px){
-        width: 15%;
     }
 }
 
@@ -739,6 +741,11 @@
 .logo{
     height: 100%;
     width: auto;
+
+    @media (max-width: 600px){
+        height: auto;
+        width: 100%;
+    }
 }
 
 .participantsContainer{
@@ -755,13 +762,6 @@
     @media (max-width: 780px){
         display: block;
         width: 30%;
-        left: 0;
-        top: 0;
-    }
-
-    @media (max-width: 500px){
-        display: block;
-        width: 15%;
         left: 0;
         top: 0;
     }
@@ -787,6 +787,7 @@
 }
 
 .participantsList{
+    font-family: 'Gotham Light', Arial;
     position: relative;
     left: 130px;
     width: 100%;
@@ -812,6 +813,10 @@
     text-align: left;
     color: blackBasic;
     max-width: 70%;
+
+    @media (max-width: 780px){
+        font-family: 'Gotham Light', Arial;
+    }
 }
 
 .backgroundGrey{
@@ -951,17 +956,21 @@
     @media (max-width: 780px){
         display: block;
         z-index: 11;
-        margin: 143px 0 0 0;
+        margin: 143px 30px 0 30px;
     }
 
     @media (max-width: 599px){
-        margin: 123px 0 0 0;
+        margin: 143px 30px 0 30px;
     }
 }
 
 .partnersMobile .logoContainer{
     margin: 0 auto;
     padding: 13px 26px;
+
+    @media (max-width: 600px){
+        width: 50%;
+    }
 }
 
 .partnersMobile .titleContainer{
@@ -986,10 +995,6 @@
 .containerPlansMobile .patternContainerBig{
     width: 30%;
     height: 100%;
-
-    @media (max-width: 500px){
-        width: 15%;
-    }
 }
 
 .containerPlansMobile .backgroundWhite{
@@ -998,10 +1003,6 @@
     position: absolute;
     right: 0;
     top: 0;
-
-    @media (max-width: 500px){
-        width: 85%;
-    }
 }
 
 .containerPlansMobile .coursesContainer{
@@ -1010,8 +1011,12 @@
     height: 400px;
     position: relative;
 
-    @media (max-width: 500px){
-        left: 0.5%;
+    @media (max-width: 650px){
+        left: 20.5%;
+    }
+
+    @media (max-width: 425px){
+        left: 15.5%;
     }
 }
 
@@ -1071,8 +1076,9 @@
     width: 100%;
 
     @media (max-width: 500px){
-        padding-left: 15%;
-        margin: 40px 0;
+        justify-content: center;
+        padding-left: 0;
+        margin: 40px auto;
     }
 }
 
