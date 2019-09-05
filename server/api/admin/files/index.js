@@ -2,13 +2,13 @@ import express from 'express';
 
 import verification from '../../../middlewares/verification';
 
-import uploadFile from './services/uploadFile';
+import upload from './services/upload';
 
 const router = express.Router();
 
 router.use(verification);
 
-router.route('/file')
-    .post(uploadFile);
+router.route('/upload')
+    .post(upload);
 
 export default router;
