@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
-import classNames from 'classnames';
 
 import SeoTabs from '../../components/SeoTabs/SeoTabs.jsx';
 import getAllSeo from '../../../services/getAllSeo';
