@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import SwipeableViews from 'react-swipeable-views';
+
+import classNames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-
+import SwipeableViews from 'react-swipeable-views';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import pick from '@tinkoff/utils/object/pick';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
-import classNames from 'classnames';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import find from '@tinkoff/utils/array/find';
+import Modal from '@material-ui/core/Modal';
 
 import SeoTabs from '../../components/SeoTabs/SeoTabs.jsx';
-import getAllSeo from '../../../services/getAllSeo';
-import getCategories from '../../../services/getCategories';
-import search from '../../../services/search';
-import MetaForm from '../../components/MetaForm/MetaForm.jsx';
+import SeoForm from '../../components/SeoForm/SeoForm.jsx';
 
-const materialStyles = () => ({
+import { connect } from 'react-redux';
+import getAllSeo from '../../../services/getAllSeo';
+import editNews from '../../../services/editNews';
+import search from '../../../services/search';
+
+import find from '@tinkoff/utils/array/find';
+import prop from '@tinkoff/utils/object/prop';
+
+const materialStyles = theme => ({
     paper: {
         padding: '0 24px 24px 24px'
     },
@@ -79,8 +82,23 @@ const materialStyles = () => ({
         paddingTop: '56.25%',
         backgroundSize: '190px'
     },
-    selectedProduct: {
+    selectedNewsItem: {
         border: '1px solid rgb(63, 80, 181)'
+    },
+    modal: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    modalContent: {
+        position: 'absolute',
+        width: '1200px',
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+        outline: 'none',
+        overflowY: 'auto',
+        maxHeight: '100vh'
     }
 });
 
@@ -102,23 +120,16 @@ const mapStateToProps = ({ application, news }) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getAllSeo: payload => dispatch(getAllSeo(payload)),
-    getCategories: payload => dispatch(getCategories(payload)),
+    editNews: payload => dispatch(editNews(payload)),
     search: payload => dispatch(search(payload))
 });
 
 class SeoPage extends Component {
-  static propTypes = {
-      classes: PropTypes.object.isRequired,
-      getAllSeo: PropTypes.func.isRequired,
-      search: PropTypes.func,
-      news: PropTypes.array,
-      categories: PropTypes.array,
-      getCategories: PropTypes.func
-  };
-
-    static defaultProps = {
-        news: [],
-        categories: []
+    static propTypes = {
+        classes: PropTypes.object.isRequired,
+        getAllSeo: PropTypes.func.isRequired,
+        editNews: PropTypes.func.isRequired,
+        search: PropTypes.func.isRequired
     };
 
     constructor (...args) {
@@ -129,14 +140,8 @@ class SeoPage extends Component {
             tabsValue: 0,
             tips: [],
             searchTxt: '',
-            selectedProduct: null
+            selectedNewsItem: null
         };
-    }
-
-    componentWillReceiveProps (nextProps) {
-        if (this.props.news !== nextProps.news) {
-            this.setTips(nextProps);
-        }
     }
 
     componentDidMount () {
@@ -146,7 +151,6 @@ class SeoPage extends Component {
                     loading: false
                 });
             });
-        this.props.getCategories();
     }
 
     handleTableChange = event => () => {
@@ -162,39 +166,79 @@ class SeoPage extends Component {
             searchTxt
         });
 
-        searchTxt.length !== 0
-            ? this.searchProducts(searchTxt)
-            : this.setState({
+        if (!searchTxt.length) {
+            this.setState({
                 tips: [],
-                selectedProduct: {}
+                selectedNewsItem: {}
+            });
+        }
+
+        this.props.search(searchTxt)
+            .then(news => {
+                const { selectedNewsItem } = this.state;
+                const newTips = news
+                    .map(product => {
+                        return {
+                            ...product
+                        };
+                    });
+                const newSelectedProduct = selectedNewsItem ? find(tip => tip.id === selectedNewsItem.id, newTips) : null;
+
+                this.setState({
+                    tips: newTips,
+                    selectedNewsItem: newSelectedProduct
+                });
             });
     };
 
     handleSelectedProduct = product => () => {
         this.setState({
-            selectedProduct: product
+            selectedNewsItem: product
         });
     };
 
-    searchProducts = searchText => {
-        this.props.search(searchText);
-    };
-
-    setTips = (props = this.props) => {
-        const { selectedProduct } = this.state;
-        const { news } = props;
-        const newTips = news
-            .map(product => {
-                return {
-                    ...product
-                };
-            });
-        const newSelectedProduct = selectedProduct ? find(tip => tip.id === selectedProduct.id, newTips) : null;
-
+    handleCloseNewsSeoForm = () => {
         this.setState({
-            tips: newTips,
-            selectedProduct: newSelectedProduct
+            selectedNewsItem: null
         });
+    };
+
+    handleFormDone = selectedNewsItem => values => {
+        const result = {
+            ...selectedNewsItem,
+            texts: {
+                ua: {
+                    ...selectedNewsItem.texts.ua,
+                    ...values.texts.ua
+                },
+                en: {
+                    ...selectedNewsItem.texts.en,
+                    ...values.texts.en
+                }
+            }
+        };
+
+        return this.props.editNews(result)
+            .then(() => {
+                const { searchTxt } = this.state;
+
+                this.props.search(searchTxt)
+                    .then(news => {
+                        const { selectedNewsItem } = this.state;
+                        const newTips = news
+                            .map(product => {
+                                return {
+                                    ...product
+                                };
+                            });
+                        const newSelectedProduct = selectedNewsItem ? find(tip => tip.id === selectedNewsItem.id, newTips) : null;
+
+                        this.setState({
+                            tips: newTips,
+                            selectedNewsItem: newSelectedProduct
+                        });
+                    });
+            });
     };
 
     renderEditPagesSeo = () => {
@@ -210,28 +254,13 @@ class SeoPage extends Component {
         </div>;
     };
 
-    renderEditCategoriesSeo = () => {
-        const { classes, categories } = this.props;
-        let categoriesMap = [];
-
-        categories.map(category => {
-            categoriesMap.push({ header: `Редактирование категории '${category.name}'`, page: category.name });
-        });
-
-        return <div>
-            <Paper className={classes.paper}>
-                <div className={classes.headerContainer}>
-                    <Typography variant='h6' id='seoTitle'>SEO</Typography>
-                </div>
-                <SeoTabs pages={categoriesMap} categories={categories} option='category'/>
-            </Paper>
-        </div>;
-    };
-
-    renderSearchPage = () => {
+    renderEditNewsSeo = () => {
         const { classes } = this.props;
-        const { searchTxt, tips, selectedProduct } = this.state;
-        const { id } = pick(['id'], selectedProduct || {});
+        const { searchTxt, tips, selectedNewsItem } = this.state;
+        const id = prop('id', selectedNewsItem);
+        const values = {
+            ...(selectedNewsItem || {})
+        };
         const check = (prop) => id === prop;
 
         return <div>
@@ -252,15 +281,14 @@ class SeoPage extends Component {
                         {
                             tips.map(tip => {
                                 return <div key={tip.id} onClick={this.handleSelectedProduct(tip)} className={classes.cardLink}>
-                                    <Card className={classNames(classes.card, { [classes.selectedProduct]: check(tip.id) })}>
-                                        <CardHeader
-                                            title={tip.name}
-                                            subheader={tip.company}
-                                        />
+                                    <Card className={classNames(classes.card, { [classes.selectedNewsItem]: check(tip.id) })}>
                                         <CardMedia
                                             className={classes.media}
                                             image={tip.avatar}
-                                            title={tip.name}
+                                            title={tip.texts.ua.name}
+                                        />
+                                        <CardHeader
+                                            title={tip.texts.ua.name}
                                         />
                                     </Card>
                                 </div>;
@@ -269,11 +297,11 @@ class SeoPage extends Component {
                     </div>
                 </div>
             }
-            {
-                !!id && <Paper className={classes.paper} component="div">
-                    <MetaForm page='product' product={selectedProduct} searchQuery={searchTxt} option='product'/>
+            <Modal open={!!id} onClose={this.handleCloseNewsSeoForm} className={classes.modal} disableEnforceFocus>
+                <Paper className={classes.modalContent}>
+                    <SeoForm values={values} onSubmit={this.handleFormDone(selectedNewsItem)} />
                 </Paper>
-            }
+            </Modal>
         </div>;
     };
 
@@ -288,17 +316,16 @@ class SeoPage extends Component {
         }
 
         return <div className={classes.container}>
-            <AppBar position="static" color="default">
+            <AppBar position='static' color='default'>
                 <Tabs
                     value={tabsValue}
                     onChange={this.handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    variant="fullWidth"
+                    indicatorColor='primary'
+                    textColor='primary'
+                    variant='fullWidth'
                 >
-                    <Tab onClick={this.handleTableChange(0)} label="Редактирование SEO страниц" />
-                    <Tab onClick={this.handleTableChange(1)} label="Редактирование SEO категорий" />
-                    <Tab onClick={this.handleTableChange(2)} label="Поиск по товарам" />
+                    <Tab onClick={this.handleTableChange(0)} label='Редактирование SEO страниц' />
+                    <Tab onClick={this.handleTableChange(1)} label='Поиск по новостям' />ъ
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -306,8 +333,7 @@ class SeoPage extends Component {
                 onChangeIndex={this.handleChangeIndex}
             >
                 {this.renderEditPagesSeo(0)}
-                {this.renderEditCategoriesSeo(1)}
-                {this.renderSearchPage(2)}
+                {this.renderEditNewsSeo(1)}
             </SwipeableViews>
         </div>;
     }

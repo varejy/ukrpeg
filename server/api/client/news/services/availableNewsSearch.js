@@ -1,6 +1,6 @@
 import { OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constants/constants';
 
-import findNewsByName from '../queries/findNewsByName';
+import findNewsByName from '../queries/findNewsByText';
 
 export default function availableNewsSearch (req, res) {
     const { text } = req.query;
