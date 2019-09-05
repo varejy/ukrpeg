@@ -88,7 +88,6 @@ const PARTICIPANTS_LIST = [
     'ТОВ «Хенкель Україна»',
     'та інші.'
 ];
-const SLIDE_HEIGHT = 400;
 const mapStateToProps = ({ application }) => {
     return {
         mediaWidth: application.media.width,
@@ -97,35 +96,44 @@ const mapStateToProps = ({ application }) => {
 };
 
 class RVVPage extends Component {
-    state = {
-        activeSlide: 0,
-        top: 0
-    };
-
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         mediaWidth: PropTypes.number.isRequired
     };
 
+    constructor (...args) {
+        super(...args);
+        const { mediaWidth } = this.props;
+
+        this.state = {
+            activeSlide: 0,
+            left: 0,
+            slideWidth: mediaWidth
+        };
+    }
+
     handlePaginationClick = i => () => {
+        const { mediaWidth } = this.props;
+
         this.setState({
             activeSlide: i,
-            top: SLIDE_HEIGHT * i
+            left: mediaWidth * i
         });
     };
 
     handleArrowClick = (direction) => () => {
         const { activeSlide } = this.state;
+        const { mediaWidth } = this.props;
         const newActiveSlide = direction === 'left' ? activeSlide - 1 : activeSlide + 1;
 
         this.setState({
             activeSlide: newActiveSlide,
-            top: SLIDE_HEIGHT * newActiveSlide
+            left: mediaWidth * newActiveSlide
         });
     };
 
     render () {
-        const { top, activeSlide } = this.state;
+        const { left, activeSlide } = this.state;
         const { mediaWidth, langMap } = this.props;
         const text = propOr('rvv', {}, langMap);
         let PAGINATION = [];
@@ -185,7 +193,7 @@ class RVVPage extends Component {
                         </div>
                     </div>
                     <div className={styles.coursesContainer}>
-                        <div className={styles.courseInfo} style={{ top: `-${top}px` }}>
+                        <div className={styles.courseInfo} style={{ left: `-${left}px` }}>
                             {
                                 PLANS_LIST.map((step, i) =>
                                     <div key={i} className={styles.course}>

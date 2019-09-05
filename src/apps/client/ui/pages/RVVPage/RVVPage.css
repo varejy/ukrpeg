@@ -1006,24 +1006,28 @@
 }
 
 .containerPlansMobile .coursesContainer{
-    left: 22.5%;
-    overflow-y: hidden;
-    height: 400px;
+    margin-left: 22.5%;
+    width: 100vw;
+    overflow-x: hidden;
+    height: auto;
+    left: 0;
     position: relative;
 
     @media (max-width: 650px){
-        left: 20.5%;
+        margin-left: 20.5%;
     }
 
     @media (max-width: 425px){
-        left: 15.5%;
+        margin-left: 15.5%;
     }
 }
 
 .containerPlansMobile .course{
-    height: 400px;
-    width: 100%;
+    height: auto;
+    min-height: 330px;
+    width: 100vw;
     display: flex;
+    flex-shrink: 0;
     align-items: start;
     position: relative;
     overflow: hidden;
@@ -1034,8 +1038,10 @@
 }
 
 .containerPlansMobile .courseInfo{
-    position: absolute;
-    width: 100%;
+    position: relative;
+    width: 100vw;
+    display: flex;
+    transition: left .5s;
 }
 
 .containerPlansMobile .courseNumber{
@@ -1053,7 +1059,7 @@
     left: 60px;
     align-items: start;
     font-family: 'Gotham Light', Arial;
-    height: 400px;
+    height: auto;
 
     @media (max-width: 780px){
         margin-bottom: 0;
