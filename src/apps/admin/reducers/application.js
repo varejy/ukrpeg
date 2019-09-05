@@ -7,6 +7,7 @@ import {
 const initialState = {
     authenticated: null,
     newsCategories: [],
+    categories: [],
     lawList: []
 };
 

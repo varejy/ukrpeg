@@ -15,7 +15,7 @@ import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
 import format from 'date-fns/format';
 
-const NEWS_VALUES = ['name', 'views', 'shortDescription', 'description', 'hidden', 'date'];
+const NEWS_VALUES = ['hidden'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveNews: payload => dispatch(saveNews(payload)),
@@ -44,11 +44,12 @@ class NewsForm extends Component {
 
         const { news } = this.props;
         const ua = pathOr(['texts', 'ua'], '', news);
-        const en = pathOr(['texts', 'en'], '', news)
+        const en = pathOr(['texts', 'en'], '', news);
 
         this.initialValues = {
             hidden: false,
             date: format(new Date(), 'YYYY-MM-DD'),
+            views: 0,
             avatar: {
                 files: news.avatar ? [news.avatar] : [],
                 removedFiles: []
@@ -59,6 +60,12 @@ class NewsForm extends Component {
             ua_shortDescription: ua.shortDescription || '',
             ua_description: ua.description || '',
             en_description: en.description || '',
+            ua_seoTitle: ua.seoTitle || '',
+            en_seoTitle: en.seoTitle || '',
+            ua_seoDescription: ua.seoDescription || '',
+            en_seoDescription: en.seoDescription || '',
+            ua_seoKeywords: { words: ua.seoKeywords && ua.seoKeywords.split(', ') || [], input: '' },
+            en_seoKeywords: { words: en.seoKeywords && en.seoKeywords.split(', ') || [], input: '' },
             lang: 'ua',
             ...pick(NEWS_VALUES, news)
         };
@@ -76,6 +83,12 @@ class NewsForm extends Component {
             ua_shortDescription: uaShortDescription,
             en_description: enDescription,
             ua_description: uaDescription,
+            en_seoTitle: enSeoTitle,
+            ua_seoTitle: uaSeoTitle,
+            en_seoDescription: enSeoDescription,
+            ua_seoDescription: uaSeoDescription,
+            en_seoKeywords: enSeoKeywords,
+            ua_seoKeywords: uaSeoKeywords,
             hidden,
             views,
             date,
@@ -91,12 +104,18 @@ class NewsForm extends Component {
                 en: {
                     name: enName,
                     shortDescription: enShortDescription,
-                    description: enDescription
+                    description: enDescription,
+                    seoTitle: enSeoTitle,
+                    seoDescription: enSeoDescription,
+                    seoKeywords: enSeoKeywords.words.join(', ')
                 },
                 ua: {
                     name: uaName,
                     shortDescription: uaShortDescription,
-                    description: uaDescription
+                    description: uaDescription,
+                    seoTitle: uaSeoTitle,
+                    seoDescription: uaSeoDescription,
+                    seoKeywords: uaSeoKeywords.words.join(', ')
                 }
             }
         };
@@ -135,6 +154,7 @@ class NewsForm extends Component {
 
         return <Form
             initialValues={this.initialValues}
+            lang={lang}
             schema={getSchema({
                 data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' },
                 settings: { lang }
