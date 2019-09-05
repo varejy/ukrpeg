@@ -84,7 +84,7 @@ class Search extends Component {
                         <div className={styles.resultNewsList}>
                             {news.map((item, i) => {
                                 return (
-                                    <Link to={`${langRoute}/news/${cardData.id}`} key={i} className={styles.resultNewsItem}>
+                                    <Link to={`${langRoute}/news/${item.id}`} key={i} className={styles.resultNewsItem}>
                                         <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
                                         <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
                                     </Link>
