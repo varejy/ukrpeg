@@ -23,7 +23,7 @@ const initialState = {
     categories: [],
     burgerMenu: false,
     activeCategoryIndex: 0,
-    search: ''
+    search: '',
     lawList: []
 };
 
