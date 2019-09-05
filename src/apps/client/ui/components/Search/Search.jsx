@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
+
 import propOr from '@tinkoff/utils/object/propOr';
 import styles from './Search.css';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -12,7 +14,8 @@ const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
         news: news.news,
-        lang: application.lang
+        lang: application.lang,
+        langRoute: application.langRoute
     };
 };
 
@@ -21,26 +24,25 @@ class Search extends Component {
         langMap: PropTypes.object.isRequired,
         news: PropTypes.array,
         lang: PropTypes.string,
-        newsCard: PropTypes.object
+        langRoute: PropTypes.string
     };
 
     static defaultProps = {
-        newsCard: {}
+        news: []
     };
 
     state = {
-        news: [],
         inputValue: ''
-    }
+    };
 
     handleInputChange = event => {
         this.setState({
             inputValue: event.target.value
         });
-    }
+    };
 
     render () {
-        const { langMap, news, lang, cardData } = this.props;
+        const { langMap, news, lang, langRoute } = this.props;
         const { inputValue } = this.state;
         const text = propOr('search', {}, langMap);
 
@@ -84,9 +86,13 @@ class Search extends Component {
                         <div className={styles.resultNewsList}>
                             {news.map((item, i) => {
                                 return (
-                                    <Link to={`${langRoute}/news/${item.id}`} key={i} className={styles.resultNewsItem}>
-                                        <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
-                                        <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
+                                    <Link to={`${langRoute}/news/${item.id}`} key={i}>
+                                        <div key={i} className={classNames(styles.resultNewsItem, {
+                                            [styles.resultNewsItemNotOdd]: !i % 2
+                                        })}>
+                                            <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
+                                            <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
+                                        </div>
                                     </Link>
                                 );
                             })}

@@ -165,7 +165,7 @@
     padding: 25px 250px 40px 35px;
 }
 
-.resultNewsItem:nth-child(odd){
+.resultNewsItemNotOdd {
     background: lightGreySearchBasic;
 }
 
