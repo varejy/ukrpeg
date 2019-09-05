@@ -67,6 +67,11 @@
 .style {
     & :global {
         .image img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            padding: 5px 0;
+
             @media (max-width: 1024px) {
                 width: 100%;
             }
@@ -77,12 +82,14 @@
 .style {
     & :global {
         .image-style-align-left {
+            margin-right: 20px;
             float: left;
 
             @media (max-width: 1024px) {
                 display: flex;
                 justify-content: center;
                 float: none;
+                margin-right: 0;
             }
         }
     }
@@ -91,11 +98,13 @@
     & :global {
         .image-style-align-right {
             float: right;
+            margin-left: 20px;
 
             @media (max-width: 1024px) {
                 display: flex;
                 justify-content: center;
                 float: none;
+                margin-left: 0;
             }
         }
     }
