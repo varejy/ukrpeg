@@ -11,7 +11,10 @@ export default function availableNewsSearch (req, res) {
                 .filter(news => !news.hidden)
                 .sort((prev, next) => next.date - prev.date);
 
-            res.status(OKEY_STATUS_CODE).send(availableNews);
+            res.status(OKEY_STATUS_CODE).send({ 
+                news: availableNews,
+                pages: [] 
+            });
         })
         .catch(() => {
             res.status(SERVER_ERROR_STATUS_CODE).end();
