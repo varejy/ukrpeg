@@ -76,7 +76,6 @@ class SeoForm extends Component {
                     seoTitle: enSeoTitle,
                     seoDescription: enSeoDescription,
                     seoKeywords: enSeoKeywords.words.join(', ')
-
                 },
                 ua: {
                     seoTitle: uaSeoTitle,
