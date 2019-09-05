@@ -34,8 +34,10 @@ class Content extends Component {
     };
 
     handleInputSubmit = inputValue => {
+        const { langRoute } = this.props;
+
         if (inputValue) {
-            this.props.history.push(`/search?text=${inputValue}`);
+            this.props.history.push(`${langRoute}/search?text=${inputValue}`);
         }
     };
 

@@ -79,7 +79,7 @@ export default {
         titleSixth: 'До складу Української Пакувально-Екологічної Коаліції входять потужні представники галузі:'
     },
     search: {
-        searchResults: 'Ваш пошук',
+        getSearchResultText: (text, result) => `Ваш пошук "${text}" дав ${result} результатів`,
         title: `Всього результатів`,
         pages: `Сторінки`,
         news: `Новини`,

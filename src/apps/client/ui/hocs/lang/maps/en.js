@@ -79,7 +79,7 @@ export default {
         titleSixth: 'Ukrainian Packaging and Environmental Coalition consists of powerful branch representatives:'
     },
     search: {
-        searchResults: 'Search',
+        getSearchResultText: (text, result) => `Your search "${text}" returned ${result} results`,
         title: `All matches`,
         pages: `Pages`,
         news: `News`,
