@@ -288,7 +288,7 @@ class NewsPage extends Component {
         this.setState({
             valueForDelete: category
         });
-    }
+    };
 
     handleNewsDelete = (news) => {
         this.props.deleteNews(news)
@@ -300,7 +300,7 @@ class NewsPage extends Component {
                         });
                     });
             });
-    }
+    };
 
     handleWarningDisagree = () => {
         this.setState({
