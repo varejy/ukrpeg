@@ -84,8 +84,8 @@ export default {
     search: {
         searchResults: 'Search',
         title: `All matches`,
-        pages: `pages`,
-        news: `news`,
+        pages: `Pages`,
+        news: `News`,
         resultPages: `Pages`,
         resultNews: `News`
     }

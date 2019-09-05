@@ -8,7 +8,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 90px;
     z-index: 11;
 }
 
@@ -130,6 +130,7 @@
     padding: 20px 0 20px 20px;
     border-left: 5px solid lightGreenBasic;
     margin-left: -25px;
+    margin-bottom: 15px;
     font-weight: 600;
     font-size: 15px;
     line-height: 17px;
@@ -148,6 +149,11 @@
     font-size: 18px;
     line-height: 14px;
     letter-spacing: .3px;
+    margin-bottom: 35px;
+}
+
+.resultPageItem:last-child{
+    margin-bottom: 0;
 }
 
 .resultNewsList{
@@ -164,7 +170,7 @@
 }
 
 .date{
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     font-size: 14px;
     color: darkBlueBasic;
     z-index: 11;

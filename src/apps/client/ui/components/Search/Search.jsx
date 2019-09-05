@@ -6,20 +6,12 @@ import styles from './Search.css';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
 
 import { connect } from 'react-redux';
-import setSearch from '../../../actions/setSearch';
 
 const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
         news: news.news,
-        lang: application.lang,
-        search: application.search
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        setSearch: payload => dispatch(setSearch(payload))
+        lang: application.lang
     };
 };
 
@@ -27,22 +19,23 @@ class Search extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         news: PropTypes.array,
-        lang: PropTypes.string,
-        setSearch: PropTypes.func.isRequired,
-        search: PropTypes.string
+        lang: PropTypes.string
     };
 
     state = {
         news: [],
-        search: ''
+        inputValue: ''
     }
 
     handleInputChange = event => {
-        this.props.setSearch(event.target.value);
+        this.setState({
+            inputValue: event.target.value
+        });
     }
 
     render () {
-        const { langMap, news, lang, search } = this.props;
+        const { langMap, news, lang } = this.props;
+        const { inputValue } = this.state;
         const text = propOr('search', {}, langMap);
 
         return <div className={styles.search}>
@@ -54,11 +47,11 @@ class Search extends Component {
                                 <img src='/src/apps/client/ui/components/Search/files/searchIcon.png' className={styles.searchIconImg} />
                             </div>
                             <input
-                                value={search}
+                                value={inputValue}
                                 onChange={this.handleInputChange}
                                 className={styles.inputZoom} />
                         </div>
-                        <p className={styles.results}>{text.searchResults} {search}</p>
+                        <p className={styles.results}>{text.searchResults} {inputValue}</p>
                     </div>
                     <div className={styles.totalResults}>
                         <h1 className={styles.title}>{text.title}</h1>
@@ -99,4 +92,4 @@ class Search extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps)(Search);
