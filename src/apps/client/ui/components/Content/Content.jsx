@@ -25,8 +25,8 @@ class Content extends Component {
     };
 
     state = {
-        inputValue: '',
-        inputZoom: false
+        inputZoom: false,
+        inputValue: ''
     }
 
     handleInputChange = event => {

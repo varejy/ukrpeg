@@ -80,5 +80,13 @@ export default {
         titleFourth: 'Main efforts and resources of Coalition are focused on three main directions:',
         titleFifth: 'Key facts',
         titleSixth: 'Ukrainian Packaging and Environmental Coalition consists of powerful branch representatives:'
+    },
+    search: {
+        searchResults: 'Search',
+        title: `All matches`,
+        pages: `Pages`,
+        news: `News`,
+        resultPages: `Pages`,
+        resultNews: `News`
     }
 };
