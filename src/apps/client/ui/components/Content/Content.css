@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+    z-index: 11;
 
     @media (--media-tablet-l) {
         margin-top: 0;
@@ -19,11 +20,11 @@
 .wrapper{
     width:  100%;
     max-width: 1350px;
-    padding-left: 125px;
+    padding-left: 134px;
     color: whiteBasic;
 
     @media (max-width: 1350px) {
-        padding-left: 110px;
+        padding-left: 134px;
     }
 
     @media (--media-tablet-l) {
@@ -243,7 +244,7 @@
     width: 680px;
     height: 100px;
     background: url('/src/apps/client/ui/components/Content/files/searchBgOpacity.png');
-    margin: 140px 0 0 -125px;
+    margin: 140px 0 0 -145px;
     display: flex;
     position: relative;
 
@@ -262,7 +263,7 @@
 
     @media (--media-tablet-s) {
         height: 50px;
-   }
+    }
 
     @media (--media-phone) {
         height: auto;

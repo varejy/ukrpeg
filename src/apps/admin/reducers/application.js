@@ -1,13 +1,14 @@
 import {
     SET_AUTHENTICATED,
     SET_CATEGORIES,
-    SET_CATEGORIES_SEO
+    SET_LAW
 } from '../types/types';
 
 const initialState = {
     authenticated: null,
     newsCategories: [],
-    categories: []
+    categories: [],
+    lawList: []
 };
 
 export default function (state = initialState, action) {
@@ -16,8 +17,8 @@ export default function (state = initialState, action) {
         return { ...state, authenticated: action.payload };
     case SET_CATEGORIES:
         return { ...state, newsCategories: action.payload };
-    case SET_CATEGORIES_SEO:
-        return { ...state, categories: action.payload };
+    case SET_LAW:
+        return { ...state, lawList: action.payload };
     default:
         return state;
     }
