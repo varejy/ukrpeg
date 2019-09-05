@@ -128,7 +128,6 @@ class NewsPage extends Component {
         const isDesktop = mediaWidth > TABLET_WIDTH;
         const { langMap, lang, langRoute } = this.props;
         const text = propOr('news', {}, langMap);
-        console.log(activeCategoryIndex, categories);
 
         if (this.notFoundPage) {
             return <div className={styles.pageNotFound}>404</div>;
@@ -239,7 +238,8 @@ class NewsPage extends Component {
                     </div>
                 </div>
                 {
-                    <ul className={classNames(styles.categoriesList)} style={{ height: `${!mobileMenuListVisible ? 0 : CATEGORY_HEIGHT * categories.length}px` }}>
+                    <ul className={classNames(styles.categoriesList)}
+                        style={{ height: `${!mobileMenuListVisible ? 0 : CATEGORY_HEIGHT * categories.length}px` }}>
                         {
                             categories.map((newsCategory, i) =>
                                 <li key={i}>
