@@ -5,7 +5,8 @@ import {
 
 const initialState = {
     authenticated: null,
-    newsCategories: []
+    newsCategories: [],
+    categories: []
 };
 
 export default function (state = initialState, action) {

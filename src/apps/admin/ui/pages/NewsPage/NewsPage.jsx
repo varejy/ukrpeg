@@ -288,7 +288,7 @@ class NewsPage extends Component {
         this.setState({
             valueForDelete: category
         });
-    }
+    };
 
     handleNewsDelete = (news) => {
         return this.props.deleteNews(news)

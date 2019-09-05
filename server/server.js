@@ -19,6 +19,9 @@ import clientNewsCategoryApi from './api/client/newsCategory';
 import clientLawApi from './api/client/law';
 import clientNewsApi from './api/client/news';
 
+import clientSeoApi from './api/client/seo';
+import adminSeoApi from './api/admin/seo';
+
 import { DATABASE_URL } from './constants/constants';
 import actions from './actions';
 import getStore from '../src/apps/client/store/getStore';
@@ -57,6 +60,8 @@ app.use('/api/admin/newsCategory', adminNewsCategoryApi);
 app.use('/api/client/news', clientNewsApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
 app.use('/api/client/law', clientLawApi);
+app.use('/api/admin/seo', adminSeoApi);
+app.use('/api/client/seo', clientSeoApi);
 
 // admin
 app.get(/^\/admin/, function (req, res) {
