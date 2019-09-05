@@ -4,7 +4,7 @@ import Search from '../../components/Search/Search';
 class SearchPage extends Component {
     render () {
         return <section>
-          <Search />
+            <Search />
         </section>;
     }
 }

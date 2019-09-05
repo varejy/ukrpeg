@@ -67,11 +67,11 @@ export default {
         }
     },
     search: {
-      searchResults: 'Search',
-      title: `All matches`,
-      pages: `pages`,
-      news: `news`,
-      resultPages: `Pages`,
-      resultNews: `News`
+        searchResults: 'Search',
+        title: `All matches`,
+        pages: `pages`,
+        news: `news`,
+        resultPages: `Pages`,
+        resultNews: `News`
     }
 };

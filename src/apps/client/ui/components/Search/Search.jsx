@@ -27,12 +27,14 @@ class Search extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         news: PropTypes.array,
-        lang: PropTypes.string
+        lang: PropTypes.string,
+        setSearch: PropTypes.func.isRequired,
+        search: PropTypes.string
     };
 
     state = {
-        inputValue: '',
-        news: []
+        news: [],
+        search: ''
     }
 
     handleInputChange = event => {
@@ -41,7 +43,6 @@ class Search extends Component {
 
     render () {
         const { langMap, news, lang, search } = this.props;
-        const { inputZoom, inputValue } = this.state;
         const text = propOr('search', {}, langMap);
 
         return <div className={styles.search}>

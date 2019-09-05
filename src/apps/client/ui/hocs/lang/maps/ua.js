@@ -67,11 +67,11 @@ export default {
         }
     },
     search: {
-      searchResults: 'Ваш пошук',
-      title: `Всього результатів`,
-      pages: `сторінки`,
-      news: `новини`,
-      resultPages: `Сторінки`,
-      resultNews: `Новини`
+        searchResults: 'Ваш пошук',
+        title: `Всього результатів`,
+        pages: `сторінки`,
+        news: `новини`,
+        resultPages: `Сторінки`,
+        resultNews: `Новини`
     }
 };

@@ -25,15 +25,17 @@ const mapDispatchToProps = dispatch => {
 class Content extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
-        langRoute: PropTypes.string
+        langRoute: PropTypes.string,
+        setSearch: PropTypes.func.isRequired,
+        search: PropTypes.string
     };
 
     static defaultProps = {
-        langRoute: ''
+        langRoute: '',
+        search: ''
     };
 
     state = {
-        inputValue: '',
         inputZoom: false
     }
 
@@ -61,7 +63,7 @@ class Content extends Component {
 
     render () {
         const { langMap, langRoute, search } = this.props;
-        const { inputZoom, inputValue } = this.state;
+        const { inputZoom } = this.state;
         const text = propOr('content', {}, langMap);
 
         return <div className={styles.content}>
