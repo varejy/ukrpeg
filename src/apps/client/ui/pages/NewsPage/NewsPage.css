@@ -189,6 +189,11 @@
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 1366px){
+        width: 681px;
+        left: -16px;
+    }
+
     @media (max-width: 780px){
         top: 300px;
         width: 100%;
