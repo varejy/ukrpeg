@@ -27,7 +27,8 @@ class Form extends Component {
         schema: PropTypes.object.isRequired,
         initialValues: PropTypes.object,
         onChange: PropTypes.func,
-        onSubmit: PropTypes.func
+        onSubmit: PropTypes.func,
+        lang: PropTypes.string.isRequired
     };
 
     static defaultProps = {
@@ -70,7 +71,9 @@ class Form extends Component {
             isRequired: any(validator => validator.name === 'required', field.validators || []),
             validationMessage,
             schema: field.schema || {},
-            key: i
+            key: i,
+            news: this.props.initialValues,
+            lang: this.props.lang
         };
 
         return <FormControl key={i} error={!!validationMessage}>
