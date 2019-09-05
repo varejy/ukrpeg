@@ -6,11 +6,11 @@ import styles from './Law.css';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ application, law }) => {
+const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
         lang: application.lang,
-        laws: law.lawList
+        laws: application.lawList
     };
 };
 
@@ -36,8 +36,8 @@ class Law extends Component {
                     {laws.map((item, i) => {
                         return (
                             <li key={i} className={styles.listItem}>
-                                <a href={item.text[`${lang}`].link} target='_blank'>
-                                    {item.text[`${lang}`].title}
+                                <a href={item.path} target='_blank'>
+                                    {item.texts[`${lang}`].name}
                                 </a>
                             </li>
                         );
