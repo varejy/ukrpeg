@@ -152,6 +152,7 @@
     height: 70px;
     margin-left: 15px;
     cursor: pointer;
+    z-index: 11;
 }
 
 .categoryArrowIcon{
@@ -163,10 +164,16 @@
 
 .arrowButtonUp{
     transform: rotate(180deg);
+    cursor: pointer;
+    z-index: 11;
+    position: relative;
 }
 
 .arrowButtonDown{
     transform: none;
+    cursor: pointer;
+    z-index: 11;
+    position: relative;
 }
 
 .newsContent{
