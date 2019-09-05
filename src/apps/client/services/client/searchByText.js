@@ -5,7 +5,7 @@ export default function searchByText (text) {
     return () => {
         return base(
             request
-                .get(`/api/client/news/search`)
+                .get(`/api/client/search`)
                 .query({ text })
         );
     };

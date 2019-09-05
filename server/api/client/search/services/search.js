@@ -1,21 +1,19 @@
 import { OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constants/constants';
 
-import findNewsByName from '../queries/findNewsByName';
+import findNewsByText from '../../news/queries/findNewsByText';
 
 export default function availableNewsSearch (req, res) {
     const { text } = req.query;
 
-    findNewsByName(text)
+    findNewsByText(text)
         .then(newsAll => {
             const availableNews = newsAll
                 .filter(news => !news.hidden)
                 .sort((prev, next) => next.date - prev.date);
 
-            console.log(newsAll)
-
-            res.status(OKEY_STATUS_CODE).send({ 
+            res.status(OKEY_STATUS_CODE).send({
                 news: availableNews,
-                pages: [] 
+                pages: []
             });
         })
         .catch(() => {
