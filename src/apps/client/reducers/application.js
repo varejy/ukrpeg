@@ -40,7 +40,7 @@ export default function (state = initialState, action) {
     case SET_ACTIVE_CATEGORY_INDEX:
         return { ...state, activeCategoryIndex: action.payload };
     case SET_SEO:
-            return { ...state, staticSeo: action.payload };
+        return { ...state, staticSeo: action.payload };
     default:
         return state;
     }
