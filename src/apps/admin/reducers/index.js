@@ -6,7 +6,6 @@ import seo from './seo';
 
 const reducers = combineReducers({
     application,
-    laws,
     news,
     seo
 });
