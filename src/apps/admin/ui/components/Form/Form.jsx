@@ -16,7 +16,8 @@ import validatorsList from './validators';
 const materialStyles = {
     form: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        width: '100%'
     }
 };
 

@@ -26,134 +26,108 @@ const materialStyles = {
     keywordsInput: {
         width: '100%'
     },
-    metaKeyword: {
+    words: {
         margin: '5px 5px 5px 0'
     }
 };
 
-class FormFieldKeywords extends Component {
+class FormFieldWords extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
         schema: PropTypes.object,
         onChange: PropTypes.func,
         onBlur: PropTypes.func,
-        value: PropTypes.string,
-        news: PropTypes.object.isRequired,
-        name: PropTypes.string.isRequired,
-        lang: PropTypes.string.isRequired
+        value: PropTypes.object
     };
 
     static defaultProps = {
         schema: {},
         onChange: noop,
         onBlur: noop,
-        value: ''
+        value: {
+            words: [],
+            input: ''
+        }
     };
 
-    constructor (...args) {
-        super(...args);
-
-        const { news, lang } = this.props;
-
-        this.state = {
-            keywords: news[`${lang}_metaKeywords`],
-            keywordsInput: '',
-            lang: lang
-        };
-    }
-
-    componentWillReceiveProps (nextProps, nextContext) {
-        const { lang } = nextProps;
-
-        if (this.props.lang !== nextProps.lang) {
-            this.setState({ lang: lang, keywords: this.props.news[`${lang}_metaKeywords`] });
-        }
-    }
-
     handleKeywordAdd = () => {
-        const { keywordsInput, keywords } = this.state;
-        const keyword = trim(keywordsInput).replace(/\s\s+/g, ' ');
+        const { value } = this.props;
+        const keyword = trim(value.input).replace(/\s\s+/g, ' ');
 
         if (!keyword) {
             return;
         }
 
         const splittedKeyword = keyword.split(' ');
-        const keywordsArray = keywords ? keywords.split(', ') : [];
-        const newKeywords = [...keywordsArray, ...splittedKeyword].filter((keyword) => !!keyword).join(', ');
+        const newKeywords = [...value.words, ...splittedKeyword].filter((keyword) => !!keyword);
 
-        this.setState({
-            keywords: newKeywords,
-            keywordsInput: ''
+        this.props.onChange({
+            words: newKeywords,
+            input: ''
         });
-
-        this.props.onChange(newKeywords);
     };
 
     handleKeywordDelete = (i) => () => {
-        const { keywords } = this.state;
-        const keywordsArray = keywords.split(', ');
-        const newKeywords = remove(i, 1, keywordsArray).join(', ');
+        const { value } = this.props;
+        const newKeywords = remove(i, 1, value.words);
 
-        this.setState({
-            keywords: newKeywords
+        this.props.onChange({
+            words: newKeywords,
+            input: value.input
         });
-
-        this.props.onChange(newKeywords);
     };
 
     handleKeywordsChange = event => {
         event.preventDefault();
 
-        this.setState({
-            keywordsInput: event.target.value,
-            keywords: this.state.keywords || ''
+        const { value } = this.props;
+
+        this.props.onChange({
+            words: value.words,
+            input: event.target.value
         });
     };
 
     render () {
-        const { schema, classes } = this.props;
-        const { keywords, keywordsInput } = this.state;
+        const { schema, classes, value } = this.props;
 
         return <div className={classes.root}>
             <div className={classes.keywordsRoot}>
                 <TextField
                     label={schema.label}
-                    value={keywordsInput}
+                    value={value.input}
                     onChange={this.handleKeywordsChange}
                     onBlur={this.props.onBlur}
                     margin='normal'
                     variant='outlined'
-                    multiline={schema.multiline}
-                    type={schema.type || 'text'}
+                    type='text'
                     className={classes.keywordsInput}
                 />
                 <div className={classes.buttonRoot}>
                     <Tooltip
-                        title="Добавить ключевое слово"
+                        title='Добавить ключевое слово'
                         placement='bottom'
                     >
                         <Fab
                             size='small'
-                            color={schema.color || 'primary'}
+                            color='primary'
                             onClick={this.handleKeywordAdd}
-                            aria-label="Add"
+                            aria-label='Add'
                         >
                             <AddIcon />
                         </Fab>
                     </Tooltip>
                 </div>
             </div>
-            <div className={classes.keywordsWrapper}>
+            <div>
                 {
-                    keywords &&
-                    keywords.split(', ').map((option, i) => <Chip
+                    value.words.map((option, i) => <Chip
                         key={i}
                         label={option}
                         variant='outlined'
                         color='primary'
                         onDelete={this.handleKeywordDelete(i)}
-                        className={classes.metaKeyword}
+                        className={classes.words}
                     />)
                 }
             </div>
@@ -161,4 +135,4 @@ class FormFieldKeywords extends Component {
     }
 }
 
-export default withStyles(materialStyles)(FormFieldKeywords);
+export default withStyles(materialStyles)(FormFieldWords);
