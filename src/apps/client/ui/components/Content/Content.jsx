@@ -62,12 +62,12 @@ class Content extends Component {
             <div className={styles.wrapper}>
                 <div className={styles.photoBlock}>
                     <div className={styles.topBlock}>
-                        <div className={styles.moreBtn}>
+                        <Link to={`${langRoute}/rvv`} className={styles.moreBtn}>
                             <p className={styles.arrowBtn}>
                                 <img src='/src/apps/client/ui/components/Content/files/arrow.png' className={styles.arrowImg} />
                             </p>
                             <div className={styles.btn}>{text.buttonText}</div>
-                        </div>
+                        </Link>
                         <div className={styles.mainText}>
                             <h1 className={styles.title}>{text.title}</h1>
                             <hr className={styles.horizontalLine} />
@@ -75,9 +75,9 @@ class Content extends Component {
                         </div>
                     </div>
                     <div className={styles.searchField}>
-                        <Link to={`${langRoute}/search`} className={!inputZoom ? styles.searchIcon : styles.searchIconZoom}>
+                        <div className={!inputZoom ? styles.searchIcon : styles.searchIconZoom}>
                             <img src='/src/apps/client/ui/components/Content/files/searchIcon.png' className={styles.searchIconImg} />
-                        </Link>
+                        </div>
                         <input
                             onFocus={this.handleFocusInput}
                             onBlur={this.handleBlurInput}
