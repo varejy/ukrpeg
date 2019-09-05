@@ -11,11 +11,16 @@ import { renderToString } from 'react-dom/server';
 import map from '@tinkoff/utils/array/map';
 
 import adminAuthenticationApi from './api/admin/authentication';
+import adminLawApi from './api/admin/law';
 import adminNewsCategoryApi from './api/admin/newsCategory';
 import adminNewsApi from './api/admin/news';
 
 import clientNewsCategoryApi from './api/client/newsCategory';
+import clientLawApi from './api/client/law';
 import clientNewsApi from './api/client/news';
+
+import clientSeoApi from './api/client/seo';
+import adminSeoApi from './api/admin/seo';
 
 import { DATABASE_URL } from './constants/constants';
 import actions from './actions';
@@ -49,10 +54,14 @@ app.use(cookieParser());
 
 // api
 app.use('/api/admin/authentication', adminAuthenticationApi);
+app.use('/api/admin/law', adminLawApi);
 app.use('/api/admin/news', adminNewsApi);
 app.use('/api/admin/newsCategory', adminNewsCategoryApi);
 app.use('/api/client/news', clientNewsApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
+app.use('/api/client/law', clientLawApi);
+app.use('/api/admin/seo', adminSeoApi);
+app.use('/api/client/seo', clientSeoApi);
 
 // admin
 app.get(/^\/admin/, function (req, res) {

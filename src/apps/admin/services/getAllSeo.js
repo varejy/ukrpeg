@@ -2,20 +2,19 @@ import request from 'superagent';
 import base from './base';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';
+import setSeo from '../actions/setSeo';
 
-import setProductsAction from '../actions/setNews';
-
-export default function search (text) {
+export default function getAllSeo () {
     return dispatch => {
         const token = localStorage.getItem(TOKEN_LOCAL_STORAGE_NAME);
 
         return base(
             request
-                .get('/api/admin/news/find')
-                .query({ token, text })
+                .get('/api/admin/seo/')
+                .query({ token })
         )
-            .then(products => {
-                return dispatch(setProductsAction(products));
+            .then(seo => {
+                return dispatch(setSeo(seo));
             });
     };
 }
