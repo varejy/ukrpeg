@@ -8,6 +8,7 @@ import '../../../client/vendor';
 import '../../css/main.css';
 
 import Header from './ui/components/Header/Header.jsx';
+import Helmet from './ui/components/Helmet/Helmet.jsx';
 import Footer from './ui/components/Footer/Footer.jsx';
 import MainPage from './ui/pages/MainPage/MainPage.jsx';
 import AllNewsPage from './ui/pages/AllNewsPage/AllNewsPage.jsx';
@@ -74,6 +75,7 @@ class App extends Component {
     render () {
         return <main>
             <div className={styles.page}>
+                <Helmet/>
                 <Header/>
                 <div className={styles.pageContent}>
                     <Switch>

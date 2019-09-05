@@ -11,7 +11,7 @@ import setSearch from '../../../actions/setSearch';
 const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
-        news: news.newsList,
+        news: news.news,
         lang: application.lang,
         search: application.search
     };

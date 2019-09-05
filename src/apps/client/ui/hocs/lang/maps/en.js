@@ -66,6 +66,21 @@ export default {
             }
         }
     },
+    allNews: {
+        title: 'Latest news'
+    },
+    news: {
+        title: 'Latest news',
+        nextNews: 'Next news'
+    },
+    rvv: {
+        titleFirst: 'Plans',
+        titleSecond: 'Why is RWW important:',
+        titleThird: 'Vyshgorod pilot project',
+        titleFourth: 'Main efforts and resources of Coalition are focused on three main directions:',
+        titleFifth: 'Key facts',
+        titleSixth: 'Ukrainian Packaging and Environmental Coalition consists of powerful branch representatives:'
+    },
     search: {
         searchResults: 'Search',
         title: `All matches`,
