@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import propOr from '@tinkoff/utils/object/propOr';
 import styles from './Header.css';
-import { withRouter } from 'react-router';
+import { withRouter, matchPath } from 'react-router';
 
 import { menu } from '../../../constants/routes';
 import { Link, NavLink } from 'react-router-dom';
@@ -73,16 +73,23 @@ class Header extends Component {
         }
     }
 
+    handleLogoClick = event => {
+        this.setState({
+            burgerMenuOpen: false
+        });
+    }
+
     render () {
-        const { langMap, langRoute, lang } = this.props;
+        const { langMap, langRoute, lang, pathname } = this.props;
         const { burgerMenuOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
+        const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
                 <div className={!burgerMenuOpen ? styles.wrapper : styles.wrapperBurgerMenu}>
-                    <Link to={`${langRoute}/`} className={styles.logoContainer}>
+                    <Link to={`${langRoute}/`} className={styles.logoContainer} onClick={this.handleLogoClick}>
                         <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
                     </Link>
                     <nav className={!burgerMenuOpen ? styles.menu : styles.burgerMenuList}>
@@ -112,9 +119,9 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className={!burgerMenuOpen ? styles.burgerMenu : styles.burgerMenuOpen} onClick={this.handleMenuClick} >
-                        <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? styles.menuLines : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
                     </div>
                 </div>
             </div>

@@ -1,10 +1,12 @@
 import FormFieldInput from '../Form/fields/FormFieldInput/FormFieldInput.jsx';
-import FormFieldDate from '../Form/fields/FormFieldDate/FormFieldDate.jsx';
+import FormFieldEditor from '../Form/fields/FormFieldEditor/FormFieldEditor';
 import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
 import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
 import FormFieldCheckbox from '../Form/fields/FormFieldCheckbox/FormFieldCheckbox';
 import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
+import FormFieldDivider from '../Form/fields/FormFieldDivider/FormFieldDivider';
+import FormFieldKeywords from '../Form/fields/FormFieldWords/FormFieldWords';
 
 export default function ({ data: { title } = {}, settings: { lang } } = {}) {
     return {
@@ -55,7 +57,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 ]
             },
             {
-                component: FormFieldInput,
+                component: FormFieldEditor,
                 name: `${lang}_description`,
                 schema: {
                     label: 'Описание',
@@ -64,37 +66,6 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 validators: [
                     { name: 'required', options: { text: 'Заполните описание' } }
                 ]
-            },
-            {
-                component: FormFieldInput,
-                name: 'views',
-                schema: {
-                    label: 'Просмотры',
-                    type: 'number'
-                },
-                validators: [
-                    { name: 'required', options: { text: 'Добавьте количество просмотров' } },
-                    { name: 'min', options: { minValue: 0 } }
-                ]
-            },
-            {
-                component: FormFieldDate,
-                name: 'date',
-                schema: {
-                    label: 'Дата публикации'
-                },
-                validators: [
-                    { name: 'required', options: { text: 'Добавьте количество просмотров' } },
-                    { name: 'min', options: { minValue: 0 } }
-                ]
-            },
-            {
-                component: FormFieldTitle,
-                name: 'title',
-                schema: {
-                    label: 'Аватар',
-                    variant: 'h6'
-                }
             },
             {
                 component: FormFieldFiles,
@@ -107,6 +78,48 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 validators: [
                     { name: 'requiredFiles', options: { text: 'Добавьте аватар' } }
                 ]
+            },
+            {
+                component: FormFieldDivider,
+                name: 'divider'
+            },
+            {
+                component: FormFieldTitle,
+                name: 'title',
+                schema: {
+                    label: 'Сео',
+                    variant: 'h6'
+                }
+            },
+            {
+                component: FormFieldInput,
+                name: `${lang}_seoTitle`,
+                schema: {
+                    label: 'Тайтл',
+                    multiline: true
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните сео тайтл' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: `${lang}_seoDescription`,
+                schema: {
+                    label: 'Описание',
+                    multiline: true
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните сео описание' } }
+                ]
+            },
+            {
+                component: FormFieldKeywords,
+                name: `${lang}_seoKeywords`,
+                schema: {
+                    label: 'Ключевые слова',
+                    multiline: false
+                }
             },
             {
                 component: FormFieldCheckbox,

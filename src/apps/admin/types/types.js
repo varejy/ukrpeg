@@ -4,4 +4,4 @@ export const // eslint-disable-line one-var
     SET_NEWS = 'SET_NEWS',
     SET_CATEGORIES = 'SET_CATEGORIES',
     SET_PARTNERS = 'SET_PARTNERS',
-    SET_FILTERED_PRODUCTS = 'SET_FILTERED_PRODUCTS';
+    SET_SEO = 'SET_SEO';

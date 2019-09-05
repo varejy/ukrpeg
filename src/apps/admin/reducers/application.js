@@ -7,7 +7,8 @@ import {
 const initialState = {
     authenticated: null,
     newsCategories: [],
-    partners: []
+    partners: [],
+    categories: []
 };
 
 export default function (state = initialState, action) {

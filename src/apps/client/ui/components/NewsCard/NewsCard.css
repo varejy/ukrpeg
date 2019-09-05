@@ -5,6 +5,12 @@
     width: 222px;
     margin: 47px 43.5px 0 0;
     z-index: 11;
+
+    @media (max-width: 1080px){
+        margin: 20px auto 20px auto;
+        width: 100%;
+        border-bottom: 1px solid rgba(122, 122, 122, 0.1)
+    }
 }
 
 .newsCardImage{
@@ -15,6 +21,11 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
+    @media (max-width: 1080px){
+        width: 100%;
+        height: 70vw;
+    }
 }
 
 .image{
@@ -34,6 +45,7 @@
     text-align: left;
     letter-spacing: 1px;
     color: greyMedium;
+    overflow: hidden;
 }
 
 .newsCardTitle{
@@ -47,4 +59,5 @@
     text-align: left;
     letter-spacing: 0.5px;
     color: blackBasic;
+    overflow: hidden;
 }

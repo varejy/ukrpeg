@@ -15,7 +15,11 @@ import Header from './ui/components/Header/Header.jsx';
 import Authentication from './ui/components/Authentication/Authentication.jsx';
 import Recovery from './ui/components/Recovery/Recovery.jsx';
 import CircularProgress from '@material-ui/core/CircularProgress';
+<<<<<<< HEAD
 import PartnersPage from './ui/pages/PartnersPage/PartnersPage';
+=======
+import SeoPage from './ui/pages/SeoPage/SeoPage.jsx';
+>>>>>>> 65295c9e11262d8d6ce167194b0b33668ae06c55
 
 import isNull from '@tinkoff/utils/is/nil';
 
@@ -83,6 +87,7 @@ class App extends Component {
                 <Route exact path='/admin/laws' component={LegislationPage} />
                 <Route exact path='/admin/news' component={NewsPage} />
                 <Route exact path='/admin/partners' component={PartnersPage}/>
+                <Route exact path='/admin/seo' component={SeoPage} />
             </Switch>
         </main>;
     }

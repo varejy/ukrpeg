@@ -39,14 +39,20 @@
 .title{
     padding: 25px 0 20px 25px;
     border-left: 5px solid lightGreenBasic;
-    margin-left: -30px;
+    margin-left: -20px;
     color: darkBlueBasic;
     font-weight: 600;
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
+    position: relative;
+    z-index: 11;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+
+    @media (max-width: 1350px){
+        margin-left: -5px;
+    }
 
     @media (--media-tablet-l) {
         font-size: 12px;
@@ -117,6 +123,8 @@
 
 .logo{
     width: 140px;
+    z-index: 11;
+    position: relative;
 
     @media (--media-tablet-l) {
       height: 100%;
