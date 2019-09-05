@@ -37,7 +37,12 @@
     line-height: 17px;
     letter-spacing: 1px;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    position: relative;
     z-index: 11;
+
+    @media (max-width: 1350px){
+        margin-left: 0;
+    }
 
     @media (--media-tablet-l) {
         margin: 60px 50px;
@@ -68,9 +73,13 @@
 }
 
 .content{
-    padding: 70px 0 30px 0;
+    padding: 70px 10px 30px 10px;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 1350px){
+        padding: 70px 25px 30px 25px;
+    }
 
     @media (--media-tablet-l) {
         padding: 0;
@@ -90,13 +99,13 @@
     max-width: 546px;
     object-fit: cover;
     width: 546px;
-    margin-left: 70px;
+    margin-left: 20px;
     order: 1;
     position: relative;
     z-index: 11;
 
     @media (max-width: 1350px) {
-      width: 50%;
+      width: 50.5%;
     }
 
     @media (--media-tablet-l) {
@@ -109,13 +118,13 @@
 
 .contentBlock:nth-child(2n) .img{
      order: 0;
-     margin-right: 140px;
+     margin-right: 112px;
      margin-left: -125px;
 
      @media (max-width: 1350px) {
           margin-left: -110px;
-          margin-right: 120px;
-          width: 50%;
+          margin-right: 100px;
+          width: 50.5%;
      }
 
      @media (--media-tablet-l) {
@@ -135,7 +144,7 @@
 
     @media (max-width: 1350px) {
          margin-right: 0;
-         width: 50%;
+         width: 50.5%;
     }
 
     @media (--media-tablet-l) {
@@ -157,9 +166,6 @@
     padding-right: 5px;
     z-index: 11;
     position: relative;
-    margin-left: 11;
-    position: relative;
-    z-index: 11;
 
     @media (max-width: 1350px) {
          width: 50%;

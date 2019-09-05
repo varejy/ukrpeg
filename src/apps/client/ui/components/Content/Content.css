@@ -20,11 +20,11 @@
 .wrapper{
     width:  100%;
     max-width: 1350px;
-    padding-left: 125px;
+    padding-left: 134px;
     color: whiteBasic;
 
     @media (max-width: 1350px) {
-        padding-left: 110px;
+        padding-left: 134px;
     }
 
     @media (--media-tablet-l) {

@@ -29,7 +29,7 @@
     left: 0;
     display: flex;
     justify-content: center;
-    z-index: 12;
+    z-index: 15;
 
     @media (--media-tablet-l) {
         position: absolute;
@@ -66,30 +66,28 @@
 }
 
 .wrapperBurgerMenu{
-    position: fixed;
-    background: whiteBasic;
-    z-index: 15;
+    position: relative;
+    overflow-y: scroll;
+    background: blueMobileBg;
+    align-items: flex-start;
+    height: 100vh;
+    width: 100%;
 }
 
 .logoContainer{
     display: flex;
-    min-width: 125px;
+    min-width: 134px;
     align-items: center;
     justify-content: center;
 
     @media (max-width: 1350px) {
-        min-width: 110px;
+        min-width: 134px;
     }
 
     @media (--media-tablet-l) {
         min-width: 0;
         z-index: 4;
         display: block;
-   }
-
-    @media (--media-tablet-s) {
-        min-width: 0;
-        z-index: 4;
    }
 }
 
@@ -177,7 +175,7 @@
 .phone{
     white-space: nowrap;
     color: darkGreyBasic;
-    margin-right: 50px;
+    margin-right: 20px;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     letter-spacing: 1px;
     white-space: nowrap;
@@ -204,6 +202,19 @@
 
     @media (--media-tablet-l) {
         display: none;
+    }
+}
+
+.toogleLang{
+    height: 100%;
+    padding-left: 22px;
+
+    @media (max-width: 1349px){
+        padding-right: 10px;
+    }
+
+    @media (max-width: 1150px) {
+        padding-right: 19px;
     }
 }
 
@@ -274,7 +285,7 @@
     border: none;
 }
 
-.menuLines, .menuLinesCross{
+.menuLines, .menuLinesCross, .menuLinesPages{
     width: 20px;
     height: 2px;
     background: white;
@@ -299,6 +310,10 @@
         border-radius: 3px;
         margin: 5px auto;
     }
+}
+
+.menuLinesPages{
+      background: limeGreen;
 }
 
 .menuLinesCross:first-child{

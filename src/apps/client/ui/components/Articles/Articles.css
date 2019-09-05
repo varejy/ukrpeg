@@ -47,7 +47,7 @@
 .title{
     padding: 25px 0 20px 25px;
     border-left: 5px solid lightGreenBasic;
-    margin-left: -30px;
+    margin-left: -20px;
     color: darkBlueBasic;
     font-weight: 500;
     font-size: 14px;
@@ -57,6 +57,10 @@
     position: relative;
     z-index: 11;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
+
+    @media (max-width: 1350px){
+        margin-left: -5px;
+    }
 
     @media (--media-tablet-l) {
         font-size: 12px;
@@ -122,6 +126,7 @@
     margin: 0 20px;
     padding: 30px 35px 50px 20px;
     cursor: pointer;
+    z-index: 11;
 
     @media (--media-tablet-l) {
         padding-left: 25px;
@@ -171,7 +176,11 @@
     flex-direction: column;
     align-self: center;
     z-index: 11;
-    margin-right: 15px;
+    margin-right: 10px;
+
+    @media (max-width: 1350px){
+        margin-right: 25px;
+    }
 
     @media (--media-tablet-s) {
         position: absolute;
