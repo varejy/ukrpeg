@@ -1,0 +1,101 @@
+.style strong{
+    font-weight: bold;
+    /*ВЫБРАТЬ ШРИФТ!!!*/
+}
+
+.style em{
+    font-style: italic;
+    /*ВЫБРАТЬ ШРИФТ!!!*/
+}
+
+.style pre{
+    display: inline-block;
+    background-color: #F1F1F1;
+}
+
+.style ul, style ol{
+    padding-left: 20px;
+}
+
+.style ul{
+    list-style: disc outside;
+}
+
+.style ol{
+    list-style: decimal outside;
+}
+
+.style h1, h2, h3, h4, h5, h6  { font-weight: bolder }
+.style h1              { font-size: 2em; margin: .67em 0 }
+.style h2              { font-size: 1.5em; margin: .75em 0 }
+.style h3              { font-size: 1.17em; margin: .83em 0 }
+.style h3              { font-size: 1em; margin: 1em 0 }
+.style h5              { font-size: .83em; margin: 1.5em 0 }
+.style h6              { font-size: .75em; margin: 1.67em 0 }
+
+.style blockquote {
+    overflow: hidden;
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+    margin-left: 0;
+    font-style: italic;
+    border-left: 5px solid #ccc;
+
+    p {
+        display: block;
+        font-size: 1em;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        line-height: 1.4em;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+}
+
+.style {
+    & :global {
+        .image img {
+            @media (max-width: 1024px) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.style {
+    & :global {
+        .image-style-align-left {
+            float: left;
+
+            @media (max-width: 1024px) {
+                display: flex;
+                justify-content: center;
+                float: none;
+            }
+        }
+    }
+}
+.style {
+    & :global {
+        .image-style-align-right {
+            float: right;
+
+            @media (max-width: 1024px) {
+                display: flex;
+                justify-content: center;
+                float: none;
+            }
+        }
+    }
+}
+
+.style p {
+    font-family: 'Gotham Light', Arial;
+    letter-spacing: 1px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000000;
+    position: relative;
+    z-index: 11;
+    margin-bottom: 30px;
+}

@@ -9,6 +9,8 @@ import find from '@tinkoff/utils/array/find';
 import findIndex from '@tinkoff/utils/array/findIndex';
 import propOr from '@tinkoff/utils/object/propOr';
 
+import StyleRenderer from '../../components/StyleRenderer/StyleRenderer';
+
 const mapStateToProps = ({ application, news }) => {
     return {
         news: news.news,
@@ -115,7 +117,7 @@ class NewsPage extends Component {
                     <div className={styles.news}>
                         <div className={styles.newsDate}>{getDateFormatted(article.date, 'ua')}</div>
                         <div className={styles.newsTitle}>{article.texts[lang].name}</div>
-                        <div className={styles.newsText}>{article.texts[lang].description}</div>
+                        <StyleRenderer html={article.texts[lang].description}/>
                     </div>
                 </div>
                 <div className={styles.nextNews}>
