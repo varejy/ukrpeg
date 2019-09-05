@@ -239,8 +239,8 @@ class NewsPage extends Component {
                                                 })}
                                                 key={j} style={{ transitionDelay: `${j * 0.2}s` }}
                                                 onClick={this.handleNewsCardClick}>
-                                                    <div className={styles.newsDate}>{getDateFormatted(newsCard.date, 'ua')}</div>
-                                                    <div className={styles.newsTitle}>{newsCard.texts[lang].name}</div>
+                                                    <div className={styles.newsDateMenu}>{getDateFormatted(newsCard.date, 'ua')}</div>
+                                                    <div className={styles.newsTitleMenu}>{newsCard.texts[lang].name}</div>
                                                 </li>
                                             </Link>
                                         )

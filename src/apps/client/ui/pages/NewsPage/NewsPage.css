@@ -151,6 +151,7 @@
     justify-content: flex-start;
     height: 70px;
     margin-left: 15px;
+    cursor: pointer;
 }
 
 .categoryArrowIcon{
@@ -476,7 +477,7 @@
     border-left: 2px solid limeGreen;
 }
 
-.newsCardContainer .newsDate{
+.newsDateMenu{
     width: 100%;
     margin: 26px 0 18px 0;
     display: flex;
@@ -488,9 +489,12 @@
     text-align: left;
     letter-spacing: 1px;
     color: middleGrey;
+    opacity: unset;
+    top: 0;
+    position: unset;
 }
 
-.newsCardContainer .newsTitle{
+.newsTitleMenu{
     width: 100%;
     height: 100px;
     align-items: start;
@@ -503,6 +507,9 @@
     color: blackBasic;
     border: none;
     margin-bottom: 0;
+    opacity: unset;
+    top: 0;
+    position: unset;
 }
 
 .newsMenuContainerMobile {
@@ -514,9 +521,9 @@
     align-items: end;
     justify-content: start;
 
-@media (max-width: 780px){
-    display: flex;
-}
+    @media (max-width: 780px){
+        display: flex;
+    }
 }
 
 .mobileMenuContainer{
