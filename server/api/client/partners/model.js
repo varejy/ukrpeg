@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const partnersSlider = new Schema({
+const Partners = new Schema({
     id: { type: String, required: true },
     slides: [{
         path: { type: String, required: true },
@@ -12,4 +12,4 @@ const partnersSlider = new Schema({
     }]
 });
 
-export default mongoose.model('partnersSlider', partnersSlider);
+export default mongoose.model('Partners', Partners);

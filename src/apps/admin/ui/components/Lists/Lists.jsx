@@ -50,17 +50,17 @@ const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDel
         }
         {
             isImage && <ListItemAvatar>
-                <Avatar className={classes.avatar} alt={value.imgAlt} src={value.imgPath} />
+                <Avatar className={classes.avatar} alt={value.imgAlt} src={value.path} />
             </ListItemAvatar>
         }
         <ListItemText
             className={classes.listItemText}
-            primary={getCorrectName(value.title)}
+            primary={getCorrectName(value.name)}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
                 <Tooltip title='Редактировать'>
-                    <IconButton onClick={onFormOpen(value)}>
+                    <IconButton onClick={onFormOpen(index)}>
                         <EditIcon />
                     </IconButton>
                 </Tooltip>

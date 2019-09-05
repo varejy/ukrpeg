@@ -1,5 +1,5 @@
-import partnersSlider from '../model';
+import Partners from '../model';
 
 export default function updateSlider (slider) {
-    return partnersSlider.findOneAndUpdate({ id: slider.id }, slider, { new: true });
+    return Partners.findOneAndUpdate({ id: slider.id }, slider, { new: true });
 }

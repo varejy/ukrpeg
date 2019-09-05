@@ -1,5 +1,5 @@
-import partnersSlider from '../model';
+import Partners from '../model';
 
 export default function getSlider (id) {
-    return partnersSlider.find({ id });
+    return Partners.find({ id });
 }

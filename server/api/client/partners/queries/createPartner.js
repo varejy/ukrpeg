@@ -1,5 +1,5 @@
-import partnersSlider from '../model';
+import Partners from '../model';
 
 export default function createSlider (slider) {
-    return partnersSlider.create(slider);
+    return Partners.create(slider);
 }
