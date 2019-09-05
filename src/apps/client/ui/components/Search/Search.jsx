@@ -7,6 +7,7 @@ import getDateFormatted from '../../../../../../utils/getDateFormatted';
 
 import { connect } from 'react-redux';
 import setSearch from '../../../actions/setSearch';
+import searchByText from '../../../services/client/searchByText';
 
 const mapStateToProps = ({ application, news }) => {
     return {
@@ -19,30 +20,51 @@ const mapStateToProps = ({ application, news }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setSearch: payload => dispatch(setSearch(payload))
+        setSearch: payload => dispatch(setSearch(payload)),
+        searchByText: payload => dispatch(searchByText(payload))
     };
 };
 
 class Search extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
-        news: PropTypes.array,
         lang: PropTypes.string,
         setSearch: PropTypes.func.isRequired,
         search: PropTypes.string
     };
 
-    state = {
-        news: [],
-        search: ''
+    constructor (props) {
+        super(props)
+
+        this.state = {
+            news: [],
+            search: ''
+        }
+    }
+
+    componentDidMount () {
+        console.log(this.props.news)
+        this.props.searchByText(this.props.search).then((values) => {
+            console.log(values)
+            this.setState({
+                news: values.news
+            })
+        })
     }
 
     handleInputChange = event => {
         this.props.setSearch(event.target.value);
+        this.props.searchByText(event.target.value).then((values) => {
+            console.log(values)
+            this.setState({
+                news: values.news
+            })
+        })
     }
 
     render () {
-        const { langMap, news, lang, search } = this.props;
+        const { langMap, lang, search } = this.props;
+        const { news } = this.state;
         const text = propOr('search', {}, langMap);
 
         return <div className={styles.search}>

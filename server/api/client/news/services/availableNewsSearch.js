@@ -11,6 +11,8 @@ export default function availableNewsSearch (req, res) {
                 .filter(news => !news.hidden)
                 .sort((prev, next) => next.date - prev.date);
 
+            console.log(newsAll)
+
             res.status(OKEY_STATUS_CODE).send({ 
                 news: availableNews,
                 pages: [] 
