@@ -82,13 +82,28 @@ class NewsPage extends Component {
             mobileMenuListVisible: false,
             nextArticle: nextArticle,
             categories: categoriesArr,
-            newsCategoryRendered: news
+            newsCategoryRendered: news,
+            animation: false
         };
     };
+
+    componentDidMount () {
+        this.setState({
+            animation: true
+        });
+    }
 
     componentWillReceiveProps (nextProps, nextContext) {
         if (this.props.location.pathname !== nextProps.location.pathname) {
             this.setState(this.getNewState(nextProps));
+        }
+    }
+
+    componentDidUpdate (prevProps, prevState, snapshot) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.setState({
+                animation: true
+            });
         }
     }
 
@@ -109,6 +124,10 @@ class NewsPage extends Component {
         });
     };
 
+    handleNewsCardClick = () => {
+
+    };
+
     handleCategoryClickMobile = i => () => {
         const { setActiveCategoryIndex } = this.props;
 
@@ -120,7 +139,7 @@ class NewsPage extends Component {
     };
 
     render () {
-        const { article, activeCategoryIndex, mobileMenuListVisible, newsCategoryRendered, categories, nextArticle } = this.state;
+        const { article, activeCategoryIndex, mobileMenuListVisible, newsCategoryRendered, categories, nextArticle, animation } = this.state;
         const { mediaWidth } = this.props;
         const isDesktop = mediaWidth > TABLET_WIDTH;
         const { langMap, lang, langRoute } = this.props;
@@ -144,14 +163,15 @@ class NewsPage extends Component {
                 </div>
                 <div className={styles.newsContent}>
                     <div className={styles.newsCover}
-                        style={{ top: `${isDesktop
-                            ? DESKTOP_TOP : !mobileMenuListVisible ? MOBILE_TOP : MOBILE_TOP + CATEGORY_HEIGHT * categories.length}px` }}>
+                        style={{ top: `${isDesktop ? DESKTOP_TOP : mobileMenuListVisible ? MOBILE_TOP + CATEGORY_HEIGHT * categories.length : MOBILE_TOP}px` }}>
                         <img className={styles.coverImage} src={article.avatar} alt={article.texts[lang].name}/>
                     </div>
                     <div className={styles.news}>
                         <div className={styles.newsDate}>{getDateFormatted(article.date, 'ua')}</div>
                         <div className={styles.newsTitle}>{article.texts[lang].name}</div>
-                        <div className={styles.newsText}>{article.texts[lang].description}</div>
+                        <div className={classNames(styles.newsText, {
+                            [styles.newsTextAnimated]: animation
+                        })}>{article.texts[lang].description}</div>
                     </div>
                 </div>
                 <div className={styles.nextNews}>
@@ -207,7 +227,8 @@ class NewsPage extends Component {
                                                 <li className={classNames(styles.newsCardContainer, {
                                                     [styles.newsCardContainerAnimated]: categories[i].opened
                                                 })}
-                                                key={j} style={{ transitionDelay: `${j * 0.2}s` }}>
+                                                key={j} style={{ transitionDelay: `${j * 0.2}s` }}
+                                                onClick={this.handleNewsCardClick}>
                                                     <div className={styles.newsDate}>{getDateFormatted(newsCard.date, 'ua')}</div>
                                                     <div className={styles.newsTitle}>{newsCard.texts[lang].name}</div>
                                                 </li>

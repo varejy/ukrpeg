@@ -256,6 +256,15 @@
     color: blackBasic;
     position: relative;
     z-index: 11;
+    opacity: 0;
+    top: 5vh;
+    transition: .7s ease-in-out;
+    transition-delay: .2s;
+}
+
+.newsTextAnimated{
+    opacity: 1;
+    top: 0;
 }
 
 .nextNews{
