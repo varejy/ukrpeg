@@ -90,18 +90,56 @@ const PARTICIPANTS_LIST = [
 ];
 const mapStateToProps = ({ application }) => {
     return {
+        mediaWidth: application.media.width,
         langMap: application.langMap
     };
 };
 
 class RVVPage extends Component {
     static propTypes = {
-        langMap: PropTypes.object.isRequired
+        langMap: PropTypes.object.isRequired,
+        mediaWidth: PropTypes.number.isRequired
+    };
+
+    constructor (...args) {
+        super(...args);
+        const { mediaWidth } = this.props;
+
+        this.state = {
+            activeSlide: 0,
+            left: 0,
+            slideWidth: mediaWidth
+        };
+    }
+
+    handlePaginationClick = i => () => {
+        const { mediaWidth } = this.props;
+
+        this.setState({
+            activeSlide: i,
+            left: mediaWidth * i
+        });
+    };
+
+    handleArrowClick = (direction) => () => {
+        const { activeSlide } = this.state;
+        const { mediaWidth } = this.props;
+        const newActiveSlide = direction === 'left' ? activeSlide - 1 : activeSlide + 1;
+
+        this.setState({
+            activeSlide: newActiveSlide,
+            left: mediaWidth * newActiveSlide
+        });
     };
 
     render () {
-        const { langMap } = this.props;
+        const { left, activeSlide } = this.state;
+        const { mediaWidth, langMap } = this.props;
         const text = propOr('rvv', {}, langMap);
+        let PAGINATION = [];
+        for (let i = 0; i < PLANS_LIST.length; i++) {
+            PAGINATION.push(i + 1);
+        }
 
         return <section className={styles.pageContainer}>
             <div className={styles.gridContainer}>
@@ -110,6 +148,75 @@ class RVVPage extends Component {
                 <div className={classNames(styles.column, styles.column3)}/>
                 <div className={classNames(styles.column, styles.column4)}/>
                 <div className={classNames(styles.column, styles.column5)}/>
+            </div>
+            <div className={styles.partnersMobile}>
+                <div className={styles.titleContainer}>
+                    <div className={styles.rectangleGreen}/>
+                    <div className={styles.title}>Учасники пілотного проекту</div>
+                </div>
+                <div className={styles.partnersList}>
+                    {
+                        PARTNERS_LIST.map((partner, i) =>
+                            <div className={styles.logoContainer} key={i}>
+                                <img className={styles.logo} src={partner} alt='logo'/>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+            <div className={styles.containerPlansMobile}>
+                <div className={styles.patternContainerBig} />
+                <div className={styles.courses}>
+                    <div className={styles.backgroundWhite}/>
+                    <div className={styles.plansHeader}>
+                        <div className={styles.titleContainer}>
+                            <div className={styles.rectangleGreen}/>
+                            <div className={styles.title}>Плани</div>
+                        </div>
+                        <div className={styles.plansButtons}>
+                            <div onClick={activeSlide !== 0 ? this.handleArrowClick('left') : undefined}
+                                className={classNames(styles.buttonLeft, activeSlide === 0 ? styles.buttonDisabled : styles.buttonActive)}
+                            >
+                                <img className={styles.button} src={activeSlide === 0
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/downArrowBlack.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/downArrowGreen.png'
+                                } alt='arrowLeft'/>
+                            </div>
+                            <div onClick={activeSlide !== PLANS_LIST.length - 1 ? this.handleArrowClick('right') : undefined}
+                                className={classNames(styles.buttonRight, activeSlide === PLANS_LIST.length - 1 ? styles.buttonDisabled : styles.buttonActive)}
+                            >
+                                <img className={styles.button} src={activeSlide === PLANS_LIST.length - 1
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/downArrowBlack.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/downArrowGreen.png'
+                                } alt='arrowRight'/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.coursesContainer}>
+                        <div className={styles.courseInfo} style={{ left: `-${left}px` }}>
+                            {
+                                PLANS_LIST.map((step, i) =>
+                                    <div key={i} className={styles.course}>
+                                        <div className={styles.courseNumber}>{i + 1}</div>
+                                        <div className={styles.courseText}><div className={styles.text}>{step}</div></div>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+                    <div className={styles.plansPagination}>
+                        {
+                            PAGINATION.map((slideNumber, i) =>
+                                <div className={classNames(styles.paginationSquare, {
+                                    [styles.paginationSquareActive]: i === activeSlide
+                                })}
+                                key={i}
+                                onClick={this.handlePaginationClick(i)}
+                                />
+                            )
+                        }
+                    </div>
+                </div>
             </div>
             <div className={styles.plans}>
                 <div className={styles.titleContainer}>
@@ -223,6 +330,7 @@ class RVVPage extends Component {
                 </div>
             </div>
             <div className={styles.participantsContainer}>
+                <div className={styles.patternContainerBig} />
                 <div className={styles.backgroundGrey}/>
                 <div className={styles.participants}>
                     <div className={styles.titleContainer}>
@@ -243,17 +351,21 @@ class RVVPage extends Component {
             <div className={styles.containerIdea}>
                 <div className={styles.patternContainerBig} />
                 <div className={styles.idea}>
-                    <div className={styles.ideaContainer}/>
-                </div>
-                <div className={styles.wrapper}>
-                    <div className={styles.imageContainer}>
-                        <img src='/src/apps/client/ui/pages/RVVPage/images/recycle.png' alt='recycle'/>
-                    </div>
-                    <div className={styles.ideaText}>
+                    <div className={styles.ideaContainer}>
+                        <div className={styles.imageContainer}>
+                            <img className={styles.recycleImage}
+                                src={mediaWidth > 780
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/recycle.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/recycleGreen.png'
+                                }
+                                alt='recycle'/>
+                        </div>
+                        <div className={styles.ideaText}>
                         Спільними зусиллями ми працюємо над оптимізацією роботи галузі, вдосконаленням нормативно-правової бази,
                         підвищенням споживчої культури в сфері поводження з упаковкою та її відходами.<br/>
                         На жаль, змінити минуле нікому не під силу, але наше майбутнє цілком залежить від того, що ми зможемо
                         спільними зусиллями створити чи впровадити саме сьогодні.
+                        </div>
                     </div>
                 </div>
                 <div className={styles.backgroundGreen}/>
