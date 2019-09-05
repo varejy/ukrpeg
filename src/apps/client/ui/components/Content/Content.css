@@ -263,7 +263,7 @@
 
     @media (--media-tablet-s) {
         height: 50px;
-   }
+    }
 
     @media (--media-phone) {
         height: auto;
