@@ -1,24 +1,35 @@
+@value limeGreen from '../../../../../css/colors.css';
+@value lightGreyBasic from '../../../../../css/colors.css';
+
 .style strong{
-    font-weight: bold;
-    /*ВЫБРАТЬ ШРИФТ!!!*/
+    font-family: 'Gotham Medium', 'Arial Black';
 }
 
 .style em{
     font-style: italic;
-    /*ВЫБРАТЬ ШРИФТ!!!*/
+    font-family: 'Gotham Italic', Arial;
+    font-style: italic;
 }
 
 .style pre{
     display: inline-block;
-    background-color: #F1F1F1;
+    background-color: lightGreyBasic;
 }
 
-.style ul, style ol{
+.style ul, .style ol{
     padding-left: 20px;
+    margin-bottom: 15px;
+    font-family: 'Gotham Pro', Arial;
+    position: relative;
+    z-index: 11;
+}
+
+.style ul li, .style ol li{
+    padding: 5px 0;
 }
 
 .style ul{
-    list-style: disc outside;
+    list-style: square outside;
 }
 
 .style ol{
@@ -40,6 +51,7 @@
     margin-left: 0;
     font-style: italic;
     border-left: 5px solid #ccc;
+    margin-bottom: 15px;
 
     p {
         display: block;
@@ -47,7 +59,8 @@
         margin-block-start: 1em;
         margin-block-end: 1em;
         line-height: 1.4em;
-        font-family: 'Nunito Sans', sans-serif;
+        font-family: 'Gotham Italic', Arial;
+        font-style: italic;
     }
 }
 
@@ -97,5 +110,16 @@
     color: #000000;
     position: relative;
     z-index: 11;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+}
+
+.style a {
+    font-family: 'Gotham Medium', 'Arial Black';
+    color: limeGreen;
+    transition: .2s ease;
+    opacity: 0.7;
+}
+
+.style a:hover{
+    opacity: 1;
 }
