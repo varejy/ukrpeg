@@ -33,8 +33,8 @@
 .searchField{
     width: 680px;
     height: 100px;
-    background: url('/src/apps/client/ui/components/Search/files/searchBgOpacity.png');
-    margin: 100px 0 0 -125px;
+    background: url('/src/apps/client/ui/pages/SearchPage/files/searchBgOpacity.png');
+    margin: 100px 0 0 -145px;
     display: flex;
     position: relative;
 }
@@ -89,7 +89,7 @@
 }
 
 .totalResults{
-    margin-right: -125px;
+    margin-right: -140px;
     margin-top: 75px;
     max-width: 410px;
     width: 100%;
@@ -115,9 +115,15 @@
     background: lightGreySearchBasic;
 }
 
-.amoutnPages, .amountNews{
-    padding: 45px 0 40px 20px;;
+.amountPagesWrapper, .amountNewsWrapper {
     border-bottom: 2px solid lightGreySearchBasic;
+}
+
+.amountPages, .amountNews{
+    display: flex;
+    justify-content: space-between;
+    max-width: 135px;
+    padding: 45px 0 40px 20px;
 }
 
 .resultsPages, .resultsNews{
@@ -188,4 +194,12 @@
     z-index: 11;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
     letter-spacing: .4px;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
 }
