@@ -19,6 +19,8 @@ class MainSlideForm extends Component {
 
         const { editableSlide: { slide, index } } = this.props;
 
+        console.log(slide)
+
         this.initialValues = {
             name: slide.name || '',
             avatar: {

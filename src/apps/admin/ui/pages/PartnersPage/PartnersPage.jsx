@@ -88,7 +88,7 @@ class PartnersPage extends Component {
     componentWillReceiveProps (nextProps) {
         if (nextProps.partners !== this.props.partners) {
             this.setState({
-                partners: nextProps.slides,
+                partners: nextProps.partners,
                 disabled: true
             })
         }
@@ -99,7 +99,10 @@ class PartnersPage extends Component {
 
         this.setState({
             formShowed: true,
-            editableSlideInfo: partners[i]
+            editableSlideInfo: {
+                slide: partners[i],
+                index: i
+            }
         });
     };
 
