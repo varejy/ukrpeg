@@ -46,7 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 20;
+    z-index: 11;
 }
 
 .searchIconImg{
@@ -130,6 +130,7 @@
     padding: 20px 0 20px 20px;
     border-left: 5px solid lightGreenBasic;
     margin-left: -25px;
+    margin-bottom: 15px;
     font-weight: 600;
     font-size: 15px;
     line-height: 17px;
@@ -148,6 +149,11 @@
     font-size: 18px;
     line-height: 14px;
     letter-spacing: .3px;
+    margin-bottom: 35px;
+}
+
+.resultPageItem:last-child{
+    margin-bottom: 0;
 }
 
 .resultNewsList{
@@ -159,12 +165,12 @@
     padding: 25px 250px 40px 35px;
 }
 
-.resultNewsItem:nth-child(odd){
+.resultNewsItemNotOdd {
     background: lightGreySearchBasic;
 }
 
 .date{
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     font-size: 14px;
     color: darkBlueBasic;
     z-index: 11;

@@ -7,7 +7,6 @@ import {
     SET_MENU_OPEN,
     SET_ACTIVE_CATEGORY_INDEX,
     SET_SEO,
-    SET_SEARCH,
     SET_LAW
 } from '../types/types';
 import { DEFAULT_LANG, DEFAULT_LANG_ROUTE } from '../constants/constants';
@@ -23,7 +22,6 @@ const initialState = {
     categories: [],
     burgerMenu: false,
     activeCategoryIndex: 0,
-    search: '',
     lawList: []
 };
 
@@ -45,8 +43,6 @@ export default function (state = initialState, action) {
         return { ...state, activeCategoryIndex: action.payload };
     case SET_SEO:
         return { ...state, staticSeo: action.payload };
-    case SET_SEARCH:
-        return { ...state, search: action.payload };
     case SET_LAW:
         return { ...state, lawList: action.payload };
     default:

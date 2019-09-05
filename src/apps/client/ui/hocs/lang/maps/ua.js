@@ -84,8 +84,8 @@ export default {
     search: {
         searchResults: 'Ваш пошук',
         title: `Всього результатів`,
-        pages: `сторінки`,
-        news: `новини`,
+        pages: `Сторінки`,
+        news: `Новини`,
         resultPages: `Сторінки`,
         resultNews: `Новини`
     }
