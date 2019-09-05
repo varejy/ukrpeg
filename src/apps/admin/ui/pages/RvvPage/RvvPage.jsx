@@ -75,6 +75,21 @@ const arrayForFivePage = [
     }
 ];
 
+const arrayForSixPage = [
+    {
+        title: 'ТОВ «Кен-Пак (Україна)»',
+        positionIndex: 1
+    },
+    {
+        title: 'ПрАТ «Елопак-Фастiв»',
+        positionIndex: 2
+    },
+    {
+        title: "ІП «Кока-Кола Беверіджиз Україна Лімітед»",
+        positionIndex: 3
+    }
+];
+
 const materialStyles = theme => ({
     modal: {
         display: 'flex',
@@ -159,7 +174,10 @@ class RvvPage extends Component {
 
         return (
             <div className={classes.modalContent}>
-                <RvvCardPilotProject onDone={noop} />
+                <RvvCardPilotProject
+                    onDone={noop}
+                    title='Редактирование пилотного проекта'
+                />
             </div>
         );
     }
@@ -180,9 +198,42 @@ class RvvPage extends Component {
     }
 
     renderPageFive = () => {
-        return <div>
-            <RvvCardsKeyFacts values={arrayForFivePage}/>
+        const { classes } = this.props;
+        
+        return <div className={classes.wrapp}>
+            <RvvCardsKeyFacts
+                title='Ключевые факты'
+                maxLength={3}
+                values={arrayForFivePage}
+            />
         </div>;
+    }
+
+    renderPageSix = () => {
+        const { classes } = this.props;
+
+        return <div className={classes.wrapp}>
+            <Lists
+                values={arrayForSixPage}
+                sortable={true}
+                title='В состав входят'
+                onFormOpen={this.handlePlanFormOpen}
+            />
+        </div>;
+    }
+
+    renderPageSeven = () => {
+        const { classes } = this.props;
+
+        return (
+            <div className={classes.modalContent}>
+                <RvvCardPilotProject
+                    onDone={noop}
+                    type='message'
+                    title='Редактирование cообщение'
+                />
+            </div>
+        );
     }
 
     render () {
@@ -214,6 +265,8 @@ class RvvPage extends Component {
                 {this.renderPageThree(2)}
                 {this.renderPageFour(3)}
                 {this.renderPageFive(4)}
+                {this.renderPageSix(5)}
+                {this.renderPageSeven(6)}
             </SwipeableViews>
         </div>;
     }

@@ -2,37 +2,43 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from '../Form/Form';
-import getSchema from './rvvCardPilotProject';
+import getSchemaPProject from './rvvCardPilotProject';
+import getSchemaMessage from './rvvCardMessage';
 
 import noop from '@tinkoff/utils/function/noop';
-import pick from '@tinkoff/utils/object/pick';
 import pathOr from '@tinkoff/utils/object/pathOr';
-
-const PILOT_PROJECT_VALUES = ['sity', 'description'];
 
 class RvvCardPilotProject extends Component {
     static propTypes = {
         onDone: PropTypes.func,
-        pProject: PropTypes.object
+        value: PropTypes.object,
+        type: PropTypes.string,
+        title: PropTypes.string
 
     };
 
     static defaultProps = {
         onDone: noop,
-        pProject: {}
+        value: {},
+        type: '',
+        title: ''
     };
 
     constructor (...args) {
         super(...args);
 
-        const { pProject } = this.props;
+        const { value } = this.props;
 
-        this.initialValues = {
-            ua_sity: pathOr(['texts', 'ua', 'sity'], '', pProject),
-            en_sity: pathOr(['texts', 'en', 'sity'], '', pProject),
-            en_description: pathOr(['texts', 'en', 'description'], '', pProject),
-            ua_description: pathOr(['texts', 'ua', 'description'], '', pProject),
-            ...pick(PILOT_PROJECT_VALUES, pProject)
+        this.initialValuesProject = {
+            ua_sity: pathOr(['texts', 'ua', 'sity'], '', value),
+            en_sity: pathOr(['texts', 'en', 'sity'], '', value),
+            en_description: pathOr(['texts', 'en', 'description'], '', value),
+            ua_description: pathOr(['texts', 'ua', 'description'], '', value),
+        };
+
+        this.initialValuesMessage = {
+            en_description: pathOr(['texts', 'en', 'description'], '', value),
+            ua_description: pathOr(['texts', 'ua', 'description'], '', value),
         };
 
         this.state = {
@@ -87,11 +93,14 @@ class RvvCardPilotProject extends Component {
 
     render () {
         const { lang } = this.state;
+        const { type, title } = this.props;
+        const getSchema = type !== 'message' ? getSchemaPProject : getSchemaMessage;
+        const initialValues = type !== 'message' ? this.initialValuesProject : this.initialValuesMessage;
 
         return <Form
-            initialValues={this.initialValues}
+            initialValues={initialValues}
             schema={getSchema({
-                data: { title: 'Редактирование пилотного проекта' },
+                data: { title },
                 settings: { lang }
             })}
             onChange={this.handleChange}

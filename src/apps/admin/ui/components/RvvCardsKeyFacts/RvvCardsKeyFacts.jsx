@@ -5,19 +5,22 @@ import classNames from 'classnames';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
 import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import Divider from '@material-ui/core/Divider';
 
 import arrayMove from '../../../utils/arrayMove';
+
+import noop from '@tinkoff/utils/function/noop';
 
 import { withStyles } from '@material-ui/core/styles';
 
 const materialStyles = {
     cardWrapp: {
-        width: '50%',
         margin: '20px auto',
         display: 'flex',
         justifyContent: 'center'
@@ -42,6 +45,20 @@ const materialStyles = {
         width: '100%',
         zIndex: 2312,
         position: 'absolute'
+    },
+    header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginBottom: '10px',
+        alignItems: 'center'
+    },
+    wrapp: {
+        padding: '8px 20px 20px',
+        border: '#e4e4e4 solid 1px',
+        borderRadius: '5px'
+    },
+    title: {
+        height: '30px'
     }
 };
 
@@ -50,8 +67,8 @@ const ButtonSortable = SortableHandle(({ classes }) => (
 ));
 
 const CardItem = SortableElement(({ card, check, onSelectedCard, getCorrectName, classes }) => (
-    <div onClick={onSelectedCard(card)} className={classes.cardLink} >
-        <ButtonSortable classes={classes}/>
+    <div className={classes.cardLink} >
+        <ButtonSortable onClick={onSelectedCard(card)} classes={classes}/>
         <Card className={classNames(classes.card, { [classes.selectedCard]: check(card.positionIndex) })}>
             <CardHeader
                 title={getCorrectName(card.title)}
@@ -82,11 +99,17 @@ const MAX_LENGTH_NAMES = 27;
 class RvvCardsKeyFacts extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        values: PropTypes.array
+        values: PropTypes.array,
+        maxLength: PropTypes.number,
+        title: PropTypes.string,
+        onFormOpen: PropTypes.func
     };
 
     static defaultProps = {
-        values: []
+        values: [],
+        maxLength: Infinity,
+        title: '',
+        onFormOpen: noop
     };
 
     state = {
@@ -122,20 +145,32 @@ class RvvCardsKeyFacts extends Component {
     };
 
     render () {
-        const { classes } = this.props;
+        const { classes, maxLength, title, onFormOpen } = this.props;
         const { selectedCard, values } = this.state;
+        const checkMaxItemLength = () => values.length === maxLength;
 
         return <div>
-            <Cards
-                axis='xy'
-                values={values}
-                selectedCard={selectedCard}
-                onSelectedCard={this.handleSelectedCard}
-                classes={classes}
-                getCorrectName={this.getCorrectName}
-                onSortEnd={this.onDragEnd}
-                useDragHandle
-            />
+            <div className={classes.wrapp}>
+                <div className={classes.header}>
+                    <Typography variant='h5' className={classes.title}>{title}</Typography>
+                    <Tooltip title='Добавить'>
+                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen}>
+                            <AddIcon />
+                        </IconButton>
+                    </Tooltip>
+                </div>
+                <Divider />
+                <Cards
+                    axis='xy'
+                    values={values}
+                    selectedCard={selectedCard}
+                    onSelectedCard={this.handleSelectedCard}
+                    classes={classes}
+                    getCorrectName={this.getCorrectName}
+                    onSortEnd={this.onDragEnd}
+                    useDragHandle
+                />
+            </div>
             {
                 /* <div className={classes.addButton}>
                     <Fab color='primary' size='small' onClick={this.handleFeatureAdd}>

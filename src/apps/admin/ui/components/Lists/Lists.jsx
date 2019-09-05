@@ -40,12 +40,12 @@ const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, getCorrectName, onDelete, sortable, numeration, isImage, value, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDelete, sortable, numeration, isImage, value, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
         {
             numeration && <div className={classes.indexItem}>
-                {value.positionIndex}.
+                {value.positionIndex || index + 1}.
             </div>
         }
         {
@@ -147,7 +147,8 @@ const materialStyles = theme => ({
     },
     indexItem: {
         color: '#3f51b5',
-        fontFamily: 'sans-serif'
+        fontFamily: 'sans-serif',
+        margin: '0 12px'
     },
     header: {
         display: 'flex',
