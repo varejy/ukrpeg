@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
 import { withRouter, matchPath, Link } from 'react-router-dom';
 import find from '@tinkoff/utils/array/find';
+import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 import findIndex from '@tinkoff/utils/array/findIndex';
 import propOr from '@tinkoff/utils/object/propOr';
-import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
+import StyleRenderer from '../../components/StyleRenderer/StyleRenderer';
 
 const TABLET_WIDTH = 780;
 const CATEGORY_HEIGHT = 58;
@@ -23,9 +24,9 @@ const mapStateToProps = ({ application, news }) => {
         categories: application.categories,
         mediaWidth: application.media.width,
         activeCategoryIndex: application.activeCategoryIndex
-
     };
 };
+
 const mapDispatchToProps = dispatch => {
     return {
         setActiveCategoryIndex: payload => dispatch(setActiveCategoryIndex(payload))
@@ -34,12 +35,12 @@ const mapDispatchToProps = dispatch => {
 
 class NewsPage extends Component {
     static propTypes = {
-        location: PropTypes.object.isRequired,
         mediaWidth: PropTypes.number.isRequired,
         activeCategoryIndex: PropTypes.number.isRequired,
         setActiveCategoryIndex: PropTypes.func.isRequired,
         news: PropTypes.array.isRequired,
         categories: PropTypes.array.isRequired,
+        location: PropTypes.object.isRequired,
         langRoute: PropTypes.string,
         lang: PropTypes.string.isRequired,
         langMap: PropTypes.object.isRequired
@@ -67,10 +68,10 @@ class NewsPage extends Component {
             return { ...newsCategory, opened: false };
         });
         categoriesArr[activeCategoryIndex].opened = true;
-        const newsArr = news.filter(news => news.categoryId === categories[activeCategoryIndex].id);
+        const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categories[activeCategoryIndex].id) : news;
         const match = matchPath(pathname, { path: PRODUCT_PATH, exact: true });
-        const article = find(news => news.id === match.params.id, news);
-        const articleIndex = findIndex(news => news.id === match.params.id, news);
+        const article = find(news => news.id === match.params.id, newsArr);
+        const articleIndex = findIndex(news => news.id === match.params.id, newsArr);
         const nextArticle = newsArr[articleIndex + 1];
 
         this.notFoundPage = !article;
@@ -82,7 +83,7 @@ class NewsPage extends Component {
             mobileMenuListVisible: false,
             nextArticle: nextArticle,
             categories: categoriesArr,
-            newsCategoryRendered: news
+            newsCategoryRendered: newsArr
         };
     };
 
@@ -93,20 +94,22 @@ class NewsPage extends Component {
     }
 
     handleCategoryClick = i => () => {
-        const { news } = this.props;
+        const { news, setActiveCategoryIndex } = this.props;
         const { categories } = this.state;
         const categoriesArr = categories.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
         categoriesArr[i].opened = true;
-        const newsArr = news.filter(news => news.categoryId === categories[i].id);
+        const newsArr = i ? news.filter(news => news.categoryId === categories[i].id) : news;
 
         this.setState({
             activeCategoryIndex: i,
             mobileMenuListVisible: !this.state.mobileMenuListVisible,
             categories: categoriesArr,
-            newsCategoryRendered: i ? newsArr : news
+            newsCategoryRendered: newsArr
         });
+
+        setActiveCategoryIndex(i);
     };
 
     handleCategoryClickMobile = i => () => {
@@ -144,14 +147,14 @@ class NewsPage extends Component {
                 </div>
                 <div className={styles.newsContent}>
                     <div className={styles.newsCover}
-                        style={{ top: `${isDesktop
-                            ? DESKTOP_TOP : !mobileMenuListVisible ? MOBILE_TOP : MOBILE_TOP + CATEGORY_HEIGHT * categories.length}px` }}>
+                        style={{ top: `${isDesktop ? DESKTOP_TOP : !mobileMenuListVisible ? MOBILE_TOP : MOBILE_TOP + CATEGORY_HEIGHT * categories.length}px` }}
+                    >
                         <img className={styles.coverImage} src={article.avatar} alt={article.texts[lang].name}/>
                     </div>
                     <div className={styles.news}>
                         <div className={styles.newsDate}>{getDateFormatted(article.date, 'ua')}</div>
                         <div className={styles.newsTitle}>{article.texts[lang].name}</div>
-                        <div className={styles.newsText}>{article.texts[lang].description}</div>
+                        <StyleRenderer html={article.texts[lang].description}/>
                     </div>
                 </div>
                 <div className={styles.nextNews}>
@@ -174,7 +177,12 @@ class NewsPage extends Component {
                             </div>
                         </Link>
                         : <div className={classNames(styles.nextNewsButton, styles.nextNewsButtonDisabled)}>
-                            <img className={styles.arrowIcon} src='/src/apps/client/ui/pages/NewsPage/images/downArrowBlack.png' alt='arrow'/>
+                            <img className={styles.arrowIcon}
+                                src={ isDesktop
+                                    ? '/src/apps/client/ui/pages/NewsPage/images/downArrowGreen.png'
+                                    : '/src/apps/client/ui/pages/NewsPage/images/downArrowBlack.png'
+                                }
+                                alt='arrow'/>
                         </div>
                     }
                 </div>
@@ -222,7 +230,7 @@ class NewsPage extends Component {
             </div>
             <div className={styles.newsMenuContainerMobile}>
                 <div className={styles.mobileMenuContainer}>
-                    <div className={styles.activeCategory}>{categories[activeCategoryIndex].texts[`${lang}`].name}</div>
+                    <div className={styles.activeCategory}>{categories[activeCategoryIndex].texts[lang].name}</div>
                     <div className={classNames(styles.arrowButton, {
                         [styles.arrowButtonReverse]: mobileMenuListVisible
                     })} onClick={this.handleOpenMenuList}>
@@ -235,14 +243,15 @@ class NewsPage extends Component {
                         {
                             categories.map((newsCategory, i) =>
                                 <li key={i}>
-                                    <Link key={newsCategory.id} to='/news'>
+                                    <Link key={newsCategory.texts[lang].name} to='/news'>
                                         <div className={classNames(styles.newsCategoryMobile, {
                                             [styles.newsCategoryMobileAnimated]: mobileMenuListVisible
                                         })}
                                         onClick={this.handleCategoryClickMobile(i)}
                                         >
-                                            <div className={styles.newsCategoryTitleMobile}>
-                                                <div className={styles.categoryTitleMobile}>{newsCategory.texts[`${lang}`].name}</div>
+                                            <div className={styles.newsCategoryTitleMobile}
+                                            >
+                                                <div className={styles.categoryTitleMobile}>{newsCategory.texts[lang].name}</div>
                                             </div>
                                         </div>
                                     </Link>
