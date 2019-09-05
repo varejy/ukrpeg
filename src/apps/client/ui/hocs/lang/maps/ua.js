@@ -65,5 +65,13 @@ export default {
                 desc: `support@ukrpec.com`
             }
         }
+    },
+    search: {
+      searchResults: 'Ваш пошук',
+      title: `Всього результатів`,
+      pages: `сторінки`,
+      news: `новини`,
+      resultPages: `Сторінки`,
+      resultNews: `Новини`
     }
 };
