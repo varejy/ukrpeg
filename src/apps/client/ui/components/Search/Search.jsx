@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import propOr from '@tinkoff/utils/object/propOr';
 import styles from './Search.css';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
+import { Link } from 'react-router';
 
 import { connect } from 'react-redux';
 
@@ -19,7 +20,12 @@ class Search extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         news: PropTypes.array,
-        lang: PropTypes.string
+        lang: PropTypes.string,
+        newsCard: PropTypes.object
+    };
+
+    static defaultProps = {
+        newsCard: {}
     };
 
     state = {
@@ -34,7 +40,7 @@ class Search extends Component {
     }
 
     render () {
-        const { langMap, news, lang } = this.props;
+        const { langMap, news, lang, cardData } = this.props;
         const { inputValue } = this.state;
         const text = propOr('search', {}, langMap);
 
@@ -78,10 +84,10 @@ class Search extends Component {
                         <div className={styles.resultNewsList}>
                             {news.map((item, i) => {
                                 return (
-                                    <div key={i} className={styles.resultNewsItem}>
+                                    <Link to={`${langRoute}/news/${cardData.id}`} key={i} className={styles.resultNewsItem}>
                                         <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
                                         <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
-                                    </div>
+                                    </Link>
                                 );
                             })}
                         </div>
