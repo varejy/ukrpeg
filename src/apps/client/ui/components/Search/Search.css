@@ -10,24 +10,43 @@
     justify-content: center;
     margin-top: 100px;
     z-index: 11;
+    overflow-x: hidden;
 }
 
 .wrapper{
     width:  100%;
     max-width: 1350px;
     padding: 0 134px;
+
+    @media (max-width: 1350px) {
+        padding: 0 110px;
+    }
+
+    @media (--media-tablet-l) {
+        padding: 0;
+    }
 }
 
 .searchResults{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    @media (--media-phone-s) {
+        flex-direction: column;
+    }
 }
 
 .inputBlock{
     height: 286px;
     background: lightGreySearchBasic;
     width: auto;
+
+    @media (--media-phone-s) {
+        height: auto;
+        width: 100%;
+        background: whiteBasic;
+    }
 }
 
 .searchField{
@@ -37,6 +56,13 @@
     margin: 100px 0 0 -125px;
     display: flex;
     position: relative;
+
+    @media (--media-phone-s) {
+        width: 100%;
+        margin:15px 0 0;
+        justify-content: flex-end;
+        height: 60px;
+    }
 }
 
 .searchIcon, .searchIconZoom{
@@ -47,11 +73,21 @@
     justify-content: center;
     align-items: center;
     z-index: 20;
+
+    @media (--media-phone-s) {
+        left: 0;
+        max-width: 100px;
+    }
 }
 
 .searchIconImg{
     height: 35px;
     width: 35px;
+
+    @media (--media-phone-s) {
+        width: 15px;
+        height: 15px;
+    }
 }
 
 .input, .inputZoom{
@@ -62,6 +98,12 @@
     letter-spacing: 1px;
     font-weight: 300;
     color: blackBasic;
+
+    @media (--media-phone-s) {
+        font-size: 16px;
+        letter-spacing: .8px;
+        line-height: 20px;
+    }
 }
 
 .input{
@@ -74,6 +116,12 @@
     left: 125px;
     bottom: 30px;
     width: 525px;
+
+    @media (--media-phone-s) {
+        left: 0;
+        padding-top: 0;
+        bottom: 0;
+    }
 }
 
 .results{
@@ -86,6 +134,11 @@
     letter-spacing: 1px;
     color: blackBasic;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
+
+    @media (--media-phone-s) {
+        margin: 0 20px;
+        justify-content: flex-start;
+    }
 }
 
 .totalResults{
