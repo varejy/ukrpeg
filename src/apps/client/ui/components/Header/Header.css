@@ -273,16 +273,34 @@
         width: 50px;
         padding: 10px 0;
         right: 30px;
+        top: 50px;
+   }
+
+   @media (--media-phone) {
+        top: 40px;
    }
 
    @media (--media-phone-s) {
-       top: 25px;
+       top: 30px;
        right: 25px;
   }
 }
 
 .burgerMenuOpen{
     border: none;
+   
+    @media (--media-tablet-s) {
+         top: 50px;
+   }
+
+    @media (--media-phone) {
+         top: 40px;
+    }
+
+    @media (--media-phone-s) {
+        top: 30px;
+        right: 25px;
+   }
 }
 
 .menuLines, .menuLinesCross, .menuLinesPages{
@@ -337,8 +355,18 @@
     }
 
    @media (--media-tablet-s) {
-       top: 25px;
-       right: 35px;
+        top: 20px;
+        left: 15px;
+   }
+
+   @media (--media-phone) {
+        top: 20px;
+        left: 15px;
+   }
+
+   @media (--media-phone-s) {
+        top: 20px;
+        left: 15px;
    }
 }
 

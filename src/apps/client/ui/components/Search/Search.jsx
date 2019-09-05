@@ -80,7 +80,7 @@ class Search extends Component {
                                 return (
                                     <div key={i} className={styles.resultNewsItem}>
                                         <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
-                                        <p className={styles.news}>{item.description}</p>
+                                        <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
                                     </div>
                                 );
                             })}
