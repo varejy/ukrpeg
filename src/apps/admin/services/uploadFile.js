@@ -3,15 +3,15 @@ import base from './base';
 
 import { TOKEN_LOCAL_STORAGE_NAME } from '../constants/constants';
 
-export default function updateProductFiles (files, id) {
+export default function uploadFile (files) {
     return () => {
         const token = localStorage.getItem(TOKEN_LOCAL_STORAGE_NAME);
 
         return base(
             request
-                .post('/api/admin/product/update-files')
+                .post('/api/admin/editor/file')
                 .send(files)
-                .query({ token, id })
+                .query({ token })
         );
     };
 }

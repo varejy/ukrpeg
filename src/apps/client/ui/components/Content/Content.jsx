@@ -6,33 +6,41 @@ import styles from './Content.css';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
+import setSearch from '../../../actions/setSearch';
 
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
-        langRoute: application.langRoute
+        langRoute: application.langRoute,
+        search: application.search
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setSearch: payload => dispatch(setSearch(payload))
     };
 };
 
 class Content extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
-        langRoute: PropTypes.string
+        langRoute: PropTypes.string,
+        setSearch: PropTypes.func.isRequired,
+        search: PropTypes.string
     };
 
     static defaultProps = {
-        langRoute: ''
+        langRoute: '',
+        search: ''
     };
 
     state = {
-        inputValue: '',
         inputZoom: false
     }
 
     handleInputChange = event => {
-        this.setState({
-            inputValue: event.target.value
-        });
+        this.props.setSearch(event.target.value);
     }
 
     handleFocusInput = () => {
@@ -54,8 +62,8 @@ class Content extends Component {
     }
 
     render () {
-        const { langMap, langRoute } = this.props;
-        const { inputZoom, inputValue } = this.state;
+        const { langMap, langRoute, search } = this.props;
+        const { inputZoom } = this.state;
         const text = propOr('content', {}, langMap);
 
         return <div className={styles.content}>
@@ -75,13 +83,13 @@ class Content extends Component {
                         </div>
                     </div>
                     <div className={styles.searchField}>
-                        <div className={!inputZoom ? styles.searchIcon : styles.searchIconZoom}>
+                        <Link to={`${langRoute}/search`} className={!inputZoom ? styles.searchIcon : styles.searchIconZoom}>
                             <img src='/src/apps/client/ui/components/Content/files/searchIcon.png' className={styles.searchIconImg} />
-                        </div>
+                        </Link>
                         <input
                             onFocus={this.handleFocusInput}
                             onBlur={this.handleBlurInput}
-                            value={inputValue}
+                            value={search}
                             onChange={this.handleInputChange}
                             className={!inputZoom ? styles.input : styles.inputZoom} />
                     </div>
@@ -97,4 +105,4 @@ class Content extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Content);
+export default connect(mapStateToProps, mapDispatchToProps)(Content);
