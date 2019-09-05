@@ -9,11 +9,13 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { matchPath } from 'react-router';
 
 import MainPage from './ui/pages/MainPage/MainPage.jsx';
+import LegislationPage from './ui/pages/LegislationPage/LegislationPage';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
 import Header from './ui/components/Header/Header.jsx';
 import Authentication from './ui/components/Authentication/Authentication.jsx';
 import Recovery from './ui/components/Recovery/Recovery.jsx';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import SeoPage from './ui/pages/SeoPage/SeoPage.jsx';
 
 import isNull from '@tinkoff/utils/is/nil';
 
@@ -78,7 +80,9 @@ class App extends Component {
             <Header />
             <Switch>
                 <Route exact path='/admin' component={MainPage} />
+                <Route exact path='/admin/laws' component={LegislationPage} />
                 <Route exact path='/admin/news' component={NewsPage} />
+                <Route exact path='/admin/seo' component={SeoPage} />
             </Switch>
         </main>;
     }

@@ -16,7 +16,11 @@
     margin: 0 auto;
     position: fixed;
     height: 100vh;
-    z-index: 10;
+    z-index: 2;
+
+    @media (max-width: 780px) {
+        display: none;
+    }
 }
 
 .column{
