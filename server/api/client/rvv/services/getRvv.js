@@ -6,18 +6,18 @@ const RVV_ID = 'rvv_id';
 
 export default function getRvv (req, res) {
     getRvvQuery(RVV_ID)
-        .then(([slider]) => {
-            if (!slider) {
-                return createRvv({ info: {}, id: RVV_ID })
-                    .then(slider => {
-                        res.status(OKEY_STATUS_CODE).send(slider.info);
+        .then(([rvv]) => {
+            if (!rvv) {
+                return createRvv({ texts: {}, id: RVV_ID })
+                    .then(rvv => {
+                        res.status(OKEY_STATUS_CODE).send(rvv.texts);
                     })
                     .catch(() => {
                         res.status(SERVER_ERROR_STATUS_CODE).end();
                     });
             }
 
-            res.status(OKEY_STATUS_CODE).send(slider.info);
+            res.status(OKEY_STATUS_CODE).send(rvv.texts);
         })
         .catch(() => {
             res.status(SERVER_ERROR_STATUS_CODE).end();
