@@ -85,5 +85,8 @@ export default {
         news: `Новини`,
         resultPages: `Сторінки`,
         resultNews: `Новини`
+    },
+    law: {
+        title: `Нормативні документи`
     }
 };

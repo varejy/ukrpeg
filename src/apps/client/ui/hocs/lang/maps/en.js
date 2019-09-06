@@ -85,5 +85,8 @@ export default {
         news: `News`,
         resultPages: `Pages`,
         resultNews: `News`
+    },
+    law: {
+        title: `Laws`
     }
 };
