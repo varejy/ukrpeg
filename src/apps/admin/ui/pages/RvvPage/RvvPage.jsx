@@ -9,7 +9,7 @@ import Lists from '../../components/Lists/Lists';
 
 import noop from '@tinkoff/utils/function/noop';
 
-import RvvCardPilotProject from '../../components/RvvCardPilotProject/RvvCardPilotProject.jsx';
+import RvvCardPilotProjectForm from '../../components/RvvCardPilotProject/RvvCardPilotProjectForm.jsx';
 import RvvCardsKeyFacts from '../../components/RvvCardsKeyFacts/RvvCardsKeyFacts';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -174,7 +174,7 @@ class RvvPage extends Component {
 
         return (
             <div className={classes.modalContent}>
-                <RvvCardPilotProject
+                <RvvCardPilotProjectForm
                     onDone={noop}
                     title='Редактирование пилотного проекта'
                 />
@@ -227,7 +227,7 @@ class RvvPage extends Component {
 
         return (
             <div className={classes.modalContent}>
-                <RvvCardPilotProject
+                <RvvCardPilotProjectForm
                     onDone={noop}
                     type='message'
                     title='Редактирование cообщение'

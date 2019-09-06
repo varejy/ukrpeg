@@ -25,26 +25,16 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                         name: 'requiredLangFields',
                         options: {
                             text: 'Заполните форму для всех языков',
-                            fields: ['en_sity', 'ua_sity', 'en_description', 'ua_description']
+                            fields: ['en_description', 'ua_description']
                         }
                     }
                 ]
             },
             {
                 component: FormFieldInput,
-                name: `${lang}_sity`,
-                schema: {
-                    label: 'Город'
-                },
-                validators: [
-                    { name: 'required', options: { text: 'Заполните название города' } }
-                ]
-            },
-            {
-                component: FormFieldInput,
                 name: `${lang}_description`,
                 schema: {
-                    label: 'Описание',
+                    label: 'Сообщение',
                     multiline: true
                 },
                 validators: [
