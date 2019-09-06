@@ -7,6 +7,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Lists from '../../components/Lists/Lists';
 
+import { connect } from 'react-redux';
+import getRvv from '../../../services/getRvv';
+
 import noop from '@tinkoff/utils/function/noop';
 
 import RvvCardPilotProject from '../../components/RvvCardPilotProject/RvvCardPilotProject';
@@ -113,6 +116,16 @@ const materialStyles = theme => ({
     }
 });
 
+const mapStateToProps = ({ rvv }) => {
+    return {
+        rvv: rvv.rvv
+    };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    getRvv: payload => dispatch(getRvv(payload)),
+});
+
 class RvvPage extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired
@@ -127,6 +140,13 @@ class RvvPage extends Component {
         this.state = {
             tabsValue: 0
         };
+    }
+
+    componentDidMount () {
+        this.props.getRvv()
+            .then(() => {
+                console.log(this.props)
+            });
     }
 
     handlePlanFormOpen () {
@@ -272,4 +292,4 @@ class RvvPage extends Component {
     }
 }
 
-export default withStyles(materialStyles)(RvvPage);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(materialStyles)(RvvPage));

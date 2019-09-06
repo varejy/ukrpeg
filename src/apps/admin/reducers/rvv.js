@@ -1,15 +1,15 @@
 import {
-    SET_RVV_PLANS
+    SET_RVV
 } from '../types/types';
 
 const initialState = {
-    plans: []
+    rvv: {}
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-    case SET_RVV_PLANS:
-        return { ...state, plans: action.payload };
+    case SET_RVV:
+        return { ...state, rvv: action.payload };
     default:
         return state;
     }
