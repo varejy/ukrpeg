@@ -437,6 +437,7 @@
 .burgerMenuList .newsLink{
     margin-bottom: 25px;
     text-transform: capitalize;
+    font-family: 'Gotham Light', Arial;
     font-size: 14px;
 
     @media (--media-phone-s){
