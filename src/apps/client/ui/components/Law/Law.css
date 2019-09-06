@@ -103,7 +103,6 @@
     font-weight: 300;
     color: blackBasic;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
-    margin-bottom: 10px;
     cursor: pointer;
 
     @media (--media-tablet-l) {
