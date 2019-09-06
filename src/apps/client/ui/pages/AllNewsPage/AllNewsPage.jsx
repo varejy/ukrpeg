@@ -46,10 +46,9 @@ class AllNewsPage extends Component {
             return { ...newsCategory, opened: false };
         });
         categoriesArr[activeCategoryIndex].opened = true;
-        const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categories[activeCategoryIndex].id) : news;
+        const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categoriesArr[activeCategoryIndex].id) : news;
 
         this.state = {
-            activeCategoryIndex: activeCategoryIndex,
             mobileMenuListVisible: false,
             categories: categoriesArr,
             newsCategoryRendered: newsArr
@@ -63,10 +62,9 @@ class AllNewsPage extends Component {
             return { ...newsCategory, opened: false };
         });
         categoriesArr[i].opened = true;
-        const newsArr = i ? news.filter(news => news.categoryId === categories[i].id) : news;
+        const newsArr = i ? news.filter(news => news.categoryId === categoriesArr[i].id) : news;
 
         this.setState({
-            activeCategoryIndex: i,
             mobileMenuListVisible: !this.state.mobileMenuListVisible,
             categories: categoriesArr,
             newsCategoryRendered: newsArr
@@ -80,8 +78,8 @@ class AllNewsPage extends Component {
     };
 
     render () {
-        const { newsCategoryRendered, activeCategoryIndex, mobileMenuListVisible, categories } = this.state;
-        const { langMap, lang } = this.props;
+        const { newsCategoryRendered, mobileMenuListVisible, categories } = this.state;
+        const { langMap, lang, activeCategoryIndex } = this.props;
         const text = propOr('allNews', {}, langMap);
 
         return <section className={styles.newsContainer}>
