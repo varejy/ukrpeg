@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Lists from '../../components/Lists/Lists';
-import PartnersColection from '../../components/PartnersColection/PartnersColection';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
 import noop from '@tinkoff/utils/function/noop';
+import remove from '@tinkoff/utils/array/remove';
 
 import { connect } from 'react-redux';
 import getAllPartners from '../../../services/getAllPartners';
@@ -67,43 +67,60 @@ class PartnersPage extends Component {
         this.state = {
             loading: true,
             formShowed: false,
-            editableSlideInfo: {}
+            editableSlideInfo: {},
+            removedSlides: []
         };
+
+        this.partners = []
     }
 
     componentDidMount () {
+        this.getAllPartners();
+    }
+
+    getAllPartners() {
         this.props.getAllPartners()
             .then(() => {
                 this.setState({
-                    partners: this.props.partners.map(partner => ({
-                        path: partner.path || '/wrong-path',
-                        showed: partner.showed || true,
-                        name: partner.name || ''
-                    })),
                     loading: false
                 })
+                this.partners = this.props.partners.map(partner => ({
+                    path: partner.path || '/wrong-path',
+                    showed: partner.showed || true,
+                    name: partner.name || ''
+                }));
             })
     }
 
     componentWillReceiveProps (nextProps) {
         if (nextProps.partners !== this.props.partners) {
             this.setState({
-                partners: nextProps.partners,
                 disabled: true
             })
+            this.partners = nextProps.partners;
         }
     }
 
     handleFileEdit = i => () => {
-        const { partners } = this.state;
+        const { partners } = this;
 
-        this.setState({
-            formShowed: true,
-            editableSlideInfo: {
-                slide: partners[i],
-                index: i
-            }
-        });
+        if (i === 'new') {
+            this.setState({
+                formShowed: true,
+                editableSlideInfo: {
+                    index: partners.length,
+                    newSlide: true
+                }
+            });
+        } else {
+            this.setState({
+                formShowed: true,
+                editableSlideInfo: {
+                    slide: partners[i],
+                    index: i
+                }
+            });
+        }
     };
 
     handleClosetForm = () => {
@@ -114,45 +131,65 @@ class PartnersPage extends Component {
     };
 
     handleFormDone = (partner, index) => {
-        const { partners } = this.state;
-        const newSlides = [...partners];
+        const newSlides = [...this.partners];
 
         newSlides[index] = partner;
 
-        this.setState({
-            partners: newSlides
-        }, () => {
-            this.handleSubmit({ preventDefault: noop })
-                .then(() => {
-                    this.setState({
-                        formShowed: false,
-                        editableSlideInfo: null
-                    });
+        this.partners = newSlides;
+
+        this.handleSubmit({ preventDefault: noop })
+            .then(() => {
+                this.setState({
+                    formShowed: false,
+                    editableSlideInfo: null
                 });
+            });
+    };
+
+    handleFileDelete = (i) => {
+        const { removedSlides } = this.state;
+
+        if (this.partners[i].path) {
+            removedSlides.push(this.partners[i]);
+        }
+
+        this.partners = remove(i, 1, this.partners)
+
+        this.setState({
+            removedSlides
         });
+
+        this.handleSubmit({ preventDefault: noop });
+    };
+
+    handleSlidesChanged = (partners) => {
+        this.partners = partners;
+
+        this.handleSubmit({ preventDefault: noop });
     };
 
     handleSubmit = event => {
         event.preventDefault();
 
-        const { partners, removedSlides } = this.state;
+        const { removedSlides } = this.state;
         const formData = new FormData();
-        const cleanedSlides = partners.map(partner => {
-            const isOld = !partner.content;
+        const cleanedSlides = this.partners.map(partner => {
+            const isOld = !partner.path.content;
 
             return {
-                name: partner.title,
-                path: isOld && partner.path,
+                name: partner.name,
+                path: isOld ? partner.path : partner.path.path,
                 oldSlidePath: partner.oldSlidePath
             };
         });
 
-        partners.forEach((file, i) => {
+        this.partners.forEach((file, i) => {
             if (file.content) {
                 formData.append(`slide-file-${i}`, file.content);
             }
         });
-        
+
+        formData.append('removedSlides', JSON.stringify(removedSlides));
         formData.append('slides', JSON.stringify(cleanedSlides));
 
         return this.props.updatePartnersSlides(formData);
@@ -160,7 +197,8 @@ class PartnersPage extends Component {
 
     render () {
         const { classes } = this.props;
-        const { partners, loading, formShowed, editableSlideInfo } = this.state;
+        const { loading, formShowed, editableSlideInfo } = this.state;
+        const { partners } = this;
 
         if (loading) {
             return <div className={classes.loader}>
@@ -173,11 +211,13 @@ class PartnersPage extends Component {
                 values={partners}
                 sortable={true}
                 isImage={true}
+                bigAvatar={true}
+                onDelete={this.handleFileDelete}
                 onFormOpen={this.handleFileEdit}
+                editValues={this.handleSlidesChanged}
                 nameToolTip={true}
                 title='Партнёры'
             />
-            <PartnersColection/>
             <Modal open={formShowed} onClose={this.handleClosetForm} className={classes.modal}>
                 <Paper className={classes.modalContent}>
                     <PartnersSlideForm editableSlide={editableSlideInfo} onDone={this.handleFormDone}/>

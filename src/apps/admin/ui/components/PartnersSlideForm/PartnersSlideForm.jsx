@@ -19,14 +19,12 @@ class MainSlideForm extends Component {
 
         const { editableSlide: { slide, index } } = this.props;
 
-        console.log(slide)
-
         this.initialValues = {
-            name: slide.name || '',
+            name: slide ? slide.name : '',
             avatar: {
-                files: slide.path ? [slide.path] : []
+                files: slide ? [slide.path] : []
             },
-            wrongDimensions: slide.wrongDimensions
+            wrongDimensions: slide && slide.wrongDimensions
         };
 
         this.state = {
@@ -48,6 +46,7 @@ class MainSlideForm extends Component {
             wrongDimensions: values.wrongDimensions,
             path: values.avatar.files[0]
         };
+
         this.props.onDone(sendValues, index);
     };
 

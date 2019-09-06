@@ -14,7 +14,6 @@ export default function getPartners () {
             .query({ token })
     )
         .then(partners => {
-            console.log(partners)
             return dispatch(setPartners(partners));
         });
 }
