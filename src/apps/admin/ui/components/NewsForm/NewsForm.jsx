@@ -15,7 +15,7 @@ import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
 import format from 'date-fns/format';
 
-const NEWS_VALUES = ['hidden'];
+const NEWS_VALUES = ['hidden', 'alias'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveNews: payload => dispatch(saveNews(payload)),
@@ -89,6 +89,7 @@ class NewsForm extends Component {
             ua_seoDescription: uaSeoDescription,
             en_seoKeywords: enSeoKeywords,
             ua_seoKeywords: uaSeoKeywords,
+            alias,
             hidden,
             views,
             date,
@@ -98,6 +99,7 @@ class NewsForm extends Component {
             hidden,
             views: +views,
             categoryId: this.props.activeCategory.id,
+            alias,
             date,
             id,
             texts: {

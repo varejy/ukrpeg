@@ -11,7 +11,8 @@ export default function editNews (req, res) {
         .then(news => {
             res.status(OKEY_STATUS_CODE).send(news);
         })
-        .catch(() => {
+        .catch((err) => {
+            console.log(err);
             res.status(SERVER_ERROR_STATUS_CODE).end();
         });
 }

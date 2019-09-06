@@ -42,7 +42,17 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                     label: 'Название'
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните название продутка' } }
+                    { name: 'required', options: { text: 'Заполните название новости' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: 'alias',
+                schema: {
+                    label: 'Алиас'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните алиас' } }
                 ]
             },
             {
