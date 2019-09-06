@@ -132,3 +132,8 @@
 .style a:hover{
     opacity: 1;
 }
+
+.style * {
+    position: relative;
+    z-index: 11;
+}
