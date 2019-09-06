@@ -71,8 +71,6 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 component: FormFieldFiles,
                 name: 'avatar',
                 schema: {
-                    fileWidth: 521,
-                    fileHeight: 244,
                     max: 1
                 },
                 validators: [

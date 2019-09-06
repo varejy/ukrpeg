@@ -3,19 +3,19 @@ import base from '../base';
 
 import setPartners from '../../actions/setPartners';
 
-export default function getAllPartners (req) {
+export default function getNewsAll (req) {
     return dispatch => {
         const host = req.get('host');
 
         return base(
             request
-                .get(`${host}/api/client/partners/slides`)
+                .get(`${host}/api/client/partners/all`)
                 .timeout({
                     deadline: 2000
                 })
         )
-            .then(slides => {
-                dispatch(setPartners(slides));
+            .then(news => {
+                dispatch(setPartners(news));
             })
             .catch(() => {
                 dispatch(setPartners([]));
