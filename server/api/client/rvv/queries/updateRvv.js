@@ -1,5 +1,5 @@
-import mainSlider from '../model';
+import rvv from '../model';
 
 export default function updateRvv (rvv) {
-    return mainSlider.findOneAndUpdate({ id: rvv.id }, rvv, { new: true });
+    return rvv.findOneAndUpdate({ id: rvv.id }, rvv, { new: true });
 }

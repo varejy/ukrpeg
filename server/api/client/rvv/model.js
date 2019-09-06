@@ -17,6 +17,10 @@ const rvv = new Schema({
                             type: String,
                             required: true
                         },
+                        imgAlt: {
+                            type: String,
+                            required: true
+                        },
                         img: {
                             type: String,
                             required: true
@@ -24,7 +28,51 @@ const rvv = new Schema({
                     },
                     required: true
                 }
-            ]
+            ],
+            pProject: {
+                type: {
+                    sity: {
+                        type: String,
+                        required: true
+                    },
+                    description: {
+                        type: String,
+                        required: true
+                    }
+                },
+                required: true
+            },
+            mainForces: [
+                {
+                    type: String,
+                    required: true
+                }
+            ],
+            keyFacts: [
+                {
+                    type: {
+                        title: {
+                            type: String,
+                            required: true
+                        },
+                        description: {
+                            type: String,
+                            required: true
+                        }
+                    },
+                    required: true
+                }
+            ],
+            composition: [
+                {
+                    type: String,
+                    required: true
+                }
+            ],
+            message: {
+                    type: String,
+                    required: true
+            }
         },
         required: true
     }
