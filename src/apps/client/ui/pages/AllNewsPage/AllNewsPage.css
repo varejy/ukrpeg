@@ -121,18 +121,24 @@
 }
 
 .rectangleGreen{
-    height: 70px;
+    height: 60px;
     width: 6px;
     margin-right: 25px;
     background-color: limeGreen;
+
+    @media (max-width: 425px){
+        height: 40px;
+        width: 4px;
+    }
 }
 
 .title{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 16px;
     font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.5px;
     text-align: left;
+    line-height: 24px;
+    max-width: 90%;
 }
 
 .categoryTitle{

@@ -149,6 +149,7 @@ class NewsPage extends Component {
                         <StyleRenderer html={article.texts[lang].description}/>
                     </div>
                 </div>
+                {nextArticle &&
                 <div className={styles.nextNews}>
                     <div className={styles.nextNewsInfo}>
                         <div className={styles.nextNewsHeader}>
@@ -157,18 +158,8 @@ class NewsPage extends Component {
                         </div>
                         <div className={styles.nextNewsTitle}>{nextArticle ? nextArticle.texts[lang].name : 'Ця новина остання в цьому розділі'}</div>
                     </div>
-                    {nextArticle
-                        ? <Link key={nextArticle.id} to={`${langRoute}/news/${nextArticle.id}`}>
-                            <div className={styles.nextNewsButton}>
-                                <img className={styles.arrowIcon}
-                                    src={ isDesktop
-                                        ? '/src/apps/client/ui/pages/NewsPage/images/downArrowGreen.png'
-                                        : '/src/apps/client/ui/pages/NewsPage/images/downArrowBlack.png'
-                                    }
-                                    alt='arrow'/>
-                            </div>
-                        </Link>
-                        : <div className={classNames(styles.nextNewsButton, styles.nextNewsButtonDisabled)}>
+                    <Link key={nextArticle.id} to={`${langRoute}/news/${nextArticle.id}`}>
+                        <div className={styles.nextNewsButton}>
                             <img className={styles.arrowIcon}
                                 src={ isDesktop
                                     ? '/src/apps/client/ui/pages/NewsPage/images/downArrowGreen.png'
@@ -176,8 +167,9 @@ class NewsPage extends Component {
                                 }
                                 alt='arrow'/>
                         </div>
-                    }
+                    </Link>
                 </div>
+                }
             </div>
             <div className={styles.newsMenuContainer}>
                 <ul>
