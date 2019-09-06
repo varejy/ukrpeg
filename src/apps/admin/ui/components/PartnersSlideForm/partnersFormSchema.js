@@ -1,44 +1,39 @@
 import FormFieldInput from '../Form/fields/FormFieldInput/FormFieldInput.jsx';
 import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
 import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
-import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
+import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 
-export default function ({ data: { title } = {}, settings: { lang } } = {}) {
+export default function () {
     return {
         fields: [
             {
                 component: FormFieldTitle,
                 name: 'title',
                 schema: {
-                    label: title,
-                    variant: 'h5'
+                    label: 'Редактирование',
+                    variant: 'h6'
                 }
             },
             {
-                component: FormFieldLangs,
-                name: 'lang',
+                component: FormFieldFiles,
+                name: 'avatar',
                 schema: {
-                    langs: ['ua', 'en']
+                    fileWidth: 240,
+                    fileHeight: 135,
+                    max: 1
                 },
                 validators: [
-                    {
-                        name: 'requiredLangFields',
-                        options: {
-                            text: 'Заполните форму для всех языков',
-                            fields: ['en_description', 'ua_description']
-                        }
-                    }
+                    { name: 'requiredFiles', options: { text: 'Добавьте лого партнёра' } }
                 ]
             },
             {
                 component: FormFieldInput,
-                name: `${lang}_description`,
+                name: 'name',
                 schema: {
-                    label: 'Сообщение',
-                    multiline: true
+                    label: 'Название'
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните описание' } }
+                    { name: 'required', options: { text: 'Заполните название компании партнёра' } }
                 ]
             },
             {
