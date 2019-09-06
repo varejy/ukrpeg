@@ -74,6 +74,7 @@
 
 .boldText{
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
+    font-weight: 600;
 }
 
 .info{
@@ -134,7 +135,6 @@
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 1px;
-    font-weight: 600;
 
     @media (--media-tablet-l) {
         font-size: 15px;
@@ -167,7 +167,6 @@
     width: 50%;
     padding-bottom: 85px;
     padding-left: 10px;
-    font-weight: 600;
 
     @media (max-width: 1350px){
         padding-left: 25px;
