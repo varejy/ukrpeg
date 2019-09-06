@@ -191,6 +191,5 @@
     @media (--media-phone-s) {
         padding: 23px 15px 0 20px;
         font-size: 11px;
-        line-height: 13px;
     }
 }
