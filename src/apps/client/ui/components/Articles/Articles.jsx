@@ -6,6 +6,7 @@ import styles from './Articles.css';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
 
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 const mapStateToProps = ({ application, news }) => {
     return {
@@ -82,10 +83,10 @@ class Articles extends Component {
                     <div className={styles.news} style={{ left: `${-sliderLeft}px` }} >
                         {news.map((item, index) => {
                             return (
-                                <div key={index} className={styles.newsBlock}>
+                                <Link to={`${langRoute}/news/${item.id}`} key={index} className={styles.newsBlock}>
                                     <p className={styles.date}>{getDateFormatted(item.date, lang)}</p>
                                     <p className={styles.description}>{item.texts[`${lang}`].shortDescription}</p>
-                                </div>
+                                </Link>
                             );
                         })}
                     </div>
