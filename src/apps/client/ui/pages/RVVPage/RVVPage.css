@@ -98,6 +98,14 @@
     margin: 0 auto 54px auto;
     z-index: 11;
     position: relative;
+
+    @media (max-width: 780px){
+        left: -3px;
+    }
+
+    @media (max-width: 425px){
+        left: -2px;
+    }
 }
 
 .rectangleGreen{
@@ -106,6 +114,11 @@
     margin-right: 20px;
     background-color: limeGreen;
     flex-shrink: 0;
+
+    @media (max-width: 425px){
+        height: 40px;
+        width: 4px;
+    }
 }
 
 .title{
@@ -114,7 +127,7 @@
     letter-spacing: 1.5px;
     text-align: left;
     line-height: 24px;
-    max-width: 80%;
+    max-width: 90%;
 }
 
 .plans{
@@ -261,7 +274,7 @@
         flex-wrap: nowrap;
         flex-direction: column;
         align-items: center;
-        padding-top: 108px;
+        padding-top: 60px;
         background: url('./images/gradientBackground.png') center;
         background-size: cover;
         margin: 0;
@@ -282,13 +295,13 @@
         flex-direction: column;
         align-items: center;
         padding: 0 10%;
-        margin-bottom: 120px;
+        margin-bottom: 60px;
         width: 100%;
     }
 
     @media (max-width: 500px){
         width: 100%;
-        margin: 0 30px 120px 30px;
+        margin: 0 30px 60px 30px;
     }
 }
 
@@ -354,6 +367,10 @@
     height: auto;
     padding: 108px 0 92px 0;
     position: relative;
+
+    @media (max-width: 780px){
+        padding: 54px 0 92px 0;
+    }
 }
 
 .projectInfo{
@@ -362,7 +379,7 @@
     margin: 0 auto;
     padding: 0 134px;
     color: darkGreyBasic;
-    font-family: 'Gotham Medium', Arial;
+    font-family: 'Gotham Bold', Arial;
     font-size: 16px;
     line-height: 20px;
     text-align: left;
@@ -374,6 +391,7 @@
         width: 100%;
         font-size: 20px;
         line-height: 24px;
+        font-family: 'Gotham Medium', Arial;
     }
 
     @media (max-width: 500px){
@@ -424,7 +442,7 @@
     width: 100%;
     max-width: 1350px;
     margin: 0 auto;
-    padding: 53px 0 100px 0;
+    padding: 53px 0 50px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -599,6 +617,11 @@
     margin-right: 20px;
     background-color: whiteBasic;
     flex-shrink: 0;
+
+    @media (max-width: 425px){
+        height: 40px;
+        width: 4px;
+    }
 }
 
 .whiteTitle{
@@ -976,6 +999,7 @@
 .partnersMobile .titleContainer{
     padding-left: 0;
     margin: 27px 0;
+    position: relative;
 }
 
 .containerPlansMobile{
@@ -1024,7 +1048,7 @@
 
 .containerPlansMobile .course{
     height: auto;
-    min-height: 330px;
+    min-height: 300px;
     width: 100vw;
     display: flex;
     flex-shrink: 0;
@@ -1079,12 +1103,12 @@
     padding-left: 30%;
     z-index: 11;
     justify-self: flex-start;
+    margin: 30px auto 0 auto;
     width: 100%;
 
     @media (max-width: 500px){
         justify-content: center;
         padding-left: 0;
-        margin: 40px auto;
     }
 }
 
@@ -1130,8 +1154,13 @@
 }
 
 .button{
-    height: 35px;
+    height: 30px;
     width: auto;
+
+    @media (max-width: 425px){
+        height: 18px;
+        width: auto;
+    }
 }
 
 .buttonLeft, .buttonRight{
@@ -1141,6 +1170,11 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+
+    @media (max-width: 425px){
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .buttonLeft{
@@ -1152,7 +1186,7 @@
 }
 
 .buttonDisabled{
-    border: 1px solid rgba(122, 122, 122, 0.2);
+    border: 1px solid rgba(122, 122, 122, 1);
     opacity: 0.2;
 }
 
