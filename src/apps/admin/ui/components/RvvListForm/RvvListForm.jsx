@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from '../Form/Form';
-import getSchema from './rvvListFormSchema';
+import plansSchema from './rvvPlanFormSchema';
 
 import { connect } from 'react-redux';
 import saveNewsCategory from '../../../services/saveNewsCategory';
@@ -39,14 +39,52 @@ class RvvListForm extends Component {
     constructor (...args) {
         super(...args);
 
-        const { category, type } = this.props;
+        const { index, type } = this.props;
 
-        this.initialValuesPlans = {
-            ua_name: pathOr(['texts', 'ua', 'name'], '', category),
-            en_name: pathOr(['texts', 'en', 'name'], '', category),
-            hidden: category.hidden || false,
-            ...pick(CATEGORIES_VALUES, category)
-        };
+        this.initialValues = [
+            {
+                ua_title: '',
+                en_title: '',
+                id: 'plans'
+            },
+            {
+                ua_text: '',
+                en_text: '',
+                ua_imgAlt: '',
+                en_imgAlt: '',
+                img: '',
+                id: 'why'
+            },
+            {
+                ua_sity: '',
+                en_sity: '',
+                ua_description: '',
+                en_description: '',
+                id: 'pProject'
+            },
+            {
+                ua_title: '',
+                en_title: '',
+                id: 'mainForces'
+            },
+            {
+                ua_title: '',
+                en_title: '',
+                ua_description: '',
+                en_description: '',
+                id: 'keyFacts'
+            },
+            {
+                ua_title: '',
+                en_title: '',
+                id: 'composition'
+            },
+            {
+                ua_message: '',
+                en_message: '',
+                id: 'message'
+            },
+        ];
 
         this.state = {
             id: prop('id', category),

@@ -26,27 +26,20 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                         name: 'requiredLangFields',
                         options: {
                             text: 'Заполните форму для всех языков',
-                            fields: ['en_name', 'ua_name']
+                            fields: ['en_title', 'ua_title']
                         }
                     }
                 ]
             },
             {
                 component: FormFieldInput,
-                name: `${lang}_name`,
+                name: `${lang}_title`,
                 schema: {
                     label: 'Название'
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните название категории' } }
+                    { name: 'required', options: { text: 'Заполните название' } }
                 ]
-            },
-            {
-                component: FormFieldCheckbox,
-                name: 'hidden',
-                schema: {
-                    label: 'Скрыть категорию'
-                }
             },
             {
                 component: FormFieldButton,

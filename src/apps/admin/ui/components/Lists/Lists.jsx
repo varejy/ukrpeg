@@ -40,7 +40,7 @@ const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDelete, sortable, numeration, isImage, value, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDelete, sortable, numeration, isImage, value, tabId, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
         {
@@ -50,7 +50,7 @@ const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDel
         }
         {
             isImage && <ListItemAvatar>
-                <Avatar className={classes.avatar} alt={value.imgAlt} src={value.imgPath} />
+                <Avatar className={classes.avatar} alt={value.imgAlt} src={value.path} />
             </ListItemAvatar>
         }
         <ListItemText
@@ -60,7 +60,7 @@ const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDel
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
                 <Tooltip title='Редактировать'>
-                    <IconButton onClick={onFormOpen(value)}>
+                    <IconButton onClick={onFormOpen(value, tabId)}>
                         <EditIcon />
                     </IconButton>
                 </Tooltip>
@@ -179,7 +179,8 @@ class Lists extends Component {
         numeration: PropTypes.bool,
         nameToolTip: PropTypes.bool,
         maxLength: PropTypes.number,
-        title: PropTypes.string
+        title: PropTypes.string,
+        tabId: PropTypes.string
     };
 
     static defaultProps = {
@@ -190,6 +191,7 @@ class Lists extends Component {
         nameToolTip: false,
         formValuesName: '',
         title: '',
+        tabId: '',
         values: [],
         editValues: noop,
         onFormOpen: noop,
@@ -252,7 +254,7 @@ class Lists extends Component {
 
     render () {
         const { values, valueForDelete } = this.state;
-        const { sortable, isImage, numeration, maxLength, classes, onFormOpen, title } = this.props;
+        const { sortable, isImage, numeration, maxLength, classes, onFormOpen, title, tabId } = this.props;
         const checkMaxItemLength = () => values.length === maxLength;
 
         return <div>
@@ -275,6 +277,7 @@ class Lists extends Component {
                     sortable={sortable}
                     isImage={isImage}
                     numeration={numeration}
+                    tabId={tabId}
                     values={values}
                     useDragHandle
                     classes={classes}

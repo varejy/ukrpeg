@@ -7,7 +7,12 @@ const rvv = new Schema({
     texts: {
         type: {
             plans: [{
-                type: String,
+                type: {
+                    title: {
+                        type: String,
+                        required: true
+                    }
+                },
                 required: true
             }],
             why: [
@@ -22,6 +27,10 @@ const rvv = new Schema({
                             required: true
                         },
                         img: {
+                            type: String,
+                            required: true
+                        },
+                        id: {
                             type: String,
                             required: true
                         }
@@ -44,7 +53,12 @@ const rvv = new Schema({
             },
             mainForces: [
                 {
-                    type: String,
+                    type: {
+                        title: {
+                            type: String,
+                            required: true
+                        }
+                    },
                     required: true
                 }
             ],
@@ -65,7 +79,12 @@ const rvv = new Schema({
             ],
             composition: [
                 {
-                    type: String,
+                    type: {
+                        title: {
+                            type: String,
+                            required: true
+                        }
+                    },
                     required: true
                 }
             ],

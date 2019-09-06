@@ -149,8 +149,8 @@ class RvvPage extends Component {
             });
     }
 
-    handlePlanFormOpen () {
-
+    handleFormOpen = (value, tabId) => () => {
+        console.log(value, tabId)
     }
 
     handleTableChange = event => () => {
@@ -168,8 +168,9 @@ class RvvPage extends Component {
                 sortable={true}
                 numeration={true}
                 maxLength={10}
+                tabId='plans'
                 title='Планы'
-                onFormOpen={this.handlePlanFormOpen}
+                onFormOpen={this.handleFormOpen}
             />
         </div>;
     }
@@ -183,8 +184,9 @@ class RvvPage extends Component {
                 sortable={true}
                 isImage={true}
                 nameToolTip={true}
+                tabId='why'
                 title='Зачем нужен РВВ'
-                onFormOpen={this.handlePlanFormOpen}
+                onFormOpen={this.handleFormOpen}
             />
         </div>;
     }
@@ -196,6 +198,7 @@ class RvvPage extends Component {
             <div className={classes.modalContent}>
                 <RvvCardPilotProjectForm
                     onDone={noop}
+                    tabId='pProject'
                     title='Редактирование пилотного проекта'
                 />
             </div>
@@ -211,8 +214,9 @@ class RvvPage extends Component {
                 sortable={true}
                 numeration={true}
                 maxLength={9}
+                tabId='mainForces'
                 title='Основные силы'
-                onFormOpen={this.handlePlanFormOpen}
+                onFormOpen={this.handleFormOpen}
             />
         </div>;
     }
@@ -222,6 +226,7 @@ class RvvPage extends Component {
         
         return <div className={classes.wrapp}>
             <RvvCardsKeyFacts
+                tabId='keyFacts'
                 title='Ключевые факты'
                 maxLength={3}
                 values={arrayForFivePage}
@@ -236,8 +241,9 @@ class RvvPage extends Component {
             <Lists
                 values={arrayForSixPage}
                 sortable={true}
+                tabId='composition'
                 title='В состав входят'
-                onFormOpen={this.handlePlanFormOpen}
+                onFormOpen={this.handleFormOpen}
             />
         </div>;
     }
@@ -249,6 +255,7 @@ class RvvPage extends Component {
             <div className={classes.modalContent}>
                 <RvvCardPilotProjectForm
                     onDone={noop}
+                    tabId='message'
                     type='message'
                     title='Редактирование cообщение'
                 />
