@@ -169,26 +169,26 @@
     }
 
     @media (--media-tablet-l) {
-        padding: 50px 30px 75px 50px;
+        padding: 50px 50px 75px 50px;
         font-size: 15px;
         line-height: 18px;
         width: 100%;
     }
 
     @media (--media-tablet-s) {
-        padding: 40px 20px 75px 40px;
+        padding: 40px 30px 75px 40px;
         font-size: 14px;
         line-height: 16px;
     }
 
     @media (--media-phone) {
-        padding: 30px 10px 75px 30px;
+        padding: 30px 20px 75px 30px;
         font-size: 13px;
         line-height: 15px;
     }
 
     @media (--media-phone-s) {
-        padding: 23px 8px 75px 23px;
+        padding: 23px 15px 75px 23px;
         font-size: 11px;
         line-height: 13px;
     }
