@@ -203,7 +203,9 @@
     @media (max-width: 780px){
         top: 300px;
         width: 100%;
+        height: auto;
         align-items: start;
+        left: 0;
     }
 }
 
