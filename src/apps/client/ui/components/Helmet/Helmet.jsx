@@ -10,13 +10,13 @@ import find from '@tinkoff/utils/array/find';
 
 const NEWS_PATH = '/:lang(en)?/news/:id';
 const STATIC_ROUTES = [
-    { id: 'main', path: '/', exact: true },
-    { id: 'about', path: '/about', exact: true },
-    { id: 'news', path: '/news', exact: true },
-    { id: 'rvv', path: '/rvv', exact: true },
-    { id: 'laws', path: '/laws', exact: true },
-    { id: 'contacts', path: '/contacts', exact: true },
-    { id: 'search', path: '/search', exact: true }
+    { id: 'main', path: '/:lang(en)?/', exact: true },
+    { id: 'about', path: '/:lang(en)?/about', exact: true },
+    { id: 'news', path: '/:lang(en)?/news', exact: true },
+    { id: 'rvv', path: '/:lang(en)?/rvv', exact: true },
+    { id: 'laws', path: '/:lang(en)?/laws', exact: true },
+    { id: 'contacts', path: '/:lang(en)?/contacts', exact: true },
+    { id: 'search', path: '/:lang(en)?/search', exact: true }
 ];
 const NOT_FOUND_META = {
     seoTitle: '404',
