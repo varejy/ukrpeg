@@ -48,7 +48,7 @@ class Header extends Component {
 
     state = {
         burgerMenuOpen: false
-    }
+    };
 
     handleMenuClick = event => {
         const { burgerMenu, setMenuOpen } = this.props;
@@ -57,11 +57,11 @@ class Header extends Component {
         });
 
         setMenuOpen(!burgerMenu);
-    }
+    };
 
     handleLangClick = (lang) => () => {
         this.props.setLang(lang);
-    }
+    };
 
     componentWillReceiveProps (nextProps) {
         const { pathname, setMenuOpen } = this.props;
@@ -77,7 +77,7 @@ class Header extends Component {
         this.setState({
             burgerMenuOpen: false
         });
-    }
+    };
 
     render () {
         const { langMap, langRoute, lang, pathname } = this.props;
@@ -100,7 +100,8 @@ class Header extends Component {
                                     exact={link.exact}
                                     to={`${langRoute}${link.path}`}
                                     activeClassName={styles.activeLink}
-                                    className={styles.link}>
+                                    className={styles.link}
+                                    onClick={this.handleMenuClick}>
                                     {menuItems[link.id]}
                                 </NavLink>
                             );
