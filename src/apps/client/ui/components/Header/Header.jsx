@@ -9,10 +9,12 @@ import { menu } from '../../../constants/routes';
 import { Link, NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import setLang from '../../../actions/setLang';
 import setMenuOpen from '../../../actions/setMenuOpen';
 import { EN, UA } from '../../../constants/constants';
+import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 
 const mapStateToProps = ({ application }, ownProps) => {
     return {
@@ -20,14 +22,16 @@ const mapStateToProps = ({ application }, ownProps) => {
         langRoute: application.langRoute,
         lang: application.lang,
         pathname: ownProps.location.pathname,
-        burgerMenu: application.burgerMenu
+        burgerMenu: application.burgerMenu,
+        newsCategories: application.categories
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         setLang: payload => dispatch(setLang(payload)),
-        setMenuOpen: payload => dispatch(setMenuOpen(payload))
+        setMenuOpen: payload => dispatch(setMenuOpen(payload)),
+        setActiveCategoryIndex: payload => dispatch(setActiveCategoryIndex(payload))
     };
 };
 
@@ -39,16 +43,32 @@ class Header extends Component {
         setLang: PropTypes.func.isRequired,
         setMenuOpen: PropTypes.func.isRequired,
         pathname: PropTypes.string,
-        burgerMenu: PropTypes.bool.isRequired
+        burgerMenu: PropTypes.bool.isRequired,
+        newsCategories: PropTypes.array.isRequired,
+        setActiveCategoryIndex: PropTypes.func.isRequired
     };
 
     static defaultProps = {
         langRoute: ''
     };
 
-    state = {
-        burgerMenuOpen: false
-    };
+    constructor (...args) {
+        super(...args);
+
+        const { newsCategories } = this.props;
+
+        const allNews = { texts: {
+            en: { name: 'All news' },
+            ua: { name: 'Всі новини' }
+        } };
+        const categoriesFull = [allNews, ...newsCategories];
+
+        this.state = {
+            burgerMenuOpen: false,
+            newsCategoriesOpen: false,
+            newsCategories: categoriesFull
+        };
+    }
 
     handleMenuClick = event => {
         const { burgerMenu, setMenuOpen } = this.props;
@@ -79,9 +99,21 @@ class Header extends Component {
         });
     };
 
+    handleCategoriesOpen = event => {
+        this.setState({
+            newsCategoriesOpen: !this.state.newsCategoriesOpen
+        });
+    };
+
+    handleMenuCategoryClick = (index) => () => {
+        this.props.setActiveCategoryIndex(index);
+        this.handleMenuClick();
+        this.handleCategoriesOpen();
+    };
+
     render () {
         const { langMap, langRoute, lang, pathname } = this.props;
-        const { burgerMenuOpen } = this.state;
+        const { burgerMenuOpen, newsCategoriesOpen, newsCategories } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
         const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
@@ -90,20 +122,45 @@ class Header extends Component {
             <div className={styles.headBg}>
                 <div className={!burgerMenuOpen ? styles.wrapper : styles.wrapperBurgerMenu}>
                     <Link to={`${langRoute}/`} className={styles.logoContainer} onClick={this.handleLogoClick}>
-                        <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
+                        <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt="РВВ"/>
                     </Link>
                     <nav className={!burgerMenuOpen ? styles.menu : styles.burgerMenuList}>
                         {menu.map((link, i) => {
                             return (
-                                <NavLink
-                                    key={i}
-                                    exact={link.exact}
-                                    to={`${langRoute}${link.path}`}
-                                    activeClassName={styles.activeLink}
-                                    className={styles.link}
-                                    onClick={this.handleMenuClick}>
-                                    {menuItems[link.id]}
-                                </NavLink>
+                                <div key={i}>
+                                    <NavLink
+                                        exact={link.exact}
+                                        to={link.id !== 'news' && `${langRoute}${link.path}`}
+                                        activeClassName={styles.activeLink}
+                                        className={styles.link}
+                                        onClick={link.id !== 'news' ? this.handleMenuClick : this.handleCategoriesOpen}
+                                    >
+                                        {menuItems[link.id]}
+                                        {burgerMenuOpen && link.id === 'news' &&
+                                    <img className={!newsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp}
+                                        src='/src/apps/client/ui/components/Header/files/arrowDown.png'
+                                        alt="arrowIcon"
+                                    />
+                                        }
+                                    </NavLink>
+                                    {
+                                        (link.id === 'news' && newsCategoriesOpen) && <div className={styles.newsCategoriesList}> {
+                                            newsCategories.map((link, j) => {
+                                                return (
+                                                    <NavLink
+                                                        key={j}
+                                                        exact={link.exact}
+                                                        to={`${langRoute}/news`}
+                                                        activeClassName={styles.activeLink}
+                                                        className={classNames(styles.link, styles.newsLink)}
+                                                        onClick={newsCategoriesOpen ? this.handleMenuCategoryClick(j) : undefined}
+                                                    >
+                                                        {link.texts[lang].name}
+                                                    </NavLink>);
+                                            })
+                                        }
+                                        </div>}
+                                </div>
                             );
                         })}
                         <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>

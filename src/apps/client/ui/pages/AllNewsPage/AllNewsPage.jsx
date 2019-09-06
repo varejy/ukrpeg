@@ -36,7 +36,18 @@ class AllNewsPage extends Component {
 
     constructor (...args) {
         super(...args);
-        const { news, categories, activeCategoryIndex } = this.props;
+
+        this.state = this.getNewState(this.props);
+    }
+
+    componentWillReceiveProps (nextProps, nextContext) {
+        if (this.props.activeCategoryIndex !== nextProps.activeCategoryIndex) {
+            this.setState(this.getNewState(nextProps));
+        }
+    }
+
+    getNewState = (props) => {
+        const { news, categories, activeCategoryIndex } = props;
         const allNews = { texts: {
             en: { name: 'All news' },
             ua: { name: 'Всі новини' }
@@ -48,12 +59,12 @@ class AllNewsPage extends Component {
         categoriesArr[activeCategoryIndex].opened = true;
         const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categoriesArr[activeCategoryIndex].id) : news;
 
-        this.state = {
+        return {
             mobileMenuListVisible: false,
             categories: categoriesArr,
             newsCategoryRendered: newsArr
         };
-    }
+    };
 
     handleCategoryClick = i => () => {
         const { news, setActiveCategoryIndex } = this.props;
