@@ -8,16 +8,16 @@ export default function getSlides (req, res) {
     getSliderQuery(SLIDER_ID)
         .then(([partners]) => {
             if (!partners) {
-                return createSlider({ slides: [], id: SLIDER_ID })
+                return createSlider({ partners: [], id: SLIDER_ID })
                     .then(partners => {
-                        res.status(OKEY_STATUS_CODE).send(partners.slides);
+                        res.status(OKEY_STATUS_CODE).send(partners.partners);
                     })
                     .catch(() => {
                         res.status(SERVER_ERROR_STATUS_CODE).end();
                     });
             }
 
-            res.status(OKEY_STATUS_CODE).send(partners.slides);
+            res.status(OKEY_STATUS_CODE).send(partners.partners);
         })
         .catch(() => {
             res.status(SERVER_ERROR_STATUS_CODE).end();

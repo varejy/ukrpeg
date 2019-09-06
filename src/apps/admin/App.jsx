@@ -8,7 +8,6 @@ import checkAuthentication from './services/checkAuthentication';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { matchPath } from 'react-router';
 
-import MainPage from './ui/pages/MainPage/MainPage.jsx';
 import RvvPage from './ui/pages/RvvPage/RvvPage.jsx';
 import LegislationPage from './ui/pages/LegislationPage/LegislationPage';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';

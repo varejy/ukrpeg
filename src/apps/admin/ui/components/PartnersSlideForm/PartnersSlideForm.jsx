@@ -33,7 +33,7 @@ class MainSlideForm extends Component {
         };
     }
 
-    handleChange = (values, changes) => {
+    handleChange = values => {
         this.initialValues = {
             values
         };
@@ -43,8 +43,8 @@ class MainSlideForm extends Component {
         const { index } = this.state;
         const sendValues = {
             name: values.name,
-            wrongDimensions: values.wrongDimensions,
-            path: values.avatar.files[0]
+            file: values.avatar.files[0],
+            removedFile: values.avatar.removedFiles[0]
         };
 
         this.props.onDone(sendValues, index);

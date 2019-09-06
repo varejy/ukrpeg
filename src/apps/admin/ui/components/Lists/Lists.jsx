@@ -230,15 +230,15 @@ class Lists extends Component {
     componentWillReceiveProps (nextProps) {
         if (nextProps.values !== this.props.values) {
             this.setState({
-                values: nextProps.values,
-            })
+                values: nextProps.values
+            });
         }
     }
 
     handleWarningAgree = () => {
         const { valueForDelete } = this.state;
 
-        this.props.onDelete(valueForDelete)
+        this.props.onDelete(valueForDelete);
         this.setState({
             valueForDelete: null
         });
@@ -247,7 +247,7 @@ class Lists extends Component {
     onDragEnd = ({ oldIndex, newIndex }) => {
         const { values } = this.state;
         const newValues = arrayMove(values, oldIndex, newIndex);
-        
+
         this.props.editValues(newValues);
 
         this.setState({

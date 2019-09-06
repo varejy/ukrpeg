@@ -4,11 +4,9 @@ const Schema = mongoose.Schema;
 
 const Partners = new Schema({
     id: { type: String, required: true },
-    slides: [{
+    partners: [{
         path: { type: String, required: true },
-        name: { type: String },
-        url: { type: String },
-        target: { type: Boolean }
+        name: { type: String, required: true }
     }]
 });
 

@@ -90,7 +90,7 @@ class Header extends Component {
     }
 
     render () {
-        const { langMap, langRoute, lang, pathname, newsCategories } = this.props;
+        const { langMap, langRoute, lang, pathname } = this.props;
         const { burgerMenuOpen, newsCategoriesOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
@@ -112,7 +112,12 @@ class Header extends Component {
                                     activeClassName={styles.activeLink}
                                     className={styles.link}>
                                     {menuItems[link.id]}
-                                    {burgerMenuOpen && link.id === 'news' && <img className={!newsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp} onClick={this.handleCategoriesOpen} src='/src/apps/client/ui/components/Header/files/arrowDown.png' />}
+                                    {burgerMenuOpen && link.id === 'news' &&
+                                        <img
+                                            className={!newsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp}
+                                            onClick={this.handleCategoriesOpen}
+                                            src='/src/apps/client/ui/components/Header/files/arrowDown.png'
+                                        />}
                                 </NavLink>
                             );
                         })}

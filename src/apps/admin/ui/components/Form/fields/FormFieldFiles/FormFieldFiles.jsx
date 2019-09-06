@@ -164,7 +164,15 @@ class FormFieldFiles extends Component {
         const { schema } = this.props;
 
         if (schema.max) {
+            const removedFiles = files.slice(0, files.length - schema.max);
+
             files = files.slice(files.length - schema.max);
+
+            removedFiles.forEach(file => {
+                if (file.path) {
+                    this.removedFiles.push(file);
+                }
+            });
         }
 
         this.setState({

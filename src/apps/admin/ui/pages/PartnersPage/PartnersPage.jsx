@@ -71,32 +71,32 @@ class PartnersPage extends Component {
             removedSlides: []
         };
 
-        this.partners = []
+        this.partners = [];
     }
 
     componentDidMount () {
         this.getAllPartners();
     }
 
-    getAllPartners() {
+    getAllPartners () {
         this.props.getAllPartners()
             .then(() => {
                 this.setState({
                     loading: false
-                })
+                });
                 this.partners = this.props.partners.map(partner => ({
                     path: partner.path || '/wrong-path',
                     showed: partner.showed || true,
                     name: partner.name || ''
                 }));
-            })
+            });
     }
 
     componentWillReceiveProps (nextProps) {
         if (nextProps.partners !== this.props.partners) {
             this.setState({
                 disabled: true
-            })
+            });
             this.partners = nextProps.partners;
         }
     }
@@ -152,10 +152,10 @@ class PartnersPage extends Component {
         const { removedSlides } = this.state;
 
         if (this.partners[i].path) {
-            removedSlides.push(this.partners[i]);
+            removedSlides.push(this.partners[i].path);
         }
 
-        this.partners = remove(i, 1, this.partners)
+        this.partners = remove(i, 1, this.partners);
 
         this.setState({
             removedSlides
@@ -176,23 +176,23 @@ class PartnersPage extends Component {
         const { removedSlides } = this.state;
         const formData = new FormData();
         const cleanedSlides = this.partners.map(partner => {
-            const isOld = !partner.path.content;
+            const isOld = !partner.file.content;
 
             return {
                 name: partner.name,
-                path: isOld ? partner.path : partner.path.path,
-                oldSlidePath: partner.oldSlidePath
+                path: isOld && partner.path,
+                removedFile: partner.removedFile && partner.removedFile.path
             };
         });
 
-        this.partners.forEach((file, i) => {
-            if (file.content) {
-                formData.append(`slide-file-${i}`, file.content);
+        this.partners.forEach((partner, i) => {
+            if (partner.file.content) {
+                formData.append(`partner-file-${i}`, partner.file.content);
             }
         });
 
         formData.append('removedSlides', JSON.stringify(removedSlides));
-        formData.append('slides', JSON.stringify(cleanedSlides));
+        formData.append('partners', JSON.stringify(cleanedSlides));
 
         return this.props.updatePartnersSlides(formData);
     };
@@ -222,7 +222,7 @@ class PartnersPage extends Component {
             />
             <Modal open={formShowed} onClose={this.handleClosetForm} className={classes.modal}>
                 <Paper className={classes.modalContent}>
-                    <PartnersSlideForm editableSlide={editableSlideInfo} onDone={this.handleFormDone}/>
+                    <PartnersSlideForm editableSlide={editableSlideInfo} onDone={this.handleFormDone} />
                 </Paper>
             </Modal>
         </div>;
