@@ -39,9 +39,6 @@ export default {
             }
         ]
     },
-    law: {
-        title: `Нормативні документи`
-    },
     contact: {
         title: `Контакты`,
         info: {
@@ -65,5 +62,28 @@ export default {
                 desc: `support@ukrpec.com`
             }
         }
+    },
+    allNews: {
+        title: 'Останні оновлення'
+    },
+    news: {
+        title: 'Останні оновлення',
+        nextNews: 'Наступна новина'
+    },
+    rvv: {
+        titleFirst: 'Плани',
+        titleSecond: 'Навіщо потрібне РВВ:',
+        titleThird: 'Пілотний проект у Вишгороді',
+        titleFourth: 'Основні зусилля та ресурси Коаліції зосереджені на трьох основних напрямках:',
+        titleFifth: 'Ключові факти',
+        titleSixth: 'До складу Української Пакувально-Екологічної Коаліції входять потужні представники галузі:'
+    },
+    search: {
+        getSearchResultText: (text, result) => `Ваш пошук "${text}" дав ${result} результатів`,
+        title: `Всього результатів`,
+        pages: `Сторінки`,
+        news: `Новини`,
+        resultPages: `Сторінки`,
+        resultNews: `Новини`
     }
 };

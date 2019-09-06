@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import propOr from '@tinkoff/utils/object/propOr';
-import styles from './Content.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+import SearchInput from '../SearchInput/SearchInput';
 
 import { connect } from 'react-redux';
+
+import styles from './Content.css';
 
 const mapStateToProps = ({ application }) => {
     return {
@@ -17,6 +20,7 @@ const mapStateToProps = ({ application }) => {
 class Content extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired,
         langRoute: PropTypes.string
     };
 
@@ -25,37 +29,20 @@ class Content extends Component {
     };
 
     state = {
-        inputValue: '',
-        inputZoom: false
-    }
+        inputZoom: false,
+        inputValue: ''
+    };
 
-    handleInputChange = event => {
-        this.setState({
-            inputValue: event.target.value
-        });
-    }
+    handleInputSubmit = inputValue => {
+        const { langRoute } = this.props;
 
-    handleFocusInput = () => {
-        this.setState({
-            inputZoom: true
-        });
-    }
-
-    handleBlurInput = event => {
-        if (event.target.value !== '') {
-            this.setState({
-                inputZoom: !!event.target.value
-            });
-        } else {
-            this.setState({
-                inputZoom: false
-            });
+        if (inputValue) {
+            this.props.history.push(`${langRoute}/search?text=${inputValue}`);
         }
-    }
+    };
 
     render () {
         const { langMap, langRoute } = this.props;
-        const { inputZoom, inputValue } = this.state;
         const text = propOr('content', {}, langMap);
 
         return <div className={styles.content}>
@@ -74,19 +61,9 @@ class Content extends Component {
                             <p className={styles.description}>{text.description}</p>
                         </div>
                     </div>
-                    <div className={styles.searchField}>
-                        <div className={!inputZoom ? styles.searchIcon : styles.searchIconZoom}>
-                            <img src='/src/apps/client/ui/components/Content/files/searchIcon.png' className={styles.searchIconImg} />
-                        </div>
-                        <input
-                            onFocus={this.handleFocusInput}
-                            onBlur={this.handleBlurInput}
-                            value={inputValue}
-                            onChange={this.handleInputChange}
-                            className={!inputZoom ? styles.input : styles.inputZoom} />
-                    </div>
+                    <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit}/>
                     <div className={styles.text}>
-                        <h1 className={styles.heading}></h1>
+                        <h1 className={styles.heading} />
                         <p className={styles.info}>{text.text}</p>
                     </div>
                     <div className={styles.graphic}>
@@ -97,4 +74,4 @@ class Content extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Content);
+export default withRouter(connect(mapStateToProps)(Content));

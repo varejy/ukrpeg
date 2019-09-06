@@ -96,8 +96,6 @@
 }
 
 .img{
-    max-width: 546px;
-    object-fit: cover;
     width: 546px;
     margin-left: 20px;
     order: 1;
@@ -136,8 +134,7 @@
 }
 
 .contentBlock:nth-child(3n):nth-child(odd) .img{
-    max-width: 680px;
-    object-fit: cover;
+    width: 680px;
     margin-right: -125px;
     position: relative;
     left: 0;

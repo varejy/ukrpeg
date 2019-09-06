@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
-import updateSeo from '../../../services/updateSeo';
-
 import Form from '../Form/Form';
 
 import getSchema from './seoFormSchema';
@@ -14,19 +11,14 @@ import isEqual from '@tinkoff/utils/is/equal';
 import compose from '@tinkoff/utils/function/compose';
 import omit from '@tinkoff/utils/object/omit';
 
-const mapDispatchToProps = (dispatch) => ({
-    updateStaticSeo: payload => dispatch(updateSeo(payload))
-});
-
 class SeoForm extends Component {
     static propTypes = {
-        updateStaticSeo: PropTypes.func.isRequired,
         values: PropTypes.object.isRequired,
-        onDone: PropTypes.func
+        onSubmit: PropTypes.func
     };
 
     static defaultProps = {
-        onDone: noop
+        onSubmit: noop
     };
 
     constructor (...args) {
@@ -76,7 +68,6 @@ class SeoForm extends Component {
                     seoTitle: enSeoTitle,
                     seoDescription: enSeoDescription,
                     seoKeywords: enSeoKeywords.words.join(', ')
-
                 },
                 ua: {
                     seoTitle: uaSeoTitle,
@@ -103,15 +94,13 @@ class SeoForm extends Component {
     };
 
     handleSubmit = formValues => {
-        const { values } = this.props;
         const payload = this.getPayload(formValues);
 
         this.setState({
             disabled: true
         });
 
-        return this.props.updateStaticSeo({ ...payload, name: values.name })
-            .then(this.props.onDone);
+        return this.props.onSubmit({ ...payload });
     };
 
     render () {
@@ -128,4 +117,4 @@ class SeoForm extends Component {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SeoForm);
+export default SeoForm;

@@ -22,3 +22,8 @@
   font-family: 'Gotham Bold';
   src: url('./font/GothaProBla.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Gotham Italic';
+  src: url('./font/GothaProIta.ttf') format('truetype');
+}
