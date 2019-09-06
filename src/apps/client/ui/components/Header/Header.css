@@ -86,7 +86,7 @@
 
     @media (--media-tablet-l) {
         min-width: 0;
-        z-index: 4;
+        z-index: 10;
         display: block;
    }
 }
@@ -94,6 +94,7 @@
 .img{
     width: 70px;
     height: 70px;
+    z-index: 10;
 }
 
 .menu{
