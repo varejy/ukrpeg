@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from '../Form/Form';
-import getSchemaPProject from './rvvCardPilotProject';
-import getSchemaMessage from './rvvCardMessage';
+import getSchemaPProject from './RvvCardPilotProjectFormSchema';
+import getSchemaMessage from './rvvCardMessageFormSchema';
 
 import noop from '@tinkoff/utils/function/noop';
 import pathOr from '@tinkoff/utils/object/pathOr';
 
-class RvvCardPilotProject extends Component {
+class RvvCardPilotProjectForm extends Component {
     static propTypes = {
         onDone: PropTypes.func,
         value: PropTypes.object,
@@ -30,15 +30,15 @@ class RvvCardPilotProject extends Component {
         const { value } = this.props;
 
         this.initialValuesProject = {
-            ua_sity: pathOr(['texts', 'ua', 'sity'], '', value),
-            en_sity: pathOr(['texts', 'en', 'sity'], '', value),
+            ua_city: pathOr(['texts', 'ua', 'city'], '', value),
+            en_city: pathOr(['texts', 'en', 'city'], '', value),
             en_description: pathOr(['texts', 'en', 'description'], '', value),
-            ua_description: pathOr(['texts', 'ua', 'description'], '', value),
+            ua_description: pathOr(['texts', 'ua', 'description'], '', value)
         };
 
         this.initialValuesMessage = {
             en_description: pathOr(['texts', 'en', 'description'], '', value),
-            ua_description: pathOr(['texts', 'ua', 'description'], '', value),
+            ua_description: pathOr(['texts', 'ua', 'description'], '', value)
         };
 
         this.state = {
@@ -48,19 +48,19 @@ class RvvCardPilotProject extends Component {
 
     getCategoryPayload = (
         {
-            en_sity: enSity,
-            ua_sity: uaSity,
+            en_city: enCity,
+            ua_city: uaCity,
             en_description: enDescription,
             ua_description: uaDescription
         }) => {
         return {
             texts: {
                 en: {
-                    sity: enSity,
+                    city: enCity,
                     description: enDescription
                 },
                 ua: {
-                    sity: uaSity,
+                    city: uaCity,
                     description: uaDescription
                 }
             }
@@ -109,4 +109,4 @@ class RvvCardPilotProject extends Component {
     }
 }
 
-export default RvvCardPilotProject;
+export default RvvCardPilotProjectForm;

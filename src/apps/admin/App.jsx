@@ -80,10 +80,9 @@ class App extends Component {
         return <main>
             <Header />
             <Switch>
-                <Route exact path='/admin' component={MainPage} />
+                <Route exact path='/admin' component={NewsPage} />
                 <Route exact path='/admin/rvv' component={RvvPage}/>
                 <Route exact path='/admin/laws' component={LegislationPage} />
-                <Route exact path='/admin/news' component={NewsPage} />
                 <Route exact path='/admin/seo' component={SeoPage} />
             </Switch>
         </main>;

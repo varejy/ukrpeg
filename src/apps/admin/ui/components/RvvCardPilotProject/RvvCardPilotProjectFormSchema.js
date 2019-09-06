@@ -25,9 +25,19 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                         name: 'requiredLangFields',
                         options: {
                             text: 'Заполните форму для всех языков',
-                            fields: ['en_description', 'ua_description']
+                            fields: ['en_city', 'ua_city', 'en_description', 'ua_description']
                         }
                     }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: `${lang}_city`,
+                schema: {
+                    label: 'Город'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните название города' } }
                 ]
             },
             {
