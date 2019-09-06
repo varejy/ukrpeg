@@ -13,13 +13,15 @@ const mapStateToProps = ({ application, news }) => {
         langMap: application.langMap,
         lang: application.lang,
         news: news.news,
-        mediaWidth: application.media.width
+        mediaWidth: application.media.width,
+        langRoute: application.langRoute
     };
 };
 
 class Articles extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
+        langRoute: PropTypes.string,
         lang: PropTypes.string,
         news: PropTypes.array,
         mediaWidth: PropTypes.number.isRequired
@@ -68,7 +70,7 @@ class Articles extends Component {
     }
 
     render () {
-        const { langMap, lang, news } = this.props;
+        const { langMap, lang, news, langRoute } = this.props;
         const { sliderLeft, currentNews } = this.state;
         const text = propOr('articles', {}, langMap);
 
