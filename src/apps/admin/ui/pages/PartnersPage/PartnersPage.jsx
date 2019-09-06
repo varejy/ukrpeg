@@ -101,10 +101,10 @@ class PartnersPage extends Component {
         }
     }
 
-    handleFileEdit = i => () => {
+    handleFileEdit = value => () => {
         const { partners } = this;
 
-        if (i === 'new') {
+        if (value === 'new') {
             this.setState({
                 formShowed: true,
                 editableSlideInfo: {
@@ -113,6 +113,7 @@ class PartnersPage extends Component {
                 }
             });
         } else {
+            const i = value.index;
             this.setState({
                 formShowed: true,
                 editableSlideInfo: {
@@ -146,7 +147,8 @@ class PartnersPage extends Component {
             });
     };
 
-    handleFileDelete = (i) => {
+    handleFileDelete = (value) => {
+        const i = value.index;
         const { removedSlides } = this.state;
 
         if (this.partners[i].path) {

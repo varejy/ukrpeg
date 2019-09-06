@@ -61,7 +61,7 @@ const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDel
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
                 <Tooltip title='Редактировать'>
-                    <IconButton onClick={onFormOpen(value)}>
+                    <IconButton onClick={onFormOpen({ value, index })}>
                         <EditIcon />
                     </IconButton>
                 </Tooltip>
@@ -269,7 +269,7 @@ class Lists extends Component {
                 <div className={classes.header}>
                     <Typography variant='h5' className={classes.title}>{title}</Typography>
                     <Tooltip title='Добавить'>
-                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen()}>
+                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen('new')}>
                             <AddIcon />
                         </IconButton>
                     </Tooltip>
