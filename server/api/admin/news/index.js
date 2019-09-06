@@ -7,7 +7,7 @@ import saveNews from './services/saveNews';
 import editNews from './services/editNews';
 import deleteByIds from './services/deleteByIds';
 import updateAvatar from './services/updateAvatar';
-import findNewsByName from './services/findNewsByName';
+import findNewsByText from './services/findNewsByText';
 
 const router = express.Router();
 
@@ -29,6 +29,6 @@ router.route('/update-avatar')
     .post(updateAvatar);
 
 router.route('/find')
-    .get(findNewsByName);
+    .get(findNewsByText);
 
 export default router;

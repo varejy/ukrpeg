@@ -6,9 +6,9 @@ const Seo = new Schema({
     name: { type: String, required: true, unique: true },
     texts: {
         type: {
-            metaKeywords: { type: String, required: true },
-            metaTitle: { type: String, required: true },
-            metaDescription: { type: String, required: true }
+            seoTitle: { type: String, required: true },
+            seoDescription: { type: String, required: true },
+            seoKeywords: { type: String, required: true }
         },
         required: true
     }

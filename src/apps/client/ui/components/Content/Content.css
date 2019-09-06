@@ -244,7 +244,7 @@
     width: 680px;
     height: 100px;
     background: url('/src/apps/client/ui/components/Content/files/searchBgOpacity.png');
-    margin: 140px 0 0 -125px;
+    margin: 140px 0 0 -145px;
     display: flex;
     position: relative;
 
@@ -263,7 +263,7 @@
 
     @media (--media-tablet-s) {
         height: 50px;
-   }
+    }
 
     @media (--media-phone) {
         height: auto;
@@ -273,120 +273,6 @@
         right: 0;
         height: 50px;
    }
-}
-
-.searchIcon, .searchIconZoom{
-    max-width: 125px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.searchIconZoom{
-    position: absolute;
-    right: 0;
-
-    @media (--media-tablet-l) {
-        right: 80px;
-    }
-
-   @media (--media-tablet-s) {
-        right: 50px;
-        width: auto;
-        padding: 0 30px;
-    }
-
-    @media (--media-phone) {
-        right: 30px;
-   }
-
-   @media (--media-phone-s) {
-       right: 0;
-  }
-}
-
-.searchIconImg{
-    height: 35px;
-    width: 35px;
-
-    @media (--media-tablet-l) {
-        width: 35px;
-        height: 35px;
-   }
-
-    @media (--media-tablet-s) {
-        width: 20px;
-        height: 20px;
-   }
-
-    @media (--media-phone) {
-        width: 20px;
-        height: 20px;
-   }
-}
-
-.input, .inputZoom{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    font-size: 26px;
-    letter-spacing: 1px;
-    font-weight: 300;
-    color: blackBasic;
-
-    @media (--media-tablet-l) {
-        font-size: 14px;
-   }
-
-    @media (--media-tablet-s) {
-        font-size: 14px;
-   }
-}
-
-.input{
-    opacity: 0;
-}
-
-.inputZoom{
-    border-bottom: 1px solid white;
-    padding-top: 65px;
-    padding-left: 20px;
-    left: 40px;
-    bottom: 30px;
-    width: 525px;
-
-    @media (--media-tablet-l) {
-        position: static;
-        margin: 10px auto;
-        height: auto;
-        width: 60%;
-        padding: 30px 0 10px 10px;
-   }
-
-    @media (--media-tablet-s) {
-        bottom: 10px;
-        padding: 0 0 5px 5px;
-   }
-
-    @media (--media-phone) {
-        height: auto;
-        width: 60%;
-        bottom: 10px;
-        padding: 0 0 5px 5px;
-        position: static;
-        margin: 10px auto;
-   }
-
-   @media (--media-phone-s) {
-         position: absolute;
-         height: auto;
-         width: 60%;
-         bottom: 10px;
-         padding: 0 0 5px 5px;
-         margin: 0;
-  }
 }
 
 .text{
@@ -430,22 +316,10 @@
     background-size: contain;
     position: absolute;
     right: 0;
-    top: 0;
     height: 600px;
     width: 260px;
 
     @media (--media-tablet-l) {
         display: none;
    }
-}
-
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .heading{
-      margin: 0;
-    }
-
-    .info{
-      text-align: right;
-      width: 100%;
-    }
 }

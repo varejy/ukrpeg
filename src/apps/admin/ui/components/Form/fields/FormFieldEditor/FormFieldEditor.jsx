@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Editor from '../../../Editor/Editor.jsx';
+import Editor from '../../../Editor/Editor';
 
 import noop from '@tinkoff/utils/function/noop';
 

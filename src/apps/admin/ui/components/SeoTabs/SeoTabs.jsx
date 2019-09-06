@@ -6,10 +6,12 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import MetaForm from '../SeoForm/SeoForm.jsx';
+import SeoForm from '../SeoForm/SeoForm.jsx';
 
 import { connect } from 'react-redux';
 import getAllSeo from '../../../services/getAllSeo';
+import updateSeo from '../../../services/updateSeo';
+
 import find from '@tinkoff/utils/array/find';
 
 const materialStyles = () => ({
@@ -30,7 +32,8 @@ const mapStateToProps = ({ seo }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    getAllStaticSeo: payload => dispatch(getAllSeo(payload))
+    getAllStaticSeo: payload => dispatch(getAllSeo(payload)),
+    updateStaticSeo: payload => dispatch(updateSeo(payload))
 });
 
 class SeoTabs extends Component {
@@ -38,6 +41,7 @@ class SeoTabs extends Component {
       classes: PropTypes.object.isRequired,
       pages: PropTypes.array.isRequired,
       getAllStaticSeo: PropTypes.func.isRequired,
+      updateStaticSeo: PropTypes.func.isRequired,
       allStaticSeo: PropTypes.array
   };
 
@@ -62,8 +66,9 @@ class SeoTabs extends Component {
         });
     };
 
-    handleStaticSeoFormDone = () => {
-        return this.props.getAllStaticSeo();
+    handleStaticSeoFormDone = (pageName) => values => {
+        return this.props.updateStaticSeo({ ...values, name: pageName })
+            .then(this.props.getAllStaticSeo);
     };
 
     renderSeoForm = i => {
@@ -76,9 +81,9 @@ class SeoTabs extends Component {
             name: page
         };
 
-        return <MetaForm
+        return <SeoForm
             values={values}
-            onDone={this.handleStaticSeoFormDone}
+            onSubmit={this.handleStaticSeoFormDone(page)}
         />;
     };
 
@@ -94,7 +99,7 @@ class SeoTabs extends Component {
                             aria-controls={`panel${i}bh-content`}
                             id={`panel${i}bh-header`}
                         >
-                            <Typography className={classes.heading}>{pages[i].header}</Typography>
+                            <Typography className={classes.heading}>{pages[i].title}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                             {this.renderSeoForm(i)}
