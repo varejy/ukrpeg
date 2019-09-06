@@ -9,7 +9,7 @@ import Lists from '../../components/Lists/Lists';
 
 import noop from '@tinkoff/utils/function/noop';
 
-import RvvCardPilotProject from '../../components/RvvCardPilotProject/RvvCardPilotProject';
+import RvvCardPilotProject from '../../components/RvvCardPilotProject/RvvCardPilotProject.jsx';
 import RvvCardsKeyFacts from '../../components/RvvCardsKeyFacts/RvvCardsKeyFacts';
 
 import { withStyles } from '@material-ui/core/styles';
