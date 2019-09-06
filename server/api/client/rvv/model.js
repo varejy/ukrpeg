@@ -7,16 +7,7 @@ const rvv = new Schema({
     texts: {
         type: {
             plans: [{
-                type: {
-                    name: {
-                        type: String,
-                        required: true
-                    },
-                    positionIndex: {
-                        type: String,
-                        required: true
-                    }
-                },
+                type: String,
                 required: true
             }],
             why: [
