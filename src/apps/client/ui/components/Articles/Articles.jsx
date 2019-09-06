@@ -11,7 +11,7 @@ const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
         lang: application.lang,
-        news: news.newsList,
+        news: news.news,
         mediaWidth: application.media.width
     };
 };
@@ -84,12 +84,12 @@ class Articles extends Component {
                             return (
                                 <div key={index} className={styles.newsBlock}>
                                     <p className={styles.date}>{getDateFormatted(item.date, lang)}</p>
-                                    <p className={styles.description}>{item.description}</p>
+                                    <p className={styles.description}>{item.texts[`${lang}`].shortDescription}</p>
                                 </div>
                             );
                         })}
                     </div>
-                    <div className={styles.buttons}>
+                    <div className={news.length > 3 ? styles.buttons : styles.buttonsHidden}>
                         <button className={currentNews === 0 ? styles.arrowBtn : styles.activeArrowBtn} onClick={this.handleClickSlide('prev')}>
                             <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' />
                         </button>

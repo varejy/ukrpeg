@@ -219,6 +219,10 @@
    }
 }
 
+.buttonsHidden{
+    display: none;
+}
+
 .switches{
     display: none;
 
