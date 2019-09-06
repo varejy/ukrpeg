@@ -52,7 +52,7 @@ class Articles extends Component {
         if (direction === 'next') {
             if (currentNews < this.maxSlide) {
                 this.setState({
-                    sliderLeft: -(currentNews + 1) * mediaWidth,
+                    sliderLeft: (currentNews + 1) * mediaWidth,
                     currentNews: currentNews + 1
                 });
             }
