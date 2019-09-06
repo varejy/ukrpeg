@@ -23,6 +23,7 @@ import clientLawApi from './api/client/law';
 import clientNewsApi from './api/client/news';
 import clientPartnersApi from './api/client/partners';
 import clientSeoApi from './api/client/seo';
+import clientSearchApi from './api/client/search';
 
 import { DATABASE_URL } from './constants/constants';
 import actions from './actions';
@@ -67,6 +68,7 @@ app.use('/api/client/partners', clientPartnersApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
 app.use('/api/client/law', clientLawApi);
 app.use('/api/client/seo', clientSeoApi);
+app.use('/api/client/search', clientSearchApi);
 
 // admin
 app.get(/^\/admin/, function (req, res) {

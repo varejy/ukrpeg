@@ -13,10 +13,10 @@ export default {
         phone: '+3 8095 456 56 55'
     },
     content: {
-        title: 'РВВ - в дії',
-        description: `Концепція створення ефективної системи збирання, сортування, рециклінгу та відновлення відходів упаковки`,
-        buttonText: 'Детальніше',
-        text: `Розширена відповідальність виробника (РВВ) - ефективний метод управління відходами упаковки, які складають до 30% ТПВ`
+        title: 'RVV is in action',
+        description: `The concept of creating an efficient system for the collection, sorting, recycling and recovery of packaging waste`,
+        buttonText: 'Read more',
+        text: `Extended Producer Responsibility (RWB) - an effective method of managing packaging waste that accounts for up to 30% of MSW`
     },
     companies: {
         title: 'Test prccess participants'
@@ -25,34 +25,31 @@ export default {
         title: 'News'
     },
     about: {
-        title: 'Про компанію',
+        title: 'About the company',
         content: [
             {
-                text: `Українська Пакувально-Екологічна Коаліція (УКРПЕК) була створена у 1999 році як некомерційне (неприбуткове) об’єднання юридичних осіб. Метою цього об’єднання було прагнення компаній, що займаються виробництвом та імпортом упаковки і товарів в упаковці, підвищити стандарти екологічної безпеки, впровадити в Україні європейський досвід поводження з відходами, розповсюдити основи сучасної споживчої культри у сфері поводження з упаковкою та її відходами.`
+                text: `The Ukrainian Packaging and Environmental Coalition (UKRPEC) was established in 1999 as a non-profit (non-profit) association of legal entities. The purpose of this association was the desire of the companies involved in the production and import of packaging and goods in packaging, to raise the standards of environmental safety, to introduce in Ukraine the European experience of waste management, to disseminate the foundations of modern consumer culture in the field of packaging and waste management.`
             },
             {
-                text: `Особливим завданням УКРПЕК є пропагування відповідального ведення бізнесу, підтримка ініціатив виробників, які працюють на ринку України, щодо впровадження сучасних міжнародних стандартів у виробництво пакування для товарів повсякденного попиту (FMCG-товарів). Варто зазначити, що окрім суто екологічної складової цей процес значною мірою сприяє й розвитку економіки. Адже сьогодні більшість розвинених країн Європейського Союзу стали на шлях ресурсоощадної економіки – так званої економіки замкнутого циклу (Circular economy), що забезпечує розвиток ефективних систем збирання, сортування та переробки використаної упаковки.`
+                text: `The special task of UKRPEC is to promote responsible business conduct, to support the initiatives of manufacturers operating in the market of Ukraine to implement modern international standards in the production of packaging for everyday goods (FMCG-goods). It is worth noting that in addition to the purely environmental component, this process contributes significantly to the development of the economy. Today, most developed countries of the European Union have embarked on the path of a resource-saving economy - the so-called Circular economy, which ensures the development of efficient systems for collecting, sorting and processing used packaging.`
             },
             {
-                text: `Не менш важливим також є законодавче забезпечення створення в Україні системи збирання й утилізації відходів упаковки. Коаліція сприяла розробці низки законопроектів щодо упаковки та відходів упаковки (2002 р., 2009 р., 2014 р. та 2016 р.).
-                Зараз Українська Пакувально-Екологічна Коаліція співпрацює з міжнародними та вітчизняними бізнес-асоціаціями, галузевими об’єднаннями, суб’єктами господарювання в сфері поводження з відходами упаковки з метою пропаганди передового європейського досвіду й законодавчого забезпечення створення в Україні систем збирання та переробки відходів упаковки на засадах розширеної відповідальності виробника, які успішно функціонують у країнах ЄС.`
+                text: `Equally important is the legislative support for the creation in Ukraine of a system of collection and disposal of packaging waste. The Coalition contributed to the development of a number of bills on packaging and packaging waste (2002, 2009, 2014 and 2016). 
+                Now the Ukrainian Packaging-Ecological Coalition cooperates with international and domestic business associations, industry associations, economic entities in the field of packaging waste management in order to promote good European experience and legislative support for the creation of waste collection and recycling systems in Ukraine. extended producer responsibility, successfully operating in EU countries.`
             }
         ]
     },
-    law: {
-        title: `Нормативні документи`
-    },
     contact: {
-        title: `Контакты`,
+        title: `Contacts`,
         info: {
             workHours: {
-                title: `Режим роботы:`,
+                title: `Operating mode:`,
                 desc: `пн-пт 09.00 - 17.00`
             },
             adress: {
-                street: `Улица Садовая 28`,
+                street: `Sadovaya Street 28`,
                 index: `06040`,
-                phone: `телефон: `,
+                phone: `phone: `,
                 phoneNumber: `(093) 747 22 02`
             },
             city: {
@@ -61,7 +58,7 @@ export default {
           sed diam nonummy nibh euismod tincidunt ut laoreet dolore`
             },
             mail: {
-                title: `Почта УКРПЕК`,
+                title: `UKRPEG mail`,
                 desc: `support@ukrpec.com`
             }
         }
@@ -80,5 +77,16 @@ export default {
         titleFourth: 'Main efforts and resources of Coalition are focused on three main directions:',
         titleFifth: 'Key facts',
         titleSixth: 'Ukrainian Packaging and Environmental Coalition consists of powerful branch representatives:'
+    },
+    search: {
+        getSearchResultText: (text, result) => `Your search "${text}" returned ${result} results`,
+        title: `All matches`,
+        pages: `Pages`,
+        news: `News`,
+        resultPages: `Pages`,
+        resultNews: `News`
+    },
+    law: {
+        title: `Laws`
     }
 };

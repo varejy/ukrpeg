@@ -1,7 +1,7 @@
 import { SET_NEWS } from '../types/types';
 
 const initialState = {
-    news: [ ]
+    news: []
 };
 
 export default function (state = initialState, action) {

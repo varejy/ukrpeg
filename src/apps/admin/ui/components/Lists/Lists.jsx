@@ -61,7 +61,7 @@ const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDel
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
                 <Tooltip title='Редактировать'>
-                    <IconButton onClick={onFormOpen(index)}>
+                    <IconButton onClick={onFormOpen(value)}>
                         <EditIcon />
                     </IconButton>
                 </Tooltip>
@@ -238,7 +238,7 @@ class Lists extends Component {
     handleWarningAgree = () => {
         const { valueForDelete } = this.state;
 
-        this.props.onDelete(valueForDelete.index)
+        this.props.onDelete(valueForDelete)
         this.setState({
             valueForDelete: null
         });
@@ -247,10 +247,6 @@ class Lists extends Component {
     onDragEnd = ({ oldIndex, newIndex }) => {
         const { values } = this.state;
         const newValues = arrayMove(values, oldIndex, newIndex);
-
-        newValues.map((value, i) => {
-            value.positionIndex = i + 1;
-        });
         
         this.props.editValues(newValues);
 
@@ -273,7 +269,7 @@ class Lists extends Component {
                 <div className={classes.header}>
                     <Typography variant='h5' className={classes.title}>{title}</Typography>
                     <Tooltip title='Добавить'>
-                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen('new')}>
+                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen()}>
                             <AddIcon />
                         </IconButton>
                     </Tooltip>
