@@ -13,7 +13,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
         fields: [
             {
                 component: FormFieldTitle,
-                name: 'title',
+                name: 'form-title',
                 schema: {
                     label: title,
                     variant: 'h5'
@@ -57,6 +57,14 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 ]
             },
             {
+                component: FormFieldTitle,
+                name: 'description-title',
+                schema: {
+                    label: 'Контент',
+                    variant: 'h6'
+                }
+            },
+            {
                 component: FormFieldEditor,
                 name: `${lang}_description`,
                 schema: {
@@ -66,6 +74,14 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 validators: [
                     { name: 'required', options: { text: 'Заполните описание' } }
                 ]
+            },
+            {
+                component: FormFieldTitle,
+                name: 'avatar-title',
+                schema: {
+                    label: 'Аватар',
+                    variant: 'h6'
+                }
             },
             {
                 component: FormFieldFiles,
