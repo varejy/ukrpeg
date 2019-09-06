@@ -6,7 +6,7 @@ import styles from './Articles.css';
 import getDateFormatted from '../../../../../../utils/getDateFormatted';
 
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = ({ application, news }) => {
     return {
@@ -34,10 +34,9 @@ class Articles extends Component {
     state = {
         currentNews: 0,
         sliderLeft: 0
-    }
+    };
 
     maxSlide = this.props.news.length - 1;
-    maxLeft = this.maxSlide * this.props.mediaWidth;
 
     handleSwitchClick = i => e => {
         const { mediaWidth } = this.props;
@@ -46,7 +45,7 @@ class Articles extends Component {
             sliderLeft: i * mediaWidth,
             currentNews: i
         });
-    }
+    };
 
     handleClickSlide = direction => event => {
         const { mediaWidth } = this.props;
