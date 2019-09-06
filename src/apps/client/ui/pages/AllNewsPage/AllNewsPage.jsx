@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import NewsContent from '../../components/NewsContent/NewsContent';
 import PropTypes from 'prop-types';
-import propOr from '@tinkoff/utils/object/propOr';
 import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
+import propOr from '@tinkoff/utils/object/propOr';
 
 const CATEGORY_HEIGHT = 58;
 const mapStateToProps = ({ application, news }) => {
@@ -17,6 +17,7 @@ const mapStateToProps = ({ application, news }) => {
         activeCategoryIndex: application.activeCategoryIndex
     };
 };
+
 const mapDispatchToProps = dispatch => {
     return {
         setActiveCategoryIndex: payload => dispatch(setActiveCategoryIndex(payload))
@@ -44,13 +45,13 @@ class AllNewsPage extends Component {
         const categoriesArr = categoriesFull.map(newsCategory => {
             return { ...newsCategory, opened: false };
         });
-        categoriesArr[0].opened = true;
+        categoriesArr[activeCategoryIndex].opened = true;
+        const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categoriesArr[activeCategoryIndex].id) : news;
 
         this.state = {
+            mobileMenuListVisible: false,
             categories: categoriesArr,
-            newsCategoryRendered: news,
-            activeCategoryIndex: activeCategoryIndex,
-            mobileMenuListVisible: false
+            newsCategoryRendered: newsArr
         };
     }
 
@@ -61,13 +62,12 @@ class AllNewsPage extends Component {
             return { ...newsCategory, opened: false };
         });
         categoriesArr[i].opened = true;
-        const newsArr = news.filter(news => news.categoryId === categories[i].id);
+        const newsArr = i ? news.filter(news => news.categoryId === categoriesArr[i].id) : news;
 
         this.setState({
-            activeCategoryIndex: i,
             mobileMenuListVisible: !this.state.mobileMenuListVisible,
             categories: categoriesArr,
-            newsCategoryRendered: i ? newsArr : news
+            newsCategoryRendered: newsArr
         });
 
         setActiveCategoryIndex(i);
@@ -78,8 +78,8 @@ class AllNewsPage extends Component {
     };
 
     render () {
-        const { newsCategoryRendered, activeCategoryIndex, mobileMenuListVisible, categories } = this.state;
-        const { langMap, lang } = this.props;
+        const { newsCategoryRendered, mobileMenuListVisible, categories } = this.state;
+        const { langMap, lang, activeCategoryIndex } = this.props;
         const text = propOr('allNews', {}, langMap);
 
         return <section className={styles.newsContainer}>
@@ -119,7 +119,7 @@ class AllNewsPage extends Component {
             </div>
             <div className={styles.newsMenuContainerMobile}>
                 <div className={styles.mobileMenuContainer}>
-                    <div className={styles.activeCategory}>{categories[activeCategoryIndex].texts[`${lang}`].name}</div>
+                    <div className={styles.activeCategory}>{categories[activeCategoryIndex].texts[lang].name}</div>
                     <div className={classNames(styles.arrowButton, {
                         [styles.arrowButtonReverse]: mobileMenuListVisible
                     })} onClick={this.handleOpenMenuList}>
@@ -128,8 +128,7 @@ class AllNewsPage extends Component {
                 </div>
                 {
                     <ul className={classNames(styles.categoriesList)}
-                        style={{ height: `${!mobileMenuListVisible ? 0 : CATEGORY_HEIGHT * categories.length}px` }}
-                    >
+                        style={{ height: `${!mobileMenuListVisible ? 0 : CATEGORY_HEIGHT * categories.length}px` }}>
                         {
                             categories.map((newsCategory, i) =>
                                 <li key={i}>
@@ -140,7 +139,7 @@ class AllNewsPage extends Component {
                                     >
                                         <div className={styles.newsCategoryTitleMobile}
                                         >
-                                            <div className={styles.categoryTitleMobile}>{newsCategory.texts[`${lang}`].name}</div>
+                                            <div className={styles.categoryTitleMobile}>{newsCategory.texts[lang].name}</div>
                                         </div>
                                     </div>
                                 </li>
