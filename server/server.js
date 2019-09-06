@@ -14,12 +14,16 @@ import adminAuthenticationApi from './api/admin/authentication';
 import adminLawApi from './api/admin/law';
 import adminNewsCategoryApi from './api/admin/newsCategory';
 import adminNewsApi from './api/admin/news';
+import adminPartnersApi from './api/admin/partners';
 import adminSeoApi from './api/admin/seo';
 import adminFilesApi from './api/admin/files';
+
 import clientNewsCategoryApi from './api/client/newsCategory';
 import clientLawApi from './api/client/law';
 import clientNewsApi from './api/client/news';
+import clientPartnersApi from './api/client/partners';
 import clientSeoApi from './api/client/seo';
+import clientSearchApi from './api/client/search';
 
 import { DATABASE_URL } from './constants/constants';
 import actions from './actions';
@@ -55,13 +59,16 @@ app.use(cookieParser());
 app.use('/api/admin/authentication', adminAuthenticationApi);
 app.use('/api/admin/law', adminLawApi);
 app.use('/api/admin/news', adminNewsApi);
+app.use('/api/admin/partners', adminPartnersApi);
 app.use('/api/admin/newsCategory', adminNewsCategoryApi);
 app.use('/api/admin/seo', adminSeoApi);
 app.use('/api/admin/files', adminFilesApi);
 app.use('/api/client/news', clientNewsApi);
+app.use('/api/client/partners', clientPartnersApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
 app.use('/api/client/law', clientLawApi);
 app.use('/api/client/seo', clientSeoApi);
+app.use('/api/client/search', clientSearchApi);
 
 // admin
 app.get(/^\/admin/, function (req, res) {

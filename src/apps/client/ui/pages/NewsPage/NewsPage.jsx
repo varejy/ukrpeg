@@ -68,7 +68,7 @@ class NewsPage extends Component {
             return { ...newsCategory, opened: false };
         });
         categoriesArr[activeCategoryIndex].opened = true;
-        const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categories[activeCategoryIndex].id) : news;
+        const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categoriesArr[activeCategoryIndex].id) : news;
         const match = matchPath(pathname, { path: PRODUCT_PATH, exact: true });
         const article = find(news => news.id === match.params.id, newsArr);
         const articleIndex = findIndex(news => news.id === match.params.id, newsArr);
@@ -79,7 +79,6 @@ class NewsPage extends Component {
         return {
             article: article,
             articleId: match.params.id,
-            activeCategoryIndex: activeCategoryIndex,
             mobileMenuListVisible: false,
             nextArticle: nextArticle,
             categories: categoriesArr,
@@ -100,20 +99,13 @@ class NewsPage extends Component {
             return { ...newsCategory, opened: false };
         });
         categoriesArr[i].opened = true;
-        const newsArr = i ? news.filter(news => news.categoryId === categories[i].id) : news;
+        const newsArr = i ? news.filter(news => news.categoryId === categoriesArr[i].id) : news;
 
         this.setState({
-            activeCategoryIndex: i,
             mobileMenuListVisible: !this.state.mobileMenuListVisible,
             categories: categoriesArr,
             newsCategoryRendered: newsArr
         });
-
-        setActiveCategoryIndex(i);
-    };
-
-    handleCategoryClickMobile = i => () => {
-        const { setActiveCategoryIndex } = this.props;
 
         setActiveCategoryIndex(i);
     };
@@ -123,8 +115,8 @@ class NewsPage extends Component {
     };
 
     render () {
-        const { article, activeCategoryIndex, mobileMenuListVisible, newsCategoryRendered, categories, nextArticle } = this.state;
-        const { mediaWidth } = this.props;
+        const { article, mobileMenuListVisible, newsCategoryRendered, categories, nextArticle } = this.state;
+        const { mediaWidth, activeCategoryIndex } = this.props;
         const isDesktop = mediaWidth > TABLET_WIDTH;
         const { langMap, lang, langRoute } = this.props;
         const text = propOr('news', {}, langMap);
@@ -157,6 +149,7 @@ class NewsPage extends Component {
                         <StyleRenderer html={article.texts[lang].description}/>
                     </div>
                 </div>
+                {nextArticle &&
                 <div className={styles.nextNews}>
                     <div className={styles.nextNewsInfo}>
                         <div className={styles.nextNewsHeader}>
@@ -165,18 +158,8 @@ class NewsPage extends Component {
                         </div>
                         <div className={styles.nextNewsTitle}>{nextArticle ? nextArticle.texts[lang].name : 'Ця новина остання в цьому розділі'}</div>
                     </div>
-                    {nextArticle
-                        ? <Link key={nextArticle.id} to={`${langRoute}/news/${nextArticle.id}`}>
-                            <div className={styles.nextNewsButton}>
-                                <img className={styles.arrowIcon}
-                                    src={ isDesktop
-                                        ? '/src/apps/client/ui/pages/NewsPage/images/downArrowGreen.png'
-                                        : '/src/apps/client/ui/pages/NewsPage/images/downArrowBlack.png'
-                                    }
-                                    alt='arrow'/>
-                            </div>
-                        </Link>
-                        : <div className={classNames(styles.nextNewsButton, styles.nextNewsButtonDisabled)}>
+                    <Link key={nextArticle.id} to={`${langRoute}/news/${nextArticle.id}`}>
+                        <div className={styles.nextNewsButton}>
                             <img className={styles.arrowIcon}
                                 src={ isDesktop
                                     ? '/src/apps/client/ui/pages/NewsPage/images/downArrowGreen.png'
@@ -184,8 +167,9 @@ class NewsPage extends Component {
                                 }
                                 alt='arrow'/>
                         </div>
-                    }
+                    </Link>
                 </div>
+                }
             </div>
             <div className={styles.newsMenuContainer}>
                 <ul>
@@ -247,7 +231,7 @@ class NewsPage extends Component {
                                         <div className={classNames(styles.newsCategoryMobile, {
                                             [styles.newsCategoryMobileAnimated]: mobileMenuListVisible
                                         })}
-                                        onClick={this.handleCategoryClickMobile(i)}
+                                        onClick={this.handleCategoryClick(i)}
                                         >
                                             <div className={styles.newsCategoryTitleMobile}
                                             >

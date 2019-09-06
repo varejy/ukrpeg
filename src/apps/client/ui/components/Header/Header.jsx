@@ -20,7 +20,8 @@ const mapStateToProps = ({ application }, ownProps) => {
         langRoute: application.langRoute,
         lang: application.lang,
         pathname: ownProps.location.pathname,
-        burgerMenu: application.burgerMenu
+        burgerMenu: application.burgerMenu,
+        newsCategories: application.categories
     };
 };
 
@@ -39,15 +40,18 @@ class Header extends Component {
         setLang: PropTypes.func.isRequired,
         setMenuOpen: PropTypes.func.isRequired,
         pathname: PropTypes.string,
-        burgerMenu: PropTypes.bool.isRequired
+        burgerMenu: PropTypes.bool.isRequired,
+        newsCategories: PropTypes.array
     };
 
     static defaultProps = {
-        langRoute: ''
+        langRoute: '',
+        newsCategories: []
     };
 
     state = {
-        burgerMenuOpen: false
+        burgerMenuOpen: false,
+        newsCategoriesOpen: false
     }
 
     handleMenuClick = event => {
@@ -79,9 +83,15 @@ class Header extends Component {
         });
     }
 
+    handleCategoriesOpen = event => {
+        this.setState({
+            newsCategoriesOpen: !this.state.newsCategoriesOpen
+        });
+    }
+
     render () {
         const { langMap, langRoute, lang, pathname } = this.props;
-        const { burgerMenuOpen } = this.state;
+        const { burgerMenuOpen, newsCategoriesOpen } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
         const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
@@ -90,7 +100,7 @@ class Header extends Component {
             <div className={styles.headBg}>
                 <div className={!burgerMenuOpen ? styles.wrapper : styles.wrapperBurgerMenu}>
                     <Link to={`${langRoute}/`} className={styles.logoContainer} onClick={this.handleLogoClick}>
-                        <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' alt='logo' />
+                        <img className={styles.img} src='/src/apps/client/ui/components/Header/files/logo.png' />
                     </Link>
                     <nav className={!burgerMenuOpen ? styles.menu : styles.burgerMenuList}>
                         {menu.map((link, i) => {
@@ -102,6 +112,12 @@ class Header extends Component {
                                     activeClassName={styles.activeLink}
                                     className={styles.link}>
                                     {menuItems[link.id]}
+                                    {burgerMenuOpen && link.id === 'news' &&
+                                        <img
+                                            className={!newsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp}
+                                            onClick={this.handleCategoriesOpen}
+                                            src='/src/apps/client/ui/components/Header/files/arrowDown.png'
+                                        />}
                                 </NavLink>
                             );
                         })}
