@@ -89,7 +89,7 @@
 
 .contentBlock{
     display: flex;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 
     @media (--media-tablet-l) {
         flex-direction: column;
