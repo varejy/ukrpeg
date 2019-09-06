@@ -127,40 +127,40 @@ class Header extends Component {
                     <nav className={!burgerMenuOpen ? styles.menu : styles.burgerMenuList}>
                         {menu.map((link, i) => {
                             return (
-                                <div key={i}>
-                                    <NavLink
-                                        exact={link.exact}
-                                        to={link.id !== 'news' && `${langRoute}${link.path}`}
-                                        activeClassName={styles.activeLink}
-                                        className={styles.link}
-                                        onClick={link.id !== 'news' ? this.handleMenuClick : this.handleCategoriesOpen}
-                                    >
+                                <NavLink
+                                    key={i}
+                                    exact={link.exact}
+                                    to={!burgerMenuOpen ? `${langRoute}${link.path}` : link.id !== 'news' && `${langRoute}${link.path}`}
+                                    activeClassName={!burgerMenuOpen && styles.activeLink}
+                                    className={styles.link}
+                                    onClick={burgerMenuOpen ? link.id === 'news' ? this.handleCategoriesOpen : this.handleMenuClick : undefined}
+                                >
+                                    <div className={styles.linkContainer}>
                                         {menuItems[link.id]}
                                         {burgerMenuOpen && link.id === 'news' &&
                                     <img className={!newsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp}
                                         src='/src/apps/client/ui/components/Header/files/arrowDown.png'
                                         alt="arrowIcon"
                                     />
-                                        }
-                                    </NavLink>
+                                        }</div>
                                     {
-                                        (link.id === 'news' && newsCategoriesOpen) && <div className={styles.newsCategoriesList}> {
+                                        (link.id === 'news' && burgerMenuOpen && newsCategoriesOpen) && <div className={styles.newsCategoriesList}> {
                                             newsCategories.map((link, j) => {
                                                 return (
                                                     <NavLink
                                                         key={j}
                                                         exact={link.exact}
                                                         to={`${langRoute}/news`}
-                                                        activeClassName={styles.activeLink}
-                                                        className={classNames(styles.link, styles.newsLink)}
-                                                        onClick={newsCategoriesOpen ? this.handleMenuCategoryClick(j) : undefined}
+                                                        className={classNames(styles.newsLink, styles.newsLinkCategory)}
+                                                        onClick={(newsCategoriesOpen && burgerMenuOpen) ? this.handleMenuCategoryClick(j) : undefined}
                                                     >
                                                         {link.texts[lang].name}
                                                     </NavLink>);
                                             })
                                         }
-                                        </div>}
-                                </div>
+                                        </div>
+                                    }
+                                </NavLink>
                             );
                         })}
                         <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>
