@@ -10,4 +10,4 @@ export const // eslint-disable-line one-var
     SET_MENU_OPEN = 'SET_MENU_OPEN',
     SET_SEO = 'SET_SEO',
     SET_ACTIVE_CATEGORY_INDEX = 'SET_ACTIVE_CATEGORY_INDEX',
-    SET_SEARCH = 'SET_SEARCH';
+    SET_PARTNERS = 'SET_PARTNERS';

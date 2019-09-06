@@ -18,8 +18,6 @@ export default function () {
                 component: FormFieldFiles,
                 name: 'avatar',
                 schema: {
-                    fileWidth: 240,
-                    fileHeight: 135,
                     max: 1
                 },
                 validators: [

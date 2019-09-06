@@ -176,7 +176,7 @@ class PartnersPage extends Component {
         const { removedSlides } = this.state;
         const formData = new FormData();
         const cleanedSlides = this.partners.map(partner => {
-            const isOld = !partner.file.content;
+            const isOld = !partner.file || !partner.file.content;
 
             return {
                 name: partner.name,
@@ -186,7 +186,7 @@ class PartnersPage extends Component {
         });
 
         this.partners.forEach((partner, i) => {
-            if (partner.file.content) {
+            if (partner.file && partner.file.content) {
                 formData.append(`partner-file-${i}`, partner.file.content);
             }
         });

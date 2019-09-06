@@ -4,6 +4,7 @@ import getNewsAll from '../src/apps/client/services/server/getNewsAll';
 import getNewsCategories from '../src/apps/client/services/server/getNewsCategories';
 import getSeo from '../src/apps/client/services/server/getSeo';
 import getLaws from '../src/apps/client/services/server/getLaws';
+import getPartners from '../src/apps/client/services/server/getPartners';
 
 export default [
     getMobileDetect,
@@ -12,5 +13,6 @@ export default [
     getNewsCategories,
     getSeo,
     getLangFromRoute,
-    getLaws
+    getLaws,
+    getPartners
 ];
