@@ -152,7 +152,7 @@
 
 .results{
     margin-top: 35px;
-    padding-right: 7px;
+    padding:0 7px 10px 7px;
     display: flex;
     justify-content: flex-end;
     font-size: 14px;
@@ -160,6 +160,7 @@
     letter-spacing: 1px;
     color: blackBasic;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    max-width: fit-content;
 
     @media (max-width: 1350px;) {
         padding-right: 20px;
