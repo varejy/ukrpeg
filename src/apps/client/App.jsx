@@ -8,6 +8,7 @@ import '../../../client/vendor';
 import '../../css/main.css';
 
 import Header from './ui/components/Header/Header.jsx';
+import Helmet from './ui/components/Helmet/Helmet.jsx';
 import Footer from './ui/components/Footer/Footer.jsx';
 import MainPage from './ui/pages/MainPage/MainPage.jsx';
 import AllNewsPage from './ui/pages/AllNewsPage/AllNewsPage.jsx';
@@ -16,6 +17,7 @@ import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
 import AboutPage from './ui/pages/AboutPage/AboutPage.jsx';
 import ContactPage from './ui/pages/ContactPage/ContactPage.jsx';
 import LawPage from './ui/pages/LawPage/LawPage.jsx';
+import SearchPage from './ui/pages/SearchPage/SearchPage.jsx';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
@@ -30,7 +32,8 @@ import styles from './App.css';
 const mapStateToProps = ({ application }) => {
     return {
         lang: application.lang,
-        langRoute: application.langRoute
+        langRoute: application.langRoute,
+        burgerMenu: application.burgerMenu
     };
 };
 
@@ -40,7 +43,8 @@ class App extends Component {
     static propTypes = {
         lang: PropTypes.string,
         langRoute: PropTypes.string,
-        location: PropTypes.object
+        location: PropTypes.object,
+        burgerMenu: PropTypes.bool.isRequired
     };
 
     static defaultProps = {
@@ -51,6 +55,10 @@ class App extends Component {
     componentWillReceiveProps (nextProps) {
         if (this.props.location !== nextProps.location) {
             window.scrollTo(0, 0);
+        }
+
+        if (nextProps.burgerMenu !== this.props.burgerMenu) {
+            document.body.style.overflowY = nextProps.burgerMenu ? 'hidden' : 'auto';
         }
     };
 
@@ -67,6 +75,7 @@ class App extends Component {
     render () {
         return <main>
             <div className={styles.page}>
+                <Helmet/>
                 <Header/>
                 <div className={styles.pageContent}>
                     <Switch>
@@ -77,6 +86,7 @@ class App extends Component {
                         <Route exact path='/:lang(en)?/about' render={this.renderComponent(AboutPage)} />
                         <Route exact path='/:lang(en)?/contacts' render={this.renderComponent(ContactPage)} />
                         <Route exact path='/:lang(en)?/laws' render={this.renderComponent(LawPage)} />
+                        <Route exact path='/:lang(en)?/search' render={this.renderComponent(SearchPage)} />
                     </Switch>
                 </div>
                 <Footer />

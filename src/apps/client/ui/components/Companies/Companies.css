@@ -2,6 +2,8 @@
 @value lightGreenBasic from '../../../../../css/colors.css';
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value lightGreyHover from '../../../../../css/colors.css';
+@value lightGreenHover from '../../../../../css/colors.css';
+@value lightGreyBorder from '../../../../../css/colors.css';
 
 .companies{
     width: 100%;
@@ -14,27 +16,57 @@
     max-width: 1350px;
     padding-left: 125px;
     display: flex;
-    margin-left: 12px;
+
+    @media (max-width: 1350px) {
+        padding-left: 110px;
+    }
+
+    @media (--media-tablet-l) {
+        padding: 20px 13px 55px
+    }
 }
 
 .info{
     width: 100%;
-    padding: 55px 0 40px 0;
+    padding: 55px 0 70px 0;
+
+    @media (--media-tablet-l) {
+        border: 1px solid lightGreyBorder;
+        padding: 20px 0 25px;
+    }
 }
 
 .title{
     padding: 25px 0 20px 25px;
     border-left: 5px solid lightGreenBasic;
-    margin-left: -30px;
+    margin-left: -20px;
     color: darkBlueBasic;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
     cursor: pointer;
-    font-family: 'Gotham Medium', "Arial Black", sans-serif;
     position: relative;
     z-index: 11;
+    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+
+    @media (max-width: 1350px){
+        margin-left: -5px;
+    }
+
+    @media (--media-tablet-l) {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 1px;
+        margin-left: -2px;
+        padding: 10px 0 10px 10px;
+        border-left: 3px solid lightGreenBasic;
+   }
+
+    @media (--media-phone) {
+        font-size: 10px;
+        line-height: 14px;
+   }
 }
 
 .title:hover{
@@ -49,6 +81,19 @@
     justify-content: center;
     width: 100%;
     overflow: auto;
+
+    @media (--media-tablet-l) {
+        padding: 0 30px;
+        justify-content: center;
+   }
+
+    @media (--media-phone) {
+        flex-wrap: wrap;
+   }
+
+    @media (--media-phone-s) {
+        padding: 0;
+   }
 }
 
 .itemBox{
@@ -57,10 +102,36 @@
     display: flex;
     align-items: center;
     margin-bottom: 30px;
+
+    @media (--media-tablet-l) {
+        height: 50px;
+        padding: 5px 10px;
+        align-self: center;
+    }
+
+    @media (--media-tablet-s) {
+        width: 30%;
+        height: 40px;
+   }
+
+    @media (--media-phone) {
+        height: 30px;
+        margin-bottom: 15px;
+    }
+
+    @media (--media-phone-s) {
+        margin-bottom: 5px;
+    }
 }
 
 .logo{
     width: 140px;
-    position: relative;
     z-index: 11;
+    position: relative;
+
+    @media (--media-tablet-l) {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
 }

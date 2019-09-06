@@ -1,27 +1,13 @@
 import { SET_NEWS } from '../types/types';
 
 const initialState = {
-    newsList: [
-        {
-            date: +new Date(2019, 7, 16),
-            description: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-        },
-        {
-            date: +new Date(2019, 7, 16),
-            description: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-        },
-        {
-
-            date: +new Date(2019, 7, 16),
-            description: 'У Європейському Союзі заборонили використання пластикових товарів – експертна оцінка УКРПЕК'
-        }
-    ]
+    news: []
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
     case SET_NEWS:
-        return { ...state, newsList: action.payload };
+        return { ...state, news: action.payload };
     default:
         return state;
     }

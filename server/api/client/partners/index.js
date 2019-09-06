@@ -1,10 +1,10 @@
 import express from 'express';
 
-import getSlides from './services/getSlides';
+import getPartners from './services/getPartners';
 
 const router = express.Router();
 
-router.route('/slides')
-    .get(getSlides);
+router.route('/all')
+    .get(getPartners);
 
 export default router;

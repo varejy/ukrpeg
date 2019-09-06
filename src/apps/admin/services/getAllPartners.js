@@ -10,10 +10,10 @@ export default function getPartners () {
 
     return dispatch => base(
         request
-            .get('/api/client/partners/slides')
+            .get('/api/client/partners/all')
             .query({ token })
     )
-        .then(slides => {
-            return dispatch(setPartners(slides));
+        .then(partners => {
+            return dispatch(setPartners(partners));
         });
 }

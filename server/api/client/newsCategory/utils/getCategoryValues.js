@@ -6,6 +6,6 @@ const VALUES = [
     'hidden'
 ];
 
-export default function getCategoryValues (product) {
-    return pick(VALUES, product);
+export default function getCategoryValues (category) {
+    return pick(VALUES, category);
 }

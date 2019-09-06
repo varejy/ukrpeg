@@ -2,15 +2,12 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const partnersSlider = new Schema({
+const Partners = new Schema({
     id: { type: String, required: true },
-    slides: [{
+    partners: [{
         path: { type: String, required: true },
-        title: { type: String },
-        description: { type: String },
-        url: { type: String },
-        target: { type: Boolean }
+        name: { type: String, required: true }
     }]
 });
 
-export default mongoose.model('partnersSlider', partnersSlider);
+export default mongoose.model('Partners', Partners);

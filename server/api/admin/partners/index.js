@@ -2,7 +2,7 @@ import express from 'express';
 
 import verification from '../../../middlewares/verification';
 
-import updatePartners from './services/updateSlides';
+import updatePartners from './services/updatePartners';
 
 const router = express.Router();
 

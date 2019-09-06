@@ -128,12 +128,14 @@ class FormFieldFiles extends Component {
         classes: PropTypes.object.isRequired,
         value: PropTypes.object,
         schema: PropTypes.object,
-        onChange: PropTypes.func
+        onChange: PropTypes.func,
+        name: PropTypes.string
     };
 
     static defaultProps = {
         value: {},
-        schema: {}
+        schema: {},
+        name: ''
     };
 
     constructor (...args) {
@@ -162,7 +164,15 @@ class FormFieldFiles extends Component {
         const { schema } = this.props;
 
         if (schema.max) {
+            const removedFiles = files.slice(0, files.length - schema.max);
+
             files = files.slice(files.length - schema.max);
+
+            removedFiles.forEach(file => {
+                if (file.path) {
+                    this.removedFiles.push(file);
+                }
+            });
         }
 
         this.setState({
@@ -258,20 +268,21 @@ class FormFieldFiles extends Component {
     };
 
     render () {
-        const { classes } = this.props;
+        const { classes, name } = this.props;
         const { files, isSorting } = this.state;
+        const inputId = `${name}-${+Date.now()}`;
 
         return <div>
             <div className={classes.upload}>
                 <input
                     className={classes.uploadInput}
-                    id='uploadInput'
+                    id={inputId}
                     type='file'
                     accept='image/*'
                     onChange={this.handleFilesUpload}
                     multiple
                 />
-                <label htmlFor='uploadInput'>
+                <label htmlFor={inputId}>
                     <Button variant='contained' component='span' color='default'>
                         Загрузить
                         <CloudUploadIcon className={classes.uploadIcon} />
