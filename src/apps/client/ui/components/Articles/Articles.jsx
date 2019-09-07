@@ -84,7 +84,7 @@ class Articles extends Component {
                     <div className={styles.news} style={{ left: `${-sliderLeft}px` }} >
                         {news.map((item, index) => {
                             return (
-                                <Link to={`${langRoute}/news/${item.id}`} key={index} className={styles.newsBlock}>
+                                <Link to={`${langRoute}/news/${item.alias}`} key={index} className={styles.newsBlock}>
                                     <p className={styles.date}>{getDateFormatted(item.date, lang)}</p>
                                     <p className={styles.description}>{item.texts[`${lang}`].shortDescription}</p>
                                 </Link>

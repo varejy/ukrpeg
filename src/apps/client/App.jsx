@@ -82,7 +82,7 @@ class App extends Component {
                         <Route exact path='/:lang(en)?' render={this.renderComponent(MainPage)} />
                         <Route exact path='/:lang(en)?/rvv' render={this.renderComponent(RVVPage)} />
                         <Route exact path='/:lang(en)?/news' render={this.renderComponent(AllNewsPage)} />
-                        <Route exact path='/:lang(en)?/news/:id' render={this.renderComponent(NewsPage)} />
+                        <Route exact path='/:lang(en)?/news/:alias' render={this.renderComponent(NewsPage)} />
                         <Route exact path='/:lang(en)?/about' render={this.renderComponent(AboutPage)} />
                         <Route exact path='/:lang(en)?/contacts' render={this.renderComponent(ContactPage)} />
                         <Route exact path='/:lang(en)?/laws' render={this.renderComponent(LawPage)} />
