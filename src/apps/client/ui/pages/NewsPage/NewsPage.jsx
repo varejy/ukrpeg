@@ -15,6 +15,8 @@ const TABLET_WIDTH = 780;
 const CATEGORY_HEIGHT = 58;
 const DESKTOP_TOP = 235;
 const MOBILE_TOP = 300;
+const ANIMATION_DURATION = 700;
+
 const mapStateToProps = ({ application, news }) => {
     return {
         news: news.news,
@@ -53,7 +55,10 @@ class NewsPage extends Component {
     constructor (...args) {
         super(...args);
 
-        this.state = this.getNewState(this.props);
+        this.state = {
+            ...this.getNewState(this.props),
+            animation: false
+        };
     }
 
     getNewState = (props) => {
@@ -86,9 +91,26 @@ class NewsPage extends Component {
         };
     };
 
+    componentDidMount () {
+        setTimeout(() => {
+            this.setState({
+                animation: true
+            });
+        }, 0);
+    }
+
     componentWillReceiveProps (nextProps, nextContext) {
         if (this.props.location.pathname !== nextProps.location.pathname) {
-            this.setState(this.getNewState(nextProps));
+            this.setState({
+                animation: false
+            }, () => {
+                setTimeout(() => {
+                    this.setState({
+                        ...this.getNewState(nextProps),
+                        animation: true
+                    });
+                }, ANIMATION_DURATION);
+            });
         }
     }
 
@@ -115,7 +137,7 @@ class NewsPage extends Component {
     };
 
     render () {
-        const { article, mobileMenuListVisible, newsCategoryRendered, categories, nextArticle } = this.state;
+        const { article, mobileMenuListVisible, newsCategoryRendered, categories, nextArticle, animation } = this.state;
         const { mediaWidth, activeCategoryIndex } = this.props;
         const isDesktop = mediaWidth > TABLET_WIDTH;
         const { langMap, lang, langRoute } = this.props;
@@ -138,15 +160,20 @@ class NewsPage extends Component {
                     <div className={styles.title}>{text.title}</div>
                 </div>
                 <div className={styles.newsContent}>
-                    <div className={styles.newsCover}
-                        style={{ top: `${isDesktop ? DESKTOP_TOP : !mobileMenuListVisible ? MOBILE_TOP : MOBILE_TOP + CATEGORY_HEIGHT * categories.length}px` }}
-                    >
-                        <img className={styles.coverImage} src={article.avatar} alt={article.texts[lang].name}/>
+                    <div className={classNames(styles.newsCover)}
+                        style={{ top: `${isDesktop ? DESKTOP_TOP : mobileMenuListVisible ? MOBILE_TOP + CATEGORY_HEIGHT * categories.length : MOBILE_TOP}px` }}>
+                        <img className={classNames(styles.coverImage, {
+                            [styles.coverImageAnimated]: animation
+                        })} src={article.avatar} alt={article.texts[lang].name}/>
                     </div>
-                    <div className={styles.news}>
-                        <div className={styles.newsDate}>{getDateFormatted(article.date, 'ua')}</div>
+                    <div className={classNames(styles.news, {
+                        [styles.newsAnimated]: animation
+                    })}>
+                        <div className={styles.newsDate}>
+                            {getDateFormatted(article.date, 'ua')}
+                        </div>
                         <div className={styles.newsTitle}>{article.texts[lang].name}</div>
-                        <StyleRenderer html={article.texts[lang].description}/>
+                        <div className={styles.newsText}><StyleRenderer html={article.texts[lang].description}/></div>
                     </div>
                 </div>
                 {nextArticle &&
@@ -199,9 +226,10 @@ class NewsPage extends Component {
                                                 <li className={classNames(styles.newsCardContainer, {
                                                     [styles.newsCardContainerAnimated]: categories[i].opened
                                                 })}
-                                                key={j} style={{ transitionDelay: `${j * 0.2}s` }}>
-                                                    <div className={styles.newsDate}>{getDateFormatted(newsCard.date, 'ua')}</div>
-                                                    <div className={styles.newsTitle}>{newsCard.texts[lang].name}</div>
+                                                key={j} style={{ transitionDelay: `${j * 0.2}s` }}
+                                                onClick={this.handleNewsCardClick}>
+                                                    <div className={styles.newsDateMenu}>{getDateFormatted(newsCard.date, 'ua')}</div>
+                                                    <div className={styles.newsTitleMenu}>{newsCard.texts[lang].name}</div>
                                                 </li>
                                             </Link>
                                         )
