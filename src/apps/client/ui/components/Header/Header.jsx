@@ -16,6 +16,9 @@ import setMenuOpen from '../../../actions/setMenuOpen';
 import { EN, UA } from '../../../constants/constants';
 import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 
+const SMALL_MOBILE_WIDTH = 370;
+const NEWS_LINK_BIG_HEIGHT = 35;
+const NEWS_LINK_SMALL_HEIGHT = 26;
 const mapStateToProps = ({ application }, ownProps) => {
     return {
         langMap: application.langMap,
@@ -23,7 +26,8 @@ const mapStateToProps = ({ application }, ownProps) => {
         lang: application.lang,
         pathname: ownProps.location.pathname,
         burgerMenu: application.burgerMenu,
-        newsCategories: application.categories
+        newsCategories: application.categories,
+        mediaWidth: application.media.width
     };
 };
 
@@ -45,7 +49,8 @@ class Header extends Component {
         pathname: PropTypes.string,
         burgerMenu: PropTypes.bool.isRequired,
         newsCategories: PropTypes.array.isRequired,
-        setActiveCategoryIndex: PropTypes.func.isRequired
+        setActiveCategoryIndex: PropTypes.func.isRequired,
+        mediaWidth: PropTypes.number.isRequired
     };
 
     static defaultProps = {
@@ -112,11 +117,12 @@ class Header extends Component {
     };
 
     render () {
-        const { langMap, langRoute, lang, pathname } = this.props;
+        const { langMap, langRoute, lang, pathname, mediaWidth } = this.props;
         const { burgerMenuOpen, newsCategoriesOpen, newsCategories } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
         const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
+        const newsLinkHeight = mediaWidth > SMALL_MOBILE_WIDTH ? NEWS_LINK_BIG_HEIGHT : NEWS_LINK_SMALL_HEIGHT;
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
@@ -143,23 +149,28 @@ class Header extends Component {
                                         alt="arrowIcon"
                                     />
                                         }</div>
-                                    {
-                                        (link.id === 'news' && burgerMenuOpen && newsCategoriesOpen) && <div className={styles.newsCategoriesList}> {
+                                    <div className={classNames(styles.newsCategoriesList, {
+                                        [styles.newsCategoriesListAnimated]: (newsCategoriesOpen && link.id === 'news')
+                                    })}
+                                    style={{ height: `${(newsCategoriesOpen && link.id === 'news') ? newsLinkHeight * newsCategories.length : 0}px` }}
+                                    > { link.id === 'news' &&
                                             newsCategories.map((link, j) => {
                                                 return (
                                                     <NavLink
                                                         key={j}
                                                         exact={link.exact}
                                                         to={`${langRoute}/news`}
-                                                        className={classNames(styles.newsLink, styles.newsLinkCategory)}
+                                                        className={classNames(styles.newsLink, styles.newsLinkCategory, {
+                                                            [styles.newsLinkCategoryAnimated]: newsCategoriesOpen
+                                                        })}
+                                                        style={{ transitionDelay: `${j * 0.05}s` }}
                                                         onClick={(newsCategoriesOpen && burgerMenuOpen) ? this.handleMenuCategoryClick(j) : undefined}
                                                     >
                                                         {link.texts[lang].name}
                                                     </NavLink>);
                                             })
                                         }
-                                        </div>
-                                    }
+                                    </div>
                                 </NavLink>
                             );
                         })}
