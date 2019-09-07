@@ -63,7 +63,7 @@ class NewsPage extends Component {
 
     getNewState = (props) => {
         const { location: { pathname }, news, langRoute, categories, activeCategoryIndex } = props;
-        const PRODUCT_PATH = `${langRoute}/:news/:id`;
+        const PRODUCT_PATH = `${langRoute}/:news/:alias`;
         const allNews = { texts: {
             en: { name: 'All news' },
             ua: { name: 'Всі новини' }
@@ -75,15 +75,14 @@ class NewsPage extends Component {
         categoriesArr[activeCategoryIndex].opened = true;
         const newsArr = activeCategoryIndex ? news.filter(news => news.categoryId === categoriesArr[activeCategoryIndex].id) : news;
         const match = matchPath(pathname, { path: PRODUCT_PATH, exact: true });
-        const article = find(news => news.id === match.params.id, newsArr);
-        const articleIndex = findIndex(news => news.id === match.params.id, newsArr);
+        const article = find(news => news.alias === match.params.alias, newsArr);
+        const articleIndex = findIndex(news => news.alias === match.params.alias, newsArr);
         const nextArticle = newsArr[articleIndex + 1];
 
         this.notFoundPage = !article;
 
         return {
             article: article,
-            articleId: match.params.id,
             mobileMenuListVisible: false,
             nextArticle: nextArticle,
             categories: categoriesArr,
@@ -185,7 +184,7 @@ class NewsPage extends Component {
                         </div>
                         <div className={styles.nextNewsTitle}>{nextArticle ? nextArticle.texts[lang].name : 'Ця новина остання в цьому розділі'}</div>
                     </div>
-                    <Link key={nextArticle.id} to={`${langRoute}/news/${nextArticle.id}`}>
+                    <Link key={nextArticle.id} to={`${langRoute}/news/${nextArticle.alias}`}>
                         <div className={styles.nextNewsButton}>
                             <img className={styles.arrowIcon}
                                 src={ isDesktop
@@ -222,7 +221,7 @@ class NewsPage extends Component {
                                 })}>
                                     {
                                         newsCategoryRendered.map((newsCard, j) =>
-                                            <Link key={newsCard.id} to={`${langRoute}/news/${newsCard.id}`}>
+                                            <Link key={newsCard.id} to={`${langRoute}/news/${newsCard.alias}`}>
                                                 <li className={classNames(styles.newsCardContainer, {
                                                     [styles.newsCardContainerAnimated]: categories[i].opened
                                                 })}

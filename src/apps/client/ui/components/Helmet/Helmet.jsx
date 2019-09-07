@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { matchPath, withRouter } from 'react-router-dom';
 import find from '@tinkoff/utils/array/find';
 
-const NEWS_PATH = '/:lang(en)?/news/:id';
+const NEWS_PATH = '/:lang(en)?/news/:alias';
 const STATIC_ROUTES = [
     { id: 'main', path: '/:lang(en)?/', exact: true },
     { id: 'about', path: '/:lang(en)?/about', exact: true },
@@ -65,7 +65,7 @@ class Helmet extends Component {
         const staticRouteMatch = find(route => matchPath(pathname, route), STATIC_ROUTES);
 
         if (staticRouteMatch) {
-            const staticSeoPage = find(page => page.name === staticRouteMatch.id, staticSeo);
+            const staticSeoPage = find(page => page.name === staticRouteMatch.alias, staticSeo);
 
             if (staticSeoPage) {
                 return {
@@ -79,7 +79,7 @@ class Helmet extends Component {
         }
 
         if (newsPage) {
-            const article = find(article => article.id === newsPage.params.id, news);
+            const article = find(article => article.alias === newsPage.params.alias, news);
 
             if (article) {
                 return {
