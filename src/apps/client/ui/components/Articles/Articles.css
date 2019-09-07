@@ -191,6 +191,7 @@
         right: 90px;
         transform: rotate(-90deg);
         margin: 0;
+        z-index: 1;
    }
 }
 

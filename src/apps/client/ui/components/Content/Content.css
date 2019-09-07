@@ -308,6 +308,8 @@
     font-family: 'Gotham Medium', "Arial Black", sans-serif;
     text-align-last: end;
     text-align: start;
+    white-space: pre;
+    margin-right: 10px;
 }
 
 .graphic{
@@ -315,7 +317,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    right: 0;
+    right: -2px;
     height: 600px;
     width: 260px;
 
