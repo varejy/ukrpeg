@@ -6,6 +6,12 @@
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value olive from '../../../../../css/colors.css';
 
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
 .pageContainer{
     width: 100%;
     margin: 0 auto;
@@ -179,7 +185,7 @@
     width: 40%;
     position: relative;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     margin-bottom: 115px;
     margin-right: 48px;
     min-width: 468px;
@@ -285,8 +291,8 @@
 .benefitContainer{
     width: 50%;
     display: flex;
-    align-items: start;
-    justify-content: start;
+    align-items: flex-start;
+    justify-content: flex-start;
     margin-bottom: 45px;
     padding-right: 20px;
     z-index: 11;
@@ -492,7 +498,7 @@
 
     @media (max-width: 780px){
         margin-bottom: 102px;
-        align-items: start;
+        align-items: flex-start;
     }
 }
 
@@ -521,7 +527,6 @@
     letter-spacing: 0.5px;
     justify-self: flex-end;
     width: 70%;
-    min-height: 100px;
     height: auto;
     position: absolute;
     left: 40px;
@@ -529,6 +534,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    min-height: 100px;
     z-index: 11;
 
     @media (max-width: 780px){
@@ -536,10 +542,9 @@
         font-family: 'Gotham Light', Arial;
         font-size: 20px;
         line-height: 24px;
-        align-items: start;
+        align-items: flex-start;
         padding: 0 10px;
         position: relative;
-        min-height: 100px;
         height: auto;
     }
 
@@ -635,7 +640,7 @@
 
 .factsInfo{
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
     max-width: 1350px;
@@ -644,7 +649,7 @@
 
     @media (max-width: 1023px){
         flex-direction: column;
-        justify-content: start;
+        justify-content: flex-start;
         margin: 0 auto;
     }
 
@@ -1048,11 +1053,10 @@
 
 .containerPlansMobile .course{
     height: auto;
-    min-height: 300px;
     width: 100vw;
     display: flex;
     flex-shrink: 0;
-    align-items: start;
+    align-items: flex-start;
     position: relative;
     overflow: hidden;
 
@@ -1070,18 +1074,18 @@
 
 .containerPlansMobile .courseNumber{
     font-size: 160px;
-    position: absolute;
+    position: relative;
     top: -20px;
     left: -8px;
     width: 0;
-    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .containerPlansMobile .courseText{
     font-size: 20px;
     line-height: 26px;
     left: 60px;
-    align-items: start;
+    align-items: flex-start;
     font-family: 'Gotham Light', Arial;
     height: auto;
 
@@ -1098,7 +1102,7 @@
 .plansPagination{
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     height: 20px;
     padding-left: 30%;
     z-index: 11;
@@ -1140,14 +1144,14 @@
 .plansHeader{
     width: 100%;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
 .plansButtons{
     display: flex;
-    align-items: start;
-    justify-content: start;
+    align-items: flex-start;
+    justify-content: flex-start;
     z-index: 11;
     position: relative;
     right: 22%;

@@ -18,7 +18,7 @@
     width: 100%;
     max-width: 1350px;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
     position: relative;
     margin: 0 auto 0 auto;
@@ -31,7 +31,7 @@
         margin: 0 auto;
         flex-direction: column-reverse;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
     }
 }
 
@@ -204,7 +204,7 @@
         top: 300px;
         width: 100%;
         height: auto;
-        align-items: start;
+        align-items: flex-start;
         left: 0;
     }
 }
@@ -233,7 +233,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Gotham Light', Arial;
     font-size: 14px;
     line-height: 14px;
@@ -247,8 +247,8 @@
 
 .newsTitle{
     width: 100%;
-    align-items: start;
-    justify-content: start;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-family: 'Gotham Pro', Arial;
     font-size: 16px;
     line-height: 19px;
@@ -297,8 +297,8 @@
     @media (max-width: 780px){
         width: 100%;
         flex-direction: column;
-        justify-content: start;
-        align-items: start;
+        justify-content: flex-start;
+        align-items: flex-start;
         padding: 32px 30px;
         position: relative;
     }
@@ -341,7 +341,7 @@
     z-index: 11;
 
     @media (max-width: 780px){
-        justify-content: start;
+        justify-content: flex-start;
         position: absolute;
         bottom: 32px;
     }
@@ -449,7 +449,7 @@
     margin: 26px 0 18px 0;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Gotham Light', Arial;
     font-size: 14px;
     line-height: 14px;
@@ -461,8 +461,8 @@
 .newsCardContainer .newsTitle{
     width: 100%;
     height: 100px;
-    align-items: start;
-    justify-content: start;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-family: 'Gotham Pro', Arial;
     font-size: 16px;
     line-height: 19px;
@@ -479,12 +479,12 @@
     border: 1px solid rgba(122, 122, 122, 0.2);
     display: none;
     flex-direction: column;
-    align-items: end;
-    justify-content: start;
+    align-items: flex-end;
+    justify-content: flex-start;
 
-@media (max-width: 780px){
-    display: flex;
-}
+    @media (max-width: 780px){
+        display: flex;
+    }
 }
 
 .mobileMenuContainer{
@@ -505,7 +505,7 @@
     border-right: 1px solid rgba(122, 122, 122, 0.2);
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 20px 22px;
 }
 
@@ -541,7 +541,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 20px 22px;
 }
 

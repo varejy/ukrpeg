@@ -38,7 +38,7 @@
     margin: 22px 0 17px 0;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     font-family: 'Gotham Light', Arial;
     font-size: 14px;
     line-height: 14px;
@@ -51,8 +51,8 @@
 .newsCardTitle{
     width: 100%;
     height: 120px;
-    align-items: start;
-    justify-content: start;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-family: 'Gotham Pro', Arial;
     font-size: 16px;
     line-height: 19px;
