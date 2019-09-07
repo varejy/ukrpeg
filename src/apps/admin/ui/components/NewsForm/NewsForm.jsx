@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import ErrorIcon from '@material-ui/icons/Error';
+import { withStyles } from '@material-ui/core/styles';
+
 import { connect } from 'react-redux';
 import saveNews from '../../../services/saveNews';
 import editNews from '../../../services/editNews';
@@ -23,8 +30,29 @@ const mapDispatchToProps = (dispatch) => ({
     updateNewsAvatar: (...payload) => dispatch(updateNewsAvatar(...payload))
 });
 
+const materialStyles = theme => ({
+    error: {
+        backgroundColor: theme.palette.error.dark
+    },
+    icon: {
+        fontSize: 20
+    },
+    iconVariant: {
+        opacity: 0.9,
+        marginRight: theme.spacing.unit
+    },
+    message: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    margin: {
+        margin: theme.spacing.unit
+    }
+});
+
 class NewsForm extends Component {
     static propTypes = {
+        classes: PropTypes.object.isRequired,
         saveNews: PropTypes.func.isRequired,
         editNews: PropTypes.func.isRequired,
         updateNewsAvatar: PropTypes.func.isRequired,
@@ -71,7 +99,8 @@ class NewsForm extends Component {
         };
         this.id = prop('id', news);
         this.state = {
-            lang: 'ua'
+            lang: 'ua',
+            errorText: ''
         };
     }
 
@@ -123,6 +152,12 @@ class NewsForm extends Component {
         };
     };
 
+    handleHideFailMessage = () => {
+        this.setState({
+            errorText: ''
+        });
+    };
+
     handleChange = (values) => {
         this.setState({
             lang: values.lang
@@ -148,23 +183,56 @@ class NewsForm extends Component {
             })
             .then(() => {
                 this.props.onDone();
+            })
+            .catch(error => {
+                if (error.code === 'duplication') {
+                    this.setState({
+                        errorText: 'Введите уникальные алиас для новости'
+                    });
+                } else {
+                    this.setState({
+                        errorText: 'Что-то пошло не так. Перезагрузите страницы и попробуйте снова'
+                    });
+                }
             });
     };
 
     render () {
-        const { lang } = this.state;
+        const { classes } = this.props;
+        const { lang, errorText } = this.state;
 
-        return <Form
-            initialValues={this.initialValues}
-            lang={lang}
-            schema={getSchema({
-                data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' },
-                settings: { lang }
-            })}
-            onChange={this.handleChange}
-            onSubmit={this.handleSubmit}
-        />;
+        return <div>
+            <Form
+                initialValues={this.initialValues}
+                lang={lang}
+                schema={getSchema({
+                    data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' },
+                    settings: { lang }
+                })}
+                onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
+            />
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right'
+                }}
+                onClose={this.handleHideFailMessage}
+                open={!!errorText}
+                autoHideDuration={2000}
+            >
+                <SnackbarContent
+                    className={classNames(classes.error, classes.margin)}
+                    message={
+                        <span id='client-snackbar' className={classes.message}>
+                            <ErrorIcon className={classNames(classes.icon, classes.iconVariant)} />
+                            { errorText }
+                        </span>
+                    }
+                />
+            </Snackbar>
+        </div>;
     }
 }
 
-export default connect(null, mapDispatchToProps)(NewsForm);
+export default withStyles(materialStyles)(connect(null, mapDispatchToProps)(NewsForm));

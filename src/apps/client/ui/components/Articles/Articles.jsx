@@ -66,7 +66,7 @@ class Articles extends Component {
                 });
             }
         }
-    }
+    };
 
     render () {
         const { langMap, lang, news, langRoute } = this.props;
@@ -104,8 +104,7 @@ class Articles extends Component {
             <ul className={styles.switches}>
                 {news.map((item, i) => {
                     return (
-                        <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)}>
-                        </li>
+                        <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)} />
                     );
                 })}
             </ul>
