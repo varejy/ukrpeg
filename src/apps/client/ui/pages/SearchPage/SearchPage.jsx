@@ -148,7 +148,7 @@ class SearchPage extends Component {
                                 return (
                                     <Link to={`${langRoute}/news/${item.id}`} key={i}>
                                         <div key={i} className={classNames(styles.resultNewsItem, {
-                                            [styles.resultNewsItemNotOdd]: !i % 2
+                                            [styles.resultNewsItemNotOdd]: i % 2 !== 0
                                         })}>
                                             <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
                                             <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
