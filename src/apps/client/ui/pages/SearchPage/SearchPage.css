@@ -162,7 +162,7 @@
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
     max-width: fit-content;
 
-    @media (max-width: 1350px;) {
+    @media (max-width: 1350px) {
         padding-right: 20px;
     }
 
