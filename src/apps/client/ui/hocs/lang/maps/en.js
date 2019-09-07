@@ -16,7 +16,7 @@ export default {
         title: 'RVV is in action',
         description: `The concept of creating an efficient system for the collection, sorting, recycling and recovery of packaging waste`,
         buttonText: 'Read more',
-        text: `Extended Producer Responsibility (RWB) - an effective method of managing packaging waste that accounts for up to 30% of MSW`
+        text: `Extended         \n Producer Responsibility (RWB) -      \n an effective method of managing packaging waste   \n that accounts for up to 30% of MSW`
     },
     companies: {
         title: 'Test prccess participants'
