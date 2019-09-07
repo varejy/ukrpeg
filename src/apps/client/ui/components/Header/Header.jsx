@@ -75,7 +75,7 @@ class Header extends Component {
         };
     }
 
-    handleMenuClick = event => {
+    handleMenuClick = () => {
         const { burgerMenu, setMenuOpen } = this.props;
         this.setState({
             burgerMenuOpen: !this.state.burgerMenuOpen
