@@ -5,6 +5,7 @@
 @value lightGreyBasic from '../../../../../css/colors.css';
 @value darkBlueHover from '../../../../../css/colors.css';
 @value blueMobileBg from '../../../../../css/colors.css';
+@value lightGreyMenuLink from '../../../../../css/colors.css';
 
 .header{
     width: 100%;
@@ -484,6 +485,7 @@
 .newsCategoriesList .newsLinkCategory{
     opacity: 0;
     transition: opacity .25s;
+    color: lightGreyMenuLink;
     margin-bottom: 25px;
     text-transform: capitalize;
     font-family: 'Gotham Light', Arial;
