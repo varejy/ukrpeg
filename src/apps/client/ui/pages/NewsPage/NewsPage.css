@@ -223,7 +223,7 @@
     position: relative;
     opacity: 0;
     top: 5vh;
-    transition: .7s ease-in-out;
+    transition: .4s ease-in-out;
 }
 
 .coverImageAnimated{
@@ -240,8 +240,7 @@
     margin-left: 14px;
     top: 5vh;
     opacity: 0;
-    transition: .7s ease-in-out;
-    transition-delay: .2s;
+    transition: opacity .6s ease-in-out .15s, top .6s ease-in-out .15s;
 
     @media (max-width: 780px){
         margin: 260px 0 0 0;
@@ -269,15 +268,6 @@
     margin-bottom: 16px;
     position: relative;
     z-index: 11;
-    top: 5vh;
-    opacity: 0;
-    transition: .7s ease-in-out;
-    transition-delay: .4s;
-}
-
-.newsDateAnimated{
-    opacity: 1;
-    top: 0;
 }
 
 .newsTitle{
@@ -293,15 +283,6 @@
     margin-bottom: 45px;
     position: relative;
     z-index: 11;
-    top: 5vh;
-    opacity: 0;
-    transition: .7s ease-in-out;
-    transition-delay: .6s;
-}
-
-.newsTitleAnimated{
-    opacity: 1;
-    top: 0;
 }
 
 .newsText{
@@ -313,15 +294,6 @@
     color: blackBasic;
     position: relative;
     z-index: 11;
-    opacity: 0;
-    top: 5vh;
-    transition: .7s ease-in-out;
-    transition-delay: .8s;
-}
-
-.newsTextAnimated{
-    opacity: 1;
-    top: 0;
 }
 
 .nextNews{

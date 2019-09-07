@@ -15,6 +15,8 @@ const TABLET_WIDTH = 780;
 const CATEGORY_HEIGHT = 58;
 const DESKTOP_TOP = 235;
 const MOBILE_TOP = 300;
+const ANIMATION_DURATION = 700;
+
 const mapStateToProps = ({ application, news }) => {
     return {
         news: news.news,
@@ -53,7 +55,10 @@ class NewsPage extends Component {
     constructor (...args) {
         super(...args);
 
-        this.state = this.getNewState(this.props);
+        this.state = {
+            ...this.getNewState(this.props),
+            animation: false
+        };
     }
 
     getNewState = (props) => {
@@ -82,27 +87,29 @@ class NewsPage extends Component {
             mobileMenuListVisible: false,
             nextArticle: nextArticle,
             categories: categoriesArr,
-            newsCategoryRendered: newsArr,
-            animation: false
+            newsCategoryRendered: newsArr
         };
     };
 
     componentDidMount () {
-        this.setState({
-            animation: true
-        });
+        setTimeout(() => {
+            this.setState({
+                animation: true
+            });
+        }, 0);
     }
 
     componentWillReceiveProps (nextProps, nextContext) {
         if (this.props.location.pathname !== nextProps.location.pathname) {
-            this.setState(this.getNewState(nextProps));
-        }
-    }
-
-    componentDidUpdate (prevProps, prevState, snapshot) {
-        if (this.props.location.pathname !== prevProps.location.pathname) {
             this.setState({
-                animation: true
+                animation: false
+            }, () => {
+                setTimeout(() => {
+                    this.setState({
+                        ...this.getNewState(nextProps),
+                        animation: true
+                    });
+                }, ANIMATION_DURATION);
             });
         }
     }
@@ -162,17 +169,11 @@ class NewsPage extends Component {
                     <div className={classNames(styles.news, {
                         [styles.newsAnimated]: animation
                     })}>
-                        <div className={classNames(styles.newsDate, {
-                            [styles.newsDateAnimated]: animation
-                        })}>
+                        <div className={styles.newsDate}>
                             {getDateFormatted(article.date, 'ua')}
                         </div>
-                        <div className={classNames(styles.newsTitle, {
-                            [styles.newsTitleAnimated]: animation
-                        })}>{article.texts[lang].name}</div>
-                        <div className={classNames(styles.newsText, {
-                            [styles.newsTextAnimated]: animation
-                        })}><StyleRenderer html={article.texts[lang].description}/></div>
+                        <div className={styles.newsTitle}>{article.texts[lang].name}</div>
+                        <div className={styles.newsText}><StyleRenderer html={article.texts[lang].description}/></div>
                     </div>
                 </div>
                 {nextArticle &&
