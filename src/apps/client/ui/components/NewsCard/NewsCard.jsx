@@ -37,7 +37,7 @@ class NewsCard extends Component {
                     </div>
                 </div>
             </Link>
-            <div className={styles.newsCardDate}>{getDateFormatted(cardData.date, 'ua')}</div>
+            <div className={styles.newsCardDate}>{getDateFormatted(cardData.date, lang)}</div>
             <div className={styles.newsCardTitle}>{cardData.texts[lang].name}</div>
         </div>;
     }

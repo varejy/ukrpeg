@@ -169,7 +169,7 @@ class NewsPage extends Component {
                         [styles.newsAnimated]: animation
                     })}>
                         <div className={styles.newsDate}>
-                            {getDateFormatted(article.date, 'ua')}
+                            {getDateFormatted(article.date, lang)}
                         </div>
                         <div className={styles.newsTitle}>{article.texts[lang].name}</div>
                         <div className={styles.newsText}><StyleRenderer html={article.texts[lang].description}/></div>
@@ -180,7 +180,7 @@ class NewsPage extends Component {
                     <div className={styles.nextNewsInfo}>
                         <div className={styles.nextNewsHeader}>
                             <div className={styles.next}>{text.nextNews}</div>
-                            <div className={styles.nextNewsDate}>{nextArticle ? getDateFormatted(nextArticle.date, 'ua') : ''}</div>
+                            <div className={styles.nextNewsDate}>{nextArticle ? getDateFormatted(nextArticle.date, lang) : ''}</div>
                         </div>
                         <div className={styles.nextNewsTitle}>{nextArticle ? nextArticle.texts[lang].name : 'Ця новина остання в цьому розділі'}</div>
                     </div>
@@ -227,7 +227,7 @@ class NewsPage extends Component {
                                                 })}
                                                 key={j} style={{ transitionDelay: `${j * 0.2}s` }}
                                                 onClick={this.handleNewsCardClick}>
-                                                    <div className={styles.newsDateMenu}>{getDateFormatted(newsCard.date, 'ua')}</div>
+                                                    <div className={styles.newsDateMenu}>{getDateFormatted(newsCard.date, lang)}</div>
                                                     <div className={styles.newsTitleMenu}>{newsCard.texts[lang].name}</div>
                                                 </li>
                                             </Link>

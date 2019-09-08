@@ -41,6 +41,7 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 
 import noop from '@tinkoff/utils/function/noop';
 import pathOr from '@tinkoff/utils/object/pathOr';
+import format from 'date-fns/format';
 
 import AdminTable from '../../components/AdminTable/AdminTable.jsx';
 import NewsForm from '../../components/NewsForm/NewsForm';
@@ -182,7 +183,7 @@ const headerRows = [
 
 const tableCells = [
     { prop: news => pathOr(['texts', DEFAULT_LANG, 'name'], '', news) },
-    { prop: news => news.date },
+    { prop: news => news.date && format(+news.date, 'DD/MM/YYYY') },
     { prop: news => news.hidden ? <CloseIcon /> : <CheckIcon /> }
 ];
 

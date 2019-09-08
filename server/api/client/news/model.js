@@ -10,7 +10,7 @@ const News = new Schema({
     hidden: { type: Boolean, required: true },
     texts: { type: Object, required: true },
     views: { type: Number, required: true },
-    date: { type: String, required: true }
+    date: { type: Number, required: true }
 });
 
 export default mongoose.model('News', News);
