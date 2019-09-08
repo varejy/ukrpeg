@@ -6,8 +6,8 @@ const RVV_ID = 'rvv_id';
 
 export default function getRvv (req, res) {
     getRvvQuery(RVV_ID)
-        .then(({ Rvv }) => {
-            if (!Rvv) {
+        .then(([rvv]) => {
+            if (!rvv) {
                 return createRvv({ texts: {}, id: RVV_ID })
                     .then(rvv => {
                         res.status(OKEY_STATUS_CODE).send(rvv.texts);
@@ -17,9 +17,7 @@ export default function getRvv (req, res) {
                     });
             }
 
-            console.log(Rvv)
-
-            res.status(OKEY_STATUS_CODE).send(Rvv);
+            res.status(OKEY_STATUS_CODE).send(rvv);
         })
         .catch(() => {
             res.status(SERVER_ERROR_STATUS_CODE).end();
