@@ -401,7 +401,7 @@ class NewsPage extends Component {
                 headerRows={headerRows}
                 tableCells={tableCells}
                 values={news}
-                headerText={`Новости в категории ${pathOr(['texts', DEFAULT_LANG, 'name'], '', activeNewsCategory)}`}
+                headerText={`Новости в категории "${pathOr(['texts', DEFAULT_LANG, 'name'], '', activeNewsCategory)}"`}
                 onDelete={this.handleNewsDelete}
                 deleteValueWarningTitle='Вы точно хотите удалить новость?'
                 deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
