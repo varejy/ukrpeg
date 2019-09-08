@@ -427,7 +427,7 @@ html, body {
     height: 100%;
     max-width: 1350px;
     position: absolute;
-    margin-left: 140px;
+    left: 140px;
     background-color: whiteBasic;
     z-index: 6;
     top: 0;
