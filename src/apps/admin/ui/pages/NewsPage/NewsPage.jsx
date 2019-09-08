@@ -252,6 +252,16 @@ class NewsPage extends Component {
         });
     };
 
+    handleNewsFormClone = news => () => {
+        this.setState({
+            formShowed: true,
+            editableNews: {
+                ...news,
+                id: null
+            }
+        });
+    };
+
     handleCategoryFormOpen = category => () => {
         this.setState({
             categoryFormShowed: true,
@@ -384,7 +394,7 @@ class NewsPage extends Component {
                     filters={false}
                     copyItem
                     onFormOpen={this.handleNewsFormOpen}
-                    onProductClone={this.handleNewsFormOpen}
+                    onProductClone={this.handleNewsFormClone}
                 />
                 <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal} disableEnforceFocus>
                     <Paper className={classes.modalContent}>
