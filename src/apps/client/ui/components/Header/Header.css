@@ -47,7 +47,7 @@
     width:  100%;
     max-width: 1350px;
     display: flex;
-    z-index: 15;
+    z-index: 40;
 
     @media (--media-tablet-l) {
         justify-content: space-between;
@@ -67,7 +67,7 @@
 }
 
 .wrapperBurgerMenu{
-    position: relative;
+    position: fixed;
     overflow-y: scroll;
     background: blueMobileBg;
     align-items: flex-start;

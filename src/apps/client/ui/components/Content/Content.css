@@ -75,9 +75,9 @@
 }
 
 .moreBtn{
-    display: flex;
     border: 1px solid lightGreenBorder;
     margin-left: -67px;
+    display: block;
     cursor: pointer;
 
     @media (--media-tablet-l) {
