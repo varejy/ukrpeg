@@ -65,7 +65,7 @@ class Helmet extends Component {
         const staticRouteMatch = find(route => matchPath(pathname, route), STATIC_ROUTES);
 
         if (staticRouteMatch) {
-            const staticSeoPage = find(page => page.name === staticRouteMatch.alias, staticSeo);
+            const staticSeoPage = find(page => page.name === staticRouteMatch.id, staticSeo);
 
             if (staticSeoPage) {
                 return {
