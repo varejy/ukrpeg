@@ -13,7 +13,8 @@ import styles from './Content.css';
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
-        langRoute: application.langRoute
+        langRoute: application.langRoute,
+        lang: application.lang
     };
 };
 
@@ -21,7 +22,8 @@ class Content extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired,
-        langRoute: PropTypes.string
+        langRoute: PropTypes.string,
+        lang: PropTypes.string.isRequired
     };
 
     static defaultProps = {
@@ -42,7 +44,7 @@ class Content extends Component {
     };
 
     render () {
-        const { langMap, langRoute } = this.props;
+        const { langMap, langRoute, lang } = this.props;
         const text = propOr('content', {}, langMap);
 
         return <div className={styles.content}>
@@ -62,7 +64,7 @@ class Content extends Component {
                         </div>
                     </div>
                     <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit}/>
-                    <div className={styles.text}>
+                    <div className={styles.text} style={{ marginTop: `-${lang === 'ua' ? 55 : 125}px` }}>
                         <h1 className={styles.heading} />
                         <p className={styles.info}>{text.text}</p>
                     </div>

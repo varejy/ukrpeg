@@ -25,15 +25,20 @@ import { withStyles } from '@material-ui/core/styles';
 
 const arrayForOnePage = [
     {
-        title: '2312 Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою, з органами місцевого самоврядування, з організаціями що займаються збором сортуванням та переробкою відходів.',
+        title: '2312 Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою,' +
+            ' з органами місцевого самоврядування, з організаціями що займаються збором' +
+            ' сортуванням та переробкою відходів.',
         positionIndex: 1
     },
     {
-        title: 'Виробити схему відносин з фіскальними органами, оскільки діяльність організацій РВВ є неприбутковою.',
+        title: 'Виробити схему відносин з фіскальними органами,' +
+            ' оскільки діяльність організацій РВВ є неприбутковою.',
         positionIndex: 2
     },
     {
-        title: 'Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою, з органами місцевого самоврядування, з організаціями що займаються збором сортуванням та переробкою відходів.',
+        title: 'Напрацювати досвід відносин з усіма учасниками' +
+            ' схеми РВВ: між собою, з органами місцевого самоврядування,' +
+            ' з організаціями що займаються збором сортуванням та переробкою відходів.',
         positionIndex: 3
     }
 ];
@@ -42,7 +47,9 @@ const arrayForTwoPage = [
     {
         imgPath: 'http://localhost:4000/src/apps/admin/files/news-5bt8oek0534v3r-avatar1567590878621.png',
         imgAlt: 'test1',
-        title: 'Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою, з органами місцевого самоврядування, з організаціями що займаються збором сортуванням та переробкою відходів.'
+        title: 'Напрацювати досвід відносин з усіма учасниками схеми РВВ:' +
+            ' між собою, з органами місцевого самоврядування, з організаціями що ' +
+            'займаються збором сортуванням та переробкою відходів.'
     },
     {
         imgPath: 'http://localhost:4000/src/apps/admin/files/news-5bt29rk03mlgr0-avatar1567590743180.png',
@@ -61,7 +68,11 @@ const arrayForFourPage = [
         positionIndex: 2
     },
     {
-        title: "Розробка рекомендацій, які можуть бути запропоновані суб'єктам виробництва та ринку, професійним і громадським організаціям, органам державної влади та місцевого самоврядування і навіть споживачам товарів в упаковці – щодо безпечного екологічного розвитку у сфері пакувальної технології та поводження з упаковкою та її відходами.",
+        title: 'Розробка рекомендацій, які можуть бути запропоновані суб\'єктам ' +
+            'виробництва та ринку, професійним і громадським організаціям, ' +
+            'органам державної влади та місцевого самоврядування і навіть споживачам ' +
+            'товарів в упаковці – щодо безпечного екологічного розвитку у сфері ' +
+            'пакувальної технології та поводження з упаковкою та її відходами.',
         positionIndex: 3
     }
 ];
@@ -89,7 +100,7 @@ const arrayForSixPage = [
         positionIndex: 2
     },
     {
-        title: "ІП «Кока-Кола Беверіджиз Україна Лімітед»",
+        title: 'ІП «Кока-Кола Беверіджиз Україна Лімітед»',
         positionIndex: 3
     }
 ];
@@ -303,7 +314,7 @@ class RvvPage extends Component {
 
     renderPageFive = () => {
         const { classes } = this.props;
-        
+
         return <div className={classes.wrapp}>
             <RvvCardsKeyFacts
                 tabId='keyFacts'
@@ -348,20 +359,20 @@ class RvvPage extends Component {
         const { tabsValue, formVisible, editableElem } = this.state;
 
         return <div>
-            <AppBar position="static" color="default">
+            <AppBar position='static' color='default'>
                 <Tabs
                     value={tabsValue}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    variant="fullWidth"
+                    indicatorColor='primary'
+                    textColor='primary'
+                    variant='fullWidth'
                 >
-                    <Tab onClick={this.handleTableChange(0)} label="Планы" />
-                    <Tab onClick={this.handleTableChange(1)} label="Зачем нужен РВВ" />
-                    <Tab onClick={this.handleTableChange(2)} label="Пилотный проект" />
-                    <Tab onClick={this.handleTableChange(3)} label="Основные силы" />
-                    <Tab onClick={this.handleTableChange(4)} label="Ключевые факты" />
-                    <Tab onClick={this.handleTableChange(5)} label="В состав входят" />
-                    <Tab onClick={this.handleTableChange(6)} label="Сообщение" />
+                    <Tab onClick={this.handleTableChange(0)} label='Планы' />
+                    <Tab onClick={this.handleTableChange(1)} label='Зачем нужен РВВ' />
+                    <Tab onClick={this.handleTableChange(2)} label='Пилотный проект' />
+                    <Tab onClick={this.handleTableChange(3)} label='Основные силы' />
+                    <Tab onClick={this.handleTableChange(4)} label='Ключевые факты' />
+                    <Tab onClick={this.handleTableChange(5)} label='В состав входят' />
+                    <Tab onClick={this.handleTableChange(6)} label='Сообщение' />
                 </Tabs>
             </AppBar>
             <SwipeableViews

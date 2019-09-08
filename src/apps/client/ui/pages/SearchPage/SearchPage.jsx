@@ -120,13 +120,13 @@ class SearchPage extends Component {
                         <div className={styles.amount}>{searchResultNumber}</div>
                         <div className={styles.amountPagesWrapper}>
                             <div className={styles.amountPages}>
-                                <div>{`${text.pages}:`}</div>
+                                <div className={styles.amountPagesResult}>{`${text.pages}:`}</div>
                                 <div>{pages.length}</div>
                             </div>
                         </div>
                         <div className={styles.amountNewsWrapper}>
                             <div className={styles.amountNews}>
-                                <div>{`${text.news}:`}</div>
+                                <div className={styles.amountPagesResult}>{`${text.news}:`}</div>
                                 <div>{news.length}</div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ class SearchPage extends Component {
                         <div className={styles.resultPagesList}>
                             {pages.map((item, i) => {
                                 return (
-                                    <p key={i} className={styles.resultPageItem}>RVV</p>
+                                    <p key={i} className={styles.resultPageItem}>{item}</p>
                                 );
                             })}
                         </div>
@@ -146,9 +146,9 @@ class SearchPage extends Component {
                         <div className={styles.resultNewsList}>
                             {news.map((item, i) => {
                                 return (
-                                    <Link to={`${langRoute}/news/${item.id}`} key={i}>
+                                    <Link to={`${langRoute}/news/${item.alias}`} key={i}>
                                         <div key={i} className={classNames(styles.resultNewsItem, {
-                                            [styles.resultNewsItemNotOdd]: !i % 2
+                                            [styles.resultNewsItemNotOdd]: i % 2 !== 0
                                         })}>
                                             <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
                                             <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>

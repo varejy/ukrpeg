@@ -39,7 +39,7 @@
     background-size: cover;
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 90px;
     position: relative;
 
     @media (max-width: 1350px) {
@@ -75,9 +75,9 @@
 }
 
 .moreBtn{
-    display: flex;
     border: 1px solid lightGreenBorder;
     margin-left: -67px;
+    display: block;
     cursor: pointer;
 
     @media (--media-tablet-l) {
@@ -157,7 +157,7 @@
 }
 
 .title{
-    font-size: 80px;
+    font-size: 70px;
     font-weight: bold;
     text-transform: uppercase;
     font-family: Verdana, sans-serif;
@@ -244,7 +244,7 @@
     width: 680px;
     height: 100px;
     background: url('/src/apps/client/ui/components/Content/files/searchBgOpacity.png');
-    margin: 140px 0 0 -145px;
+    margin: 100px 0 0 -145px;
     display: flex;
     position: relative;
 
@@ -279,7 +279,7 @@
     width: 295px;
     height: auto;
     align-self: flex-end;
-    margin: -55px 180px 0 0;
+    margin: -55px 190px 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -308,6 +308,8 @@
     font-family: 'Gotham Medium', "Arial Black", sans-serif;
     text-align-last: end;
     text-align: start;
+    white-space: pre;
+    margin-right: 10px;
 }
 
 .graphic{
@@ -315,7 +317,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    right: 0;
+    right: -2px;
     height: 600px;
     width: 260px;
 

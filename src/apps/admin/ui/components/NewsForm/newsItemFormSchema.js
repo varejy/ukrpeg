@@ -1,4 +1,5 @@
 import FormFieldInput from '../Form/fields/FormFieldInput/FormFieldInput.jsx';
+import FormFieldSelect from '../Form/fields/FormFieldSelect/FormFieldSelect.jsx';
 import FormFieldEditor from '../Form/fields/FormFieldEditor/FormFieldEditor';
 import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
 import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
@@ -8,12 +9,12 @@ import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
 import FormFieldDivider from '../Form/fields/FormFieldDivider/FormFieldDivider';
 import FormFieldKeywords from '../Form/fields/FormFieldWords/FormFieldWords';
 
-export default function ({ data: { title } = {}, settings: { lang } } = {}) {
+export default function ({ data: { title, categoriesOptions, categoryHidden } = {}, settings: { lang } } = {}) {
     return {
         fields: [
             {
                 component: FormFieldTitle,
-                name: 'title',
+                name: 'form-title',
                 schema: {
                     label: title,
                     variant: 'h5'
@@ -42,7 +43,28 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                     label: 'Название'
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните название продутка' } }
+                    { name: 'required', options: { text: 'Заполните название новости' } }
+                ]
+            },
+            {
+                component: FormFieldSelect,
+                name: 'categoryId',
+                schema: {
+                    label: 'Категория',
+                    options: categoriesOptions
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Выберите категорию новости' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: 'alias',
+                schema: {
+                    label: 'Алиас'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните алиас' } }
                 ]
             },
             {
@@ -57,6 +79,14 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 ]
             },
             {
+                component: FormFieldTitle,
+                name: 'description-title',
+                schema: {
+                    label: 'Контент',
+                    variant: 'h6'
+                }
+            },
+            {
                 component: FormFieldEditor,
                 name: `${lang}_description`,
                 schema: {
@@ -68,11 +98,17 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 ]
             },
             {
+                component: FormFieldTitle,
+                name: 'avatar-title',
+                schema: {
+                    label: 'Аватар',
+                    variant: 'h6'
+                }
+            },
+            {
                 component: FormFieldFiles,
                 name: 'avatar',
                 schema: {
-                    fileWidth: 521,
-                    fileHeight: 244,
                     max: 1
                 },
                 validators: [
@@ -124,8 +160,10 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
             {
                 component: FormFieldCheckbox,
                 name: 'hidden',
+                hint: categoryHidden && 'Новость будет скрыта, т.к. она находится в скрытой категории',
                 schema: {
-                    label: 'Скрыть новость'
+                    label: 'Скрыть новость',
+                    disabled: categoryHidden
                 }
             },
             {

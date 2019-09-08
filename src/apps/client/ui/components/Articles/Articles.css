@@ -83,7 +83,7 @@
 .wrapperArticles{
     width:  100%;
     max-width: 1350px;
-    padding:0 125px;
+    padding: 0 125px;
     display: flex;
 
     @media (max-width: 1350px) {
@@ -101,6 +101,8 @@
     display: flex;
     justify-content: center;
     background: semiGreyBg;
+    overflow: hidden;
+    max-height: 150px;
 
     @media (--media-tablet-l) {
         background: whiteBasic;
@@ -109,16 +111,19 @@
 
 .news{
     display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+    transition: top 0.3s ease-in-out;
+    top: 0;
 
     @media (--media-tablet-l) {
+        transition: left 0.3s ease-in-out;
         flex-direction: column;
         height: auto;
-        position: relative;
-   }
-
-    @media (--media-tablet-s) {
         flex-wrap: wrap;
         max-height: 200px;
+        left: 0;
    }
 }
 
@@ -127,12 +132,14 @@
     padding: 30px 35px 50px 20px;
     cursor: pointer;
     z-index: 11;
+    width: calc(33.33% - 42px);
 
     @media (--media-tablet-l) {
         padding-left: 25px;
         padding-top: 20px;
         padding-bottom: 40px;
         margin: 0;
+        width: 100%;
    }
 }
 
@@ -171,18 +178,18 @@
     letter-spacing: .4px;
 }
 
-.buttons{
+.buttons, .buttonsHidden{
     display: flex;
     flex-direction: column;
     align-self: center;
-    z-index: 11;
+    z-index: 31;
     margin-right: 10px;
 
     @media (max-width: 1350px){
         margin-right: 25px;
     }
 
-    @media (--media-tablet-s) {
+    @media (--media-tablet-l) {
         position: absolute;
         top: -10px;
         right: 90px;
@@ -216,6 +223,14 @@
     @media (--media-tablet-l) {
         width: 15px;
         height: 10px;
+   }
+}
+
+.buttonsHidden{
+    display: none;
+
+    @media (--media-tablet-s) {
+        display: flex;
    }
 }
 

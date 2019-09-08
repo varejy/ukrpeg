@@ -4,24 +4,10 @@ const Schema = mongoose.Schema;
 
 const about = new Schema({
     id: { type: String, required: true },
-    texts: {
-        type: [
-            {
-                type: {
-                    text: {
-                        type: String,
-                        required: true
-                    },
-                    img: {
-                        type: String,
-                        required: true
-                    }
-                },
-                required: true
-            }
-        ],
-        required: true
-    }
+    about: [{
+        texts: { type: Object, required: true },
+        path: { type: String, required: true }
+    }]
 });
 
-export default mongoose.model('about', about);
+export default mongoose.model('About', about);

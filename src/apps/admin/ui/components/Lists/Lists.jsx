@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -42,7 +43,7 @@ const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName, onDelete, sortable, numeration, isImage, value, tabId, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName, bigAvatar, onDelete, sortable, numeration, isImage, value, tabId, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
         {
@@ -52,22 +53,22 @@ const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName,
         }
         {
             isImage && <ListItemAvatar>
-                <Avatar className={classes.avatar} alt={value.imgAlt} src={value.path} />
+                <Avatar className={classNames(classes.avatar, { [classes.bigAvatar]: bigAvatar })} alt={value.imgAlt} src={value.path} />
             </ListItemAvatar>
         }
         <ListItemText
             className={classes.listItemText}
-            primary={getCorrectName(name)}
+            primary={value.name && getCorrectName(value.name)}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
                 <Tooltip title='Редактировать'>
-                    <IconButton onClick={onFormOpen({ value, tabId })}>
+                    <IconButton onClick={onFormOpen({ value, index })}>
                         <EditIcon />
                     </IconButton>
                 </Tooltip>
                 <Tooltip title='Удалить'>
-                    <IconButton onClick={onDelete(value)} edge="end" aria-label="delete">
+                    <IconButton onClick={onDelete({ value, index })} edge="end" aria-label="delete">
                         <DeleteIcon />
                     </IconButton>
                 </Tooltip>
@@ -149,6 +150,10 @@ const materialStyles = theme => ({
         border: '2px solid #3f51b5',
         boxShadow: 'inset black 0px 0px 5px 0px'
     },
+    bigAvatar: {
+        height: '45px',
+        width: '110px'
+    },
     indexItem: {
         color: '#3f51b5',
         fontFamily: 'sans-serif',
@@ -182,6 +187,7 @@ class Lists extends Component {
         isImage: PropTypes.bool,
         numeration: PropTypes.bool,
         nameToolTip: PropTypes.bool,
+        bigAvatar: PropTypes.bool,
         maxLength: PropTypes.number,
         title: PropTypes.string,
         tabId: PropTypes.string
@@ -189,6 +195,7 @@ class Lists extends Component {
 
     static defaultProps = {
         sortable: false,
+        bigAvatar: false,
         maxLength: Infinity,
         isImage: false,
         numeration: false,
@@ -237,23 +244,17 @@ class Lists extends Component {
     handleWarningAgree = () => {
         const { valueForDelete } = this.state;
 
-        this.props.onDelete(valueForDelete)
-            .then(() => {
-                this.setState({
-                    valueForDelete: null
-                });
-            });
+        this.props.onDelete(valueForDelete);
+        this.setState({
+            valueForDelete: null
+        });
     }
 
     onDragEnd = ({ oldIndex, newIndex }) => {
         const { values } = this.state;
         const newValues = arrayMove(values, oldIndex, newIndex);
 
-        newValues.forEach((value, i) => {
-            value.positionIndex = i + 1;
-
-            this.props.editValues(value);
-        });
+        this.props.editValues(newValues);
 
         this.setState({
             values: newValues
@@ -266,7 +267,7 @@ class Lists extends Component {
 
     render () {
         const { values, valueForDelete } = this.state;
-        const { sortable, isImage, numeration, maxLength, classes, onFormOpen, title, tabId } = this.props;
+        const { sortable, isImage, bigAvatar, numeration, maxLength, classes, onFormOpen, title, tabId } = this.props;
         const checkMaxItemLength = () => values.length === maxLength;
 
         return <div>
@@ -275,6 +276,8 @@ class Lists extends Component {
                     <Typography variant='h5' className={classes.title}>{title}</Typography>
                     <Tooltip title='Добавить'>
                         <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen({ value: {}, tabId})}>
+                            {/*<IconButton disabled={checkMaxItemLength()} onClick={onFormOpen('new')}>*/}
+
                             <AddIcon />
                         </IconButton>
                     </Tooltip>
@@ -288,6 +291,7 @@ class Lists extends Component {
                     onSortEnd={this.onDragEnd}
                     sortable={sortable}
                     isImage={isImage}
+                    bigAvatar={bigAvatar}
                     numeration={numeration}
                     tabId={tabId}
                     values={values}
@@ -301,7 +305,7 @@ class Lists extends Component {
             >
                 <DialogTitle>Вы точно хотите удалить ?</DialogTitle>
                 <DialogContent className={classes.warningContent}>
-                    <DialogContentText>{valueForDelete && valueForDelete.title}</DialogContentText>
+                    <DialogContentText>{valueForDelete && valueForDelete.value.name}</DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.handleWarningDisagree} color='primary'>

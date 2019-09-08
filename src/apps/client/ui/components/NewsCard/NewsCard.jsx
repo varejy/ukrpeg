@@ -30,14 +30,14 @@ class NewsCard extends Component {
         const { cardData, langRoute, lang } = this.props;
 
         return <div className={styles.newsCardContainer}>
-            <Link key={cardData.id} to={`${langRoute}/news/${cardData.id}`}>
+            <Link key={cardData.id} to={`${langRoute}/news/${cardData.alias}`}>
                 <div className={styles.newsCardImage}>
                     <div className={styles.imageContainer}>
                         <img className={styles.image} src={cardData.avatar} alt={cardData.title}/>
                     </div>
                 </div>
             </Link>
-            <div className={styles.newsCardDate}>{getDateFormatted(cardData.date, 'ua')}</div>
+            <div className={styles.newsCardDate}>{getDateFormatted(cardData.date, lang)}</div>
             <div className={styles.newsCardTitle}>{cardData.texts[lang].name}</div>
         </div>;
     }
