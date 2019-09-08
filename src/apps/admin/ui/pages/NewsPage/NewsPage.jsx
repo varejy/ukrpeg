@@ -281,6 +281,13 @@ class NewsPage extends Component {
                     activeNewsCategory: categories.find(category => category.id === activeNewsCategory.id) || categories[0]
                 });
                 this.handleCloseCategoryForm();
+
+                this.props.getNewsAll()
+                    .then(() => {
+                        this.setState({
+                            news: this.getCategoryNews()
+                        });
+                    });
             });
     };
 

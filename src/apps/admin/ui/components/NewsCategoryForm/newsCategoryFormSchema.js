@@ -45,7 +45,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 component: FormFieldCheckbox,
                 name: 'hidden',
                 schema: {
-                    label: 'Скрыть категорию'
+                    label: 'Скрыть категорию и все новости в ней'
                 }
             },
             {

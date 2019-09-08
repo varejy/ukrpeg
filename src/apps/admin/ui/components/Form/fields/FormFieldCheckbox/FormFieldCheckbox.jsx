@@ -37,6 +37,7 @@ export default class FormFieldCheckbox extends Component {
                     checked={value}
                     onChange={this.handleChange}
                     color='primary'
+                    disabled={schema.disabled}
                 />
             }
             label={schema.label}

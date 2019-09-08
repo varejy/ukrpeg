@@ -75,6 +75,7 @@ class NewsForm extends Component {
         const { news } = this.props;
         const ua = pathOr(['texts', 'ua'], '', news);
         const en = pathOr(['texts', 'en'], '', news);
+        const categoryHidden = this.props.activeCategory.hidden;
 
         this.categoriesOptions = this.props.categories.map(category => ({
             value: category.id,
@@ -82,7 +83,6 @@ class NewsForm extends Component {
         }));
 
         this.initialValues = {
-            hidden: false,
             date: format(new Date(), 'YYYY-MM-DD'),
             views: 0,
             categoryId: this.props.activeCategory.id,
@@ -103,12 +103,14 @@ class NewsForm extends Component {
             ua_seoKeywords: { words: ua.seoKeywords && ua.seoKeywords.split(', ') || [], input: '' },
             en_seoKeywords: { words: en.seoKeywords && en.seoKeywords.split(', ') || [], input: '' },
             lang: 'ua',
-            ...pick(NEWS_VALUES, news)
+            ...pick(NEWS_VALUES, news),
+            hidden: categoryHidden ? false : news.hidden
         };
         this.id = prop('id', news);
         this.state = {
             lang: 'ua',
-            errorText: ''
+            errorText: '',
+            categoryHidden
         };
     }
 
@@ -134,7 +136,7 @@ class NewsForm extends Component {
             id
         }) => {
         return {
-            hidden,
+            hidden: this.state.categoryHidden || hidden,
             views: +views,
             categoryId,
             alias,
@@ -178,6 +180,14 @@ class NewsForm extends Component {
                 name: category.texts[changes.lang].name
             }));
         }
+
+        if ('categoryId' in changes) {
+            const activeCategory = this.props.categories.find(category => category.id === changes.categoryId);
+
+            this.setState({
+                categoryHidden: activeCategory.hidden
+            });
+        }
     };
 
     handleSubmit = values => {
@@ -215,7 +225,7 @@ class NewsForm extends Component {
 
     render () {
         const { classes } = this.props;
-        const { lang, errorText } = this.state;
+        const { lang, errorText, categoryHidden } = this.state;
 
         return <div>
             <Form
@@ -224,7 +234,8 @@ class NewsForm extends Component {
                 schema={getSchema({
                     data: {
                         title: this.id ? 'Редактирование новости' : 'Добавление новости',
-                        categoriesOptions: this.categoriesOptions
+                        categoriesOptions: this.categoriesOptions,
+                        categoryHidden
                     },
                     settings: { lang }
                 })}

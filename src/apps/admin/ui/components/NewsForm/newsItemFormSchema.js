@@ -9,7 +9,7 @@ import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
 import FormFieldDivider from '../Form/fields/FormFieldDivider/FormFieldDivider';
 import FormFieldKeywords from '../Form/fields/FormFieldWords/FormFieldWords';
 
-export default function ({ data: { title, categoriesOptions } = {}, settings: { lang } } = {}) {
+export default function ({ data: { title, categoriesOptions, categoryHidden } = {}, settings: { lang } } = {}) {
     return {
         fields: [
             {
@@ -160,8 +160,10 @@ export default function ({ data: { title, categoriesOptions } = {}, settings: { 
             {
                 component: FormFieldCheckbox,
                 name: 'hidden',
+                hint: categoryHidden && 'Новость будет скрыта, т.к. она находится в скрытой категории',
                 schema: {
-                    label: 'Скрыть новость'
+                    label: 'Скрыть новость',
+                    disabled: categoryHidden
                 }
             },
             {

@@ -84,6 +84,7 @@ class Form extends Component {
 
         return <FormControl key={i} error={!!validationMessage}>
             <FieldComponent {...fieldProps} />
+            { field.hint && <FormHelperText>{field.hint}</FormHelperText> }
             { validationMessage && <FormHelperText>{validationMessage}</FormHelperText> }
         </FormControl>;
     };
