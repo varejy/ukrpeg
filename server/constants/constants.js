@@ -9,3 +9,4 @@ export const DATABASE_URL = 'mongodb://localhost/ukrpeg';
 export const NEWS_AVATAR_FIELD_NAME_REGEX = /news-.*-avatar/g;
 export const EDITOR_FILE_NAME_REGEX = /editor-file/g;
 export const PARTNER_FILE_FIELD_NAME_REGEX = /partner-file-/g;
+export const ABOUT_FILE_FIELD_NAME_REGEX = /about-file-/g;

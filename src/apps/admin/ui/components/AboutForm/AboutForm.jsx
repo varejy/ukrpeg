@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from '../Form/Form';
-import getSchema from './partnersFormSchema';
+import getSchema from './aboutFormSchema';
+import pathOr from '@tinkoff/utils/object/pathOr';
 
 class MainSlideForm extends Component {
     static propTypes = {
@@ -20,30 +21,43 @@ class MainSlideForm extends Component {
         const { editableSlide: { slide, index } } = this.props;
 
         this.initialValues = {
-            name: slide ? slide.name : '',
+            ua_text: pathOr(['texts', 'ua', 'text'], '', slide),
+            en_text: pathOr(['texts', 'en', 'text'], '', slide),
             avatar: {
                 files: slide ? [slide.path] : [],
                 removedFiles: []
             },
-            wrongDimensions: slide && slide.wrongDimensions
+            lang: 'ua'
         };
 
         this.state = {
+            lang: 'ua',
             slide,
             index
         };
     }
 
-    handleChange = values => {
-        this.initialValues = {
-            values
-        };
+    handleChange = (values, changes) => {
+        if ('lang' in changes) {
+            this.setState({
+                lang: changes.lang
+            });
+        }
     };
 
     handleSubmit = values => {
         const { index } = this.state;
+        console.log(values.avatar);
         const sendValues = {
             name: values.name,
+            texts: {
+                en: {
+                    text: values.en_text
+                },
+                ua: {
+                    text: values.ua_text
+                }
+            },
             file: values.avatar.files[0],
             removedFile: values.avatar.removedFiles[0]
         };
@@ -52,9 +66,14 @@ class MainSlideForm extends Component {
     };
 
     render () {
+        const { id, lang } = this.state;
+
         return <Form
             initialValues={this.initialValues}
-            schema={getSchema()}
+            schema={getSchema({
+                // data: { title: id ? 'Редактирование закона' : 'Добавление закона' },
+                settings: { lang }
+            })}
             onChange={this.handleChange}
             onSubmit={this.handleSubmit}
         />;
