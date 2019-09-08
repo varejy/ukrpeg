@@ -6,11 +6,11 @@ import styles from './About.css';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ application, about }) => {
+const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
         lang: application.lang,
-        aboutInfo: about.aboutList
+        about: application.about
     };
 };
 
@@ -18,26 +18,26 @@ class About extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         lang: PropTypes.string.isRequired,
-        aboutInfo: PropTypes.array
+        about: PropTypes.array
     };
 
     static defaultProps = {
-        aboutInfo: []
+        about: []
     };
 
     render () {
-        const { langMap, lang, aboutInfo } = this.props;
+        const { langMap, lang, about } = this.props;
         const text = propOr('about', {}, langMap);
 
         return <div className={styles.about}>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>{text.title}</h1>
                 <div className={styles.content}>
-                    {aboutInfo.map((item, i) => {
+                    {about.map((item, i) => {
                         return (
                             <div key={i} className={styles.contentBlock}>
-                                <img src={item.img} className={styles.img} />
-                                <p className={styles.description}>{item.text[`${lang}`]}</p>
+                                <img src={item.path} className={styles.img} />
+                                <p className={styles.description}>{item.texts[lang].text}</p>
                             </div>
                         );
                     })}

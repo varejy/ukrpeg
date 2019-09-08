@@ -1,5 +1,6 @@
 export default [
     { id: 'news', path: '/admin', exact: true, title: 'Новости' },
+    { id: 'laws', path: '/admin/about', exact: true, title: 'О нас' },
     { id: 'laws', path: '/admin/laws', exact: true, title: 'Законодательство' },
     { id: 'news', path: '/admin/news', exact: true, title: 'Новости' },
     { id: 'partners', path: '/admin/partners', exact: true, title: 'Партнёры' },

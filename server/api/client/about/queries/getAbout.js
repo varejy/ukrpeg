@@ -1,5 +1,5 @@
-import mainSlider from '../model';
+import About from '../model';
 
-export default function getAbout (id) {
-    return mainSlider.find({ id });
+export default function getSlider (id) {
+    return About.find({ id });
 }

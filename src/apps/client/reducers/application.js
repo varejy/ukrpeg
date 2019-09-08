@@ -8,7 +8,8 @@ import {
     SET_ACTIVE_CATEGORY_INDEX,
     SET_SEO,
     SET_LAW,
-    SET_PARTNERS
+    SET_PARTNERS,
+    SET_ABOUT
 } from '../types/types';
 
 import { DEFAULT_LANG, DEFAULT_LANG_ROUTE } from '../constants/constants';
@@ -50,6 +51,8 @@ export default function (state = initialState, action) {
         return { ...state, lawList: action.payload };
     case SET_PARTNERS:
         return { ...state, partners: action.payload };
+    case SET_ABOUT:
+        return { ...state, about: action.payload };
     default:
         return state;
     }

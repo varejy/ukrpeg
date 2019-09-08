@@ -11,20 +11,20 @@ import noop from '@tinkoff/utils/function/noop';
 import remove from '@tinkoff/utils/array/remove';
 
 import { connect } from 'react-redux';
-import getAllPartners from '../../../services/getAllPartners';
-import updatePartnersSlides from '../../../services/updatePartnersSlides';
+import getAbout from '../../../services/getAbout';
+import updateAbout from '../../../services/updateAbout';
 
-import PartnersSlideForm from '../../components/PartnersSlideForm/PartnersSlideForm';
+import AboutForm from '../../components/AboutForm/AboutForm';
 
 const mapStateToProps = ({ application }) => {
     return {
-        partners: application.partners
+        about: application.about
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    getAllPartners: payload => dispatch(getAllPartners(payload)),
-    updatePartnersSlides: payload => dispatch(updatePartnersSlides(payload))
+    getAbout: payload => dispatch(getAbout(payload)),
+    updateAbout: payload => dispatch(updateAbout(payload))
 });
 
 const materialStyles = theme => ({
@@ -49,16 +49,16 @@ const materialStyles = theme => ({
     }
 });
 
-class PartnersPage extends Component {
+class AboutPage extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        getAllPartners: PropTypes.func.isRequired,
-        updatePartnersSlides: PropTypes.func.isRequired,
-        partners: PropTypes.array
+        getAbout: PropTypes.func.isRequired,
+        updateAbout: PropTypes.func.isRequired,
+        about: PropTypes.array
     };
 
     static defaultProps = {
-        partners: []
+        about: []
     };
 
     constructor (...args) {
@@ -71,44 +71,36 @@ class PartnersPage extends Component {
             removedSlides: []
         };
 
-        this.partners = [];
+        this.aboutArr = [];
     }
 
     componentDidMount () {
         this.getAllPartners();
     }
 
+    componentWillReceiveProps (nextProps) {
+        if (nextProps.about !== this.props.about) {
+            this.aboutArr = nextProps.about;
+        }
+    }
+
     getAllPartners () {
-        this.props.getAllPartners()
+        this.props.getAbout()
             .then(() => {
                 this.setState({
                     loading: false
                 });
-                this.partners = this.props.partners.map(partner => ({
-                    path: partner.path || '/wrong-path',
-                    showed: partner.showed || true,
-                    name: partner.name || ''
-                }));
             });
-    }
-
-    componentWillReceiveProps (nextProps) {
-        if (nextProps.partners !== this.props.partners) {
-            this.setState({
-                disabled: true
-            });
-            this.partners = nextProps.partners;
-        }
     }
 
     handleFileEdit = value => () => {
-        const { partners } = this;
+        const { aboutArr } = this;
 
         if (value === 'new') {
             this.setState({
                 formShowed: true,
                 editableSlideInfo: {
-                    index: partners.length,
+                    index: aboutArr.length,
                     newSlide: true
                 }
             });
@@ -117,7 +109,7 @@ class PartnersPage extends Component {
             this.setState({
                 formShowed: true,
                 editableSlideInfo: {
-                    slide: partners[i],
+                    slide: aboutArr[i],
                     index: i
                 }
             });
@@ -131,12 +123,12 @@ class PartnersPage extends Component {
         });
     };
 
-    handleFormDone = (partner, index) => {
-        const newSlides = [...this.partners];
+    handleFormDone = (about, index) => {
+        const newSlides = [...this.aboutArr];
 
-        newSlides[index] = partner;
+        newSlides[index] = about;
 
-        this.partners = newSlides;
+        this.aboutArr = newSlides;
 
         this.handleSubmit({ preventDefault: noop })
             .then(() => {
@@ -147,15 +139,22 @@ class PartnersPage extends Component {
             });
     };
 
+    handleClosetForm = () => {
+        this.setState({
+            formShowed: false,
+            editableSlideInfo: null
+        });
+    };
+
     handleFileDelete = (value) => {
         const i = value.index;
         const { removedSlides } = this.state;
 
-        if (this.partners[i].path) {
-            removedSlides.push(this.partners[i].path);
+        if (this.aboutArr[i].path) {
+            removedSlides.push(this.aboutArr[i].path);
         }
 
-        this.partners = remove(i, 1, this.partners);
+        this.aboutArr = remove(i, 1, this.aboutArr);
 
         this.setState({
             removedSlides
@@ -164,8 +163,8 @@ class PartnersPage extends Component {
         this.handleSubmit({ preventDefault: noop });
     };
 
-    handleSlidesChanged = (partners) => {
-        this.partners = partners;
+    handleSlidesChanged = (aboutArr) => {
+        this.aboutArr = aboutArr;
 
         this.handleSubmit({ preventDefault: noop });
     };
@@ -175,32 +174,32 @@ class PartnersPage extends Component {
 
         const { removedSlides } = this.state;
         const formData = new FormData();
-        const cleanedSlides = this.partners.map(partner => {
-            const isOld = !partner.file || !partner.file.content;
+        const cleanedSlides = this.aboutArr.map(aboutItem => {
+            const isOld = !aboutItem.file || !aboutItem.file.content;
 
             return {
-                name: partner.name,
-                path: isOld && partner.file || partner.path,
-                removedFile: partner.removedFile && partner.removedFile.path
+                texts: aboutItem.texts,
+                path: isOld && aboutItem.file || aboutItem.path,
+                removedFile: aboutItem.removedFile && aboutItem.removedFile.path
             };
         });
 
-        this.partners.forEach((partner, i) => {
-            if (partner.file && partner.file.content) {
-                formData.append(`partner-file-${i}`, partner.file.content);
+        this.aboutArr.forEach((aboutItem, i) => {
+            if (aboutItem.file && aboutItem.file.content) {
+                formData.append(`about-file-${i}`, aboutItem.file.content);
             }
         });
 
         formData.append('removedSlides', JSON.stringify(removedSlides));
-        formData.append('partners', JSON.stringify(cleanedSlides));
+        formData.append('about', JSON.stringify(cleanedSlides));
 
-        return this.props.updatePartnersSlides(formData);
+        return this.props.updateAbout(formData);
     };
 
     render () {
         const { classes } = this.props;
         const { loading, formShowed, editableSlideInfo } = this.state;
-        const { partners } = this;
+        const { aboutArr } = this;
 
         if (loading) {
             return <div className={classes.loader}>
@@ -210,23 +209,23 @@ class PartnersPage extends Component {
 
         return <div className={classes.wrapp}>
             <Lists
-                values={partners}
-                sortable={true}
-                isImage={true}
-                bigAvatar={true}
+                values={aboutArr}
+                sortable
+                isImage
+                bigAvatar
                 onDelete={this.handleFileDelete}
                 onFormOpen={this.handleFileEdit}
                 editValues={this.handleSlidesChanged}
-                nameToolTip={true}
-                title='Партнёры'
+                nameToolTip
+                title='О блоках'
             />
             <Modal open={formShowed} onClose={this.handleClosetForm} className={classes.modal}>
                 <Paper className={classes.modalContent}>
-                    <PartnersSlideForm editableSlide={editableSlideInfo} onDone={this.handleFormDone} />
+                    <AboutForm editableSlide={editableSlideInfo} onDone={this.handleFormDone} />
                 </Paper>
             </Modal>
         </div>;
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(materialStyles)(PartnersPage));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(materialStyles)(AboutPage));

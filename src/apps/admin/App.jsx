@@ -11,6 +11,7 @@ import { matchPath } from 'react-router';
 import RvvPage from './ui/pages/RvvPage/RvvPage.jsx';
 import LegislationPage from './ui/pages/LegislationPage/LegislationPage';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
+import AboutPage from './ui/pages/AboutPage/AboutPage.jsx';
 import Header from './ui/components/Header/Header.jsx';
 import Authentication from './ui/components/Authentication/Authentication.jsx';
 import Recovery from './ui/components/Recovery/Recovery.jsx';
@@ -81,6 +82,7 @@ class App extends Component {
             <Header />
             <Switch>
                 <Route exact path='/admin' component={NewsPage} />
+                <Route exact path='/admin/about' component={AboutPage} />
                 <Route exact path='/admin/rvv' component={RvvPage}/>
                 <Route exact path='/admin/laws' component={LegislationPage} />
                 <Route exact path='/admin/news' component={NewsPage} />

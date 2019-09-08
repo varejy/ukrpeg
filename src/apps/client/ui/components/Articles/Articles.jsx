@@ -14,7 +14,7 @@ const mapStateToProps = ({ application, news }) => {
     return {
         langMap: application.langMap,
         lang: application.lang,
-        news: news.news.slice(0, 10),
+        news: news.news.slice(0, 9),
         mediaWidth: application.media.width,
         desktop: application.media.desktop,
         langRoute: application.langRoute
