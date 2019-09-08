@@ -71,7 +71,7 @@
     overflow-y: scroll;
     background: blueMobileBg;
     align-items: flex-start;
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
 }
 
@@ -261,7 +261,7 @@
         padding: 16px 0;
         position: absolute;
         right: 35px;
-        z-index: 12;
+        z-index: 15;
    }
 
     @media (--media-tablet-s) {
@@ -376,7 +376,6 @@
     display: flex;
     flex-direction: column;
     background: blueMobileBg;
-    height: 100%;
 
     @media (--media-tablet-l) {
         width: 100%;
