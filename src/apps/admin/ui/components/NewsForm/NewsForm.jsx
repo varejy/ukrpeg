@@ -20,7 +20,6 @@ import noop from '@tinkoff/utils/function/noop';
 import pick from '@tinkoff/utils/object/pick';
 import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
-import format from 'date-fns/format';
 
 const NEWS_VALUES = ['hidden', 'alias'];
 
@@ -103,7 +102,7 @@ class NewsForm extends Component {
             en_seoKeywords: { words: en.seoKeywords && en.seoKeywords.split(', ') || [], input: '' },
             lang: 'ua',
             ...pick(NEWS_VALUES, news),
-            hidden: categoryHidden ? false : news.hidden
+            hidden: (categoryHidden ? false : news.hidden) || false
         };
         this.id = prop('id', news);
         this.state = {

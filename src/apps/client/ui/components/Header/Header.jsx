@@ -17,8 +17,8 @@ import { EN, UA } from '../../../constants/constants';
 import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 
 const SMALL_MOBILE_WIDTH = 370;
-const NEWS_LINK_BIG_HEIGHT = 35;
-const NEWS_LINK_SMALL_HEIGHT = 26;
+const NEWS_LINK_BIG_HEIGHT = 40;
+const NEWS_LINK_SMALL_HEIGHT = 28;
 const mapStateToProps = ({ application }, ownProps) => {
     return {
         langMap: application.langMap,
