@@ -278,7 +278,7 @@ class NewsPage extends Component {
 
                 this.setState({
                     newsCategories: categories,
-                    activeNewsCategory: categories.find(category => category.id === activeNewsCategory.id)
+                    activeNewsCategory: categories.find(category => category.id === activeNewsCategory.id) || categories[0]
                 });
                 this.handleCloseCategoryForm();
             });
@@ -366,42 +366,65 @@ class NewsPage extends Component {
         });
     };
 
-    render () {
+    renderTable = () => {
         const { classes } = this.props;
         const {
             activeNewsCategory,
-            editableCategory,
             editableNews,
             formShowed,
+            newsCategories,
+            news
+        } = this.state;
+
+        if (!newsCategories.length) {
+            return <div>
+                <Typography variant='h6' className={classes.categoryTitle}>Создайте сначала категорию</Typography>
+            </div>;
+        }
+
+        if (!activeNewsCategory) {
+            return <div>
+                <Typography variant='h6' className={classes.categoryTitle}>Выберите категорию</Typography>
+            </div>;
+        }
+
+        return <div>
+            <div className={classes.toolbar} />
+            <AdminTable
+                headerRows={headerRows}
+                tableCells={tableCells}
+                values={news}
+                headerText={`Новости в категории ${pathOr(['texts', DEFAULT_LANG, 'name'], '', activeNewsCategory)}`}
+                onDelete={this.handleNewsDelete}
+                deleteValueWarningTitle='Вы точно хотите удалить новость?'
+                deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
+                filters={false}
+                copyItem
+                onFormOpen={this.handleNewsFormOpen}
+                onProductClone={this.handleNewsFormClone}
+            />
+            <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal} disableEnforceFocus>
+                <Paper className={classes.modalContent}>
+                    <NewsForm categories={newsCategories} activeCategory={activeNewsCategory} news={editableNews} onDone={this.handleNewsFormDone} />
+                </Paper>
+            </Modal>
+        </div>;
+    };
+
+    render () {
+        const { classes } = this.props;
+        const {
+            editableCategory,
             valueForDelete,
             newsCategories,
-            news,
             lang,
             categoryFormShowed
         } = this.state;
 
-        return <div className={classes.root}>
-            <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <AdminTable
-                    headerRows={headerRows}
-                    tableCells={tableCells}
-                    values={news}
-                    headerText={`Новости в категории ${pathOr(['texts', DEFAULT_LANG, 'name'], '', activeNewsCategory)}`}
-                    onDelete={this.handleNewsDelete}
-                    deleteValueWarningTitle='Вы точно хотите удалить новость?'
-                    deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
-                    filters={false}
-                    copyItem
-                    onFormOpen={this.handleNewsFormOpen}
-                    onProductClone={this.handleNewsFormClone}
-                />
-                <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal} disableEnforceFocus>
-                    <Paper className={classes.modalContent}>
-                        <NewsForm categories={newsCategories} activeCategory={activeNewsCategory} news={editableNews} onDone={this.handleNewsFormDone} />
-                    </Paper>
-                </Modal>
-            </main>
+        return <main className={classes.root}>
+            <div className={classes.content}>
+                { this.renderTable() }
+            </div>
             <Drawer
                 className={classes.drawer}
                 variant="permanent"
@@ -454,7 +477,7 @@ class NewsPage extends Component {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </div>;
+        </main>;
     }
 }
 
