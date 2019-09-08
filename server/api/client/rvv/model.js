@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const rvv = new Schema({
+const Rvv = new Schema({
     id: { type: String, required: true },
     texts: {
         type: {
@@ -97,4 +97,4 @@ const rvv = new Schema({
     }
 });
 
-export default mongoose.model('rvv', rvv);
+export default mongoose.model('Rvv', Rvv);

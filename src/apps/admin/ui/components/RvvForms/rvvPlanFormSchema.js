@@ -1,7 +1,6 @@
 import FormFieldInput from '../Form/fields/FormFieldInput/FormFieldInput.jsx';
 import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
 import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
-import FormFieldCheckbox from '../Form/fields/FormFieldCheckbox/FormFieldCheckbox';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
 
 export default function ({ data: { title } = {}, settings: { lang } } = {}) {
@@ -35,7 +34,8 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 component: FormFieldInput,
                 name: `${lang}_title`,
                 schema: {
-                    label: 'Название'
+                    label: 'Текст',
+                    multiline: true
                 },
                 validators: [
                     { name: 'required', options: { text: 'Заполните название' } }

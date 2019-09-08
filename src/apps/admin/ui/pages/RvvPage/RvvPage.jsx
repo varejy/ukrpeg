@@ -6,14 +6,18 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Lists from '../../components/Lists/Lists';
+import Modal from '@material-ui/core/Modal';
+import Paper from '@material-ui/core/Paper';
 
 import { connect } from 'react-redux';
 import getRvv from '../../../services/getRvv';
+import editRvv from '../../../services/editRvv';
 
 import noop from '@tinkoff/utils/function/noop';
 
 import RvvCardPilotProjectForm from '../../components/RvvCardPilotProject/RvvCardPilotProjectForm.jsx';
 import RvvCardsKeyFacts from '../../components/RvvCardsKeyFacts/RvvCardsKeyFacts';
+import RvvListForm from '../../components/RvvForms/RvvForms';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -124,21 +128,26 @@ const mapStateToProps = ({ rvv }) => {
 
 const mapDispatchToProps = (dispatch) => ({
     getRvv: payload => dispatch(getRvv(payload)),
+    editRvv: payload => dispatch(editRvv(payload))
 });
 
 class RvvPage extends Component {
     static propTypes = {
-        classes: PropTypes.object.isRequired
+        classes: PropTypes.object.isRequired,
+        rvv: PropTypes.object
     };
 
     static defaultProps = {
+        rvv: ''
     };
 
     constructor (...args) {
         super(...args);
 
         this.state = {
-            tabsValue: 0
+            tabsValue: 0,
+            formVisible: false,
+            editableElem: null
         };
     }
 
@@ -149,8 +158,48 @@ class RvvPage extends Component {
             });
     }
 
-    handleFormOpen = (value, tabId) => () => {
-        console.log(value, tabId)
+    handleFormOpen = (prop) => () => {
+        this.setState({
+            formVisible: true,
+            editableElem: {
+                value: prop ? prop.value : {},
+                tabId: prop ? prop.tabId : ''
+            }
+        })
+    }
+
+    handleCloseForm = () => {
+        this.setState({
+            formVisible: false,
+            editableElem: null
+        })
+    }
+
+    handleFormDone = (values) => {
+        const { rvv } = this.props;
+
+        this.props.editRvv({
+            ...rvv,
+            texts: {
+                ua: {
+                    plans: [
+                        {
+                            title: values.ua_title
+                        }
+                    ]
+                },
+                en: {
+                    plans: [
+                        {
+                            title: values.en_title
+                        }
+                    ]
+                }
+            }
+        })
+            .then(() => {
+                this.props.getRvv();
+            });
     }
 
     handleTableChange = event => () => {
@@ -264,7 +313,8 @@ class RvvPage extends Component {
     }
 
     render () {
-        const { tabsValue } = this.state;
+        const { classes } = this.props;
+        const { tabsValue, formVisible, editableElem } = this.state;
 
         return <div>
             <AppBar position="static" color="default">
@@ -295,6 +345,11 @@ class RvvPage extends Component {
                 {this.renderPageSix(5)}
                 {this.renderPageSeven(6)}
             </SwipeableViews>
+            <Modal open={formVisible} onClose={this.handleCloseForm} className={classes.modal} disableEnforceFocus>
+                <Paper className={classes.modalContent}>
+                    <RvvListForm value={editableElem} onDone={this.handleFormDone}/>
+                </Paper>
+            </Modal>
         </div>;
     }
 }

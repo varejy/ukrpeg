@@ -1,5 +1,5 @@
-import rvv from '../model';
+import Rvv from '../model';
 
 export default function createRvv (rvv) {
-    return rvv.create(rvv);
+    return Rvv.create(rvv);
 }

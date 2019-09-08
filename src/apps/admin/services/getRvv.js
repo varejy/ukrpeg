@@ -10,6 +10,7 @@ export default function getRvv () {
                 .get('/api/client/rvv/get')
         )
             .then(rvv => {
+                console.log(rvv)
                 return dispatch(setRvvAction(rvv));
             });
     };
