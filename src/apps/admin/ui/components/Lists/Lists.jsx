@@ -32,15 +32,17 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 import arrayMove from '../../../utils/arrayMove';
 
 // Tinkoff
+import pathOr from '@tinkoff/utils/object/pathOr';
 import noop from '@tinkoff/utils/function/noop';
 
 const MAX_LENGTH_NAMES = 59;
+const DEFAULT_LANG = 'ua';
 
 const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDelete, sortable, numeration, isImage, value, tabId, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName, onDelete, sortable, numeration, isImage, value, tabId, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
         {
@@ -55,7 +57,7 @@ const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDel
         }
         <ListItemText
             className={classes.listItemText}
-            primary={getCorrectName(value.title)}
+            primary={getCorrectName(name)}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
@@ -82,7 +84,9 @@ const SortableWrapp = SortableContainer((
     <List>
         {
             values.map((value, i) => {
-                return <ItemSortable key={i} value={value} index={i} {...rest}/>;
+                const name = pathOr([`${DEFAULT_LANG}_title`], '', value);
+
+                return <ItemSortable key={i} name={name} value={value} index={i} {...rest}/>;
             })
         }
     </List>
@@ -222,6 +226,14 @@ class Lists extends Component {
         });
     }
 
+    componentWillReceiveProps (nextProps) {
+        if (nextProps.values !== this.props.values) {
+            this.setState({
+                values: nextProps.values
+            });
+        }
+    }
+
     handleWarningAgree = () => {
         const { valueForDelete } = this.state;
 
@@ -262,7 +274,7 @@ class Lists extends Component {
                 <div className={classes.header}>
                     <Typography variant='h5' className={classes.title}>{title}</Typography>
                     <Tooltip title='Добавить'>
-                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen()}>
+                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen({ value: {}, tabId})}>
                             <AddIcon />
                         </IconButton>
                     </Tooltip>

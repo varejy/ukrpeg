@@ -23,8 +23,9 @@ class RvvListForm extends Component {
 
         this.initialValues = [
             {
-                ua_title: value ? value.value.title : '',
-                en_title: value ? value.value.title : '',
+                ua_title: '',
+                en_title: '',
+                ...value.value,
                 schema: plansSchema,
                 id: 'plans'
             },

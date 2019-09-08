@@ -88,10 +88,11 @@ const PARTICIPANTS_LIST = [
     'ТОВ «Хенкель Україна»',
     'та інші.'
 ];
-const mapStateToProps = ({ application }) => {
+const mapStateToProps = ({ application, rvv }) => {
     return {
         mediaWidth: application.media.width,
-        langMap: application.langMap
+        langMap: application.langMap,
+        rvvObject: rvv.rvvObj
     };
 };
 
@@ -134,7 +135,7 @@ class RVVPage extends Component {
 
     render () {
         const { left, activeSlide } = this.state;
-        const { mediaWidth, langMap } = this.props;
+        const { mediaWidth, langMap, rvvObject } = this.props;
         const text = propOr('rvv', {}, langMap);
         let PAGINATION = [];
         for (let i = 0; i < PLANS_LIST.length; i++) {

@@ -9,6 +9,8 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
@@ -35,7 +37,10 @@ const materialStyles = {
         textDecoration: 'none',
         margin: '20px 10px',
         width: '254px',
-        position: 'relative'
+        position: 'relative',
+        '&:hover $fileItemContainer': {
+            visibility: 'visible'
+        }
     },
     selectedCard: {
         border: '1px solid rgb(63, 80, 181)'
@@ -44,7 +49,7 @@ const materialStyles = {
         height: '100%',
         width: '100%',
         zIndex: 2312,
-        position: 'absolute'
+        position: 'absolute',
     },
     header: {
         display: 'flex',
@@ -59,6 +64,15 @@ const materialStyles = {
     },
     title: {
         height: '30px'
+    },
+    fileItemContainer: {
+        position: 'absolute',
+        right: '0',
+        top: '0',
+        zIndex: 2314,
+        visibility: 'hidden',
+        background: 'white',
+        borderRadius: '100%'
     }
 };
 
@@ -66,9 +80,23 @@ const ButtonSortable = SortableHandle(({ classes }) => (
     <div className={classes.cardSortableBtn}/>
 ));
 
-const CardItem = SortableElement(({ card, check, onSelectedCard, getCorrectName, classes }) => (
+const CardItem = SortableElement(({ card, check, index, onSelectedCard, onItemDelete, onEdit, getCorrectName, classes }) => (
     <div className={classes.cardLink} >
-        <ButtonSortable onClick={onSelectedCard(card)} classes={classes}/>
+        <div className={classes.fileItemContainer}>
+            <IconButton
+                aria-label='Delete'
+                onClick={onItemDelete(index)}
+            >
+                <DeleteIcon />
+            </IconButton>
+            <IconButton
+                aria-label='Edit'
+                onClick={onEdit(index)}
+            >
+                <EditIcon />
+            </IconButton>
+        </div>
+        <ButtonSortable onClick={onSelectedCard(card)} classes={classes} />
         <Card className={classNames(classes.card, { [classes.selectedCard]: check(card.positionIndex) })}>
             <CardHeader
                 title={getCorrectName(card.title)}
@@ -102,14 +130,18 @@ class RvvCardsKeyFacts extends Component {
         values: PropTypes.array,
         maxLength: PropTypes.number,
         title: PropTypes.string,
-        onFormOpen: PropTypes.func
+        onFormOpen: PropTypes.func,
+        onDelete: PropTypes.func,
+        onEdit: PropTypes.func
     };
 
     static defaultProps = {
         values: [],
         maxLength: Infinity,
         title: '',
-        onFormOpen: noop
+        onFormOpen: noop,
+        onDelete: noop,
+        onEdit: noop
     };
 
     state = {
@@ -145,7 +177,7 @@ class RvvCardsKeyFacts extends Component {
     };
 
     render () {
-        const { classes, maxLength, title, onFormOpen } = this.props;
+        const { classes, maxLength, title, onFormOpen, onDelete, onEdit } = this.props;
         const { selectedCard, values } = this.state;
         const checkMaxItemLength = () => values.length === maxLength;
 
@@ -165,19 +197,14 @@ class RvvCardsKeyFacts extends Component {
                     values={values}
                     selectedCard={selectedCard}
                     onSelectedCard={this.handleSelectedCard}
+                    onItemDelete={onDelete}
+                    onEdit={onEdit}
                     classes={classes}
                     getCorrectName={this.getCorrectName}
                     onSortEnd={this.onDragEnd}
                     useDragHandle
                 />
             </div>
-            {
-                /* <div className={classes.addButton}>
-                    <Fab color='primary' size='small' onClick={this.handleFeatureAdd}>
-                        <AddIcon />
-                    </Fab>
-                </div> */
-            }
         </div>;
     }
 }

@@ -14,6 +14,8 @@ import getRvv from '../../../services/getRvv';
 import editRvv from '../../../services/editRvv';
 
 import noop from '@tinkoff/utils/function/noop';
+import pathOr from '@tinkoff/utils/object/pathOr';
+import reduce from '@tinkoff/utils/array/reduce';
 
 import RvvCardPilotProjectForm from '../../components/RvvCardPilotProject/RvvCardPilotProjectForm.jsx';
 import RvvCardsKeyFacts from '../../components/RvvCardsKeyFacts/RvvCardsKeyFacts';
@@ -71,11 +73,6 @@ const arrayForFivePage = [
         positionIndex: 1
     },
     {
-        title: '25%',
-        description: 'сміття було зібрано від загального обсягу відходів',
-        positionIndex: 2
-    },
-    {
         title: '320',
         description: 'тонн було зібрано відходів упаковки упродовж першого року з дня старту проекту',
         positionIndex: 3
@@ -122,7 +119,7 @@ const materialStyles = theme => ({
 
 const mapStateToProps = ({ rvv }) => {
     return {
-        rvv: rvv.rvv
+        rvvObject: rvv.rvv
     };
 };
 
@@ -134,11 +131,15 @@ const mapDispatchToProps = (dispatch) => ({
 class RvvPage extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
-        rvv: PropTypes.object
+        getRvv: PropTypes.func,
+        editRvv: PropTypes.func,
+        rvvObject: PropTypes.object
     };
 
     static defaultProps = {
-        rvv: ''
+        rvvObject: {},
+        getRvv: noop,
+        editRvv: noop,
     };
 
     constructor (...args) {
@@ -151,10 +152,20 @@ class RvvPage extends Component {
         };
     }
 
-    componentDidMount () {
+    componentWillReceiveProps (nextProps) {
+        if (nextProps.rvv !== this.props.rvv) {
+            this.setState({
+                rvv: nextProps.rvv
+            });
+        }
+    }
+
+    componentWillMount () {
         this.props.getRvv()
             .then(() => {
-                console.log(this.props)
+                this.setState({
+                    rvv: this.props.rvvObject
+                })
             });
     }
 
@@ -176,20 +187,25 @@ class RvvPage extends Component {
     }
 
     handleFormDone = (values) => {
-        const { rvv } = this.props;
+        const { rvv } = this.state;
+        const tabId = values.id;
 
         this.props.editRvv({
             ...rvv,
             texts: {
                 ua: {
-                    plans: [
+                    ...rvv.ua,
+                    [tabId]: [
+                        ...pathOr(['ua', tabId], '', rvv),
                         {
                             title: values.ua_title
                         }
                     ]
                 },
                 en: {
-                    plans: [
+                    ...rvv.en,
+                    [tabId]: [
+                        ...pathOr(['en', tabId], '', rvv),
                         {
                             title: values.en_title
                         }
@@ -199,6 +215,7 @@ class RvvPage extends Component {
         })
             .then(() => {
                 this.props.getRvv();
+                this.handleCloseForm();
             });
     }
 
@@ -210,10 +227,23 @@ class RvvPage extends Component {
 
     renderPageOne = () => {
         const { classes } = this.props;
+        const { rvv } = this.state;
+        const plansUa = pathOr(['texts', 'ua', 'plans'], '', rvv);
+        const plansEn = pathOr(['texts', 'en', 'plans'], '', rvv);
 
-        return <div className={classes.wrapp}>
+        const plans = reduce((acc, item, i) => {
+            return [
+                ...acc,
+                {
+                    ua_title: item.title,
+                    en_title: plansEn[i].title
+                }
+            ]
+        }, [])(plansUa)
+
+        return plans ? <div className={classes.wrapp}>
             <Lists
-                values={arrayForOnePage}
+                values={plans}
                 sortable={true}
                 numeration={true}
                 maxLength={10}
@@ -221,7 +251,8 @@ class RvvPage extends Component {
                 title='Планы'
                 onFormOpen={this.handleFormOpen}
             />
-        </div>;
+        </div>
+        : <div></div>;
     }
 
     renderPageTwo = () => {

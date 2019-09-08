@@ -4,7 +4,7 @@ import getRvv from './services/getRvv';
 
 const router = express.Router();
 
-router.route('/get')
+router.route('/')
     .get(getRvv);
 
 export default router;
