@@ -58,12 +58,14 @@ class NewsForm extends Component {
         updateNewsAvatar: PropTypes.func.isRequired,
         onDone: PropTypes.func,
         news: PropTypes.object,
+        categories: PropTypes.array,
         activeCategory: PropTypes.object
     };
 
     static defaultProps = {
         onDone: noop,
         news: {},
+        categories: {},
         activeCategory: {}
     };
 
@@ -74,10 +76,16 @@ class NewsForm extends Component {
         const ua = pathOr(['texts', 'ua'], '', news);
         const en = pathOr(['texts', 'en'], '', news);
 
+        this.categoriesOptions = this.props.categories.map(category => ({
+            value: category.id,
+            name: category.texts.ua.name
+        }));
+
         this.initialValues = {
             hidden: false,
             date: format(new Date(), 'YYYY-MM-DD'),
             views: 0,
+            categoryId: this.props.activeCategory.id,
             avatar: {
                 files: news.avatar ? [news.avatar] : [],
                 removedFiles: []
@@ -118,6 +126,7 @@ class NewsForm extends Component {
             ua_seoDescription: uaSeoDescription,
             en_seoKeywords: enSeoKeywords,
             ua_seoKeywords: uaSeoKeywords,
+            categoryId,
             alias,
             hidden,
             views,
@@ -127,7 +136,7 @@ class NewsForm extends Component {
         return {
             hidden,
             views: +views,
-            categoryId: this.props.activeCategory.id,
+            categoryId,
             alias,
             date,
             id,
@@ -158,10 +167,17 @@ class NewsForm extends Component {
         });
     };
 
-    handleChange = (values) => {
-        this.setState({
-            lang: values.lang
-        });
+    handleChange = (values, changes) => {
+        if ('lang' in changes) {
+            this.setState({
+                lang: changes.lang
+            });
+
+            this.categoriesOptions = this.props.categories.map(category => ({
+                value: category.id,
+                name: category.texts[changes.lang].name
+            }));
+        }
     };
 
     handleSubmit = values => {
@@ -206,7 +222,10 @@ class NewsForm extends Component {
                 initialValues={this.initialValues}
                 lang={lang}
                 schema={getSchema({
-                    data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' },
+                    data: {
+                        title: this.id ? 'Редактирование новости' : 'Добавление новости',
+                        categoriesOptions: this.categoriesOptions
+                    },
                     settings: { lang }
                 })}
                 onChange={this.handleChange}
