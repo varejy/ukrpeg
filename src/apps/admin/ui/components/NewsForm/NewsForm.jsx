@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import ErrorIcon from '@material-ui/icons/Error';
+import { withStyles } from '@material-ui/core/styles';
+
 import { connect } from 'react-redux';
 import saveNews from '../../../services/saveNews';
 import editNews from '../../../services/editNews';
@@ -15,7 +22,7 @@ import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
 import format from 'date-fns/format';
 
-const NEWS_VALUES = ['hidden'];
+const NEWS_VALUES = ['hidden', 'alias'];
 
 const mapDispatchToProps = (dispatch) => ({
     saveNews: payload => dispatch(saveNews(payload)),
@@ -23,19 +30,42 @@ const mapDispatchToProps = (dispatch) => ({
     updateNewsAvatar: (...payload) => dispatch(updateNewsAvatar(...payload))
 });
 
+const materialStyles = theme => ({
+    error: {
+        backgroundColor: theme.palette.error.dark
+    },
+    icon: {
+        fontSize: 20
+    },
+    iconVariant: {
+        opacity: 0.9,
+        marginRight: theme.spacing.unit
+    },
+    message: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    margin: {
+        margin: theme.spacing.unit
+    }
+});
+
 class NewsForm extends Component {
     static propTypes = {
+        classes: PropTypes.object.isRequired,
         saveNews: PropTypes.func.isRequired,
         editNews: PropTypes.func.isRequired,
         updateNewsAvatar: PropTypes.func.isRequired,
         onDone: PropTypes.func,
         news: PropTypes.object,
+        categories: PropTypes.array,
         activeCategory: PropTypes.object
     };
 
     static defaultProps = {
         onDone: noop,
         news: {},
+        categories: {},
         activeCategory: {}
     };
 
@@ -46,10 +76,16 @@ class NewsForm extends Component {
         const ua = pathOr(['texts', 'ua'], '', news);
         const en = pathOr(['texts', 'en'], '', news);
 
+        this.categoriesOptions = this.props.categories.map(category => ({
+            value: category.id,
+            name: category.texts.ua.name
+        }));
+
         this.initialValues = {
             hidden: false,
             date: format(new Date(), 'YYYY-MM-DD'),
             views: 0,
+            categoryId: this.props.activeCategory.id,
             avatar: {
                 files: news.avatar ? [news.avatar] : [],
                 removedFiles: []
@@ -71,7 +107,8 @@ class NewsForm extends Component {
         };
         this.id = prop('id', news);
         this.state = {
-            lang: 'ua'
+            lang: 'ua',
+            errorText: ''
         };
     }
 
@@ -89,6 +126,8 @@ class NewsForm extends Component {
             ua_seoDescription: uaSeoDescription,
             en_seoKeywords: enSeoKeywords,
             ua_seoKeywords: uaSeoKeywords,
+            categoryId,
+            alias,
             hidden,
             views,
             date,
@@ -97,7 +136,8 @@ class NewsForm extends Component {
         return {
             hidden,
             views: +views,
-            categoryId: this.props.activeCategory.id,
+            categoryId,
+            alias,
             date,
             id,
             texts: {
@@ -121,10 +161,23 @@ class NewsForm extends Component {
         };
     };
 
-    handleChange = (values) => {
+    handleHideFailMessage = () => {
         this.setState({
-            lang: values.lang
+            errorText: ''
         });
+    };
+
+    handleChange = (values, changes) => {
+        if ('lang' in changes) {
+            this.setState({
+                lang: changes.lang
+            });
+
+            this.categoriesOptions = this.props.categories.map(category => ({
+                value: category.id,
+                name: category.texts[changes.lang].name
+            }));
+        }
     };
 
     handleSubmit = values => {
@@ -146,23 +199,59 @@ class NewsForm extends Component {
             })
             .then(() => {
                 this.props.onDone();
+            })
+            .catch(error => {
+                if (error.code === 'duplication') {
+                    this.setState({
+                        errorText: 'Введите уникальные алиас для новости'
+                    });
+                } else {
+                    this.setState({
+                        errorText: 'Что-то пошло не так. Перезагрузите страницы и попробуйте снова'
+                    });
+                }
             });
     };
 
     render () {
-        const { lang } = this.state;
+        const { classes } = this.props;
+        const { lang, errorText } = this.state;
 
-        return <Form
-            initialValues={this.initialValues}
-            lang={lang}
-            schema={getSchema({
-                data: { title: this.id ? 'Редактирование новости' : 'Добавление новости' },
-                settings: { lang }
-            })}
-            onChange={this.handleChange}
-            onSubmit={this.handleSubmit}
-        />;
+        return <div>
+            <Form
+                initialValues={this.initialValues}
+                lang={lang}
+                schema={getSchema({
+                    data: {
+                        title: this.id ? 'Редактирование новости' : 'Добавление новости',
+                        categoriesOptions: this.categoriesOptions
+                    },
+                    settings: { lang }
+                })}
+                onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
+            />
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right'
+                }}
+                onClose={this.handleHideFailMessage}
+                open={!!errorText}
+                autoHideDuration={2000}
+            >
+                <SnackbarContent
+                    className={classNames(classes.error, classes.margin)}
+                    message={
+                        <span id='client-snackbar' className={classes.message}>
+                            <ErrorIcon className={classNames(classes.icon, classes.iconVariant)} />
+                            { errorText }
+                        </span>
+                    }
+                />
+            </Snackbar>
+        </div>;
     }
 }
 
-export default connect(null, mapDispatchToProps)(NewsForm);
+export default withStyles(materialStyles)(connect(null, mapDispatchToProps)(NewsForm));

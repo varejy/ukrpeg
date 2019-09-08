@@ -146,7 +146,7 @@ class SearchPage extends Component {
                         <div className={styles.resultNewsList}>
                             {news.map((item, i) => {
                                 return (
-                                    <Link to={`${langRoute}/news/${item.id}`} key={i}>
+                                    <Link to={`${langRoute}/news/${item.alias}`} key={i}>
                                         <div key={i} className={classNames(styles.resultNewsItem, {
                                             [styles.resultNewsItemNotOdd]: i % 2 !== 0
                                         })}>

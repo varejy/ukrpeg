@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const News = new Schema({
     id: { type: String, required: true },
     categoryId: { type: String, required: true },
+    alias: { type: String, required: true, unique: true },
     avatar: { type: String },
     hidden: { type: Boolean, required: true },
     texts: { type: Object, required: true },

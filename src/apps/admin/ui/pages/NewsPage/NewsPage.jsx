@@ -229,7 +229,7 @@ class NewsPage extends Component {
 
     getCategoryNews = (activeCategory = this.state.activeNewsCategory) => {
         return this.props.news.filter(news => news.categoryId === activeCategory.id);
-    }
+    };
 
     componentDidMount () {
         Promise.all([
@@ -249,6 +249,16 @@ class NewsPage extends Component {
         this.setState({
             formShowed: true,
             editableNews: news
+        });
+    };
+
+    handleNewsFormClone = news => () => {
+        this.setState({
+            formShowed: true,
+            editableNews: {
+                ...news,
+                id: null
+            }
         });
     };
 
@@ -339,7 +349,7 @@ class NewsPage extends Component {
             activeNewsCategory: category,
             news: this.getCategoryNews(category)
         });
-    }
+    };
 
     onDragEnd = ({ oldIndex, newIndex }) => {
         const { newsCategories } = this.state;
@@ -382,12 +392,13 @@ class NewsPage extends Component {
                     deleteValueWarningTitle='Вы точно хотите удалить новость?'
                     deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
                     filters={false}
-                    copyItem={false}
+                    copyItem
                     onFormOpen={this.handleNewsFormOpen}
+                    onProductClone={this.handleNewsFormClone}
                 />
                 <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal} disableEnforceFocus>
                     <Paper className={classes.modalContent}>
-                        <NewsForm activeCategory={activeNewsCategory} news={editableNews} onDone={this.handleNewsFormDone} />
+                        <NewsForm categories={newsCategories} activeCategory={activeNewsCategory} news={editableNews} onDone={this.handleNewsFormDone} />
                     </Paper>
                 </Modal>
             </main>

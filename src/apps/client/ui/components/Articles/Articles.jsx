@@ -66,7 +66,7 @@ class Articles extends Component {
                 });
             }
         }
-    }
+    };
 
     render () {
         const { langMap, lang, news, langRoute } = this.props;
@@ -84,7 +84,7 @@ class Articles extends Component {
                     <div className={styles.news} style={{ left: `${-sliderLeft}px` }} >
                         {news.map((item, index) => {
                             return (
-                                <Link to={`${langRoute}/news/${item.id}`} key={index} className={styles.newsBlock}>
+                                <Link to={`${langRoute}/news/${item.alias}`} key={index} className={styles.newsBlock}>
                                     <p className={styles.date}>{getDateFormatted(item.date, lang)}</p>
                                     <p className={styles.description}>{item.texts[`${lang}`].shortDescription}</p>
                                 </Link>
@@ -104,8 +104,7 @@ class Articles extends Component {
             <ul className={styles.switches}>
                 {news.map((item, i) => {
                     return (
-                        <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)}>
-                        </li>
+                        <li key={i} className={currentNews === i ? styles.switchItemActive : styles.switchItem} onClick={this.handleSwitchClick(i)} />
                     );
                 })}
             </ul>

@@ -157,6 +157,8 @@
     justify-content: flex-start;
     height: 70px;
     margin-left: 15px;
+    cursor: pointer;
+    z-index: 11;
 }
 
 .categoryArrowIcon{
@@ -168,10 +170,16 @@
 
 .arrowButtonUp{
     transform: rotate(180deg);
+    cursor: pointer;
+    z-index: 11;
+    position: relative;
 }
 
 .arrowButtonDown{
     transform: none;
+    cursor: pointer;
+    z-index: 11;
+    position: relative;
 }
 
 .newsContent{
@@ -212,6 +220,15 @@
 .coverImage{
     width: 100%;
     height: auto;
+    position: relative;
+    opacity: 0;
+    top: 5vh;
+    transition: .4s ease-in-out;
+}
+
+.coverImageAnimated{
+    opacity: 1;
+    top: 0;
 }
 
 .news{
@@ -221,12 +238,20 @@
     position: relative;
     padding: 20px 18px;
     margin-left: 14px;
+    top: 5vh;
+    opacity: 0;
+    transition: opacity .6s ease-in-out .15s, top .6s ease-in-out .15s;
 
     @media (max-width: 780px){
         margin: 260px 0 0 0;
         width: 100%;
         padding: 32px 30px;
     }
+}
+
+.newsAnimated{
+    opacity: 1;
+    top: 0;
 }
 
 .newsDate{
@@ -444,7 +469,7 @@
     border-left: 2px solid limeGreen;
 }
 
-.newsCardContainer .newsDate{
+.newsDateMenu{
     width: 100%;
     margin: 26px 0 18px 0;
     display: flex;
@@ -456,9 +481,12 @@
     text-align: left;
     letter-spacing: 1px;
     color: middleGrey;
+    opacity: unset;
+    top: 0;
+    position: unset;
 }
 
-.newsCardContainer .newsTitle{
+.newsTitleMenu{
     width: 100%;
     height: 100px;
     align-items: flex-start;
@@ -471,6 +499,9 @@
     color: blackBasic;
     border: none;
     margin-bottom: 0;
+    opacity: unset;
+    top: 0;
+    position: unset;
 }
 
 .newsMenuContainerMobile {

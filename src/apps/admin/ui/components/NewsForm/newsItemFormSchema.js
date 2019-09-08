@@ -1,4 +1,5 @@
 import FormFieldInput from '../Form/fields/FormFieldInput/FormFieldInput.jsx';
+import FormFieldSelect from '../Form/fields/FormFieldSelect/FormFieldSelect.jsx';
 import FormFieldEditor from '../Form/fields/FormFieldEditor/FormFieldEditor';
 import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
 import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
@@ -8,7 +9,7 @@ import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
 import FormFieldDivider from '../Form/fields/FormFieldDivider/FormFieldDivider';
 import FormFieldKeywords from '../Form/fields/FormFieldWords/FormFieldWords';
 
-export default function ({ data: { title } = {}, settings: { lang } } = {}) {
+export default function ({ data: { title, categoriesOptions } = {}, settings: { lang } } = {}) {
     return {
         fields: [
             {
@@ -42,7 +43,28 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                     label: 'Название'
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните название продутка' } }
+                    { name: 'required', options: { text: 'Заполните название новости' } }
+                ]
+            },
+            {
+                component: FormFieldSelect,
+                name: 'categoryId',
+                schema: {
+                    label: 'Категория',
+                    options: categoriesOptions
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Выберите категорию новости' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: 'alias',
+                schema: {
+                    label: 'Алиас'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните алиас' } }
                 ]
             },
             {

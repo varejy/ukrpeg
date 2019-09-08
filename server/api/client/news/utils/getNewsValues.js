@@ -4,6 +4,7 @@ const VALUES = [
     'id',
     'date',
     'avatar',
+    'alias',
     'categoryId',
     'hidden',
     'views',
