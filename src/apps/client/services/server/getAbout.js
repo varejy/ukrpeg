@@ -1,24 +1,24 @@
 import request from 'superagent';
 import base from '../base';
 
-import setPartners from '../../actions/setPartners';
+import setAbout from '../../actions/setAbout';
 
-export default function getPartners (req) {
+export default function getAbout (req) {
     return dispatch => {
         const host = req.get('host');
 
         return base(
             request
-                .get(`${host}/api/client/partners/all`)
+                .get(`${host}/api/client/about/`)
                 .timeout({
                     deadline: 2000
                 })
         )
-            .then(news => {
-                dispatch(setPartners(news));
+            .then(about => {
+                dispatch(setAbout(about));
             })
             .catch(() => {
-                dispatch(setPartners([]));
+                dispatch(setAbout([]));
             });
     };
 }

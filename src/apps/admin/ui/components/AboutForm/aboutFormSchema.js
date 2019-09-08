@@ -36,7 +36,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 name: `${lang}_text`,
                 schema: {
                     label: 'Текст',
-                    multiple: true
+                    multiline: true
                 },
                 validators: [
                     { name: 'required', options: { text: 'Заполните текст для блока' } }
