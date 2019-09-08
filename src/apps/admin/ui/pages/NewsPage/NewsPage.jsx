@@ -382,8 +382,9 @@ class NewsPage extends Component {
                     deleteValueWarningTitle='Вы точно хотите удалить новость?'
                     deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
                     filters={false}
-                    copyItem={false}
+                    copyItem
                     onFormOpen={this.handleNewsFormOpen}
+                    onProductClone={this.handleNewsFormOpen}
                 />
                 <Modal open={formShowed} onClose={this.handleCloseNewsForm} className={classes.modal} disableEnforceFocus>
                     <Paper className={classes.modalContent}>
