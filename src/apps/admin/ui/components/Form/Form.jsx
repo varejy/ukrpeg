@@ -47,6 +47,12 @@ class Form extends Component {
         this.validators = this.getFieldsValidators();
     }
 
+    componentWillReceiveProps (nextProps, nextContext) {
+        if (nextProps.schema !== this.props.schema) {
+            this.validators = this.getFieldsValidators(nextProps);
+        }
+    }
+
     getFieldsValidators = (props = this.props) => props.schema.fields
         .reduce((validators, field) => {
             if (!field.validators) {
