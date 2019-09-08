@@ -83,7 +83,6 @@ class NewsForm extends Component {
         }));
 
         this.initialValues = {
-            date: format(new Date(), 'YYYY-MM-DD'),
             views: 0,
             categoryId: this.props.activeCategory.id,
             avatar: {
@@ -132,7 +131,6 @@ class NewsForm extends Component {
             alias,
             hidden,
             views,
-            date,
             id
         }) => {
         return {
@@ -140,7 +138,6 @@ class NewsForm extends Component {
             views: +views,
             categoryId,
             alias,
-            date,
             id,
             texts: {
                 en: {
