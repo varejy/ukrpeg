@@ -407,7 +407,6 @@ class NewsPage extends Component {
                 deleteValueWarningTitle='Вы точно хотите удалить новость?'
                 deleteValuesWarningTitle='Вы точно хотите удалить следующие новости?'
                 filters={false}
-                copyItem
                 onFormOpen={this.handleNewsFormOpen}
                 onProductClone={this.handleNewsFormClone}
             />
