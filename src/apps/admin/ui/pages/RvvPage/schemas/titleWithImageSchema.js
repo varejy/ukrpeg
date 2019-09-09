@@ -1,7 +1,8 @@
-import FormFieldInput from '../Form/fields/FormFieldInput/FormFieldInput.jsx';
-import FormFieldTitle from '../Form/fields/FormFieldTitle/FormFieldTitle.jsx';
-import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
-import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
+import FormFieldInput from '../../../components/Form/fields/FormFieldInput/FormFieldInput.jsx';
+import FormFieldTitle from '../../../components/Form/fields/FormFieldTitle/FormFieldTitle.jsx';
+import FormFieldButton from '../../../components/Form/fields/FormFieldButton/FormFieldButton';
+import FormFieldFiles from '../../../components/Form/fields/FormFieldFiles/FormFieldFiles';
+import FormFieldLangs from '../../../components/Form/fields/FormFieldLangs/FormFieldLangs';
 
 export default function ({ data: { title } = {}, settings: { lang } } = {}) {
     return {
@@ -38,7 +39,27 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                     multiline: true
                 },
                 validators: [
-                    { name: 'required', options: { text: 'Заполните название' } }
+                    { name: 'required', options: { text: 'Заполните текст' } }
+                ]
+            },
+            {
+                component: FormFieldFiles,
+                name: 'avatar',
+                schema: {
+                    max: 1
+                },
+                validators: [
+                    { name: 'requiredFiles', options: { text: 'Добавьте аватар' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
+                name: 'alt',
+                schema: {
+                    label: 'Alt картинки'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Заполните алт' } }
                 ]
             },
             {

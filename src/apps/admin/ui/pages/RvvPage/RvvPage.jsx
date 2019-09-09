@@ -15,95 +15,19 @@ import editRvv from '../../../services/editRvv';
 
 import noop from '@tinkoff/utils/function/noop';
 import pathOr from '@tinkoff/utils/object/pathOr';
-import reduce from '@tinkoff/utils/array/reduce';
+import pick from '@tinkoff/utils/object/pick';
+import remove from '@tinkoff/utils/array/remove';
 
-import RvvCardPilotProjectForm from '../../components/RvvCardPilotProject/RvvCardPilotProjectForm.jsx';
 import RvvCardsKeyFacts from '../../components/RvvCardsKeyFacts/RvvCardsKeyFacts';
 import RvvListForm from '../../components/RvvForms/RvvForms';
 
 import { withStyles } from '@material-ui/core/styles';
 
-const arrayForOnePage = [
-    {
-        title: '2312 Напрацювати досвід відносин з усіма учасниками схеми РВВ: між собою,' +
-            ' з органами місцевого самоврядування, з організаціями що займаються збором' +
-            ' сортуванням та переробкою відходів.',
-        positionIndex: 1
-    },
-    {
-        title: 'Виробити схему відносин з фіскальними органами,' +
-            ' оскільки діяльність організацій РВВ є неприбутковою.',
-        positionIndex: 2
-    },
-    {
-        title: 'Напрацювати досвід відносин з усіма учасниками' +
-            ' схеми РВВ: між собою, з органами місцевого самоврядування,' +
-            ' з організаціями що займаються збором сортуванням та переробкою відходів.',
-        positionIndex: 3
-    }
-];
+import titleSchema from './schemas/titleSchema';
+import titleWithImageSchema from './schemas/titleWithImageSchema';
+import titleWithDescriptionSchema from './schemas/titleWithDescriptionSchema';
 
-const arrayForTwoPage = [
-    {
-        imgPath: 'http://localhost:4000/src/apps/admin/files/news-5bt8oek0534v3r-avatar1567590878621.png',
-        imgAlt: 'test1',
-        title: 'Напрацювати досвід відносин з усіма учасниками схеми РВВ:' +
-            ' між собою, з органами місцевого самоврядування, з організаціями що ' +
-            'займаються збором сортуванням та переробкою відходів.'
-    },
-    {
-        imgPath: 'http://localhost:4000/src/apps/admin/files/news-5bt29rk03mlgr0-avatar1567590743180.png',
-        imgAlt: 'test2',
-        title: 'Виробити схему відносин з фіскальними органами, оскільки діяльність організацій РВВ є неприбутковою.'
-    }
-];
-
-const arrayForFourPage = [
-    {
-        title: 'Дослідження сфери поводження з упаковкою та її відходами в Україні.',
-        positionIndex: 1
-    },
-    {
-        title: 'Впровадження пілотних проектів у сфері поводження з відходами упаковки.',
-        positionIndex: 2
-    },
-    {
-        title: 'Розробка рекомендацій, які можуть бути запропоновані суб\'єктам ' +
-            'виробництва та ринку, професійним і громадським організаціям, ' +
-            'органам державної влади та місцевого самоврядування і навіть споживачам ' +
-            'товарів в упаковці – щодо безпечного екологічного розвитку у сфері ' +
-            'пакувальної технології та поводження з упаковкою та її відходами.',
-        positionIndex: 3
-    }
-];
-
-const arrayForFivePage = [
-    {
-        title: '200+',
-        description: 'новеньких сміттєвих контейнерів встановили у місті',
-        positionIndex: 1
-    },
-    {
-        title: '320',
-        description: 'тонн було зібрано відходів упаковки упродовж першого року з дня старту проекту',
-        positionIndex: 3
-    }
-];
-
-const arrayForSixPage = [
-    {
-        title: 'ТОВ «Кен-Пак (Україна)»',
-        positionIndex: 1
-    },
-    {
-        title: 'ПрАТ «Елопак-Фастiв»',
-        positionIndex: 2
-    },
-    {
-        title: 'ІП «Кока-Кола Беверіджиз Україна Лімітед»',
-        positionIndex: 3
-    }
-];
+const RVV_FIELDS = ['plans', 'why', 'mainForces', 'composition', 'keyFacts', 'pProject', 'message'];
 
 const materialStyles = theme => ({
     modal: {
@@ -139,6 +63,74 @@ const mapDispatchToProps = (dispatch) => ({
     editRvv: payload => dispatch(editRvv(payload))
 });
 
+const formConfigMap = {
+    plans: {
+        schema: titleSchema,
+        getInitialValues: (values) => ({
+            ua_title: pathOr(['texts', 'ua', 'title'], '', values),
+            en_title: pathOr(['texts', 'en', 'title'], '', values),
+            lang: 'ua'
+        })
+    },
+    why: {
+        schema: titleWithImageSchema,
+        getInitialValues: (values) => ({
+            ua_title: pathOr(['texts', 'ua', 'title'], '', values),
+            en_title: pathOr(['texts', 'en', 'title'], '', values),
+            alt: pathOr(['alt'], '', values),
+            avatar: {
+                files: values ? [values.path] : [],
+                removedFiles: []
+            },
+            lang: 'ua'
+        })
+    },
+    mainForces: {
+        schema: titleSchema,
+        getInitialValues: (values) => ({
+            ua_title: pathOr(['texts', 'ua', 'title'], '', values),
+            en_title: pathOr(['texts', 'en', 'title'], '', values),
+            lang: 'ua'
+        })
+    },
+    keyFacts: {
+        schema: titleWithDescriptionSchema,
+        getInitialValues: (values) => ({
+            ua_title: pathOr(['texts', 'ua', 'title'], '', values),
+            en_title: pathOr(['texts', 'en', 'title'], '', values),
+            ua_description: pathOr(['texts', 'ua', 'description'], '', values),
+            en_description: pathOr(['texts', 'en', 'description'], '', values),
+            lang: 'ua'
+        })
+    },
+    pProject: {
+        schema: titleWithDescriptionSchema,
+        getInitialValues: (values) => ({
+            ua_title: pathOr(['texts', 'ua', 'title'], '', values),
+            en_title: pathOr(['texts', 'en', 'title'], '', values),
+            ua_description: pathOr(['texts', 'ua', 'description'], '', values),
+            en_description: pathOr(['texts', 'en', 'description'], '', values),
+            lang: 'ua'
+        })
+    },
+    message: {
+        schema: titleSchema,
+        getInitialValues: (values) => ({
+            ua_title: pathOr(['texts', 'ua', 'title'], '', values),
+            en_title: pathOr(['texts', 'en', 'title'], '', values),
+            lang: 'ua'
+        })
+    },
+    composition: {
+        schema: titleSchema,
+        getInitialValues: (values) => ({
+            ua_title: pathOr(['texts', 'ua', 'title'], '', values),
+            en_title: pathOr(['texts', 'en', 'title'], '', values),
+            lang: 'ua'
+        })
+    }
+};
+
 class RvvPage extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
@@ -150,7 +142,7 @@ class RvvPage extends Component {
     static defaultProps = {
         rvvObject: {},
         getRvv: noop,
-        editRvv: noop,
+        editRvv: noop
     };
 
     constructor (...args) {
@@ -159,76 +151,166 @@ class RvvPage extends Component {
         this.state = {
             tabsValue: 0,
             formVisible: false,
-            editableElem: null
+            editableElem: null,
+            rvv: {},
+            removedSlides: []
         };
     }
 
     componentWillReceiveProps (nextProps) {
-        if (nextProps.rvv !== this.props.rvv) {
+        if (nextProps.rvvObject !== this.props.rvvObject) {
             this.setState({
-                rvv: nextProps.rvv
+                rvv: {
+                    plans: [],
+                    why: [],
+                    mainForces: [],
+                    composition: [],
+                    keyFacts: [],
+                    pProject: {},
+                    message: {},
+                    ...pick(RVV_FIELDS, nextProps.rvvObject || {})
+                }
             });
         }
     }
 
-    componentWillMount () {
-        this.props.getRvv()
-            .then(() => {
-                this.setState({
-                    rvv: this.props.rvvObject
-                })
-            });
+    componentDidMount () {
+        this.props.getRvv();
     }
 
-    handleFormOpen = (prop) => () => {
+    handleFormOpen = (tabId, values) => (value) => () => {
+        if (value === 'new') {
+            this.setState({
+                formVisible: true,
+                editableElem: {
+                    index: values.length,
+                    slide: null,
+                    schema: formConfigMap[tabId].schema,
+                    getInitialValues: formConfigMap[tabId].getInitialValues,
+                    tabId
+                }
+            });
+        } else {
+            const i = value.index;
+            this.setState({
+                formVisible: true,
+                editableElem: {
+                    value: values[i],
+                    index: i,
+                    schema: formConfigMap[tabId].schema,
+                    getInitialValues: formConfigMap[tabId].getInitialValues,
+                    tabId
+                }
+            });
+        }
+    };
+
+    handleDelete = (tabId, values) => (value) => {
+        const i = value.index;
+        const { removedSlides, rvv } = this.state;
+
+        if (values[i].path) {
+            removedSlides.push(values[i].path);
+        }
+
         this.setState({
-            formVisible: true,
-            editableElem: {
-                value: prop ? prop.value : {},
-                tabId: prop ? prop.tabId : ''
+            removedSlides,
+            rvv: {
+                ...rvv,
+                [tabId]: remove(i, 1, values)
             }
-        })
-    }
+        }, () => {
+            this.handleSubmit()
+                .then(this.props.getRvv);
+        });
+    };
+
+    handleSlidesChanged = tabId => values => {
+        const { rvv } = this.state;
+
+        this.setState({
+            rvv: {
+                ...rvv,
+                [tabId]: values
+            }
+        }, () => {
+            this.handleSubmit()
+                .then(this.props.getRvv);
+        });
+    };
 
     handleCloseForm = () => {
         this.setState({
             formVisible: false,
             editableElem: null
-        })
-    }
+        });
+    };
 
-    handleFormDone = (values) => {
+    handleFormDone = (value, { index, tabId }) => {
         const { rvv } = this.state;
-        const tabId = values.id;
+        const newValues = [...rvv[tabId]];
 
-        this.props.editRvv({
-            ...rvv,
-            texts: {
-                ua: {
-                    ...rvv.ua,
-                    [tabId]: [
-                        ...pathOr(['ua', tabId], '', rvv),
-                        {
-                            title: values.ua_title
-                        }
-                    ]
-                },
-                en: {
-                    ...rvv.en,
-                    [tabId]: [
-                        ...pathOr(['en', tabId], '', rvv),
-                        {
-                            title: values.en_title
-                        }
-                    ]
-                }
+        newValues[index] = value;
+
+        this.setState({
+            rvv: {
+                ...rvv,
+                [tabId]: newValues
             }
-        })
-            .then(() => {
-                this.props.getRvv();
-                this.handleCloseForm();
-            });
-    }
+        }, () => {
+            this.handleSubmit()
+                .then(this.props.getRvv)
+                .then(this.handleCloseForm);
+        });
+    };
+
+    handleTextFormDone = (values, { tabId }) => {
+        const { rvv } = this.state;
+
+        this.setState({
+            rvv: {
+                ...rvv,
+                [tabId]: values
+            }
+        }, () => {
+            this.handleSubmit()
+                .then(this.props.getRvv);
+        });
+    };
+
+    handleSubmit = () => {
+        const { removedSlides, rvv } = this.state;
+        const formData = new FormData();
+        const cleanedSlides = {
+            plans: rvv.plans.map(item => ({ texts: item.texts })),
+            why: rvv.why.map(item => {
+                const isOld = !item.file || !item.file.content;
+
+                return {
+                    texts: item.texts,
+                    ...(item.alt ? { alt: item.alt } : {}),
+                    path: isOld && item.file || item.path,
+                    removedFile: item.removedFile && item.removedFile.path
+                };
+            }),
+            keyFacts: rvv.keyFacts.map(item => ({ texts: item.texts })),
+            mainForces: rvv.mainForces.map(item => ({ texts: item.texts })),
+            composition: rvv.composition.map(item => ({ texts: item.texts })),
+            pProject: rvv.pProject,
+            message: rvv.message
+        };
+
+        rvv.why.forEach((item, i) => {
+            if (item.file && item.file.content) {
+                formData.append(`rvv-file-${i}`, item.file.content);
+            }
+        });
+
+        formData.append('removedSlides', JSON.stringify(removedSlides));
+        formData.append('rvv', JSON.stringify(cleanedSlides));
+
+        return this.props.editRvv(formData);
+    };
 
     handleTableChange = event => () => {
         this.setState({
@@ -239,120 +321,127 @@ class RvvPage extends Component {
     renderPageOne = () => {
         const { classes } = this.props;
         const { rvv } = this.state;
-        const plansUa = pathOr(['texts', 'ua', 'plans'], '', rvv);
-        const plansEn = pathOr(['texts', 'en', 'plans'], '', rvv);
 
-        const plans = reduce((acc, item, i) => {
-            return [
-                ...acc,
-                {
-                    ua_title: item.title,
-                    en_title: plansEn[i].title
-                }
-            ]
-        }, [])(plansUa)
-
-        return plans ? <div className={classes.wrapp}>
+        return <div className={classes.wrapp}>
             <Lists
-                values={plans}
+                values={rvv.plans}
                 sortable={true}
                 numeration={true}
                 maxLength={10}
-                tabId='plans'
                 title='Планы'
-                onFormOpen={this.handleFormOpen}
+                onDelete={this.handleDelete('plans', rvv.plans)}
+                onFormOpen={this.handleFormOpen('plans', rvv.plans)}
+                editValues={this.handleSlidesChanged('plans', rvv.plans)}
             />
-        </div>
-        : <div></div>;
-    }
+        </div>;
+    };
 
     renderPageTwo = () => {
         const { classes } = this.props;
+        const { rvv } = this.state;
 
         return <div className={classes.wrapp}>
             <Lists
-                values={arrayForTwoPage}
+                values={rvv.why}
                 sortable={true}
                 isImage={true}
                 nameToolTip={true}
-                tabId='why'
                 title='Зачем нужен РВВ'
-                onFormOpen={this.handleFormOpen}
+                onDelete={this.handleDelete('why', rvv.why)}
+                onFormOpen={this.handleFormOpen('why', rvv.why)}
+                editValues={this.handleSlidesChanged('why', rvv.why)}
             />
         </div>;
-    }
+    };
 
     renderPageThree = () => {
         const { classes } = this.props;
+        const { rvv } = this.state;
 
         return (
             <div className={classes.modalContent}>
-                <RvvCardPilotProjectForm
-                    onDone={noop}
-                    tabId='pProject'
-                    title='Редактирование пилотного проекта'
+                <RvvListForm
+                    editableElem={{
+                        value: rvv.pProject,
+                        tabId: 'pProject',
+                        schema: formConfigMap.pProject.schema,
+                        getInitialValues: formConfigMap.pProject.getInitialValues
+                    }}
+                    onDone={this.handleTextFormDone}
                 />
             </div>
         );
-    }
+    };
 
     renderPageFour = () => {
         const { classes } = this.props;
+        const { rvv } = this.state;
 
         return <div className={classes.wrapp}>
             <Lists
-                values={arrayForFourPage}
+                values={rvv.mainForces}
                 sortable={true}
                 numeration={true}
                 maxLength={9}
-                tabId='mainForces'
                 title='Основные силы'
-                onFormOpen={this.handleFormOpen}
+                onDelete={this.handleDelete('mainForces', rvv.mainForces)}
+                onFormOpen={this.handleFormOpen('mainForces', rvv.mainForces)}
+                editValues={this.handleSlidesChanged('mainForces', rvv.mainForces)}
             />
         </div>;
-    }
+    };
 
     renderPageFive = () => {
         const { classes } = this.props;
+        const { rvv } = this.state;
 
         return <div className={classes.wrapp}>
             <RvvCardsKeyFacts
+                values={rvv.keyFacts}
                 tabId='keyFacts'
                 title='Ключевые факты'
                 maxLength={3}
-                values={arrayForFivePage}
+                onDelete={this.handleDelete('keyFacts', rvv.keyFacts)}
+                onFormOpen={this.handleFormOpen('keyFacts', rvv.keyFacts)}
+                editValues={this.handleSlidesChanged('keyFacts', rvv.keyFacts)}
             />
         </div>;
-    }
+    };
 
     renderPageSix = () => {
         const { classes } = this.props;
+        const { rvv } = this.state;
 
         return <div className={classes.wrapp}>
             <Lists
-                values={arrayForSixPage}
+                values={rvv.composition}
                 sortable={true}
-                tabId='composition'
                 title='В состав входят'
-                onFormOpen={this.handleFormOpen}
+                onDelete={this.handleDelete('composition', rvv.composition)}
+                onFormOpen={this.handleFormOpen('composition', rvv.composition)}
+                editValues={this.handleSlidesChanged('composition', rvv.composition)}
             />
         </div>;
-    }
+    };
 
     renderPageSeven = () => {
         const { classes } = this.props;
+        const { rvv } = this.state;
 
         return (
             <div className={classes.modalContent}>
-                <RvvCardPilotProjectForm
-                    onDone={noop}
-                    tabId='message'
-                    type='message'
-                    title='Редактирование cообщение'
+                <RvvListForm
+                    editableElem={{
+                        value: rvv.message,
+                        tabId: 'message',
+                        schema: formConfigMap.message.schema,
+                        getInitialValues: formConfigMap.message.getInitialValues
+                    }}
+                    onDone={this.handleTextFormDone}
                 />
             </div>
         );
-    }
+    };
 
     render () {
         const { classes } = this.props;
@@ -389,7 +478,7 @@ class RvvPage extends Component {
             </SwipeableViews>
             <Modal open={formVisible} onClose={this.handleCloseForm} className={classes.modal} disableEnforceFocus>
                 <Paper className={classes.modalContent}>
-                    <RvvListForm value={editableElem} onDone={this.handleFormDone}/>
+                    <RvvListForm editableElem={editableElem} onDone={this.handleFormDone}/>
                 </Paper>
             </Modal>
         </div>;

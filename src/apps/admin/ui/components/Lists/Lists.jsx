@@ -39,11 +39,16 @@ import noop from '@tinkoff/utils/function/noop';
 const MAX_LENGTH_NAMES = 59;
 const DEFAULT_LANG = 'ua';
 
+const getName = value => value.name ||
+    pathOr([`${DEFAULT_LANG}_title`], '', value) ||
+    pathOr(['texts', DEFAULT_LANG, 'title'], '', value) ||
+    pathOr(['texts', DEFAULT_LANG, 'text'], '', value);
+
 const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName, bigAvatar, onDelete, sortable, numeration, isImage, value, tabId, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName, bigAvatar, onDelete, sortable, numeration, isImage, value, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
         {
@@ -53,12 +58,12 @@ const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName,
         }
         {
             isImage && <ListItemAvatar>
-                <Avatar className={classNames(classes.avatar, { [classes.bigAvatar]: bigAvatar })} alt={value.imgAlt} src={value.path} />
+                <Avatar className={classNames(classes.avatar, { [classes.bigAvatar]: bigAvatar })} alt={value.alt} src={value.path} />
             </ListItemAvatar>
         }
         <ListItemText
             className={classes.listItemText}
-            primary={value.name && getCorrectName(value.name)}
+            primary={name && getCorrectName(name)}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
@@ -85,7 +90,7 @@ const SortableWrapp = SortableContainer((
     <List>
         {
             values.map((value, i) => {
-                const name = pathOr([`${DEFAULT_LANG}_title`], '', value);
+                const name = getName(value);
 
                 return <ItemSortable key={i} name={name} value={value} index={i} {...rest}/>;
             })
@@ -189,8 +194,7 @@ class Lists extends Component {
         nameToolTip: PropTypes.bool,
         bigAvatar: PropTypes.bool,
         maxLength: PropTypes.number,
-        title: PropTypes.string,
-        tabId: PropTypes.string
+        title: PropTypes.string
     };
 
     static defaultProps = {
@@ -202,7 +206,6 @@ class Lists extends Component {
         nameToolTip: false,
         formValuesName: '',
         title: '',
-        tabId: '',
         values: [],
         editValues: noop,
         onFormOpen: noop,
@@ -267,7 +270,7 @@ class Lists extends Component {
 
     render () {
         const { values, valueForDelete } = this.state;
-        const { sortable, isImage, bigAvatar, numeration, maxLength, classes, onFormOpen, title, tabId } = this.props;
+        const { sortable, isImage, bigAvatar, numeration, maxLength, classes, onFormOpen, title } = this.props;
         const checkMaxItemLength = () => values.length === maxLength;
 
         return <div>
@@ -275,9 +278,7 @@ class Lists extends Component {
                 <div className={classes.header}>
                     <Typography variant='h5' className={classes.title}>{title}</Typography>
                     <Tooltip title='Добавить'>
-                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen({ value: {}, tabId})}>
-                            {/*<IconButton disabled={checkMaxItemLength()} onClick={onFormOpen('new')}>*/}
-
+                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen('new')}>
                             <AddIcon />
                         </IconButton>
                     </Tooltip>
@@ -293,7 +294,6 @@ class Lists extends Component {
                     isImage={isImage}
                     bigAvatar={bigAvatar}
                     numeration={numeration}
-                    tabId={tabId}
                     values={values}
                     useDragHandle
                     classes={classes}
@@ -305,7 +305,7 @@ class Lists extends Component {
             >
                 <DialogTitle>Вы точно хотите удалить ?</DialogTitle>
                 <DialogContent className={classes.warningContent}>
-                    <DialogContentText>{valueForDelete && valueForDelete.value.name}</DialogContentText>
+                    <DialogContentText>{valueForDelete && getName(valueForDelete.value)}</DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.handleWarningDisagree} color='primary'>

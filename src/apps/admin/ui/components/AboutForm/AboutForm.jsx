@@ -47,9 +47,7 @@ class MainSlideForm extends Component {
 
     handleSubmit = values => {
         const { index } = this.state;
-        console.log(values.avatar);
         const sendValues = {
-            name: values.name,
             texts: {
                 en: {
                     text: values.en_text

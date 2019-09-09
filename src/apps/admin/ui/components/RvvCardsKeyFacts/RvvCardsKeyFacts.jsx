@@ -14,12 +14,17 @@ import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
+import { withStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
 
 import arrayMove from '../../../utils/arrayMove';
-
 import noop from '@tinkoff/utils/function/noop';
-
-import { withStyles } from '@material-ui/core/styles';
+import pathOr from '@tinkoff/utils/object/pathOr';
 
 const materialStyles = {
     cardWrapp: {
@@ -49,7 +54,7 @@ const materialStyles = {
         height: '100%',
         width: '100%',
         zIndex: 2312,
-        position: 'absolute',
+        position: 'absolute'
     },
     header: {
         display: 'flex',
@@ -76,6 +81,17 @@ const materialStyles = {
     }
 };
 
+const DEFAULT_LANG = 'ua';
+
+const getName = value => value.name ||
+    pathOr([`${DEFAULT_LANG}_title`], '', value) ||
+    pathOr(['texts', DEFAULT_LANG, 'title'], '', value) ||
+    pathOr(['texts', DEFAULT_LANG, 'text'], '', value);
+
+const getDescription = value => value.description ||
+    pathOr(['texts', DEFAULT_LANG, 'description'], '', value) ||
+    pathOr([`${DEFAULT_LANG}_description`], '', value);
+
 const ButtonSortable = SortableHandle(({ classes }) => (
     <div className={classes.cardSortableBtn}/>
 ));
@@ -84,26 +100,26 @@ const CardItem = SortableElement(({ card, check, index, onSelectedCard, onItemDe
     <div className={classes.cardLink} >
         <div className={classes.fileItemContainer}>
             <IconButton
-                aria-label='Delete'
-                onClick={onItemDelete(index)}
-            >
-                <DeleteIcon />
-            </IconButton>
-            <IconButton
                 aria-label='Edit'
-                onClick={onEdit(index)}
+                onClick={onEdit({ value: card, index })}
             >
                 <EditIcon />
+            </IconButton>
+            <IconButton
+                aria-label='Delete'
+                onClick={onItemDelete({ value: card, index })}
+            >
+                <DeleteIcon />
             </IconButton>
         </div>
         <ButtonSortable onClick={onSelectedCard(card)} classes={classes} />
         <Card className={classNames(classes.card, { [classes.selectedCard]: check(card.positionIndex) })}>
             <CardHeader
-                title={getCorrectName(card.title)}
+                title={getName(card) && getCorrectName(getName(card))}
             />
             <CardContent>
                 <Typography variant="body2" component="p">
-                    {getCorrectName(card.description)}
+                    {getDescription(card) && getCorrectName(getDescription(card))}
                 </Typography>
             </CardContent>
         </Card>
@@ -131,14 +147,15 @@ class RvvCardsKeyFacts extends Component {
         maxLength: PropTypes.number,
         title: PropTypes.string,
         onFormOpen: PropTypes.func,
-        onDelete: PropTypes.func,
-        onEdit: PropTypes.func
+        editValues: PropTypes.func,
+        onDelete: PropTypes.func
     };
 
     static defaultProps = {
         values: [],
         maxLength: Infinity,
         title: '',
+        editValues: noop,
         onFormOpen: noop,
         onDelete: noop,
         onEdit: noop
@@ -146,17 +163,7 @@ class RvvCardsKeyFacts extends Component {
 
     state = {
         isSorting: false,
-        selectedCard: {},
-        values: this.props.values
-    };
-
-    handleFeatureAdd = () => {
-        /* const { values } = this.props;
-
-        this.props.onChange([
-            ...values,
-            ''
-        ]); */
+        selectedCard: {}
     };
 
     handleSelectedCard = card => () => {
@@ -170,15 +177,37 @@ class RvvCardsKeyFacts extends Component {
     };
 
     onDragEnd = ({ oldIndex, newIndex }) => {
+        this.props.editValues(arrayMove(this.props.values, oldIndex, newIndex));
+
         this.setState({
-            values: arrayMove(this.state.values, oldIndex, newIndex),
             isSorting: false
         });
     };
 
+    handleDelete = value => () => {
+        this.setState({
+            valueForDelete: value
+        });
+    };
+
+    handleWarningDisagree = () => {
+        this.setState({
+            valueForDelete: null
+        });
+    };
+
+    handleWarningAgree = () => {
+        const { valueForDelete } = this.state;
+
+        this.props.onDelete(valueForDelete);
+        this.setState({
+            valueForDelete: null
+        });
+    };
+
     render () {
-        const { classes, maxLength, title, onFormOpen, onDelete, onEdit } = this.props;
-        const { selectedCard, values } = this.state;
+        const { classes, maxLength, title, onFormOpen, values } = this.props;
+        const { selectedCard, valueForDelete } = this.state;
         const checkMaxItemLength = () => values.length === maxLength;
 
         return <div>
@@ -186,7 +215,7 @@ class RvvCardsKeyFacts extends Component {
                 <div className={classes.header}>
                     <Typography variant='h5' className={classes.title}>{title}</Typography>
                     <Tooltip title='Добавить'>
-                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen}>
+                        <IconButton disabled={checkMaxItemLength()} onClick={onFormOpen('new')}>
                             <AddIcon />
                         </IconButton>
                     </Tooltip>
@@ -197,14 +226,31 @@ class RvvCardsKeyFacts extends Component {
                     values={values}
                     selectedCard={selectedCard}
                     onSelectedCard={this.handleSelectedCard}
-                    onItemDelete={onDelete}
-                    onEdit={onEdit}
+                    onItemDelete={this.handleDelete}
+                    onEdit={onFormOpen}
                     classes={classes}
                     getCorrectName={this.getCorrectName}
                     onSortEnd={this.onDragEnd}
                     useDragHandle
                 />
             </div>
+            <Dialog
+                open={!!valueForDelete}
+                onClose={this.handleWarningDisagree}
+            >
+                <DialogTitle>Вы точно хотите удалить ?</DialogTitle>
+                <DialogContent className={classes.warningContent}>
+                    <DialogContentText>{valueForDelete && getName(valueForDelete.value)}</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={this.handleWarningDisagree} color='primary'>
+                        Нет
+                    </Button>
+                    <Button onClick={this.handleWarningAgree} color='primary' autoFocus>
+                        Да
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>;
     }
 }

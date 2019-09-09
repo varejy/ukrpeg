@@ -2,55 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from '../Form/Form';
-import whySchema from './rvvWhyFormSchema';
-import plansSchema from './rvvPlanFormSchema';
 
 import noop from '@tinkoff/utils/function/noop';
 
 class RvvListForm extends Component {
     static propTypes = {
         onDone: PropTypes.func,
+        editableElem: PropTypes.object.isRequired
     };
 
     static defaultProps = {
-        onDone: noop,
+        onDone: noop
     };
 
     constructor (...args) {
         super(...args);
 
-        const { value } = this.props;
+        const { editableElem } = this.props;
 
-        this.initialValues = [
-            {
-                ua_title: '',
-                en_title: '',
-                ...value.value,
-                schema: plansSchema,
-                id: 'plans'
-            },
-            {
-                ua_text: value ? value.value.title : '',
-                en_text: value ? value.value.title : '',
-                ua_imgAlt: value ? value.value.imgAlt : '',
-                en_imgAlt: value ? value.value.imgAlt : '',
-                schema: whySchema,
-                img: value ? value.value.imgPath : '',
-                id: 'why'
-            },
-            {
-                ua_title: '',
-                en_title: '',
-                schema: plansSchema,
-                id: 'mainForces'
-            },
-            {
-                ua_title: '',
-                en_title: '',
-                schema: plansSchema,
-                id: 'composition'
-            },
-        ];
+        this.initialValues = editableElem.getInitialValues(editableElem.value);
+        this.schema = editableElem.schema;
 
         this.state = {
             lang: 'ua'
@@ -65,19 +36,38 @@ class RvvListForm extends Component {
         }
     };
 
+    handleSubmit = values => {
+        const { editableElem } = this.props;
+        const sendValues = {
+            texts: {
+                en: {
+                    title: values.en_title,
+                    ...(values.en_description ? { description: values.en_description } : {})
+                },
+                ua: {
+                    title: values.ua_title,
+                    ...(values.ua_description ? { description: values.ua_description } : {})
+                }
+            },
+            file: values.avatar && values.avatar.files && values.avatar.files[0],
+            removedFile: values.avatar && values.avatar.removedFiles && values.avatar.removedFiles[0],
+            alt: values.alt
+        };
+
+        this.props.onDone(sendValues, editableElem);
+    };
+
     render () {
-        const { value, onDone } = this.props;
         const { lang } = this.state;
-        const initialValue = this.initialValues.find((values) => values.id === value.tabId);
 
         return <Form
-            initialValues={initialValue}
-            schema={initialValue.schema({
+            initialValues={this.initialValues}
+            schema={this.schema({
                 data: { title: 'Редактирование' },
                 settings: { lang }
             })}
             onChange={this.handleChange}
-            onSubmit={onDone}
+            onSubmit={this.handleSubmit}
         />;
     }
 }
