@@ -12,7 +12,7 @@
     background: whiteBasic;
     display: flex;
     justify-content: center;
-    z-index: 15;
+    z-index: 40;
 
     @media (--media-tablet-l) {
         background: transparent
@@ -30,7 +30,7 @@
     left: 0;
     display: flex;
     justify-content: center;
-    z-index: 15;
+    z-index: 40;
 
     @media (--media-tablet-l) {
         position: absolute;
@@ -555,16 +555,11 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
-        margin-top: 100px;
-        padding-bottom: 20px;
-    }
-
-    @media (max-width: 560px) {
-        justify-content: space-between;
-        margin-top: 0;
-        padding: 0 30px;
         position: absolute;
-        bottom: 0;
+        bottom: 15px;
+        left: 50%;
+        width: 280px;
+        transform: translate(-50%, -50%);
     }
 }
 
