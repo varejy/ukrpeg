@@ -25,7 +25,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                         name: 'requiredLangFields',
                         options: {
                             text: 'Заполните форму для всех языков',
-                            fields: ['en_title', 'ua_title', 'en_description', 'ua_description']
+                            fields: ['en_title', 'ua_title', 'en_description', 'ua_description', 'en_sign', 'ua_sign']
                         }
                     }
                 ]
@@ -45,10 +45,7 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 name: `${lang}_sign`,
                 schema: {
                     label: 'Мера исчисления'
-                },
-                validators: [
-                    { name: 'required', options: { text: 'Введите меру' } }
-                ]
+                }
             },
             {
                 component: FormFieldInput,
