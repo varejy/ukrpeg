@@ -1,9 +1,5 @@
 @value blackBasic from '../../../../../css/colors.css';
 
-.buttonDefault {
-    @mixin removeDefaultButton
-}
-
 .searchIcon, .searchIconZoom{
     max-width: 125px;
     width: 100%;

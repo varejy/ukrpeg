@@ -1,5 +1,5 @@
-import mainSlider from '../model';
+import Rvv from '../model';
 
 export default function createRvv (rvv) {
-    return mainSlider.create(rvv);
+    return Rvv.create(rvv);
 }

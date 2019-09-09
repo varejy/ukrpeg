@@ -1,6 +1,4 @@
-import {
-    SET_RVV
-} from '../types/types';
+import { SET_RVV } from '../types/types';
 
 const initialState = {
     rvv: {}

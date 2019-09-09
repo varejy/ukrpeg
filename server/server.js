@@ -17,6 +17,7 @@ import adminNewsApi from './api/admin/news';
 import adminPartnersApi from './api/admin/partners';
 import adminAboutsApi from './api/admin/about';
 import adminSeoApi from './api/admin/seo';
+import adminRvvApi from './api/admin/rvv';
 import adminFilesApi from './api/admin/files';
 
 import clientNewsCategoryApi from './api/client/newsCategory';
@@ -25,6 +26,7 @@ import clientNewsApi from './api/client/news';
 import clientPartnersApi from './api/client/partners';
 import cliensAboutApi from './api/client/about';
 import clientSeoApi from './api/client/seo';
+import clientRvvApi from './api/client/rvv';
 import clientSearchApi from './api/client/search';
 
 import { DATABASE_URL } from './constants/constants';
@@ -65,10 +67,12 @@ app.use('/api/admin/partners', adminPartnersApi);
 app.use('/api/admin/about', adminAboutsApi);
 app.use('/api/admin/newsCategory', adminNewsCategoryApi);
 app.use('/api/admin/seo', adminSeoApi);
+app.use('/api/admin/rvv', adminRvvApi);
 app.use('/api/admin/files', adminFilesApi);
 app.use('/api/client/news', clientNewsApi);
 app.use('/api/client/partners', clientPartnersApi);
 app.use('/api/client/about', cliensAboutApi);
+app.use('/api/client/rvv', clientRvvApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
 app.use('/api/client/law', clientLawApi);
 app.use('/api/client/seo', clientSeoApi);

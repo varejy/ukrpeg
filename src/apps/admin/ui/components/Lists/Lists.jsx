@@ -33,15 +33,22 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 import arrayMove from '../../../utils/arrayMove';
 
 // Tinkoff
+import pathOr from '@tinkoff/utils/object/pathOr';
 import noop from '@tinkoff/utils/function/noop';
 
 const MAX_LENGTH_NAMES = 59;
+const DEFAULT_LANG = 'ua';
+
+const getName = value => value.name ||
+    pathOr([`${DEFAULT_LANG}_title`], '', value) ||
+    pathOr(['texts', DEFAULT_LANG, 'title'], '', value) ||
+    pathOr(['texts', DEFAULT_LANG, 'text'], '', value);
 
 const ButtonSortable = SortableHandle(({ classes }) => (
     <Tooltip title='Переместить'><ReorderIcon className={classes.buttonSortable}> reorder </ReorderIcon></Tooltip>
 ));
 
-const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDelete, sortable, bigAvatar, numeration, isImage, value, classes }) => (
+const ItemSortable = SortableElement(({ onFormOpen, index, name, getCorrectName, bigAvatar, onDelete, sortable, numeration, isImage, value, classes }) => (
     <ListItem button className={classes.row}>
         { sortable && <ButtonSortable classes={classes}/> }
         {
@@ -51,12 +58,12 @@ const ItemSortable = SortableElement(({ onFormOpen, index, getCorrectName, onDel
         }
         {
             isImage && <ListItemAvatar>
-                <Avatar className={classNames(classes.avatar, { [classes.bigAvatar]: bigAvatar })} alt={value.imgAlt} src={value.path} />
+                <Avatar className={classNames(classes.avatar, { [classes.bigAvatar]: bigAvatar })} alt={value.alt} src={value.path} />
             </ListItemAvatar>
         }
         <ListItemText
             className={classes.listItemText}
-            primary={value.name && getCorrectName(value.name)}
+            primary={name && getCorrectName(name)}
         />
         <div className={classes.valueActions}>
             <ListItemSecondaryAction>
@@ -83,7 +90,9 @@ const SortableWrapp = SortableContainer((
     <List>
         {
             values.map((value, i) => {
-                return <ItemSortable key={i} value={value} index={i} {...rest}/>;
+                const name = getName(value);
+
+                return <ItemSortable key={i} name={name} value={value} index={i} {...rest}/>;
             })
         }
     </List>
@@ -296,7 +305,7 @@ class Lists extends Component {
             >
                 <DialogTitle>Вы точно хотите удалить ?</DialogTitle>
                 <DialogContent className={classes.warningContent}>
-                    <DialogContentText>{valueForDelete && valueForDelete.value.name}</DialogContentText>
+                    <DialogContentText>{valueForDelete && getName(valueForDelete.value)}</DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.handleWarningDisagree} color='primary'>

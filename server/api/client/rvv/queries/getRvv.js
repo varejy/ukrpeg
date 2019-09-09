@@ -1,5 +1,5 @@
-import mainSlider from '../model';
+import Rvv from '../model';
 
 export default function getRvv (id) {
-    return mainSlider.find({ id });
+    return Rvv.find({ id });
 }

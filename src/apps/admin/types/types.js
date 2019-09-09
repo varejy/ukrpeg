@@ -6,4 +6,5 @@ export const // eslint-disable-line one-var
     SET_PARTNERS = 'SET_PARTNERS',
     SET_RVV_PLANS = 'SET_RVV_PLANS',
     SET_SEO = 'SET_SEO',
+    SET_RVV = 'SET_RVV',
     SET_LAW = 'SET_LAW';
