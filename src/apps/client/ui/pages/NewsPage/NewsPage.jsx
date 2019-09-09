@@ -10,6 +10,7 @@ import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 import findIndex from '@tinkoff/utils/array/findIndex';
 import propOr from '@tinkoff/utils/object/propOr';
 import StyleRenderer from '../../components/StyleRenderer/StyleRenderer';
+import NoFoundPage from '../NoFoundPage/NoFoundPage.jsx';
 
 const TABLET_WIDTH = 780;
 const CATEGORY_HEIGHT = 58;
@@ -143,7 +144,7 @@ class NewsPage extends Component {
         const text = propOr('news', {}, langMap);
 
         if (this.notFoundPage) {
-            return <div className={styles.pageNotFound}>404</div>;
+            return <NoFoundPage />;
         }
 
         return <section className={styles.newsContainer}>

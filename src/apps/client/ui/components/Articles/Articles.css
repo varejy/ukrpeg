@@ -131,7 +131,6 @@
 .newsBlock{
     margin: 0 20px;
     position: relative;
-    top: 1px;
     padding: 30px 35px 50px 20px;
     cursor: pointer;
     z-index: 11;
