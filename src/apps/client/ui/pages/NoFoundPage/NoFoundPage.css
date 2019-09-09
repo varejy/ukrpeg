@@ -1,0 +1,19 @@
+@value limeGreen from '../../../../../css/colors.css';
+
+.noFound{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gotham Pro', Arial, sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.text{
+  color: limeGreen;
+  font-size: 52px;
+  margin-bottom: 20px;
+}

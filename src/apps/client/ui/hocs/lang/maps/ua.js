@@ -88,5 +88,8 @@ export default {
     },
     law: {
         title: `Нормативні документи`
+    },
+    noFoundPage: {
+        desc: `Сторінка не знайдена`
     }
 };

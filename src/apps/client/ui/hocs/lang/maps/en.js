@@ -34,7 +34,7 @@ export default {
                 text: `The special task of UKRPEC is to promote responsible business conduct, to support the initiatives of manufacturers operating in the market of Ukraine to implement modern international standards in the production of packaging for everyday goods (FMCG-goods). It is worth noting that in addition to the purely environmental component, this process contributes significantly to the development of the economy. Today, most developed countries of the European Union have embarked on the path of a resource-saving economy - the so-called Circular economy, which ensures the development of efficient systems for collecting, sorting and processing used packaging.`
             },
             {
-                text: `Equally important is the legislative support for the creation in Ukraine of a system of collection and disposal of packaging waste. The Coalition contributed to the development of a number of bills on packaging and packaging waste (2002, 2009, 2014 and 2016). 
+                text: `Equally important is the legislative support for the creation in Ukraine of a system of collection and disposal of packaging waste. The Coalition contributed to the development of a number of bills on packaging and packaging waste (2002, 2009, 2014 and 2016).
                 Now the Ukrainian Packaging-Ecological Coalition cooperates with international and domestic business associations, industry associations, economic entities in the field of packaging waste management in order to promote good European experience and legislative support for the creation of waste collection and recycling systems in Ukraine. extended producer responsibility, successfully operating in EU countries.`
             }
         ]
@@ -88,5 +88,8 @@ export default {
     },
     law: {
         title: `Laws`
+    },
+    noFoundPage: {
+        desc: `Page not found`
     }
 };
