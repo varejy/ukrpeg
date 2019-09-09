@@ -1,6 +1,11 @@
 @value limeGreen from '../../../../../css/colors.css';
 @value whiteBasic from '../../../../../css/colors.css';
 
+.newsContentTop {
+    position: relative;
+    top: -100px;
+}
+
 .sliderContainer{
     width: 100%;
     position: relative;
