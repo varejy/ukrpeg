@@ -767,8 +767,8 @@ html, body {
 }
 
 .logo{
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 140px;
 
     @media (max-width: 600px){
         height: auto;
