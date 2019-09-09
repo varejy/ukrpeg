@@ -88,7 +88,7 @@ class App extends Component {
                         <Route exact path='/:lang(en)?/contacts' render={this.renderComponent(ContactPage)} />
                         <Route exact path='/:lang(en)?/laws' render={this.renderComponent(LawPage)} />
                         <Route exact path='/:lang(en)?/search' render={this.renderComponent(SearchPage)} />
-                        <Route exact path='/:lang(en)?/404' render={this.renderComponent(NoFoundPage)} />
+                        <Route exact render={this.renderComponent(NoFoundPage)} />
                     </Switch>
                 </div>
                 <Footer />
