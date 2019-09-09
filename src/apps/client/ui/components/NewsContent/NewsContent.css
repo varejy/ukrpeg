@@ -1,6 +1,27 @@
 @value limeGreen from '../../../../../css/colors.css';
 @value whiteBasic from '../../../../../css/colors.css';
 
+.sliderContainer{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.sliderContainerDesktop {
+    @media (max-width: 1080px) {
+        display: none;
+    }
+}
+
+.sliderContainerMobile {
+    display: none;
+
+    @media (max-width: 1080px) {
+        display: flex;
+    }
+}
+
 .newsCardsContainer{
     max-width: 807px;
     display: flex;
@@ -8,28 +29,31 @@
     overflow-x: hidden;
 
     @media (max-width: 1080px){
-        width: 100%;
-        justify-content: center;
-        position: absolute;
-
         :nth-child(6n){
             border: 1px solid whiteBasic;
         }
     }
 }
 
-.sliderContainer{
-    width: 100%;
+.pagination{
+    font-family: 'Gotham Pro', Arial;
+    font-size: 16px;
+    z-index: 11;
+    height: 100px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    position: absolute;
+    left: 0;
 
     @media (max-width: 1080px){
-        overflow-y: hidden;
-        position: relative;
-        display: flex;
-        justify-content: center;
+        display: none;
     }
 }
 
-.pagination{
+.paginationMobile{
     font-family: 'Gotham Pro', Arial;
     font-size: 16px;
     position: relative;
@@ -48,16 +72,6 @@
         position: absolute;
         left: 0;
     }
-}
-
-.paginationNumber{
-    display: inline-block;
-    padding: 10px 15px;
-    cursor: pointer;
-}
-
-.paginationNumberActive{
-    border: 1px solid limeGreen;
 }
 
 .newsContent{

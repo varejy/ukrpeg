@@ -107,7 +107,7 @@ class SearchPage extends Component {
                 <img src='/src/apps/client/ui/pages/SearchPage/files/loader.svg' alt='loader'/>
             </div>;
         }
-        console.log(pages);
+
         return <section className={styles.search}>
             <div className={styles.wrapper}>
                 <div className={styles.searchResults}>
