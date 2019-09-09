@@ -107,7 +107,7 @@ class SearchPage extends Component {
                 <img src='/src/apps/client/ui/pages/SearchPage/files/loader.svg' alt='loader'/>
             </div>;
         }
-
+        console.log(pages);
         return <section className={styles.search}>
             <div className={styles.wrapper}>
                 <div className={styles.searchResults}>
@@ -131,33 +131,39 @@ class SearchPage extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.resultsPages}>
-                        <h1 className={styles.resultTitle}>{text.resultPages}</h1>
-                        <div className={styles.resultPagesList}>
-                            {pages.map((item, i) => {
-                                return (
-                                    <p key={i} className={styles.resultPageItem}>{item}</p>
-                                );
-                            })}
+                    {
+                        !!pages.length && <div className={styles.resultsPages}>
+                            <h1 className={styles.resultTitle}>{text.resultPages}</h1>
+                            <div className={styles.resultPagesList}>
+                                {pages.map((item, i) => {
+                                    return (
+                                        <Link key={i} to={`${langRoute}${item.path}`} className={styles.resultPageItem}>
+                                            <p>{item.texts[lang].name}</p>
+                                        </Link>
+                                    );
+                                })}
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.resultsNews}>
-                        <h1 className={styles.resultTitle}>{text.resultNews}</h1>
-                        <div className={styles.resultNewsList}>
-                            {news.map((item, i) => {
-                                return (
-                                    <Link to={`${langRoute}/news/${item.alias}`} key={i}>
-                                        <div key={i} className={classNames(styles.resultNewsItem, {
-                                            [styles.resultNewsItemNotOdd]: i % 2 !== 0
-                                        })}>
-                                            <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
-                                            <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
-                                        </div>
-                                    </Link>
-                                );
-                            })}
+                    }
+                    {
+                        !!news.length && <div className={styles.resultsNews}>
+                            <h1 className={styles.resultTitle}>{text.resultNews}</h1>
+                            <div className={styles.resultNewsList}>
+                                {news.map((item, i) => {
+                                    return (
+                                        <Link to={`${langRoute}/news/${item.alias}`} key={i}>
+                                            <div key={i} className={classNames(styles.resultNewsItem, {
+                                                [styles.resultNewsItemNotOdd]: i % 2 !== 0
+                                            })}>
+                                                <h1 className={styles.date}>{getDateFormatted(item.date, lang)}</h1>
+                                                <p className={styles.news}>{item.texts[`${lang}`].shortDescription}</p>
+                                            </div>
+                                        </Link>
+                                    );
+                                })}
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </section>;

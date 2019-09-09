@@ -103,6 +103,7 @@
     background: semiGreyBg;
     overflow: hidden;
     max-height: 150px;
+    padding: 1px 0;
 
     @media (--media-tablet-l) {
         background: whiteBasic;
@@ -129,10 +130,13 @@
 
 .newsBlock{
     margin: 0 20px;
+    position: relative;
+    top: 1px;
     padding: 30px 35px 50px 20px;
     cursor: pointer;
     z-index: 11;
     width: calc(33.33% - 42px);
+    height: 148px;
 
     @media (--media-tablet-l) {
         padding-left: 25px;
