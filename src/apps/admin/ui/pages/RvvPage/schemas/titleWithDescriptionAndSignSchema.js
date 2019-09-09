@@ -42,6 +42,16 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
             },
             {
                 component: FormFieldInput,
+                name: `${lang}_sign`,
+                schema: {
+                    label: 'Мера исчисления'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Введите меру' } }
+                ]
+            },
+            {
+                component: FormFieldInput,
                 name: `${lang}_description`,
                 schema: {
                     label: 'Описание'

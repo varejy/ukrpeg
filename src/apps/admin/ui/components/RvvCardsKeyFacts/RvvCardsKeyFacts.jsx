@@ -83,14 +83,9 @@ const materialStyles = {
 
 const DEFAULT_LANG = 'ua';
 
-const getName = value => value.name ||
-    pathOr([`${DEFAULT_LANG}_title`], '', value) ||
-    pathOr(['texts', DEFAULT_LANG, 'title'], '', value) ||
-    pathOr(['texts', DEFAULT_LANG, 'text'], '', value);
+const getName = value => (pathOr(['texts', DEFAULT_LANG, 'title'], '', value) + pathOr(['texts', DEFAULT_LANG, 'sign'], '', value));
 
-const getDescription = value => value.description ||
-    pathOr(['texts', DEFAULT_LANG, 'description'], '', value) ||
-    pathOr([`${DEFAULT_LANG}_description`], '', value);
+const getDescription = value => pathOr(['texts', DEFAULT_LANG, 'description'], '', value);
 
 const ButtonSortable = SortableHandle(({ classes }) => (
     <div className={classes.cardSortableBtn}/>

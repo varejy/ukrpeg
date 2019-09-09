@@ -42,11 +42,13 @@ class RvvListForm extends Component {
             texts: {
                 en: {
                     title: values.en_title,
-                    ...(values.en_description ? { description: values.en_description } : {})
+                    ...(values.en_description ? { description: values.en_description } : {}),
+                    ...(values.en_sign ? { sign: values.en_sign } : {})
                 },
                 ua: {
                     title: values.ua_title,
-                    ...(values.ua_description ? { description: values.ua_description } : {})
+                    ...(values.ua_description ? { description: values.ua_description } : {}),
+                    ...(values.ua_sign ? { sign: values.ua_sign } : {})
                 }
             },
             file: values.avatar && values.avatar.files && values.avatar.files[0],

@@ -26,6 +26,7 @@ import { withStyles } from '@material-ui/core/styles';
 import titleSchema from './schemas/titleSchema';
 import titleWithImageSchema from './schemas/titleWithImageSchema';
 import titleWithDescriptionSchema from './schemas/titleWithDescriptionSchema';
+import titleWithDescriptionAndSignSchema from './schemas/titleWithDescriptionAndSignSchema';
 
 const RVV_FIELDS = ['plans', 'why', 'mainForces', 'composition', 'keyFacts', 'pProject', 'message'];
 
@@ -94,12 +95,14 @@ const formConfigMap = {
         })
     },
     keyFacts: {
-        schema: titleWithDescriptionSchema,
+        schema: titleWithDescriptionAndSignSchema,
         getInitialValues: (values) => ({
             ua_title: pathOr(['texts', 'ua', 'title'], '', values),
             en_title: pathOr(['texts', 'en', 'title'], '', values),
             ua_description: pathOr(['texts', 'ua', 'description'], '', values),
             en_description: pathOr(['texts', 'en', 'description'], '', values),
+            ua_sign: pathOr(['texts', 'ua', 'sign'], '', values),
+            en_sign: pathOr(['texts', 'en', 'sign'], '', values),
             lang: 'ua'
         })
     },
