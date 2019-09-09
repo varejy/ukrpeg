@@ -56,8 +56,9 @@ class NewsContent extends Component {
 
     handleMobilePaginationChange = i => {
         const { newsCategoryRendered } = this.props;
+        const MAX_SLIDES_MOBILE = Math.ceil(newsCategoryRendered.length / MAX_CARDS_PER_SLIDE_MOBILE);
 
-        this.top.scrollIntoView({ behavior: 'smooth' });
+        (MAX_SLIDES_MOBILE - 1) === i ? this.top.scrollIntoView({ behavior: 'smooth' }) : window.scroll({ top: 0, left: 0, behavior: 'smooth' });
         this.setState({
             visibleNewsMobile: newsCategoryRendered.slice(i * MAX_CARDS_PER_SLIDE_MOBILE, (i + 1) * MAX_CARDS_PER_SLIDE_MOBILE),
             activePointMobile: i
