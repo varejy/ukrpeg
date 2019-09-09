@@ -56,12 +56,17 @@ class NewsContent extends Component {
 
     handleMobilePaginationChange = i => {
         const { newsCategoryRendered } = this.props;
-        const MAX_SLIDES_MOBILE = Math.ceil(newsCategoryRendered.length / MAX_CARDS_PER_SLIDE_MOBILE);
 
-        (MAX_SLIDES_MOBILE - 1) === i ? this.top.scrollIntoView({ behavior: 'smooth' }) : window.scroll({ top: 0, left: 0, behavior: 'smooth' });
         this.setState({
             visibleNewsMobile: newsCategoryRendered.slice(i * MAX_CARDS_PER_SLIDE_MOBILE, (i + 1) * MAX_CARDS_PER_SLIDE_MOBILE),
             activePointMobile: i
+        }, () => {
+            setTimeout(() => {
+                window.scroll({ top: 100000, left: 0 });
+                setTimeout(() => {
+                    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+                }, 50);
+            }, 0);
         });
     };
 
@@ -71,8 +76,7 @@ class NewsContent extends Component {
         const MAX_SLIDES = Math.ceil(newsCategoryRendered.length / MAX_CARDS_PER_SLIDE);
         const MAX_SLIDES_MOBILE = Math.ceil(newsCategoryRendered.length / MAX_CARDS_PER_SLIDE_MOBILE);
 
-        return <div className={styles.newsContent}>
-            <div className={styles.newsContentTop} ref={top => { this.top = top; }} />
+        return <div className={styles.newsContent} >
             <div className={classNames(styles.sliderContainer, styles.sliderContainerDesktop)}>
                 <div className={styles.newsCardsContainer}>
                     {
