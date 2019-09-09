@@ -256,12 +256,14 @@
 
 .email{
     border: 1px solid lightGreenBorder;
-    padding: 38px 100px;
+    display: flex;
+    justify-content: center;
+    padding: 38px 0;
     font-size: 26px;
     letter-spacing: 2px;
 
     @media (max-width: 1350px) {
-        padding: 38px 80px;
+        padding: 38px 0;
     }
 
     @media (--media-tablet-l) {
