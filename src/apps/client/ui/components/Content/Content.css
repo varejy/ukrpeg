@@ -77,10 +77,11 @@
 .moreBtn{
     border: 1px solid lightGreenBorder;
     margin-left: -67px;
-    display: block;
+    display: flex;
     cursor: pointer;
 
     @media (--media-tablet-l) {
+        display: block;
         order: 1;
         margin: 90px auto 0 auto;
    }

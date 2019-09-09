@@ -63,7 +63,7 @@ class RVVPage extends Component {
         for (let i = 0; i < rvv.plans.length; i++) {
             PAGINATION.push(i + 1);
         }
-        console.log(partners);
+
         return <section className={styles.pageContainer}>
             <div className={styles.gridContainer}>
                 <div className={classNames(styles.column, styles.column1)}/>
