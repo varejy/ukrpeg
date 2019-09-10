@@ -129,13 +129,15 @@
 }
 
 .newsBlock{
-    margin: 0 20px;
+    margin: 1px 20px;
     position: relative;
     padding: 30px 35px 50px 20px;
     cursor: pointer;
     z-index: 11;
     width: calc(33.33% - 42px);
-    height: 148px;
+    max-height: 100%;
+    height: 150px;
+    border: 1px solid transparent;
 
     @media (--media-tablet-l) {
         padding-left: 25px;
@@ -147,7 +149,7 @@
 }
 
 .newsBlock:hover{
-    outline: 1px solid lightGreenHover;
+    border: 1px solid lightGreenHover;
 
     @media (--media-tablet-l) {
         outline: none;
