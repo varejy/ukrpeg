@@ -1,11 +1,61 @@
 @value lightGreenBasic from '../../../../../css/colors.css';
 @value darkBlueHover from '../../../../../css/colors.css';
 @value darkGreyBasic from '../../../../../css/colors.css';
+@value whiteBasic from '../../../../../css/colors.css';
 
 .footer{
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: relative;
+    z-index: 11;
+}
+
+.gridContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    position: absolute;
+    align-self: center;
+    height: 100%;
+    z-index: 12;
+
+    @media (max-width: 780px) {
+        display: none;
+    }
+}
+
+.column{
+    width: 1px;
+    background-color: whiteBasic;
+    opacity: 0.2;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 12;
+}
+
+.column1{
+    left: 134px;
+}
+
+.column2{
+    left: 25%;
+    margin-left: 62px;
+}
+
+.column3{
+    left: 50%;
+    margin-left: -10px;
+}
+
+.column4{
+    left: 75%;
+    margin-left: -75px;
+}
+
+.column5{
+    right: 134px;
 }
 
 .wrapper{
@@ -37,7 +87,7 @@
     padding: 5px 0;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
     border-bottom: 1px solid transparent;
-    z-index: 11;
+    z-index: 13;
 }
 
 .link:hover{
@@ -50,7 +100,8 @@
 
 .block{
     width: 100%;
-    background: darkBlueHover;
+    background: url('./images/blueBackgroundPattern.png') center;
+    background-size: cover;
     height: 37px;
     z-index: 15;
 }

@@ -46,7 +46,7 @@
 
 .title{
     padding: 25px 0 20px 25px;
-    border-left: 5px solid lightGreenBasic;
+    border-left: 6px solid lightGreenBasic;
     margin-left: -20px;
     color: darkBlueBasic;
     font-weight: 500;
@@ -56,6 +56,9 @@
     cursor: pointer;
     position: relative;
     z-index: 11;
+    height: 60px;
+    display: flex;
+    align-items: center;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
 
     @media (max-width: 1350px){
@@ -63,16 +66,16 @@
     }
 
     @media (--media-tablet-l) {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 14px;
         letter-spacing: 1px;
         margin-left: -2px;
         padding: 10px 0 10px 10px;
-        border-left: 3px solid lightGreenBasic;
+        border-left: 6px solid lightGreenBasic;
    }
 
     @media (--media-tablet-s) {
-        font-size: 10px;
+        font-size: 14px;
    }
 }
 
@@ -194,7 +197,7 @@
 
     @media (--media-tablet-l) {
         position: absolute;
-        top: -10px;
+        top: -30px;
         right: 90px;
         transform: rotate(-90deg);
         margin: 0;
@@ -208,11 +211,6 @@
     align-items: center;
     justify-content: center;
     border: 1px solid lightGreyBorder;
-
-    @media (--media-tablet-s) {
-        width: 30px;
-        height: 30px;
-   }
 }
 
 .activeArrowBtn{
@@ -220,11 +218,11 @@
 }
 
 .arrowBtnImg{
-    width: 24px;
+    width: auto;
     height: 12px;
 
     @media (--media-tablet-l) {
-        width: 15px;
+        width: auto;
         height: 10px;
    }
 }

@@ -48,6 +48,9 @@ class Content extends Component {
         const text = propOr('content', {}, langMap);
 
         return <div className={styles.content}>
+            <div className={styles.circlesContainer}>
+                <img className={styles.circles} src='/src/apps/client/ui/components/Content/images/circles.png' alt="circles"/>
+            </div>
             <div className={styles.wrapper}>
                 <div className={styles.photoBlock}>
                     <div className={styles.topBlock}>

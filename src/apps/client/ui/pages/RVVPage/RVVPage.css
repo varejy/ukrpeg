@@ -120,11 +120,6 @@ html, body {
     margin-right: 20px;
     background-color: limeGreen;
     flex-shrink: 0;
-
-    @media (max-width: 425px){
-        height: 40px;
-        width: 4px;
-    }
 }
 
 .title{
@@ -434,7 +429,7 @@ html, body {
 
     @media (max-width: 780px){
         width: 70%;
-        right: 0;
+        left: 30%;
     }
 }
 
@@ -571,20 +566,34 @@ html, body {
     background-size: cover;
 
     @media (max-width: 780px){
-        width: 30%;
+        width: 33%;
     }
 }
 
 .patternContainerBig{
     height: 100%;
-    width: 50%;
+    width: 33%;
     overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 5;
-    background: url('./images/pattern.png') repeat-x;
-    background-size: auto;
+    background: url('./images/pattern.png') repeat;
+    background-size: cover;
+
+
+    @media (max-width: 1700px){
+        width: 20%;
+    }
+
+    @media (max-width: 1500px){
+        width: 15%;
+    }
+
+    @media (max-width: 780px){
+        width: 33%;
+        background-size: contain;
+    }
 }
 
 
@@ -622,11 +631,6 @@ html, body {
     margin-right: 20px;
     background-color: whiteBasic;
     flex-shrink: 0;
-
-    @media (max-width: 425px){
-        height: 40px;
-        width: 4px;
-    }
 }
 
 .whiteTitle{
@@ -789,9 +793,12 @@ html, body {
 
     @media (max-width: 780px){
         display: block;
-        width: 30%;
+        width: 33%;
         left: 0;
         top: 0;
+        height: 190%;
+        background-size: contain;
+        background-repeat: repeat-y;
     }
 }
 
@@ -1022,15 +1029,17 @@ html, body {
 }
 
 .containerPlansMobile .patternContainerBig{
-    width: 30%;
-    height: 100%;
+    width: 33%;
+    height: 50%;
+    background-size: contain;
+    background-repeat: repeat-y;
 }
 
 .containerPlansMobile .backgroundWhite{
     width: 70%;
     height: 100%;
     position: absolute;
-    right: 0;
+    left: 30%;
     top: 0;
 }
 
@@ -1154,17 +1163,12 @@ html, body {
     justify-content: flex-start;
     z-index: 11;
     position: relative;
-    right: 22%;
+    right: 90px;
 }
 
 .button{
-    height: 30px;
+    height: 10px;
     width: auto;
-
-    @media (max-width: 425px){
-        height: 18px;
-        width: auto;
-    }
 }
 
 .buttonLeft, .buttonRight{
@@ -1174,11 +1178,6 @@ html, body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
-    @media (max-width: 425px){
-        width: 40px;
-        height: 40px;
-    }
 }
 
 .buttonLeft{
@@ -1186,12 +1185,19 @@ html, body {
 }
 
 .buttonRight{
+    transform: rotate(90deg);
+}
+
+.buttonLeft.buttonActive{
+    transform: rotate(-90deg);
+}
+
+.buttonRight.buttonDisabled{
     transform: rotate(-90deg);
 }
 
 .buttonDisabled{
-    border: 1px solid rgba(122, 122, 122, 1);
-    opacity: 0.2;
+    border: 1px solid rgba(122, 122, 122, 0.2);
 }
 
 .buttonActive{

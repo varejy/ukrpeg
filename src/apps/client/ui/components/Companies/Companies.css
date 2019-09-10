@@ -38,15 +38,17 @@
 
 .title{
     padding: 25px 0 20px 25px;
-    border-left: 5px solid lightGreenBasic;
+    border-left: 6px solid lightGreenBasic;
     margin-left: -20px;
     color: darkBlueBasic;
     font-weight: 600;
     font-size: 14px;
     line-height: 14px;
     letter-spacing: .5px;
-    cursor: pointer;
     position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
     z-index: 11;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
 
@@ -55,22 +57,18 @@
     }
 
     @media (--media-tablet-l) {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 14px;
         letter-spacing: 1px;
-        margin-left: -2px;
+        margin-left: -3px;
         padding: 10px 0 10px 10px;
-        border-left: 3px solid lightGreenBasic;
+        border-left: 6px solid lightGreenBasic;
    }
 
     @media (--media-phone) {
-        font-size: 10px;
+        font-size: 14px;
         line-height: 14px;
    }
-}
-
-.title:hover{
-    color: lightGreyHover;
 }
 
 .companiesList{

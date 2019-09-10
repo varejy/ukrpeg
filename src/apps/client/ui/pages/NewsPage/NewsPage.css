@@ -73,7 +73,7 @@
 
 .column2{
     left: 25%;
-    margin-left: 61px;
+    margin-left: 62px;
 }
 
 .column3{
@@ -123,11 +123,6 @@
     width: 6px;
     margin-right: 25px;
     background-color: limeGreen;
-
-    @media (max-width: 425px){
-        height: 40px;
-        width: 4px;
-    }
 }
 
 .title{
@@ -466,6 +461,10 @@
 }
 
 .newsCardContainer:hover{
+    border-left: 2px solid limeGreen;
+}
+
+.newsCardContainerActive{
     border-left: 2px solid limeGreen;
 }
 

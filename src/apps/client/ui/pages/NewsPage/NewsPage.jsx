@@ -224,6 +224,7 @@ class NewsPage extends Component {
                                         newsCategoryRendered.map((newsCard, j) =>
                                             <Link key={newsCard.id} to={`${langRoute}/news/${newsCard.alias}`}>
                                                 <li className={classNames(styles.newsCardContainer, {
+                                                    [styles.newsCardContainerActive]: newsCard.id === article.id,
                                                     [styles.newsCardContainerAnimated]: categories[i].opened
                                                 })}
                                                 key={j} style={{ transitionDelay: `${j * 0.2}s` }}

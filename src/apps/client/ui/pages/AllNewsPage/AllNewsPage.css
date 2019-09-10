@@ -74,7 +74,7 @@
 }
 
 .column4{
-    margin-left: 930.5px;
+    margin-left: 936.5px;
 
     @media (max-width: 1349px){
         display: none;
@@ -99,6 +99,7 @@
     width: 415px;
     flex-shrink: 0;
     position: relative;
+    left: 6px;
     z-index: 11;
 
     @media (max-width: 1080px){
@@ -125,11 +126,6 @@
     width: 6px;
     margin-right: 25px;
     background-color: limeGreen;
-
-    @media (max-width: 425px){
-        height: 40px;
-        width: 4px;
-    }
 }
 
 .title{
