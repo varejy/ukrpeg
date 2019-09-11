@@ -93,6 +93,7 @@
 .contentBlock{
     display: flex;
     margin-bottom: 20px;
+    align-items: flex-start;
 
     @media (--media-tablet-l) {
         flex-direction: column;
