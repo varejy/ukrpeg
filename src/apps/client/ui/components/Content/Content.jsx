@@ -67,7 +67,7 @@ class Content extends Component {
                         </div>
                     </div>
                     <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit}/>
-                    <div className={styles.text} style={{ marginTop: `-${lang === 'ua' ? 55 : 125}px` }}>
+                    <div className={styles.text} style={{ marginTop: `-${lang === 'ua' ? 55 : 145}px` }}>
                         <h1 className={styles.heading} />
                         <p className={styles.info}>{text.text}</p>
                     </div>

@@ -129,19 +129,24 @@
 }
 
 .title{
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 1.15px;
     text-align: left;
-    line-height: 24px;
+    line-height: 14px;
     max-width: 90%;
+
+    @media (max-width: 780px){
+        font-size: 12px;
+        letter-spacing: 0.85px;
+    }
 }
 
 .categoryTitle{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 14px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 1.15px;
     text-align: left;
 }
 
@@ -154,14 +159,14 @@
 }
 
 .newsCategoryTitle .rectangleGreen{
-     height: 70px;
+     height: 60px;
      width: 6px;
      margin-right: 25px;
      visibility: visible;
 }
 
 .newsCategoryTitle .rectangleGreenInvisible{
-    height: 70px;
+    height: 60px;
     width: 6px;
     margin-right: 25px;
     visibility: hidden;
@@ -189,10 +194,10 @@
 }
 
 .activeCategory{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 12px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 0.73px;
     text-align: left;
     color: rgba(122, 122, 122, 0.5);
     width: 70%;
@@ -216,7 +221,7 @@
 }
 
 .arrow{
-    width: 32px;
+    width: 18px;
     height: auto;
 }
 
@@ -226,10 +231,10 @@
 }
 
 .categoryTitleMobile{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 12px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 0.73px;
     text-align: left;
     color: limeGreen;
     width: 100%;

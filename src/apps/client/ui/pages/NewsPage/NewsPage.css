@@ -128,19 +128,24 @@
 }
 
 .title{
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 1.15px;
     text-align: left;
-    line-height: 24px;
+    line-height: 14px;
     max-width: 90%;
+
+    @media (max-width: 780px){
+        font-size: 12px;
+        letter-spacing: 0.85px;
+    }
 }
 
 .categoryTitle{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 14px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 1.15px;
     text-align: left;
     margin-left: -26px;
     cursor: pointer;
@@ -260,11 +265,16 @@
     font-size: 14px;
     line-height: 14px;
     text-align: left;
-    letter-spacing: 1px;
+    letter-spacing: 1.15px;
     color: darkBlueBasic;
     margin-bottom: 16px;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        font-size: 10px;
+        letter-spacing: 0.73px;
+    }
 }
 
 .newsTitle{
@@ -272,25 +282,35 @@
     align-items: flex-start;
     justify-content: flex-start;
     font-family: 'Gotham Pro', Arial;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 21px;
+    line-height: normal;
     text-align: left;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.07px;
     color: blackBasic;
     margin-bottom: 45px;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        font-size: 14px;
+        letter-spacing: 0.71px;
+    }
 }
 
 .newsText{
     font-family: 'Gotham Light', Arial;
-    letter-spacing: 1px;
+    letter-spacing: 1.15px;
     text-align: left;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: normal;
     color: blackBasic;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        font-size: 12px;
+        letter-spacing: 0.61px;
+    }
 }
 
 .nextNews{
@@ -334,7 +354,8 @@
     font-family: 'Gotham Medium', "Arial Black";
     color: limeGreen;
     font-size: 14px;
-    line-height: normal;
+    line-height: 14px;
+    letter-spacing: 0.6px;
     text-align: left;
 
     @media (max-width: 780px){
@@ -347,10 +368,15 @@
     font-size: 14px;
     line-height: 14px;
     text-align: left;
-    letter-spacing: 1px;
+    letter-spacing: 1.15px;
     color: darkBlueBasic;
     position: relative;
     z-index: 11;
+
+    @media (max-width: 780px){
+        font-size: 10px;
+        letter-spacing: 0.73px;
+    }
 }
 
 .nextNewsHeader{
@@ -372,17 +398,18 @@
 .nextNewsTitle{
     width: 530px;
     font-family: 'Gotham Pro', Arial;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 21px;
+    line-height: normal;
     text-align: left;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.07px;
     color: blackBasic;
     position: relative;
     z-index: 11;
 
     @media (max-width: 780px){
         width: 100%;
-        font-size: 18px;
+        font-size: 14px;
+        letter-spacing: 0.71px;
     }
 }
 
@@ -477,10 +504,10 @@
     align-items: center;
     justify-content: flex-start;
     font-family: 'Gotham Light', Arial;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 14px;
     text-align: left;
-    letter-spacing: 1px;
+    letter-spacing: 0.84px;
     color: middleGrey;
     opacity: unset;
     top: 0;
@@ -493,10 +520,10 @@
     align-items: flex-start;
     justify-content: flex-start;
     font-family: 'Gotham Pro', Arial;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 13.5px;
+    line-height: normal;
     text-align: left;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.68px;
     color: blackBasic;
     border: none;
     margin-bottom: 0;
@@ -527,10 +554,10 @@
 }
 
 .activeCategory{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 12px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 0.73px;
     text-align: left;
     color: rgba(122, 122, 122, 0.5);
     width: 70%;
@@ -554,7 +581,7 @@
 }
 
 .arrow{
-    width: 32px;
+    width: 18px;
     height: auto;
 }
 
@@ -564,10 +591,10 @@
 }
 
 .categoryTitleMobile{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 12px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 0.73px;
     text-align: left;
     color: limeGreen;
     width: 100%;

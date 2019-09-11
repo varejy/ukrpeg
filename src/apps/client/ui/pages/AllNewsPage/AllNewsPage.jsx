@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 import propOr from '@tinkoff/utils/object/propOr';
 
-const CATEGORY_HEIGHT = 58;
+const CATEGORY_HEIGHT = 52;
 const mapStateToProps = ({ application, news }) => {
     return {
         news: news.news,

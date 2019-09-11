@@ -111,7 +111,7 @@ class Articles extends Component {
         return <div className={styles.articles}>
             <div className={styles.wrapper}>
                 <div className={styles.info}>
-                    <div className={styles.title}>{text.title}</div>
+                    <Link to={`${langRoute}/news`}><div className={styles.title}>{text.title}</div></Link>
                 </div>
             </div>
             <div className={styles.wrapperArticleBg}>
