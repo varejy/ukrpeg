@@ -7,14 +7,18 @@ import { Link, withRouter } from 'react-router-dom';
 import SearchInput from '../SearchInput/SearchInput';
 
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 import styles from './Content.css';
 
+const TABLET_WIDTH = 1023;
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
         langRoute: application.langRoute,
-        lang: application.lang
+        lang: application.lang,
+        mediaWidth: application.media.width,
+        mediaHeight: application.media.height
     };
 };
 
@@ -23,7 +27,9 @@ class Content extends Component {
         langMap: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired,
         langRoute: PropTypes.string,
-        lang: PropTypes.string.isRequired
+        lang: PropTypes.string.isRequired,
+        mediaWidth: PropTypes.number.isRequired,
+        mediaHeight: PropTypes.number.isRequired
     };
 
     static defaultProps = {
@@ -44,8 +50,10 @@ class Content extends Component {
     };
 
     render () {
-        const { langMap, langRoute, lang } = this.props;
+        const { langMap, langRoute, lang, mediaWidth, mediaHeight } = this.props;
         const text = propOr('content', {}, langMap);
+        const isLandscape = mediaWidth > mediaHeight;
+        const isMobile = mediaWidth <= TABLET_WIDTH;
 
         return <div className={styles.content}>
             <div className={styles.circlesContainer}>
@@ -53,7 +61,9 @@ class Content extends Component {
             </div>
             <div className={styles.wrapper}>
                 <div className={styles.photoBlock}>
-                    <div className={styles.topBlock}>
+                    <div className={classNames(styles.topBlock, {
+                        [styles.topBlockLandscape]: isLandscape && isMobile
+                    })}>
                         <Link to={`${langRoute}/rvv`} className={styles.moreBtn}>
                             <p className={styles.arrowBtn}>
                                 <img src='/src/apps/client/ui/components/Content/files/arrow.png' className={styles.arrowImg} />
