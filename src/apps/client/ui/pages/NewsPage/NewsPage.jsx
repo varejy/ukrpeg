@@ -178,6 +178,7 @@ class NewsPage extends Component {
                 </div>
                 {nextArticle &&
                 <div className={styles.nextNews}>
+                    <div className={styles.nextNewsBg}/>
                     <div className={styles.nextNewsInfo}>
                         <div className={styles.nextNewsHeader}>
                             <div className={styles.next}>{text.nextNews}</div>

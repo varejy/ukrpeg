@@ -24,7 +24,7 @@
 }
 
 .headBg{
-    background: whiteBasic;
+    background: rgba(255, 255, 255, 0.75);
     width: 100%;
     position: fixed;
     left: 0;
@@ -45,7 +45,6 @@
 
 .wrapper, .wrapperBurgerMenu{
     width:  100%;
-    max-width: 1350px;
     display: flex;
     z-index: 40;
 
@@ -127,13 +126,13 @@
     text-align: center;
     padding: 45px 20px 30px;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
-    width: 100%;
     border-bottom: 13px solid transparent;
 
     @media (max-width: 1350px) {
         font-size: 15px;
         letter-spacing: .1px;
         padding: 45px 15px 30px;
+        width: 100%;
     }
 }
 
