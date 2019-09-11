@@ -116,6 +116,7 @@
 }
 
 .link, .activeLink{
+    min-width: 122px;
     white-space: nowrap;
     text-transform: uppercase;
     color: darkBlueBasic;
@@ -470,26 +471,26 @@
     align-items: center;
     z-index: 11;
 
-@media (--media-tablet-l) {
-    font-size: 18px;
-    line-height: 22px;
-}
+    @media (--media-tablet-l) {
+        font-size: 18px;
+        line-height: 22px;
+    }
 
-@media (--media-tablet-s) {
-    font-size: 16px;
-    line-height: 18px;
-}
+    @media (--media-tablet-s) {
+        font-size: 16px;
+        line-height: 18px;
+    }
 
-@media (--media-phone) {
-    font-size: 14px;
-    line-height: 16px;
-}
+    @media (--media-phone) {
+        font-size: 14px;
+        line-height: 16px;
+    }
 
-@media (--media-phone-s) {
-    font-size: 13px;
-    line-height: 14px;
-    margin-bottom: 25px;
-}
+    @media (--media-phone-s) {
+        font-size: 13px;
+        line-height: 14px;
+        margin-bottom: 25px;
+    }
 }
 
 .newsCategoriesList .newsLinkCategory{
