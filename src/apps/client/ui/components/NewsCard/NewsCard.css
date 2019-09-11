@@ -40,10 +40,10 @@
     align-items: center;
     justify-content: flex-start;
     font-family: 'Gotham Light', Arial;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 14px;
     text-align: left;
-    letter-spacing: 1px;
+    letter-spacing: 0.73px;
     color: greyMedium;
     overflow: hidden;
 }
@@ -54,10 +54,10 @@
     align-items: flex-start;
     justify-content: flex-start;
     font-family: 'Gotham Pro', Arial;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 12px;
+    line-height: normal;
     text-align: left;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.56px;
     color: blackBasic;
     overflow: hidden;
 }

@@ -101,16 +101,16 @@ class RVVPage extends Component {
                                 className={classNames(styles.buttonLeft, activeSlide === 0 ? styles.buttonDisabled : styles.buttonActive)}
                             >
                                 <img className={styles.button} src={activeSlide === 0
-                                    ? '/src/apps/client/ui/pages/RVVPage/images/downArrowBlack.png'
-                                    : '/src/apps/client/ui/pages/RVVPage/images/downArrowGreen.png'
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/arrowDown.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/arrowUp.png'
                                 } alt='arrowLeft'/>
                             </div>
                             <div onClick={activeSlide !== rvv.plans.length - 1 ? this.handleArrowClick('right') : undefined}
                                 className={classNames(styles.buttonRight, activeSlide === rvv.plans.length - 1 ? styles.buttonDisabled : styles.buttonActive)}
                             >
                                 <img className={styles.button} src={activeSlide === rvv.plans.length - 1
-                                    ? '/src/apps/client/ui/pages/RVVPage/images/downArrowBlack.png'
-                                    : '/src/apps/client/ui/pages/RVVPage/images/downArrowGreen.png'
+                                    ? '/src/apps/client/ui/pages/RVVPage/images/arrowDown.png'
+                                    : '/src/apps/client/ui/pages/RVVPage/images/arrowUp.png'
                                 } alt='arrowRight'/>
                             </div>
                         </div>

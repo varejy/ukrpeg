@@ -37,40 +37,38 @@
 }
 
 .title{
-    padding: 25px 0 20px 25px;
-    border-left: 5px solid lightGreenBasic;
+    padding: 25px 0 20px 20px;
+    border-left: 6px solid lightGreenBasic;
     margin-left: -20px;
     color: darkBlueBasic;
-    font-weight: 600;
     font-size: 14px;
     line-height: 14px;
-    letter-spacing: .5px;
-    cursor: pointer;
+    letter-spacing: 1.15px;
     position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
     z-index: 11;
-    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+    font-family: 'Gotham Medium', 'Arial Black', sans-serif;
 
     @media (max-width: 1350px){
         margin-left: -5px;
     }
 
     @media (--media-tablet-l) {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 14px;
         letter-spacing: 1px;
-        margin-left: -2px;
-        padding: 10px 0 10px 10px;
-        border-left: 3px solid lightGreenBasic;
+        margin-left: -3px;
+        padding: 10px 0 10px 20px;
+        border-left: 6px solid lightGreenBasic;
    }
 
     @media (--media-phone) {
-        font-size: 10px;
+        letter-spacing: 0.84px;
+        font-size: 12px;
         line-height: 14px;
    }
-}
-
-.title:hover{
-    color: lightGreyHover;
 }
 
 .companiesList{

@@ -99,7 +99,7 @@
 .img{
     width: 70px;
     height: 70px;
-    z-index: 10;
+    z-index: 13;
 }
 
 .menu{
@@ -120,13 +120,12 @@
     white-space: nowrap;
     text-transform: uppercase;
     color: darkBlueBasic;
-    font-weight: 600;
     font-size: 18px;
     line-height: 14px;
-    letter-spacing: .3px;
+    letter-spacing: 0.38px;
     text-align: center;
     padding: 45px 20px 30px;
-    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+    font-family: 'Gotham Medium', 'Arial Black', sans-serif;
     width: 100%;
     border-bottom: 13px solid transparent;
 
@@ -175,12 +174,14 @@
     white-space: nowrap;
     color: darkGreyBasic;
     margin-right: 20px;
+    font-size: 14px;
+    line-height: normal;
     font-family: 'Gotham Pro', 'Arial Black', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 0.72px;
     white-space: nowrap;
 
     @media (max-width: 1350px) {
-        letter-spacing: .1px;
+        letter-spacing: 0.72px;
         margin-right: 5px;
         padding-left: 5px;
     }
@@ -240,6 +241,9 @@
 }
 
 .lang{
+    font-size: 13.5px;
+    line-height: 12.78px;
+    letter-spacing: 0.57px;
     cursor: pointer;
 
     @media (max-width: 1150px) {
@@ -248,6 +252,9 @@
 }
 
 .choosenLang{
+    font-size: 13.5px;
+    line-height: 12.78px;
+    letter-spacing: 0.57px;
     color: limeGreen;
 
     @media (max-width: 1150px) {

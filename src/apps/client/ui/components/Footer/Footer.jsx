@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { menu } from '../../../constants/routes';
 
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 
 const mapStateToProps = ({ application }) => {
     return {
@@ -30,6 +31,13 @@ class Footer extends Component {
         const menuItems = propOr('menu', {}, langMap);
 
         return <div className={styles.footer}>
+            <div className={styles.gridContainer}>
+                <div className={classNames(styles.column, styles.column1)}/>
+                <div className={classNames(styles.column, styles.column2)}/>
+                <div className={classNames(styles.column, styles.column3)}/>
+                <div className={classNames(styles.column, styles.column4)}/>
+                <div className={classNames(styles.column, styles.column5)}/>
+            </div>
             <div className={styles.wrapper}>
                 <nav className={styles.menu}>
                     {menu.map((link, i) => {

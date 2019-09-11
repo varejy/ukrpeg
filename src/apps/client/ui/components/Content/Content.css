@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
+    position: relative;
     z-index: 11;
 
     @media (--media-tablet-l) {
@@ -48,18 +49,20 @@
 
     @media (--media-tablet-l) {
         padding: 200px 50px;
-        height: 750px;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
     }
 
     @media (--media-tablet-s) {
         padding: 190px 50px;
-        max-height: 625px;
-        height: auto;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
     }
 
     @media (--media-phone) {
         padding: 170px 30px;
-        height: 625px;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
     }
 }
 
@@ -106,8 +109,10 @@
 
 .btn{
     text-transform: uppercase;
-    font-family: 'Gotham Pro', "Arial Black", sans-serif;
-    font-weight: 500;
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.65px;
     padding: 32px 22px 25px;
 
     @media (--media-tablet-l) {
@@ -126,7 +131,7 @@
 
     @media (--media-phone) {
         padding: 15px 22px;
-        font-size: 10px;
+        font-size: 12px;
         letter-spacing: .5px;
         line-height: 16px;
     }
@@ -158,7 +163,8 @@
 }
 
 .title{
-    font-size: 70px;
+    font-size: 78px;
+    letter-spacing: normal;
     font-weight: bold;
     text-transform: uppercase;
     font-family: Verdana, sans-serif;
@@ -206,10 +212,9 @@
 
 .description{
     font-size: 24px;
-    letter-spacing: .5px;
-    font-weight: 500;
-    line-height: 28px;
-    font-family: 'Gotham Pro';
+    letter-spacing: 1.19px;
+    line-height: normal;
+    font-family: 'Gotham Medium';
 
     @media (max-width: 1350px) {
         font-size: 22px;
@@ -219,14 +224,14 @@
         padding: 0 20px;
         font-size: 18px;
         line-height: 22px;
-        letter-spacing: .6px;
+        letter-spacing: 0.68px;
         text-align: center;
-        font-family: 'Gotham Light';
+        font-family: 'Gotham Medium';
     }
 
     @media (--media-tablet-s) {
         padding: 0 30px;
-        font-size: 14px;
+        font-size: 13.5px;
         line-height: 20px;
     }
 
@@ -301,10 +306,10 @@
 }
 
 .info{
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 500;
-    line-height: 14px;
-    letter-spacing: .4px;
+    line-height: 14.22px;
+    letter-spacing: 0.85px;
     color: whiteBasic;
     font-family: 'Gotham Medium', "Arial Black", sans-serif;
     text-align-last: end;
@@ -325,4 +330,31 @@
     @media (--media-tablet-l) {
         display: none;
    }
+}
+
+.circlesContainer{
+    display: none;
+
+    @media (max-width: 1023px){
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 12;
+        width: 50%;
+    }
+
+
+    @media (max-width: 780px){
+        width: 50%;
+    }
+
+    @media (max-width: 500px){
+        width: 80%;
+    }
+}
+
+.circles{
+    width: 100%;
+    height: auto;
 }

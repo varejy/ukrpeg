@@ -120,20 +120,20 @@ html, body {
     margin-right: 20px;
     background-color: limeGreen;
     flex-shrink: 0;
-
-    @media (max-width: 425px){
-        height: 40px;
-        width: 4px;
-    }
 }
 
 .title{
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 1.15px;
     text-align: left;
-    line-height: 24px;
+    line-height: 14px;
     max-width: 90%;
+
+    @media (max-width: 780px) {
+        font-size: 12px;
+        letter-spacing: 0.85px;
+    }
 }
 
 .plans{
@@ -204,8 +204,8 @@ html, body {
 .stepText{
     color: blackBasic;
     font-family: 'Gotham Light', Arial;
-    font-size: 16px;
-    letter-spacing: 0.5px;
+    font-size: 14px;
+    letter-spacing: 1.15px;
     width: 90%;
     height: 180px;
     justify-self: end;
@@ -332,23 +332,19 @@ html, body {
 .benefitText{
     width: 80%;
     font-family: 'Gotham Light', Arial;
-    font-size: 16px;
-    letter-spacing: 0.5px;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 1.15px;
     color: blackBasic;
     text-align: left;
     z-index: 11;
 
     @media (max-width: 780px){
         font-family: 'Gotham Pro', Arial;
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 12px;
+        letter-spacing: 0.6px;
         text-align: center;
         width: 100%;
-    }
-
-    @media (max-width: 500px){
-        font-size: 18px;
-        line-height: 24px;
     }
 }
 
@@ -386,8 +382,9 @@ html, body {
     padding: 0 134px;
     color: darkGreyBasic;
     font-family: 'Gotham Bold', Arial;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.92px;
     text-align: left;
     position: relative;
     z-index: 11;
@@ -395,14 +392,13 @@ html, body {
     @media (max-width: 780px){
         padding: 0 80px;
         width: 100%;
-        font-size: 20px;
-        line-height: 24px;
-        font-family: 'Gotham Medium', Arial;
+        letter-spacing: 0.6px;
+        font-size: 12px;
+        line-height: normal;
+        font-family: 'Gotham Medium', 'Arial Black';
     }
 
     @media (max-width: 500px){
-        font-size: 18px;
-        line-height: 24px;
         padding: 0 30px;
     }
 }
@@ -434,7 +430,7 @@ html, body {
 
     @media (max-width: 780px){
         width: 70%;
-        right: 0;
+        left: 30%;
     }
 }
 
@@ -521,10 +517,10 @@ html, body {
 
 .courseText{
     font-family: 'Gotham Medium', Arial;
-    font-size: 16px;
+    font-size: 14px;
     padding: 0 7px;
     line-height: normal;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.15px;
     justify-self: flex-end;
     width: 70%;
     height: auto;
@@ -540,17 +536,13 @@ html, body {
     @media (max-width: 780px){
         width: 60%;
         font-family: 'Gotham Light', Arial;
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 12px;
+        letter-spacing: 0.9px;
+        line-height: 16px;
         align-items: flex-start;
         padding: 0 10px;
         position: relative;
         height: auto;
-    }
-
-    @media (max-width: 500px){
-        font-size: 18px;
-        line-height: 24px;
     }
 }
 
@@ -571,20 +563,34 @@ html, body {
     background-size: cover;
 
     @media (max-width: 780px){
-        width: 30%;
+        width: 33%;
     }
 }
 
 .patternContainerBig{
     height: 100%;
-    width: 50%;
+    width: 33%;
     overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 5;
-    background: url('./images/pattern.png') repeat-x;
-    background-size: auto;
+    background: url('./images/pattern.png') repeat;
+    background-size: cover;
+
+
+    @media (max-width: 1700px){
+        width: 20%;
+    }
+
+    @media (max-width: 1500px){
+        width: 15%;
+    }
+
+    @media (max-width: 780px){
+        width: 33%;
+        background-size: contain;
+    }
 }
 
 
@@ -622,20 +628,20 @@ html, body {
     margin-right: 20px;
     background-color: whiteBasic;
     flex-shrink: 0;
-
-    @media (max-width: 425px){
-        height: 40px;
-        width: 4px;
-    }
 }
 
 .whiteTitle{
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 14px;
     font-family: 'Gotham Medium', "Arial Black";
-    letter-spacing: 1.5px;
+    letter-spacing: 1.15px;
     text-align: left;
     color: whiteBasic;
+
+    @media (max-width: 780px) {
+        font-size: 12px;
+        letter-spacing: 0.85px;
+    }
 }
 
 .factsInfo{
@@ -712,21 +718,16 @@ html, body {
 .factText{
     font-family: 'Gotham Bold', 'Arial Black';
     color: whiteBasic;
-    font-size: 16px;
+    font-size: 18px;
     line-height: normal;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.92px;
     width: 100%;
 
     @media (max-width: 780px){
         text-align: center;
-        font-family: 'Gotham Medium', Arial;
-        font-size: 20px;
-        line-height: 24px;
-    }
-
-    @media (max-width: 500px){
-        font-size: 18px;
-        line-height: 24px;
+        font-family: 'Gotham Medium', 'Arial Black';
+        font-size: 12px;
+        letter-spacing: 0.6px;
     }
 }
 
@@ -789,9 +790,12 @@ html, body {
 
     @media (max-width: 780px){
         display: block;
-        width: 30%;
+        width: 33%;
         left: 0;
         top: 0;
+        height: 190%;
+        background-size: contain;
+        background-repeat: repeat-y;
     }
 }
 
@@ -821,7 +825,7 @@ html, body {
     width: 100%;
     max-width: 1340px;
     margin: 0 auto;
-    padding-bottom: 60px;
+    padding-bottom: 90px;
     z-index: 11;
 
     @media (max-width: 780px) {
@@ -835,15 +839,18 @@ html, body {
 
 .participant{
     font-family: 'Gotham Medium', Arial;
-    font-size: 16px;
-    line-height: 26px;
-    letter-spacing: 0.5px;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 1.04px;
     text-align: left;
     color: blackBasic;
     max-width: 70%;
 
     @media (max-width: 780px){
         font-family: 'Gotham Light', Arial;
+        font-size: 12px;
+        line-height: normal;
+        letter-spacing: 0.6px;
     }
 }
 
@@ -930,8 +937,9 @@ html, body {
 .ideaText{
     width: 60%;
     font-family: 'Gotham Light', Arial;
-    font-size: 16px;
+    font-size: 14px;
     line-height: normal;
+    letter-spacing: 1.15px;
     text-align: left;
     position: relative;
     z-index: 11;
@@ -945,11 +953,10 @@ html, body {
 
     @media (max-width: 780px){
         width: 100%;
-    }
+        font-size: 12px;
+        line-height: normal;
+        letter-spacing: 0.6px;
 
-    @media (max-width: 500px){
-        font-size: 18px;
-        line-height: 24px;
     }
 }
 
@@ -1022,15 +1029,17 @@ html, body {
 }
 
 .containerPlansMobile .patternContainerBig{
-    width: 30%;
-    height: 100%;
+    width: 33%;
+    height: 50%;
+    background-size: contain;
+    background-repeat: repeat-y;
 }
 
 .containerPlansMobile .backgroundWhite{
     width: 70%;
     height: 100%;
     position: absolute;
-    right: 0;
+    left: 30%;
     top: 0;
 }
 
@@ -1082,8 +1091,9 @@ html, body {
 }
 
 .containerPlansMobile .courseText{
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.9px;
     left: 60px;
     align-items: flex-start;
     font-family: 'Gotham Light', Arial;
@@ -1094,8 +1104,8 @@ html, body {
     }
 
     @media (max-width: 500px){
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 14px;
+        line-height: 18px;
     }
 }
 
@@ -1154,17 +1164,16 @@ html, body {
     justify-content: flex-start;
     z-index: 11;
     position: relative;
-    right: 22%;
+    right: 90px;
+
+    @media (max-width: 375px){
+        right: 60px;
+    }
 }
 
 .button{
-    height: 30px;
+    height: 10px;
     width: auto;
-
-    @media (max-width: 425px){
-        height: 18px;
-        width: auto;
-    }
 }
 
 .buttonLeft, .buttonRight{
@@ -1174,11 +1183,6 @@ html, body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
-    @media (max-width: 425px){
-        width: 40px;
-        height: 40px;
-    }
 }
 
 .buttonLeft{
@@ -1186,12 +1190,19 @@ html, body {
 }
 
 .buttonRight{
+    transform: rotate(90deg);
+}
+
+.buttonLeft.buttonActive{
+    transform: rotate(-90deg);
+}
+
+.buttonRight.buttonDisabled{
     transform: rotate(-90deg);
 }
 
 .buttonDisabled{
-    border: 1px solid rgba(122, 122, 122, 1);
-    opacity: 0.2;
+    border: 1px solid rgba(122, 122, 122, 0.2);
 }
 
 .buttonActive{

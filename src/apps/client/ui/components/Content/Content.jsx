@@ -48,6 +48,9 @@ class Content extends Component {
         const text = propOr('content', {}, langMap);
 
         return <div className={styles.content}>
+            <div className={styles.circlesContainer}>
+                <img className={styles.circles} src='/src/apps/client/ui/components/Content/files/circles.png' alt="circles"/>
+            </div>
             <div className={styles.wrapper}>
                 <div className={styles.photoBlock}>
                     <div className={styles.topBlock}>
@@ -64,7 +67,7 @@ class Content extends Component {
                         </div>
                     </div>
                     <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit}/>
-                    <div className={styles.text} style={{ marginTop: `-${lang === 'ua' ? 55 : 125}px` }}>
+                    <div className={styles.text} style={{ marginTop: `-${lang === 'ua' ? 55 : 145}px` }}>
                         <h1 className={styles.heading} />
                         <p className={styles.info}>{text.text}</p>
                     </div>
