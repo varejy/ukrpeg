@@ -82,8 +82,8 @@
     color: darkGreyBasic;
     margin-right: 80px;
     font-size: 14px;
-    letter-spacing: 1px;
-    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 1.8px;
     padding: 5px 0;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
     border-bottom: 1px solid transparent;

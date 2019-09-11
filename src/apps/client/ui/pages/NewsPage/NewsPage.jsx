@@ -13,7 +13,7 @@ import StyleRenderer from '../../components/StyleRenderer/StyleRenderer';
 import NoFoundPage from '../NoFoundPage/NoFoundPage.jsx';
 
 const TABLET_WIDTH = 780;
-const CATEGORY_HEIGHT = 58;
+const CATEGORY_HEIGHT = 52;
 const DESKTOP_TOP = 235;
 const MOBILE_TOP = 300;
 const ANIMATION_DURATION = 700;

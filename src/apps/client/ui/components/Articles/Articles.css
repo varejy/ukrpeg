@@ -45,14 +45,13 @@
 }
 
 .title{
-    padding: 25px 0 20px 25px;
+    padding: 25px 0 20px 20px;
     border-left: 6px solid lightGreenBasic;
     margin-left: -20px;
     color: darkBlueBasic;
-    font-weight: 500;
     font-size: 14px;
     line-height: 14px;
-    letter-spacing: .5px;
+    letter-spacing: 1.15px;
     cursor: pointer;
     position: relative;
     z-index: 11;
@@ -70,12 +69,13 @@
         line-height: 14px;
         letter-spacing: 1px;
         margin-left: -2px;
-        padding: 10px 0 10px 10px;
+        padding: 10px 0 10px 20px;
         border-left: 6px solid lightGreenBasic;
    }
 
     @media (--media-tablet-s) {
-        font-size: 14px;
+        font-size: 12px;
+        letter-spacing: 0.84px;
    }
 }
 
@@ -170,20 +170,25 @@
     font-weight: 300;
 
     @media (--media-tablet-l) {
-        font-size: 10px;
+        font-size: 12px;
         line-height: 14px;
+        letter-spacing: 0.73px;
         margin-bottom: 10px;
    }
 }
 
 .description{
     color: blackBasic;
-    font-weight: 600;
     font-size: 14px;
-    line-height: 18px;
+    line-height: normal;
     z-index: 11;
-    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
+    font-family: 'Gotham Medium', 'Arial Black', sans-serif;
     letter-spacing: .4px;
+
+    @media (--media-tablet-l) {
+        font-size: 14px;
+        letter-spacing: 0.71px;
+    }
 }
 
 .buttons, .buttonsHidden{

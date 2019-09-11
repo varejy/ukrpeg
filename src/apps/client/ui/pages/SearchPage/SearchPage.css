@@ -157,9 +157,9 @@
     justify-content: flex-end;
     font-size: 14px;
     line-height: 24px;
-    letter-spacing: 1px;
+    letter-spacing: 1.15px;
     color: blackBasic;
-    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    font-family: 'Gotham Light', "Arial Black", sans-serif;
     max-width: fit-content;
 
     @media (max-width: 1350px) {
@@ -178,7 +178,8 @@
         margin: 30px;
         justify-content: flex-start;
         font-size: 14px;
-        line-height: 18px;
+        line-height: 12px;
+        letter-spacing: 0.84px;
     }
 
     @media (--media-phone) {
@@ -188,7 +189,7 @@
     }
 
     @media (--media-phone-s) {
-        font-size: 11px;
+        font-size: 12px;
         line-height: 16px;
     }
 }
@@ -235,11 +236,15 @@
     margin-bottom: 12px;
     font-size: 14px;
     line-height: 14px;
-    letter-spacing: 1px;
+    font-family: "Gotham Medium", "Arial Black";
+    letter-spacing: 1.15px;
     padding-left: 20px;
 
     @media (--media-tablet-l) {
         display: none;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.84px;
     }
 }
 
@@ -335,32 +340,34 @@
     padding: 20px 0 20px 20px;
     border-left: 5px solid lightGreenBasic;
     margin-left: -25px;
-    margin-bottom: 15px;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 17px;
-    letter-spacing: 1px;
+    margin-bottom: 14px;
+    font-family: "Gotham Medium", "Arial Black";
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 1.15px;
     position: relative;
     z-index: 11;
 
     @media (--media-tablet-l) {
-        font-size: 16px;
-        line-height: 18px;
+        font-size: 14px;
+        line-height: 14px;
+        letter-spacing: 1.15px;
         margin: 35px 50px;
-        padding: 20px 0 20px 22px;
+        padding: 20px 0 20px 20px;
     }
 
     @media (--media-tablet-s) {
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.84px;
         margin: 35px 30px;
-        padding: 15px 0 15px 16px;
+        padding: 15px 0 15px 20px;
     }
 
     @media (--media-phone) {
-        border-width: 3px;
+        border-width: 6px;
         margin: 30px 0 0 10px;
-        padding: 10px 0 10px 11px;
+        padding: 10px 0 10px 20px;
         font-size: 12px;
         line-height: 14px;
     }
@@ -368,9 +375,9 @@
     @media (--media-phone-s) {
         border-width: 3px;
         margin: 30px 0 0 10px;
-        padding: 10px 0 10px 11px;
-        font-size: 10px;
-        line-height: 12px;
+        padding: 10px 0 10px 20px;
+        font-size: 12px;
+        line-height: 14px;
     }
 }
 
@@ -395,10 +402,10 @@
 .resultPageItem{
     text-transform: uppercase;
     font-size: 18px;
+    font-family: "Gotham Medium", "Arial Black";
     line-height: 14px;
-    letter-spacing: .3px;
+    letter-spacing: 0.38px;
     margin-bottom: 35px;
-    font-weight: 900;
     display: block;
 
     @media (--media-tablet-l) {
@@ -406,7 +413,8 @@
     }
 
     @media (--media-tablet-s) {
-        font-size: 16px;
+        font-size: 14px;
+        letter-spacing: 0.81px;
     }
 
     @media (--media-phone) {
@@ -461,20 +469,21 @@
 
 .date{
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 13.5px;
+    line-height: 14px;
     color: darkBlueBasic;
     z-index: 11;
     position: relative;
-    letter-spacing: .7px;
-    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
-    font-weight: 300;
+    letter-spacing: 1.15px;
+    font-family: 'Gotham Light', Arial, sans-serif;
 
     @media (--media-tablet-l) {
-        font-size: 14px;
+        font-size: 13.5px;
     }
 
     @media (--media-tablet-s) {
         font-size: 12px;
+        letter-spacing: 0.61px;
     }
 
     @media (--media-phone) {
@@ -489,12 +498,11 @@
 
 .news{
     color: blackBasic;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 16px;
+    line-height: normal;
     z-index: 11;
-    font-family: 'Gotham Pro', 'Arial Black', sans-serif;
-    letter-spacing: .4px;
+    font-family: 'Gotham Pro', Arial, sans-serif;
+    letter-spacing: 0.8px;
 
     @media (--media-tablet-l) {
         font-size: 14px;
@@ -504,6 +512,7 @@
     @media (--media-phone) {
         font-size: 12px;
         line-height: 14px;
+        letter-spacing: 0.61px;
     }
 }
 

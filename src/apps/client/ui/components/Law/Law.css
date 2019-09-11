@@ -28,14 +28,16 @@
 .title{
     margin-top: 75px;
     padding: 20px 0 20px 20px;
-    border-left: 5px solid lightGreenBasic;
+    border-left: 6px solid lightGreenBasic;
+    height: 60px;
+    display: flex;
+    align-items: center;
     margin-left: -15px;
     color: darkBlueBasic;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 17px;
-    letter-spacing: 1px;
-    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 1.15px;
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
 
     @media (max-width: 1350px){
         margin-left: 0;
@@ -43,21 +45,21 @@
 
     @media (--media-tablet-l) {
         margin: 60px 50px;
-        padding: 20px 0 20px 22px;
-        font-size: 16px;
-        line-height: 20px;
+        padding: 20px 0 20px 20px;
+        font-size: 14px;
+        line-height: 14px;
     }
 
     @media (--media-tablet-s) {
         margin: 40px;
-        padding: 15px 0 15px 16px;
-        font-size: 14px;
-        line-height: 18px;
+        padding: 15px 0 15px 20px;
+        font-size: 12px;
+        line-height: 14px;
     }
 
     @media (--media-phone) {
         margin: 40px 30px;
-        padding: 10px 0 10px 11px;
+        padding: 10px 0 10px 20px;
         font-size: 12px;
         line-height: 16px;
     }
@@ -97,32 +99,23 @@
 }
 
 .listItem{
-    font-size: 16px;
-    letter-spacing: 1.2px;
-    line-height: 19px;
-    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 1.15px;
+    line-height: 14px;
     color: blackBasic;
-    font-family: 'Gotham Pro', "Arial Black", sans-serif;
+    margin-bottom: 17px;
+    font-family: 'Gotham Light', "Arial Black", sans-serif;
     cursor: pointer;
 
     @media (--media-tablet-l) {
         font-size: 14px;
-        line-height: 16px;
-    }
-
-    @media (--media-tablet-s) {
-        font-size: 13px;
-        line-height: 15px;
-    }
-
-    @media (--media-phone) {
-        font-size: 12px;
         line-height: 14px;
     }
 
-    @media (--media-phone-s) {
-        font-size: 11px;
-        line-height: 13px;
+    @media (--media-tablet-s) {
+        font-size: 12px;
+        line-height: normal;
+        letter-spacing: 0.6px;
     }
 }
 
