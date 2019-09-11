@@ -1164,6 +1164,10 @@ html, body {
     z-index: 11;
     position: relative;
     right: 90px;
+
+    @media (max-width: 375px){
+        right: 60px;
+    }
 }
 
 .button{
