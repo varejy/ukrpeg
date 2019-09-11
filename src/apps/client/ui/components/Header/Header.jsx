@@ -174,11 +174,11 @@ class Header extends Component {
                                 </NavLink>
                             );
                         })}
+                        <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>
+                            <a className={styles.socialItem} href='https://instagram.com'>instagram</a>
+                            <a className={styles.socialItem} href='https://www.facebook.com/'>facebook</a>
+                        </div>
                     </nav>
-                    <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>
-                        <a className={styles.socialItem} href='https://instagram.com'>instagram</a>
-                        <a className={styles.socialItem} href='https://www.facebook.com/'>facebook</a>
-                    </div>
                     <div className={styles.tools}>
                         <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
                         <div className={!burgerMenuOpen ? styles.toogleLang : styles.toogleLangBurgerMenu}>
