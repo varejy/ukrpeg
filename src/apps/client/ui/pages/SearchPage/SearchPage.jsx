@@ -109,28 +109,37 @@ class SearchPage extends Component {
         }
 
         return <section className={styles.search}>
+            <div className={styles.gridContainer}>
+                <div className={classNames(styles.column, styles.column1)}/>
+                <div className={classNames(styles.column, styles.column2)}/>
+                <div className={classNames(styles.column, styles.column3)}/>
+                <div className={classNames(styles.column, styles.column4)}/>
+                <div className={classNames(styles.column, styles.column5)}/>
+            </div>
+            <div className={styles.mainWrapper}>
+                <div className={styles.inputBlock}>
+                    <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit} />
+                    <p className={styles.results}>{text.getSearchResultText(searchedText, searchResultNumber)}</p>
+                </div>
+                <div className={styles.totalResults}>
+                    <h1 className={styles.title}>{text.title}</h1>
+                    <div className={styles.amount}>{searchResultNumber}</div>
+                    <div className={styles.amountPagesWrapper}>
+                        <div className={styles.amountPages}>
+                            <div className={styles.amountPagesResult}>{`${text.pages}:`}</div>
+                            <div>{pages.length}</div>
+                        </div>
+                    </div>
+                    <div className={styles.amountNewsWrapper}>
+                        <div className={styles.amountNews}>
+                            <div className={styles.amountPagesResult}>{`${text.news}:`}</div>
+                            <div>{news.length}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div className={styles.wrapper}>
                 <div className={styles.searchResults}>
-                    <div className={styles.inputBlock}>
-                        <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit} />
-                        <p className={styles.results}>{text.getSearchResultText(searchedText, searchResultNumber)}</p>
-                    </div>
-                    <div className={styles.totalResults}>
-                        <h1 className={styles.title}>{text.title}</h1>
-                        <div className={styles.amount}>{searchResultNumber}</div>
-                        <div className={styles.amountPagesWrapper}>
-                            <div className={styles.amountPages}>
-                                <div className={styles.amountPagesResult}>{`${text.pages}:`}</div>
-                                <div>{pages.length}</div>
-                            </div>
-                        </div>
-                        <div className={styles.amountNewsWrapper}>
-                            <div className={styles.amountNews}>
-                                <div className={styles.amountPagesResult}>{`${text.news}:`}</div>
-                                <div>{news.length}</div>
-                            </div>
-                        </div>
-                    </div>
                     {
                         !!pages.length && <div className={styles.resultsPages}>
                             <h1 className={styles.resultTitle}>{text.resultPages}</h1>

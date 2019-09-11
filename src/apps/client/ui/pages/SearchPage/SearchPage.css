@@ -3,24 +3,91 @@
 @value lightGreySearchBasic from '../../../../../css/colors.css';
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value lightGreenBasic from '../../../../../css/colors.css';
+@value lightGreyBasic from '../../../../../css/colors.css';
 
 .search{
     width: 100%;
-    display: flex;
-    justify-content: center;
     margin-top: 100px;
     z-index: 11;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainWrapper{
+    width:  100%;
+    padding: 0 134px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (--media-tablet-l) {
+        padding: 0;
+        display: block;
+    }
 }
 
 .wrapper{
-    width:  100%;
+    width: 100%;
     max-width: 1350px;
+    margin: 0 auto;
+    position: relative;
     padding: 0 134px;
 
     @media (--media-tablet-l) {
         padding: 0;
     }
+}
+
+.gridContainer{
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    position: fixed;
+    height: 100vh;
+    align-self: center;
+    z-index: 10;
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
+}
+
+.column{
+    width: 1px;
+    background-color: lightGreyBasic;
+    opacity: 0.05;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+}
+
+.column1{
+    left: 134px;
+}
+
+.column2{
+    left: 25%;
+    margin-left: 62px;
+}
+
+.column3{
+    left: 50%;
+    margin-left: -10px;
+}
+
+.column4{
+    left: 75%;
+    margin-left: -75px;
+
+    @media (max-width: 1100px){
+        display: none;
+    }
+}
+
+.column5{
+    right: 134px;
+    display: none;
 }
 
 .searchResults{
@@ -36,6 +103,7 @@
 .inputBlock{
     height: 286px;
     background: lightGreySearchBasic;
+    position: relative;
     width: auto;
 
     @media (--media-tablet-l) {
@@ -46,12 +114,17 @@
 }
 
 .searchField{
-    width: 680px;
+    width: 50vw;
     height: 100px;
     background: url('/src/apps/client/ui/pages/SearchPage/files/searchBgOpacity.png');
     margin: 100px 0 0 -145px;
     display: flex;
+    z-index: 11;
     position: relative;
+
+    @media (max-width: 1350px){
+        width: 680px;
+    }
 
     @media (--media-tablet-l) {
         width: 100%;
@@ -111,6 +184,8 @@
     font-size: 26px;
     letter-spacing: 1px;
     font-weight: 300;
+    position: relative;
+    z-index: 11;
     color: blackBasic;
 
     @media (--media-tablet-s) {
@@ -158,9 +233,11 @@
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 1.15px;
+    z-index: 11;
+    position: absolute;
+    right: 0;
     color: blackBasic;
     font-family: 'Gotham Light', "Arial Black", sans-serif;
-    max-width: fit-content;
 
     @media (max-width: 1350px) {
         padding-right: 20px;
@@ -172,6 +249,7 @@
         justify-content: flex-start;
         font-size: 14px;
         line-height: 18px;
+        position: relative;
     }
 
     @media (--media-tablet-s) {
@@ -197,15 +275,17 @@
 .totalResults{
     margin-right: -140px;
     margin-top: 75px;
-    max-width: 410px;
+    margin-left: 75px;
     width: 100%;
     display: flex;
     flex-direction: column;
     font-family: 'Gotham Pro', "Arial Black", sans-serif;
     color: darkBlueBasic;
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1366px) {
         max-width: 355px;
+        width: 100%;
+        margin-left: 0;
     }
 
     @media (--media-tablet-l) {
@@ -238,6 +318,8 @@
     line-height: 14px;
     font-family: "Gotham Medium", "Arial Black";
     letter-spacing: 1.15px;
+    position: relative;
+    z-index: 11;
     padding-left: 20px;
 
     @media (--media-tablet-l) {
@@ -253,6 +335,8 @@
     font-size: 60px;
     font-family: Verdana;
     font-weight: 600;
+    position: relative;
+    z-index: 11;
     background: lightGreySearchBasic;
 
     @media (--media-tablet-l) {
@@ -261,6 +345,8 @@
 }
 
 .amountPagesWrapper, .amountNewsWrapper {
+    position: relative;
+    z-index: 11;
     border-bottom: 2px solid lightGreySearchBasic;
 
     @media (--media-tablet-l) {
@@ -382,6 +468,8 @@
 }
 
 .resultPagesList{
+    position: relative;
+    z-index: 11;
     min-height: 245px;
     padding: 45px 0;
 
@@ -406,6 +494,8 @@
     line-height: 14px;
     letter-spacing: 0.38px;
     margin-bottom: 35px;
+    position: relative;
+    z-index: 11;
     display: block;
 
     @media (--media-tablet-l) {
@@ -427,7 +517,7 @@
 }
 
 .resultNewsList{
-    max-width: 810px;
+    max-width: 805px;
     padding-bottom: 50px;
 
     @media (--media-tablet-l) {
@@ -451,6 +541,8 @@
 
 .resultNewsItem, .resultNewsItemNotOdd{
     padding: 25px 250px 40px 35px;
+    position: relative;
+    z-index: 11;
 
     @media (--media-tablet-l) {
         padding: 30px 20px 25px 45px;

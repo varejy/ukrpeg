@@ -24,7 +24,7 @@
 }
 
 .headBg{
-    background: whiteBasic;
+    background: rgba(255, 255, 255, 0.75);
     width: 100%;
     position: fixed;
     left: 0;
@@ -45,7 +45,6 @@
 
 .wrapper, .wrapperBurgerMenu{
     width:  100%;
-    max-width: 1350px;
     display: flex;
     z-index: 40;
 
@@ -117,6 +116,7 @@
 }
 
 .link, .activeLink{
+    min-width: 122px;
     white-space: nowrap;
     text-transform: uppercase;
     color: darkBlueBasic;
@@ -126,13 +126,13 @@
     text-align: center;
     padding: 45px 20px 30px;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
-    width: 100%;
     border-bottom: 13px solid transparent;
 
     @media (max-width: 1350px) {
         font-size: 15px;
         letter-spacing: .1px;
         padding: 45px 15px 30px;
+        width: 100%;
     }
 }
 
@@ -471,26 +471,26 @@
     align-items: center;
     z-index: 11;
 
-@media (--media-tablet-l) {
-    font-size: 18px;
-    line-height: 22px;
-}
+    @media (--media-tablet-l) {
+        font-size: 18px;
+        line-height: 22px;
+    }
 
-@media (--media-tablet-s) {
-    font-size: 16px;
-    line-height: 18px;
-}
+    @media (--media-tablet-s) {
+        font-size: 16px;
+        line-height: 18px;
+    }
 
-@media (--media-phone) {
-    font-size: 14px;
-    line-height: 16px;
-}
+    @media (--media-phone) {
+        font-size: 14px;
+        line-height: 16px;
+    }
 
-@media (--media-phone-s) {
-    font-size: 13px;
-    line-height: 14px;
-    margin-bottom: 25px;
-}
+    @media (--media-phone-s) {
+        font-size: 13px;
+        line-height: 14px;
+        margin-bottom: 25px;
+    }
 }
 
 .newsCategoriesList .newsLinkCategory{
