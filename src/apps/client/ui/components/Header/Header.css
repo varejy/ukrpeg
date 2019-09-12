@@ -561,13 +561,12 @@
     display: none;
 
     @media (--media-tablet-l) {
-        z-index: 5;
+        z-index: 100;
         color: whiteBasic;
         width: 100%;
         display: flex;
         justify-content: space-around;
-        position: absolute;
-        bottom: 35px;
+        position: relative;
         left: 50%;
         width: 280px;
         transform: translate(-50%, -50%);
