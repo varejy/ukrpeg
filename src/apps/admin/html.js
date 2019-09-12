@@ -10,7 +10,7 @@ export default function () {
             <link rel='stylesheet' type='text/css' href='/public/admin.chunk.css'>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link rel='shortcut icon' href='/client/images/favicon.png' type='image/png'>
+            <link rel='shortcut icon' href='/client/images/ukrpack.ico' type='image/png'>
         </head>
         <body>
             <div id='app'></div>

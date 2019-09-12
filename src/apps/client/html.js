@@ -11,7 +11,7 @@ export default function (html, helmet, preloadedState = {}) {
             ${helmet.title.toString()}
             ${helmet.meta.toString()}
             <link rel='stylesheet' type='text/css' href='/public/client.chunk.css'>
-            <link rel='shortcut icon' href='/client/images/favicon.png' type='image/png'>
+            <link rel='shortcut icon' href='/client/images/ukrpack.ico' type='image/png'>
         </head>
         <body>
             <div id='app'>${html}</div>
