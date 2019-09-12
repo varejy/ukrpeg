@@ -11,7 +11,7 @@ import classNames from 'classnames';
 
 import styles from './Content.css';
 
-const TABLET_WIDTH = 1023;
+const TABLET_WIDTH = 1024;
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,

@@ -167,9 +167,10 @@ class NewsPage extends Component {
                 <div className={styles.newsContent}>
                     <div className={classNames(styles.newsCover)}
                         style={{ top: `${isDesktop ? DESKTOP_TOP : mobileMenuListVisible ? MOBILE_TOP + CATEGORY_HEIGHT * categories.length : MOBILE_TOP}px`,
-                            left: `-${isLargeDesktop ? (mediaWidth - MAX_CONTAINER_WIDTH) * 0.5 : COVER_IMAGE_LEFT}px`,
+                            left: `-${isLargeDesktop ? (mediaWidth - MAX_CONTAINER_WIDTH) * 0.5
+                                : isDesktop ? COVER_IMAGE_LEFT : 0}px`,
                             width: `${isLargeDesktop ? COVER_IMAGE_WIDTH + (mediaWidth - MAX_CONTAINER_WIDTH) * 0.5
-                                : (COVER_IMAGE_WIDTH + COVER_IMAGE_LEFT)}px` }}>
+                                : isDesktop ? (COVER_IMAGE_WIDTH + COVER_IMAGE_LEFT) : 'none'}px` }}>
                         <img className={classNames(styles.coverImage, {
                             [styles.coverImageAnimated]: animation
                         })} src={article.avatar} alt={article.texts[lang].name}/>

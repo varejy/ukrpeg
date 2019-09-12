@@ -19,6 +19,7 @@ import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 const SMALL_MOBILE_WIDTH = 370;
 const NEWS_LINK_BIG_HEIGHT = 40;
 const NEWS_LINK_SMALL_HEIGHT = 28;
+const MAIN_NEWS_LINK_HEIGHT = 81;
 const mapStateToProps = ({ application }, ownProps) => {
     return {
         langMap: application.langMap,
@@ -27,7 +28,8 @@ const mapStateToProps = ({ application }, ownProps) => {
         pathname: ownProps.location.pathname,
         burgerMenu: application.burgerMenu,
         newsCategories: application.categories,
-        mediaWidth: application.media.width
+        mediaWidth: application.media.width,
+        mediaHeight: application.media.height
     };
 };
 
@@ -50,7 +52,8 @@ class Header extends Component {
         burgerMenu: PropTypes.bool.isRequired,
         newsCategories: PropTypes.array.isRequired,
         setActiveCategoryIndex: PropTypes.func.isRequired,
-        mediaWidth: PropTypes.number.isRequired
+        mediaWidth: PropTypes.number.isRequired,
+        mediaHeight: PropTypes.number.isRequired
     };
 
     static defaultProps = {
@@ -117,12 +120,13 @@ class Header extends Component {
     };
 
     render () {
-        const { langMap, langRoute, lang, pathname, mediaWidth } = this.props;
+        const { langMap, langRoute, lang, pathname, mediaWidth, mediaHeight } = this.props;
         const { burgerMenuOpen, newsCategoriesOpen, newsCategories } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
         const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
         const newsLinkHeight = mediaWidth > SMALL_MOBILE_WIDTH ? NEWS_LINK_BIG_HEIGHT : NEWS_LINK_SMALL_HEIGHT;
+        const isLandscape = mediaWidth > mediaHeight;
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
@@ -174,10 +178,6 @@ class Header extends Component {
                                 </NavLink>
                             );
                         })}
-                        <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>
-                            <a className={styles.socialItem} href='https://instagram.com'>instagram</a>
-                            <a className={styles.socialItem} href='https://www.facebook.com/ukrpec/'>facebook</a>
-                        </div>
                     </nav>
                     <div className={styles.tools}>
                         <p className={styles.phone}><a href={`tel:${text.phone}`}>{text.phone}</a></p>
@@ -191,6 +191,14 @@ class Header extends Component {
                         <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
                         <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
                         <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                    </div>
+                    <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}
+                        style={{ bottom: `${isLandscape ? 0.7 * -MAIN_NEWS_LINK_HEIGHT * menu.length +
+                                (newsCategoriesOpen ? -newsLinkHeight * newsCategories.length : 0)
+                            : newsCategoriesOpen ? -newsLinkHeight * newsCategories.length : 0}px` }}
+                    >
+                        <a className={styles.socialItem} href='https://instagram.com'>instagram</a>
+                        <a className={styles.socialItem} href='https://www.facebook.com/ukrpec/'>facebook</a>
                     </div>
                 </div>
             </div>
