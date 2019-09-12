@@ -17,6 +17,10 @@ const CATEGORY_HEIGHT = 52;
 const DESKTOP_TOP = 235;
 const MOBILE_TOP = 300;
 const ANIMATION_DURATION = 700;
+const DESKTOP_WIDTH = 1366;
+const MAX_CONTAINER_WIDTH = 1350;
+const COVER_IMAGE_WIDTH = 665;
+const COVER_IMAGE_LEFT = 16;
 
 const mapStateToProps = ({ application, news }) => {
     return {
@@ -142,6 +146,7 @@ class NewsPage extends Component {
         const isDesktop = mediaWidth > TABLET_WIDTH;
         const { langMap, lang, langRoute } = this.props;
         const text = propOr('news', {}, langMap);
+        const isLargeDesktop = mediaWidth > DESKTOP_WIDTH;
 
         if (this.notFoundPage) {
             return <NoFoundPage />;
@@ -161,7 +166,10 @@ class NewsPage extends Component {
                 </div>
                 <div className={styles.newsContent}>
                     <div className={classNames(styles.newsCover)}
-                        style={{ top: `${isDesktop ? DESKTOP_TOP : mobileMenuListVisible ? MOBILE_TOP + CATEGORY_HEIGHT * categories.length : MOBILE_TOP}px` }}>
+                        style={{ top: `${isDesktop ? DESKTOP_TOP : mobileMenuListVisible ? MOBILE_TOP + CATEGORY_HEIGHT * categories.length : MOBILE_TOP}px`,
+                            left: `-${isLargeDesktop ? (mediaWidth - MAX_CONTAINER_WIDTH) * 0.5 : COVER_IMAGE_LEFT}px`,
+                            width: `${isLargeDesktop ? COVER_IMAGE_WIDTH + (mediaWidth - MAX_CONTAINER_WIDTH) * 0.5
+                                : (COVER_IMAGE_WIDTH + COVER_IMAGE_LEFT)}px` }}>
                         <img className={classNames(styles.coverImage, {
                             [styles.coverImageAnimated]: animation
                         })} src={article.avatar} alt={article.texts[lang].name}/>
