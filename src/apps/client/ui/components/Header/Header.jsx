@@ -176,7 +176,7 @@ class Header extends Component {
                         })}
                         <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}>
                             <a className={styles.socialItem} href='https://instagram.com'>instagram</a>
-                            <a className={styles.socialItem} href='https://www.facebook.com/'>facebook</a>
+                            <a className={styles.socialItem} href='https://www.facebook.com/ukrpec/'>facebook</a>
                         </div>
                     </nav>
                     <div className={styles.tools}>

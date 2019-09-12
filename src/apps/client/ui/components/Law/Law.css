@@ -107,6 +107,10 @@
     font-family: 'Gotham Light', "Arial Black", sans-serif;
     cursor: pointer;
 
+    &:hover {
+        color: lightGreenBasic;
+     }
+
     @media (--media-tablet-l) {
         font-size: 14px;
         line-height: 14px;
