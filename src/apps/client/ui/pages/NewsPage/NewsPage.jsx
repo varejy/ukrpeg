@@ -12,7 +12,7 @@ import propOr from '@tinkoff/utils/object/propOr';
 import StyleRenderer from '../../components/StyleRenderer/StyleRenderer';
 import NoFoundPage from '../NoFoundPage/NoFoundPage.jsx';
 
-const TABLET_WIDTH = 1024;
+const TABLET_WIDTH = 1023;
 const CATEGORY_HEIGHT = 52;
 const DESKTOP_TOP = 235;
 const MOBILE_TOP = 300;

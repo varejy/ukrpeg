@@ -81,7 +81,8 @@ class Header extends Component {
     handleMenuClick = () => {
         const { burgerMenu, setMenuOpen } = this.props;
         this.setState({
-            burgerMenuOpen: !this.state.burgerMenuOpen
+            burgerMenuOpen: !this.state.burgerMenuOpen,
+            newsCategoriesOpen: false
         });
 
         setMenuOpen(!burgerMenu);
@@ -95,7 +96,8 @@ class Header extends Component {
         const { pathname, setMenuOpen } = this.props;
         if (nextProps.pathname !== pathname) {
             this.setState({
-                burgerMenuOpen: false
+                burgerMenuOpen: false,
+                newsCategoriesOpen: false
             });
             setMenuOpen(false);
         }
@@ -103,7 +105,8 @@ class Header extends Component {
 
     handleLogoClick = event => {
         this.setState({
-            burgerMenuOpen: false
+            burgerMenuOpen: false,
+            newsCategoriesOpen: false
         });
     };
 
