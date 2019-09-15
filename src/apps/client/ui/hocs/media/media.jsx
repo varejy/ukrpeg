@@ -44,19 +44,23 @@ const media = WrappedComponent => {
                 return;
             }
 
-            this.updateMediaInfo();
+            this.handleResize();
 
-            window.addEventListener('resize', this.updateMediaInfoDebounced);
+            window.addEventListener('resize', this.handleResize);
         }
 
         componentWillUnmount () {
-            window.removeEventListener('resize', this.updateMediaInfoDebounced);
+            window.removeEventListener('resize', this.handleResize);
         }
 
-        updateMediaInfo = () => {
+        handleResize = () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
 
+            this.updateMediaInfoDebounced();
+        };
+
+        updateMediaInfo = () => {
             this.props.setMediaInfo(this.getMediaInfo());
         };
 
