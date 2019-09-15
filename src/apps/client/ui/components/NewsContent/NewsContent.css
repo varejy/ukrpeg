@@ -52,6 +52,7 @@
     width: 100vw;
     position: absolute;
     left: 0;
+    bottom: 37px;
 
     @media (max-width: 1080px){
         display: none;
@@ -66,7 +67,7 @@
     width: 100%;
     height: 100px;
     background: url('./images/pattern.png') center;
-    background-size: cover;
+    background-size: contain;
     display: none;
 
     @media (max-width: 1080px){
