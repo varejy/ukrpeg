@@ -53,7 +53,7 @@ class Content extends Component {
         const { langMap, langRoute, lang, mediaWidth, mediaHeight } = this.props;
         const text = propOr('content', {}, langMap);
         const isLandscape = mediaWidth > mediaHeight;
-        const isMobile = mediaWidth <= TABLET_WIDTH;
+        const isMobile = mediaWidth < TABLET_WIDTH;
 
         return <div className={styles.content}>
             <div className={styles.circlesContainer}>
