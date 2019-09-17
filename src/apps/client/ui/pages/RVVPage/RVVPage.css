@@ -15,7 +15,7 @@ html, body {
 .pageContainer{
     width: 100%;
     margin: 0 auto;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -909,7 +909,6 @@ html, body {
 
     @media (max-width: 780px){
         left: 0;
-        bottom: -35px;
         padding: 100px 80px;
     }
 
