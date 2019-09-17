@@ -909,6 +909,7 @@ html, body {
 
     @media (max-width: 780px){
         left: 0;
+        bottom: -35px;
         padding: 100px 80px;
     }
 
