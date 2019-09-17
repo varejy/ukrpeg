@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
 import propOr from '@tinkoff/utils/object/propOr';
 
-const CATEGORY_HEIGHT = 52;
+const CATEGORY_HEIGHT = 53;
 const mapStateToProps = ({ application, news }) => {
     return {
         news: news.news,
@@ -99,6 +99,7 @@ class AllNewsPage extends Component {
                 <div className={classNames(styles.column, styles.column2)}/>
                 <div className={classNames(styles.column, styles.column3)}/>
                 <div className={classNames(styles.column, styles.column4)}/>
+                <div className={classNames(styles.column, styles.column5)}/>
             </div>
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>
@@ -151,6 +152,7 @@ class AllNewsPage extends Component {
                                         <div className={styles.newsCategoryTitleMobile}
                                         >
                                             <div className={styles.categoryTitleMobile}>{newsCategory.texts[lang].name}</div>
+                                            <div className={classNames(styles.categoryTitleMobile, styles.plus)}>+</div>
                                         </div>
                                     </div>
                                 </li>

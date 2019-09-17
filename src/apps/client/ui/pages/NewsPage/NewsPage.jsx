@@ -13,7 +13,7 @@ import StyleRenderer from '../../components/StyleRenderer/StyleRenderer';
 import NoFoundPage from '../NoFoundPage/NoFoundPage.jsx';
 
 const TABLET_WIDTH = 1023;
-const CATEGORY_HEIGHT = 52;
+const CATEGORY_HEIGHT = 53;
 const DESKTOP_TOP = 235;
 const MOBILE_TOP = 300;
 const ANIMATION_DURATION = 700;
@@ -153,6 +153,7 @@ class NewsPage extends Component {
                 <div className={classNames(styles.column, styles.column2)}/>
                 <div className={classNames(styles.column, styles.column3)}/>
                 <div className={classNames(styles.column, styles.column4)}/>
+                <div className={classNames(styles.column, styles.column5)}/>
             </div>
             <div className={styles.newsContentContainer}>
                 <div className={styles.titleContainer}>
@@ -270,6 +271,7 @@ class NewsPage extends Component {
                                             <div className={styles.newsCategoryTitleMobile}
                                             >
                                                 <div className={styles.categoryTitleMobile}>{newsCategory.texts[lang].name}</div>
+                                                <div className={classNames(styles.categoryTitleMobile, styles.plus)}>+</div>
                                             </div>
                                         </div>
                                     </Link>

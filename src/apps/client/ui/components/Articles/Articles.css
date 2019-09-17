@@ -205,10 +205,30 @@
     @media (--media-tablet-l) {
         position: absolute;
         top: -30px;
-        right: 90px;
+        right: 26%;
         transform: rotate(-90deg);
         margin: 0;
    }
+
+    @media (max-width: 650px){
+        right: 25%;
+    }
+
+    @media (max-width: 500px){
+        right: 24%;
+    }
+
+    @media (max-width: 420px){
+        right: 23%;
+    }
+
+    @media (max-width: 380px){
+        right: 22%;
+    }
+
+    @media (max-width: 340px){
+        right: 21%;
+    }
 }
 
 .arrowBtn, .activeArrowBtn{
@@ -243,6 +263,8 @@
 }
 
 .switches{
+    position: relative;
+    z-index: 11;
     display: none;
 
     @media (--media-tablet-l) {
