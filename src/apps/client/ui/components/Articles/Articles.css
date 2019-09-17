@@ -205,30 +205,10 @@
     @media (--media-tablet-l) {
         position: absolute;
         top: -30px;
-        right: 26%;
+        right: calc(30px + 30% - 60px);
         transform: rotate(-90deg);
         margin: 0;
    }
-
-    @media (max-width: 650px){
-        right: 25%;
-    }
-
-    @media (max-width: 500px){
-        right: 24%;
-    }
-
-    @media (max-width: 420px){
-        right: 23%;
-    }
-
-    @media (max-width: 380px){
-        right: 22%;
-    }
-
-    @media (max-width: 340px){
-        right: 21%;
-    }
 }
 
 .arrowBtn, .activeArrowBtn{

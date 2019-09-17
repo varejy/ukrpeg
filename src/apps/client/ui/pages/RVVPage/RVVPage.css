@@ -854,12 +854,16 @@ html, body {
 }
 
 .backgroundGrey{
-    width: 87.5%;
+    width: calc(100% - 134px - ((100vw - 1350px)/2));
     background-color: rgba(40, 50, 65, 0.12);
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
+
+    @media (max-width: 1366px){
+        width: calc(100% - 134px);
+    }
 
     @media (max-width: 1024px){
         width: 100%;
@@ -1163,47 +1167,7 @@ html, body {
     justify-content: flex-start;
     z-index: 11;
     position: relative;
-    right: 22%;
-
-    @media (max-width: 700px){
-        right: 21%;
-    }
-
-    @media (max-width: 630px){
-        right: 20%;
-    }
-
-    @media (max-width: 560px){
-        right: 19%;
-    }
-
-    @media (max-width: 500px){
-        right: 18%;
-    }
-
-    @media (max-width: 460px){
-        right: 17%;
-    }
-
-    @media (max-width: 430px){
-        right: 16%;
-    }
-
-    @media (max-width: 400px){
-        right: 15%;
-    }
-
-    @media (max-width: 375px){
-        right: 14%;
-    }
-
-    @media (max-width: 350px){
-        right: 13%;
-    }
-
-    @media (max-width: 330px){
-        right: 12%;
-    }
+    right: calc(30% - 60px);
 }
 
 .button{

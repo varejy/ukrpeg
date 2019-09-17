@@ -338,7 +338,7 @@
     position: absolute;
     padding: 0 100px 0 135px;
     bottom: 0;
-    width: 70%;
+    width: 69.5%;
     height: 240px;
     background-color: lightOlive;
     display: flex;
@@ -486,11 +486,11 @@
 }
 
 .categoryNewsListAnimated3x{
-    height: 492px;
+    height: 486px;
 }
 
 .newsCardContainer{
-    width: 415px;
+    width: 410px;
     padding: 0 20px;
     border: 2px solid whiteBasic;
     border-top: 2px solid rgba(122, 122, 122, 0.05);
