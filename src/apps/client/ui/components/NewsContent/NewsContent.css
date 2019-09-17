@@ -34,9 +34,7 @@
     overflow-x: hidden;
 
     @media (max-width: 1080px){
-        :nth-child(6n){
-            border: 1px solid whiteBasic;
-        }
+        max-width: 100%;
     }
 }
 
