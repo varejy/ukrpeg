@@ -48,14 +48,14 @@
     }
 
     @media (--media-tablet-l) {
-        margin: 60px 50px;
+        margin: 80px 50px 60px 50px;
         padding: 20px 0 20px 20px;
         font-size: 14px;
         line-height: 14px;
     }
 
     @media (--media-tablet-s) {
-        margin: 40px;
+        margin: 60px 40px 40px 40px;
         padding: 15px 0 15px 20px;
         font-size: 12px;
         line-height: 14px;
@@ -63,14 +63,14 @@
     }
 
     @media (--media-phone) {
-        margin: 40px 30px;
+        margin: 60px 30px 40px 30px;
         padding: 10px 0 10px 20px;
         font-size: 12px;
         line-height: 14px;
     }
 
     @media (--media-phone-s) {
-        margin: 40px 20px;
+        margin: 60px 20px 40px 20px;
         font-size: 10px;
         line-height: 12px;
     }

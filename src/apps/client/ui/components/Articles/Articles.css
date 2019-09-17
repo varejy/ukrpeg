@@ -205,7 +205,7 @@
     @media (--media-tablet-l) {
         position: absolute;
         top: -30px;
-        right: 90px;
+        right: calc(30px + 30% - 60px);
         transform: rotate(-90deg);
         margin: 0;
    }
@@ -243,6 +243,8 @@
 }
 
 .switches{
+    position: relative;
+    z-index: 11;
     display: none;
 
     @media (--media-tablet-l) {

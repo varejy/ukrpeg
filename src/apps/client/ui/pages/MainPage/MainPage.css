@@ -17,9 +17,10 @@
     position: fixed;
     height: 100vh;
     z-index: 10;
+    top: 102px;
 
-    @media (max-width: 780px) {
-        display: none;
+    @media (max-width: 1023px){
+        top: 0;
     }
 }
 
@@ -29,29 +30,48 @@
     opacity: 0.05;
     height: 100%;
     position: absolute;
-    top: 0;
     z-index: 10;
 }
 
 .column1{
     left: 134px;
+
+    @media (max-width: 1023px) {
+       left: 30%;
+    }
 }
 
 .column2{
     left: 25%;
     margin-left: 62px;
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
 }
 
 .column3{
     left: 50%;
     margin-left: -10px;
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
 }
 
 .column4{
     left: 75%;
     margin-left: -75px;
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
 }
 
 .column5{
     right: 134px;
+
+    @media (max-width: 1023px) {
+        right: 30%;
+    }
 }

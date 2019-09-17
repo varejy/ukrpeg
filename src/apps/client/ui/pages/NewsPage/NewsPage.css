@@ -40,8 +40,11 @@
     margin-top: 130px;
 
     @media (max-width: 1023px){
-        margin-top: 30px;
+        margin-top: 0;
+        padding-top: 30px;
         width: 100%;
+        background: white;
+        z-index: 13;
     }
 }
 
@@ -52,9 +55,10 @@
     position: fixed;
     height: 100vh;
     z-index: 10;
+    top: 102px;
 
-    @media (max-width: 1023px) {
-        display: none;
+    @media (max-width: 1023px){
+        top: 0;
     }
 }
 
@@ -64,22 +68,33 @@
     opacity: 0.05;
     height: 100%;
     position: absolute;
-    top: 0;
     z-index: 10;
 }
 
 .column1{
     left: 134px;
+
+    @media (max-width: 1023px) {
+        left: 30%;
+    }
 }
 
 .column2{
     left: 25%;
     margin-left: 62px;
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
 }
 
 .column3{
     left: 50%;
     margin-left: -10px;
+
+    @media (max-width: 1023px) {
+        display: none;
+    }
 }
 
 .column4{
@@ -94,6 +109,12 @@
 
 .column5{
     right: 134px;
+    display: none;
+
+    @media (max-width: 1023px) {
+        display: block;
+        right: 30%;
+    }
 }
 
 .newsMenuContainer{
@@ -317,7 +338,7 @@
     position: absolute;
     padding: 0 100px 0 135px;
     bottom: 0;
-    width: 70%;
+    width: 69.5%;
     height: 240px;
     background-color: lightOlive;
     display: flex;
@@ -457,29 +478,25 @@
 }
 
 .categoryNewsListAnimated1x{
-    height: 160px;
+    height: 162px;
 }
 
 .categoryNewsListAnimated2x{
-    height: 320px;
+    height: 324px;
 }
 
 .categoryNewsListAnimated3x{
-    height: 480px;
-}
-
-.categoryNewsList :last-child{
-    border-bottom: 1px solid rgba(122, 122, 122, 0.05);
+    height: 486px;
 }
 
 .newsCardContainer{
-    width: 415px;
+    width: 410px;
     padding: 0 20px;
-    border-top: 1px solid rgba(122, 122, 122, 0.05);
-    border-left: 2px solid whiteBasic;
+    border: 2px solid whiteBasic;
+    border-top: 2px solid rgba(122, 122, 122, 0.05);
     cursor: pointer;
     opacity: 0;
-    transition: opacity .4s;
+    transition: opacity .4s, border .1s;
     margin-left: 4px;
     position: relative;
     z-index: 11;
@@ -490,7 +507,7 @@
 }
 
 .newsCardContainer:hover{
-    border-left: 2px solid limeGreen;
+    border: 2px solid limeGreen;
 }
 
 .newsCardContainerActive{
@@ -534,8 +551,9 @@
 
 .newsMenuContainerMobile {
     width: 100%;
-    margin-top: 130px;
-    border: 1px solid rgba(122, 122, 122, 0.2);
+    margin-top: 143px;
+    position: relative;
+    z-index: 11;
     display: none;
     flex-direction: column;
     align-items: flex-end;
@@ -544,6 +562,10 @@
     @media (max-width: 1023px){
         display: flex;
     }
+
+    @media (max-width: 599px){
+        margin-top: 123px;
+    }
 }
 
 .mobileMenuContainer{
@@ -551,6 +573,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    border: 1px solid rgba(164, 209, 66, 0.5);
 }
 
 .activeCategory{
@@ -561,7 +584,6 @@
     text-align: left;
     color: rgba(122, 122, 122, 0.5);
     width: 70%;
-    border-right: 1px solid rgba(122, 122, 122, 0.2);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -587,7 +609,24 @@
 
 .categoriesList{
     width: 100%;
-    border-top: 1px solid rgba(122, 122, 122, 0.2);
+}
+
+.newsCategoryTitleMobile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 14% 20px 22px;
+    border-bottom: 1px solid rgba(164, 209, 66, 0.5);
+    border-left: 1px solid rgba(164, 209, 66, 0.5);
+    border-right: 1px solid rgba(164, 209, 66, 0.5);
+    background: whiteBasic;
+    position: relative;
+    z-index: 11;
+    width: 100%;
+
+    @media (max-width: 500px){
+        padding: 20px 13% 20px 22px;
+    }
 }
 
 .categoryTitleMobile{
@@ -596,12 +635,16 @@
     font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 0.73px;
     text-align: left;
-    color: limeGreen;
-    width: 100%;
+    color: rgba(122, 122, 122, 0.5);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 22px;
+}
+
+.plus{
+    font-family: 'Gotham', "Arial";
+    font-size: 22px;
+    color: limeGreen;
 }
 
 .newsCategoryMobile{

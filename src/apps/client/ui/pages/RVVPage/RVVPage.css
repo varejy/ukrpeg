@@ -15,7 +15,7 @@ html, body {
 .pageContainer{
     width: 100%;
     margin: 0 auto;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -29,9 +29,10 @@ html, body {
     position: fixed;
     height: 100vh;
     z-index: 10;
+    top: 102px;
 
-    @media (max-width: 780px) {
-        display: none;
+    @media (max-width: 1023px){
+        top: 0;
     }
 }
 
@@ -41,7 +42,6 @@ html, body {
     opacity: 0.05;
     height: 100%;
     position: absolute;
-    top: 0;
     z-index: 10;
 }
 
@@ -50,11 +50,6 @@ html, body {
 
     @media (max-width: 780px) {
         left: 30%;
-        margin: 0;
-    }
-
-    @media (max-width: 500px){
-        left: 15%;
         margin: 0;
     }
 }
@@ -89,9 +84,12 @@ html, body {
 .column5{
     right: 134px;
 
+
     @media (max-width: 780px) {
-        display: none;
+        right: 30%;
+        margin: 0;
     }
+
 }
 
 .titleContainer{
@@ -256,6 +254,7 @@ html, body {
     position: absolute;
     top: 26px;
     margin: 0 auto;
+    z-index: 12;
     justify-self: center;
 
     @media (max-width: 780px){
@@ -855,12 +854,16 @@ html, body {
 }
 
 .backgroundGrey{
-    width: 87.5%;
+    width: calc(100% - 134px - ((100vw - 1350px)/2));
     background-color: rgba(40, 50, 65, 0.12);
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
+
+    @media (max-width: 1366px){
+        width: calc(100% - 134px);
+    }
 
     @media (max-width: 1024px){
         width: 100%;
@@ -995,7 +998,7 @@ html, body {
     }
 
     @media (max-width: 599px){
-        margin: 143px 30px 0 30px;
+        margin: 123px 30px 0 30px;
     }
 }
 
@@ -1164,11 +1167,7 @@ html, body {
     justify-content: flex-start;
     z-index: 11;
     position: relative;
-    right: 90px;
-
-    @media (max-width: 375px){
-        right: 60px;
-    }
+    right: calc(30% - 60px);
 }
 
 .button{
