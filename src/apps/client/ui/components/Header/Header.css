@@ -292,19 +292,6 @@
 
 .burgerMenuOpen{
     border: none;
-
-    @media (--media-tablet-s) {
-         top: 50px;
-   }
-
-    @media (--media-phone) {
-         top: 40px;
-    }
-
-    @media (--media-phone-s) {
-        top: 30px;
-        right: 25px;
-   }
 }
 
 .menuLines, .menuLinesCross, .menuLinesPages{
