@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import classNames from 'classnames';
+
 import propOr from '@tinkoff/utils/object/propOr';
 import getVideoId from 'get-video-id';
 
@@ -39,8 +41,8 @@ class About extends Component {
                         return (
                             <div key={i} className={styles.contentBlock}>
                                 { item.contentType === 'photo'
-                                    ? <img src={item.photo} className={styles.img} />
-                                    : <div className={styles.img}>
+                                    ? <img src={item.photo} className={classNames(styles.img, styles.video)} />
+                                    : <div className={styles.video}>
                                         <div className={styles.iframeContainer}>
                                             <iframe
                                                 className={styles.mainVideo}

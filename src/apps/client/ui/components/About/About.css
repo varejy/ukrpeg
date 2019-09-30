@@ -101,7 +101,7 @@
 }
 
 .img{
-    min-width: 546px;
+    width: 546px;
     margin-left: 20px;
     order: 1;
     position: relative;
@@ -117,6 +117,10 @@
         width: 100%;
         max-width: 100%;
     }
+}
+
+.video {
+    min-width: 546px;
 }
 
 .contentBlock:nth-child(2n) .img{
