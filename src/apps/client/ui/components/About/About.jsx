@@ -41,8 +41,8 @@ class About extends Component {
                         return (
                             <div key={i} className={styles.contentBlock}>
                                 { item.contentType === 'photo'
-                                    ? <img src={item.photo} className={classNames(styles.img, styles.video)} />
-                                    : <div className={styles.video}>
+                                    ? <img src={item.photo} className={styles.img} />
+                                    : <div className={classNames(styles.img, styles.video)}>
                                         <div className={styles.iframeContainer}>
                                             <iframe
                                                 className={styles.mainVideo}
