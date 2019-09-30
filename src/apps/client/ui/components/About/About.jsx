@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import propOr from '@tinkoff/utils/object/propOr';
+import getVideoId from 'get-video-id';
+
 import styles from './About.css';
 
 import { connect } from 'react-redux';
@@ -36,7 +38,18 @@ class About extends Component {
                     {about.map((item, i) => {
                         return (
                             <div key={i} className={styles.contentBlock}>
-                                <img src={item.path} className={styles.img} />
+                                { item.contentType === 'photo'
+                                    ? <img src={item.photo} className={styles.img} />
+                                    : <div className={styles.img}>
+                                        <div className={styles.iframeContainer}>
+                                            <iframe
+                                                className={styles.mainVideo}
+                                                src={'https://www.youtube.com/embed/' + getVideoId(item.video).id}
+                                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                            />
+                                        </div>
+                                    </div>}
                                 <p className={styles.description}>{item.texts[lang].text}</p>
                             </div>
                         );

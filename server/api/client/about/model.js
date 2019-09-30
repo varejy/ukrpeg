@@ -6,7 +6,9 @@ const about = new Schema({
     id: { type: String, required: true },
     about: [{
         texts: { type: Object, required: true },
-        path: { type: String, required: true }
+        contentType: { type: String, required: true },
+        video: { type: String },
+        photo: { type: String }
     }]
 });
 

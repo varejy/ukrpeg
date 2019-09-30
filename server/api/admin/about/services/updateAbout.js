@@ -27,14 +27,16 @@ export default function updateAbout (req, res) {
 
             return {
                 texts: slide.texts,
-                path: slide.path
+                photo: slide.photo,
+                video: slide.video,
+                contentType: slide.contentType
             };
         });
 
         files.forEach(file => {
             const index = file.fieldname.replace(ABOUT_FILE_FIELD_NAME_REGEX, '');
 
-            resultSlides[index].path = `/${file.path.replace(/\\/g, '/')}`;
+            resultSlides[index].photo = `/${file.path.replace(/\\/g, '/')}`;
         });
 
         removedSlides.forEach(slide => {
@@ -51,7 +53,7 @@ export default function updateAbout (req, res) {
             })
             .catch(() => {
                 resultSlides.forEach(slide => {
-                    fs.unlink(slide.path && slide.path.slice(1), noop);
+                    fs.unlink(slide.photo && slide.photo.slice(1), noop);
                 });
 
                 return res.status(SERVER_ERROR_STATUS_CODE).end();

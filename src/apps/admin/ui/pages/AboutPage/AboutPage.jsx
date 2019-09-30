@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import noop from '@tinkoff/utils/function/noop';
 import remove from '@tinkoff/utils/array/remove';
+import getVideoId from 'get-video-id';
 
 import { connect } from 'react-redux';
 import getAbout from '../../../services/getAbout';
@@ -75,7 +76,7 @@ class AboutPage extends Component {
     }
 
     componentDidMount () {
-        this.getAllPartners();
+        this.getAbout();
     }
 
     componentWillReceiveProps (nextProps) {
@@ -84,7 +85,7 @@ class AboutPage extends Component {
         }
     }
 
-    getAllPartners () {
+    getAbout () {
         this.props.getAbout()
             .then(() => {
                 this.setState({
@@ -179,7 +180,9 @@ class AboutPage extends Component {
 
             return {
                 texts: aboutItem.texts,
-                path: isOld && aboutItem.file || aboutItem.path,
+                contentType: aboutItem.contentType,
+                video: aboutItem.video,
+                photo: isOld && aboutItem.file || aboutItem.photo,
                 removedFile: aboutItem.removedFile && aboutItem.removedFile.path
             };
         });
@@ -209,7 +212,10 @@ class AboutPage extends Component {
 
         return <div className={classes.wrapp}>
             <Lists
-                values={aboutArr}
+                values={aboutArr.map((aboutItem) => ({
+                    ...aboutItem,
+                    path: aboutItem.contentType === 'photo' ? aboutItem.photo : `//img.youtube.com/vi/${getVideoId(aboutItem.video || '').id}/0.jpg`
+                }))}
                 sortable
                 isImage
                 bigAvatar

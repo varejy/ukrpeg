@@ -24,14 +24,17 @@ class MainSlideForm extends Component {
             ua_text: pathOr(['texts', 'ua', 'text'], '', slide),
             en_text: pathOr(['texts', 'en', 'text'], '', slide),
             avatar: {
-                files: slide ? [slide.path] : [],
+                files: slide && slide.photo ? [slide.photo] : [],
                 removedFiles: []
             },
-            lang: 'ua'
+            video: slide && slide.video || '',
+            lang: 'ua',
+            contentType: slide && slide.contentType ? slide.contentType : 'photo'
         };
 
         this.state = {
             lang: 'ua',
+            contentType: this.initialValues.contentType,
             slide,
             index
         };
@@ -41,6 +44,11 @@ class MainSlideForm extends Component {
         if ('lang' in changes) {
             this.setState({
                 lang: changes.lang
+            });
+        }
+        if ('contentType' in changes) {
+            this.setState({
+                contentType: changes.contentType
             });
         }
     };
@@ -57,20 +65,21 @@ class MainSlideForm extends Component {
                 }
             },
             file: values.avatar.files[0],
-            removedFile: values.avatar.removedFiles[0]
+            removedFile: values.avatar.removedFiles[0],
+            video: values.video,
+            contentType: values.contentType
         };
 
         this.props.onDone(sendValues, index);
     };
 
     render () {
-        const { id, lang } = this.state;
+        const { lang, contentType } = this.state;
 
         return <Form
             initialValues={this.initialValues}
             schema={getSchema({
-                // data: { title: id ? 'Редактирование закона' : 'Добавление закона' },
-                settings: { lang }
+                settings: { lang, contentType }
             })}
             onChange={this.handleChange}
             onSubmit={this.handleSubmit}

@@ -4,7 +4,7 @@ import FormFieldButton from '../Form/fields/FormFieldButton/FormFieldButton';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
 import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 
-export default function ({ data: { title } = {}, settings: { lang } } = {}) {
+export default function ({ data: { title } = {}, settings: { lang, contentType } } = {}) {
     return {
         fields: [
             {
@@ -51,6 +51,13 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 }
             },
             {
+                component: FormFieldLangs,
+                name: 'contentType',
+                schema: {
+                    langs: ['photo', 'video']
+                }
+            },
+            ...(contentType === 'photo' ? [{
                 component: FormFieldFiles,
                 name: 'avatar',
                 schema: {
@@ -59,7 +66,16 @@ export default function ({ data: { title } = {}, settings: { lang } } = {}) {
                 validators: [
                     { name: 'requiredFiles', options: { text: 'Добавьте фото для блока' } }
                 ]
-            },
+            }] : [{
+                component: FormFieldInput,
+                name: 'video',
+                schema: {
+                    label: 'Ссылка на youtube видео'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Вставьте ссылку на youtube видео' } }
+                ]
+            }]),
             {
                 component: FormFieldButton,
                 name: 'submit',
