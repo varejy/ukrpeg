@@ -101,7 +101,7 @@
 }
 
 .img{
-    width: 546px;
+    min-width: 546px;
     margin-left: 20px;
     order: 1;
     position: relative;
