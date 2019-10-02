@@ -9,7 +9,8 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { matchPath } from 'react-router';
 
 import RvvPage from './ui/pages/RvvPage/RvvPage.jsx';
-import LegislationPage from './ui/pages/LegislationPage/LegislationPage';
+import EuroLawsPage from './ui/pages/EuroLawsPage/EuroLawsPage';
+import UaLawsPage from './ui/pages/UaLawsPage/UaLawsPage';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
 import AboutPage from './ui/pages/AboutPage/AboutPage.jsx';
 import Header from './ui/components/Header/Header.jsx';
@@ -84,7 +85,8 @@ class App extends Component {
                 <Route exact path='/admin' component={NewsPage} />
                 <Route exact path='/admin/about' component={AboutPage} />
                 <Route exact path='/admin/rvv' component={RvvPage}/>
-                <Route exact path='/admin/laws' component={LegislationPage} />
+                <Route exact path='/admin/laws/euro' component={EuroLawsPage} />
+                <Route exact path='/admin/laws/ua' component={UaLawsPage} />
                 <Route exact path='/admin/news' component={NewsPage} />
                 <Route exact path='/admin/partners' component={PartnersPage}/>
                 <Route exact path='/admin/seo' component={SeoPage} />

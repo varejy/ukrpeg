@@ -1,4 +1,4 @@
-import Laws from '../../law/model';
+import Laws from '../../euroLaw/model';
 
 export default function findNewsByText (text) {
     return Laws.find({ '$or': [

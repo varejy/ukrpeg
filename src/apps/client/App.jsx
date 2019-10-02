@@ -30,7 +30,7 @@ import { DEFAULT_LANG } from './constants/constants';
 
 import styles from './App.css';
 
-const mapStateToProps = ({ application }) => {
+const mapStateToProps = ({ application, laws }) => {
     return {
         lang: application.lang,
         langRoute: application.langRoute,
