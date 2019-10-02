@@ -27,8 +27,7 @@ class Form extends Component {
         schema: PropTypes.object.isRequired,
         initialValues: PropTypes.object,
         onChange: PropTypes.func,
-        onSubmit: PropTypes.func,
-        lang: PropTypes.string.isRequired
+        onSubmit: PropTypes.func
     };
 
     static defaultProps = {
@@ -78,8 +77,7 @@ class Form extends Component {
             validationMessage,
             schema: field.schema || {},
             key: i,
-            news: this.props.initialValues,
-            lang: this.props.lang
+            news: this.props.initialValues
         };
 
         return <FormControl key={i} error={!!validationMessage}>

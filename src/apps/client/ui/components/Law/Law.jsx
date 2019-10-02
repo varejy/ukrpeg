@@ -6,11 +6,11 @@ import styles from './Law.css';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ application }) => {
+const mapStateToProps = ({ application, laws }) => {
     return {
         langMap: application.langMap,
         lang: application.lang,
-        laws: application.lawList
+        laws: laws.ua
     };
 };
 

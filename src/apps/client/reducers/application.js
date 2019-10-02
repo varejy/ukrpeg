@@ -7,7 +7,6 @@ import {
     SET_MENU_OPEN,
     SET_ACTIVE_CATEGORY_INDEX,
     SET_SEO,
-    SET_LAW,
     SET_PARTNERS,
     SET_ABOUT
 } from '../types/types';
@@ -25,7 +24,6 @@ const initialState = {
     categories: [],
     burgerMenu: false,
     activeCategoryIndex: 0,
-    lawList: [],
     partners: []
 };
 
@@ -47,8 +45,6 @@ export default function (state = initialState, action) {
         return { ...state, activeCategoryIndex: action.payload };
     case SET_SEO:
         return { ...state, staticSeo: action.payload };
-    case SET_LAW:
-        return { ...state, lawList: action.payload };
     case SET_PARTNERS:
         return { ...state, partners: action.payload };
     case SET_ABOUT:

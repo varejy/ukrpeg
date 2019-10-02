@@ -4,7 +4,8 @@ import getNewsAll from '../src/apps/client/services/server/getNewsAll';
 import getRvv from '../src/apps/client/services/server/getRvv';
 import getNewsCategories from '../src/apps/client/services/server/getNewsCategories';
 import getSeo from '../src/apps/client/services/server/getSeo';
-import getLaws from '../src/apps/client/services/server/getLaws';
+import getEuroLaws from '../src/apps/client/services/server/getEuroLaws';
+import getUaLaws from '../src/apps/client/services/server/getUaLaws';
 import getPartners from '../src/apps/client/services/server/getPartners';
 import getAbout from '../src/apps/client/services/server/getAbout';
 
@@ -15,7 +16,8 @@ export default [
     getNewsCategories,
     getSeo,
     getLangFromRoute,
-    getLaws,
+    getEuroLaws,
+    getUaLaws,
     getPartners,
     getAbout,
     getRvv

@@ -11,7 +11,8 @@ import { renderToString } from 'react-dom/server';
 import map from '@tinkoff/utils/array/map';
 
 import adminAuthenticationApi from './api/admin/authentication';
-import adminLawApi from './api/admin/law';
+import adminEuroLawApi from './api/admin/euroLaw';
+import adminUaLawApi from './api/admin/uaLaw';
 import adminNewsCategoryApi from './api/admin/newsCategory';
 import adminNewsApi from './api/admin/news';
 import adminPartnersApi from './api/admin/partners';
@@ -21,10 +22,11 @@ import adminRvvApi from './api/admin/rvv';
 import adminFilesApi from './api/admin/files';
 
 import clientNewsCategoryApi from './api/client/newsCategory';
-import clientLawApi from './api/client/law';
+import clientEuroLawApi from './api/client/euroLaw';
+import clientUaLawApi from './api/client/uaLaw';
 import clientNewsApi from './api/client/news';
 import clientPartnersApi from './api/client/partners';
-import cliensAboutApi from './api/client/about';
+import clientAboutApi from './api/client/about';
 import clientSeoApi from './api/client/seo';
 import clientRvvApi from './api/client/rvv';
 import clientSearchApi from './api/client/search';
@@ -61,7 +63,8 @@ app.use(cookieParser());
 
 // api
 app.use('/api/admin/authentication', adminAuthenticationApi);
-app.use('/api/admin/law', adminLawApi);
+app.use('/api/admin/ua-law', adminUaLawApi);
+app.use('/api/admin/euro-law', adminEuroLawApi);
 app.use('/api/admin/news', adminNewsApi);
 app.use('/api/admin/partners', adminPartnersApi);
 app.use('/api/admin/about', adminAboutsApi);
@@ -71,10 +74,11 @@ app.use('/api/admin/rvv', adminRvvApi);
 app.use('/api/admin/files', adminFilesApi);
 app.use('/api/client/news', clientNewsApi);
 app.use('/api/client/partners', clientPartnersApi);
-app.use('/api/client/about', cliensAboutApi);
+app.use('/api/client/about', clientAboutApi);
 app.use('/api/client/rvv', clientRvvApi);
 app.use('/api/client/newsCategory', clientNewsCategoryApi);
-app.use('/api/client/law', clientLawApi);
+app.use('/api/client/ua-law', clientUaLawApi);
+app.use('/api/client/euro-law', clientEuroLawApi);
 app.use('/api/client/seo', clientSeoApi);
 app.use('/api/client/search', clientSearchApi);
 
