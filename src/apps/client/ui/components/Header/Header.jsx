@@ -15,6 +15,7 @@ import setLang from '../../../actions/setLang';
 import setMenuOpen from '../../../actions/setMenuOpen';
 import { EN, UA } from '../../../constants/constants';
 import setActiveCategoryIndex from '../../../actions/setActiveCategoryIndex';
+import setLawsOption from '../../../actions/setLawsOption';
 
 const SMALL_MOBILE_WIDTH = 370;
 const NEWS_LINK_BIG_HEIGHT = 40;
@@ -37,7 +38,8 @@ const mapDispatchToProps = dispatch => {
     return {
         setLang: payload => dispatch(setLang(payload)),
         setMenuOpen: payload => dispatch(setMenuOpen(payload)),
-        setActiveCategoryIndex: payload => dispatch(setActiveCategoryIndex(payload))
+        setActiveCategoryIndex: payload => dispatch(setActiveCategoryIndex(payload)),
+        setLawsOption: payload => dispatch(setLawsOption(payload))
     };
 };
 
@@ -52,6 +54,7 @@ class Header extends Component {
         burgerMenu: PropTypes.bool.isRequired,
         newsCategories: PropTypes.array.isRequired,
         setActiveCategoryIndex: PropTypes.func.isRequired,
+        setLawsOption: PropTypes.func.isRequired,
         mediaWidth: PropTypes.number.isRequired,
         mediaHeight: PropTypes.number.isRequired
     };
@@ -74,9 +77,22 @@ class Header extends Component {
         this.state = {
             burgerMenuOpen: false,
             newsCategoriesOpen: false,
-            newsCategories: categoriesFull
+            newsCategories: categoriesFull,
+            lawsHover: false
         };
     }
+
+    handleLawsSubmenuClick = (option) => () => {
+        this.props.setLawsOption(option);
+    };
+
+    handleLawsHover = () => {
+        this.setState({ lawsHovered: true });
+    };
+
+    handleLawsBlur = () => {
+        this.setState({ lawsHovered: false });
+    };
 
     handleMenuClick = () => {
         const { burgerMenu, setMenuOpen } = this.props;
@@ -124,7 +140,7 @@ class Header extends Component {
 
     render () {
         const { langMap, langRoute, lang, pathname, mediaWidth, mediaHeight } = this.props;
-        const { burgerMenuOpen, newsCategoriesOpen, newsCategories } = this.state;
+        const { burgerMenuOpen, newsCategoriesOpen, newsCategories, lawsHovered } = this.state;
         const menuItems = propOr('menu', {}, langMap);
         const text = propOr('header', {}, langMap);
         const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
@@ -145,9 +161,21 @@ class Header extends Component {
                                     exact={link.exact}
                                     to={!burgerMenuOpen ? `${langRoute}${link.path}` : link.id !== 'news' && `${langRoute}${link.path}`}
                                     activeClassName={!burgerMenuOpen && styles.activeLink}
-                                    className={styles.link}
+                                    className={classNames(styles.link, {
+                                        [styles.lawsLink]: link.id === 'laws' && !burgerMenuOpen
+                                    })}
                                     onClick={burgerMenuOpen ? link.id === 'news' ? this.handleCategoriesOpen : this.handleMenuClick : undefined}
+                                    onMouseOver={link.id === 'laws' ? this.handleLawsHover : undefined}
+                                    onMouseOut={link.id === 'laws' ? this.handleLawsBlur : undefined}
                                 >
+                                    {
+                                        link.id === 'laws' && <div className={classNames(styles.subLinks, {
+                                            [styles.subLinksVisible]: lawsHovered
+                                        })}>
+                                            <div className={styles.subLink} onClick={this.handleLawsSubmenuClick('eu')}>законодавство эс</div>
+                                            <div className={styles.subLink} onClick={this.handleLawsSubmenuClick('ua')}>нормативно-правова база</div>
+                                        </div>
+                                    }
                                     <div className={styles.linkContainer}>
                                         {menuItems[link.id]}
                                         {burgerMenuOpen && link.id === 'news' &&

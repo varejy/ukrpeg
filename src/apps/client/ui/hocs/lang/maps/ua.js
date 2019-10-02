@@ -86,8 +86,11 @@ export default {
         resultPages: `Сторінки`,
         resultNews: `Новини`
     },
-    law: {
+    lawUA: {
         title: `Нормативні документи`
+    },
+    lawEU: {
+        title: `Законодавство ЄС`
     },
     noFoundPage: {
         desc: `Сторінка не знайдена`

@@ -86,8 +86,11 @@ export default {
         resultPages: `Pages`,
         resultNews: `News`
     },
-    law: {
+    lawUA: {
         title: `Laws`
+    },
+    lawEU: {
+        title: `EU Laws`
     },
     noFoundPage: {
         desc: `Page not found`

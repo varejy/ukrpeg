@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import propOr from '@tinkoff/utils/object/propOr';
-import styles from './Law.css';
+import styles from './LawEU.css';
 
 import { connect } from 'react-redux';
 
@@ -10,11 +10,11 @@ const mapStateToProps = ({ application, laws }) => {
     return {
         langMap: application.langMap,
         lang: application.lang,
-        laws: laws.ua
+        laws: laws.euro
     };
 };
 
-class Law extends Component {
+class LawEU extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         lang: PropTypes.string.isRequired,
@@ -27,7 +27,7 @@ class Law extends Component {
 
     render () {
         const { langMap, laws, lang } = this.props;
-        const text = propOr('law', {}, langMap);
+        const text = propOr('lawEU', {}, langMap);
 
         return <div className={styles.law}>
             <div className={styles.wrapper}>
@@ -48,4 +48,4 @@ class Law extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Law);
+export default connect(mapStateToProps)(LawEU);
