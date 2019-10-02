@@ -1,0 +1,129 @@
+@value blackBasic from '../../../../../css/colors.css';
+@value lightGreenBasic from '../../../../../css/colors.css';
+@value darkBlueBasic from '../../../../../css/colors.css';
+
+.law{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    z-index: 11;
+}
+
+.wrapper{
+    width:  100%;
+    max-width: 1350px;
+    padding:0 125px;
+    position: relative;
+
+    @media (max-width: 1350px) {
+        padding: 0 110px;
+    }
+
+    @media (--media-tablet-l) {
+        padding: 0px;
+        margin: 20px;
+    }
+}
+
+.title{
+    margin-top: 75px;
+    padding: 20px 0 20px 20px;
+    border-left: 6px solid lightGreenBasic;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin-left: -15px;
+    color: darkBlueBasic;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 1.15px;
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
+
+    @media (max-width: 1350px){
+        margin-left: 0;
+    }
+
+    @media (--media-tablet-l) {
+        margin: 60px 50px;
+        padding: 20px 0 20px 20px;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    @media (--media-tablet-s) {
+        margin: 40px;
+        padding: 15px 0 15px 20px;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    @media (--media-phone) {
+        margin: 40px 30px;
+        padding: 10px 0 10px 20px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    @media (--media-phone-s) {
+        margin: 20px 20px 20px;
+        font-size: 10px;
+        line-height: 14px;
+    }
+}
+
+.lawList{
+    list-style: decimal;
+    list-style-position: inside;
+    padding: 30px 0 100px 0;
+    margin-left: 10px;
+
+    @media (max-width: 1350px){
+        margin-left: 25px;
+    }
+
+    @media (--media-tablet-l) {
+        padding: 20px 40px 100px 55px;
+    }
+
+    @media (--media-tablet-s) {
+        padding: 20px 45px 100px 35px;
+    }
+
+    @media (--media-phone) {
+        padding: 20px 35px 100px 20px;
+    }
+
+    @media (--media-phone-s) {
+        padding: 20px 25px 100px 10px;
+    }
+}
+
+.listItem{
+    font-size: 14px;
+    letter-spacing: 1.15px;
+    line-height: 14px;
+    color: blackBasic;
+    margin-bottom: 17px;
+    font-family: 'Gotham Light', "Arial Black", sans-serif;
+    cursor: pointer;
+
+    &:hover {
+        color: lightGreenBasic;
+     }
+
+    @media (--media-tablet-l) {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    @media (--media-tablet-s) {
+        font-size: 12px;
+        line-height: normal;
+        letter-spacing: 0.6px;
+    }
+}
+
+.listItem:last-child{
+    margin-bottom: 0;
+}
