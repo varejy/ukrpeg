@@ -104,12 +104,13 @@
     letter-spacing: 1.15px;
     line-height: 14px;
     color: blackBasic;
-    margin-bottom: 17px;
+    margin-bottom: 30px;
     font-family: 'Gotham Light', "Arial Black", sans-serif;
+    list-style-type: none;
     cursor: pointer;
 
     &:hover {
-        color: lightGreenBasic;
+        color: blackBasic;
      }
 
     @media (--media-tablet-l) {
@@ -127,3 +128,24 @@
 .listItem:last-child{
     margin-bottom: 0;
 }
+
+.listItem:hover .lawTitle{
+    color: lightGreenBasic;
+}
+
+.lawTitle{
+    font-size: 16px;
+    letter-spacing: 1.15px;
+    line-height: 14px;
+    color: blackBasic;
+    margin-bottom: 8px;
+    font-family: 'Gotham Medium', "Arial Black", sans-serif;
+    cursor: pointer;
+
+    @media (--media-tablet-s) {
+        font-size: 14px;
+        line-height: normal;
+        letter-spacing: 0.6px;
+    }
+}
+

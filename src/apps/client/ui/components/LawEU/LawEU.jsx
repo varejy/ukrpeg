@@ -37,7 +37,8 @@ class LawEU extends Component {
                         return (
                             <li key={i} className={styles.listItem}>
                                 <a href={item.path} target='_blank'>
-                                    {item.texts[`${lang}`].name}
+                                    <div className={styles.lawTitle}>{item.texts[`${lang}`].name}</div>
+                                    <div>{item.texts[`${lang}`].description}</div>
                                 </a>
                             </li>
                         );
