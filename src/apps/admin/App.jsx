@@ -12,6 +12,7 @@ import RvvPage from './ui/pages/RvvPage/RvvPage.jsx';
 import EuroLawsPage from './ui/pages/EuroLawsPage/EuroLawsPage';
 import UaLawsPage from './ui/pages/UaLawsPage/UaLawsPage';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
+import MainPage from './ui/pages/MainPage/MainPage.jsx';
 import AboutPage from './ui/pages/AboutPage/AboutPage.jsx';
 import Header from './ui/components/Header/Header.jsx';
 import Authentication from './ui/components/Authentication/Authentication.jsx';
@@ -83,6 +84,7 @@ class App extends Component {
             <Header />
             <Switch>
                 <Route exact path='/admin' component={NewsPage} />
+                <Route exact path='/admin/slider' component={MainPage} />
                 <Route exact path='/admin/about' component={AboutPage} />
                 <Route exact path='/admin/rvv' component={RvvPage}/>
                 <Route exact path='/admin/laws/euro' component={EuroLawsPage} />

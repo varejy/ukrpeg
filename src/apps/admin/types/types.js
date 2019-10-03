@@ -7,4 +7,5 @@ export const // eslint-disable-line one-var
     SET_SEO = 'SET_SEO',
     SET_RVV = 'SET_RVV',
     SET_EURO_LAW = 'SET_EURO_LAW',
-    SET_UA_LAW = 'SET_UA_LAW';
+    SET_UA_LAW = 'SET_UA_LAW',
+    SET_MAIN_SLIDES = 'SET_MAIN_SLIDES';

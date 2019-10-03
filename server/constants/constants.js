@@ -11,3 +11,4 @@ export const EDITOR_FILE_NAME_REGEX = /editor-file/g;
 export const PARTNER_FILE_FIELD_NAME_REGEX = /partner-file-/g;
 export const ABOUT_FILE_FIELD_NAME_REGEX = /about-file-/g;
 export const RVV_FILE_FIELD_NAME_REGEX = /rvv-file-/g;
+export const SLIDE_FILE_FIELD_NAME_REGEX = /slide-file-/g;

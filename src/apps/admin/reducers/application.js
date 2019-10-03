@@ -4,7 +4,8 @@ import {
     SET_PARTNERS,
     SET_EURO_LAW,
     SET_UA_LAW,
-    SET_ABOUT
+    SET_ABOUT,
+    SET_MAIN_SLIDES
 } from '../types/types';
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
     newsCategories: [],
     partners: [],
     categories: [],
-    lawList: []
+    lawList: [],
+    mainSlides: []
 };
 
 export default function (state = initialState, action) {
@@ -29,6 +31,8 @@ export default function (state = initialState, action) {
         return { ...state, euroLawList: action.payload };
     case SET_UA_LAW:
         return { ...state, uaLawList: action.payload };
+    case SET_MAIN_SLIDES:
+        return { ...state, mainSlides: action.payload };
     default:
         return state;
     }
