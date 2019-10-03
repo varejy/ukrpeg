@@ -107,7 +107,8 @@ const PAGES = [
     { title: 'Про нас', page: 'about' },
     { title: 'Новини', page: 'news' },
     { title: 'Рвв', page: 'rvv' },
-    { title: 'Законодавства', page: 'contacts' },
+    { title: 'Законодавство ЄС', page: 'lawsEU' },
+    { title: 'Нормативно-правова база', page: 'lawsUA' },
     { title: 'Контакти', page: 'contacts' },
     { title: 'Поиск', page: 'search' }
 ];

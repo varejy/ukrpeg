@@ -167,7 +167,7 @@ class Header extends Component {
                                 <NavLink
                                     key={i}
                                     exact={link.exact}
-                                    to={!burgerMenuOpen ? link.id !== 'laws' ? `${langRoute}${link.path}` : ''
+                                    to={!burgerMenuOpen ? link.id !== 'laws' ? `${langRoute}${link.path}` : `${location.pathname}`
                                         : link.id !== 'news' && link.id !== 'laws' && `${langRoute}${link.path}`}
                                     activeClassName={!burgerMenuOpen &&
                                     link.id === 'laws' ? (location.pathname === `${langRoute}/laws/eu` || location.pathname === `${langRoute}/laws/ua`)
