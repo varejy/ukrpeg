@@ -9,6 +9,10 @@ export default {
         laws: 'Legislation',
         contacts: 'Contacts'
     },
+    subMenu: {
+        lawsUA: 'Laws Ukraine',
+        lawsEU: 'Laws European Union'
+    },
     header: {
         phone: '+3 8095 456 56 55'
     },
