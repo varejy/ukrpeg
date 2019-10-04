@@ -90,7 +90,11 @@
 }
 
 .topBlockLandscape .moreBtn{
-    margin: 30px auto 0 auto;
+    margin: 260px auto 0 auto;
+
+    @media (max-width: 780px){
+        margin: 185px auto 0 auto;
+    }
 }
 
 .moreBtn{

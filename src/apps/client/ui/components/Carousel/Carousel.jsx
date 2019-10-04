@@ -257,7 +257,9 @@ class Carousel extends Component {
                     </div>
                 </div>) }
             </div>
-            <div className={styles.dots}>
+            <div className={classNames(styles.dots, {
+                [styles.dotsLandscape]: isLandscape && isMobile
+            })}>
                 { SLIDES.map((slide, i) =>
                     <div key={i} className={classNames(styles.dot, { [styles.dotActive]: i === activeSlideIndex })} onClick={this.setActiveSlide(i)} />) }
             </div>

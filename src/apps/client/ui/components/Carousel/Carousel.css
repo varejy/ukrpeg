@@ -432,6 +432,19 @@
     }
 }
 
+.dotsLandscape{
+    bottom: 85px;
+    left: 50vw;
+
+    @media (max-width: 780px) {
+        bottom: 65px;
+    }
+
+    @media (max-width: 600px) {
+        bottom: 55px;
+    }
+}
+
 .dot {
     width: 22px;
     height: 22px;
