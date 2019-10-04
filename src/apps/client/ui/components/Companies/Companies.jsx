@@ -68,7 +68,13 @@ class Companies extends Component {
                                             </li>
                                         );
                                     })
-                                    : {/* тут логика рендера партнеров для мобилки */}
+                                    : /* тут логика рендера партнеров для мобилки */ companies.map((item, i) => {
+                                        return (
+                                            <li key={i} className={styles.itemBox}>
+                                                <img src={item.path} className={styles.logo} alt={item.name} />
+                                            </li>
+                                        );
+                                    })
                                 }
                             </ul>
                         </div>
