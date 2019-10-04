@@ -20,7 +20,6 @@ import adminAboutsApi from './api/admin/about';
 import adminSeoApi from './api/admin/seo';
 import adminRvvApi from './api/admin/rvv';
 import adminFilesApi from './api/admin/files';
-import adminMainSliderApi from './api/admin/mainSlider';
 
 import clientNewsCategoryApi from './api/client/newsCategory';
 import clientEuroLawApi from './api/client/euroLaw';
@@ -31,7 +30,6 @@ import clientAboutApi from './api/client/about';
 import clientSeoApi from './api/client/seo';
 import clientRvvApi from './api/client/rvv';
 import clientSearchApi from './api/client/search';
-import clientMainSliderApi from './api/client/mainSlider';
 
 import { DATABASE_URL } from './constants/constants';
 import actions from './actions';
@@ -74,7 +72,6 @@ app.use('/api/admin/newsCategory', adminNewsCategoryApi);
 app.use('/api/admin/seo', adminSeoApi);
 app.use('/api/admin/rvv', adminRvvApi);
 app.use('/api/admin/files', adminFilesApi);
-app.use('/api/admin/main-slider', adminMainSliderApi);
 app.use('/api/client/news', clientNewsApi);
 app.use('/api/client/partners', clientPartnersApi);
 app.use('/api/client/about', clientAboutApi);
@@ -84,7 +81,6 @@ app.use('/api/client/ua-law', clientUaLawApi);
 app.use('/api/client/euro-law', clientEuroLawApi);
 app.use('/api/client/seo', clientSeoApi);
 app.use('/api/client/search', clientSearchApi);
-app.use('/api/client/main-slider', clientMainSliderApi);
 
 // admin
 app.get(/^\/admin/, function (req, res) {

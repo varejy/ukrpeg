@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Content from '../../components/Content/Content';
 import Companies from '../../components/Companies/Companies';
 import Articles from '../../components/Articles/Articles';
+import Carousel from '../../components/Carousel/Carousel';
 import styles from './MainPage.css';
 import classNames from 'classnames';
 
@@ -15,6 +16,7 @@ class MainPage extends Component {
                 <div className={classNames(styles.column, styles.column4)}/>
                 <div className={classNames(styles.column, styles.column5)}/>
             </div>
+            <Carousel/>
             <Content />
             <Companies />
             <Articles />

@@ -10,8 +10,8 @@
     display: flex;
     justify-content: center;
     margin-top: 102px;
-    position: relative;
-    z-index: 11;
+    position: absolute;
+    z-index: 20;
 
     @media (--media-tablet-l) {
         margin-top: 0;
@@ -35,7 +35,6 @@
 .photoBlock{
     width: 100%;
     height: 625px;
-    background: url('/src/apps/client/ui/components/Content/files/main.jpg');
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -66,10 +65,12 @@
 }
 
 .topBlock{
+    height: 240px;
     display: flex;
     align-items: flex-end;
 
     @media (--media-tablet-l) {
+        min-height: 50vh;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -96,6 +97,8 @@
     border: 1px solid lightGreenBorder;
     margin-left: -67px;
     display: flex;
+    position: relative;
+    z-index: 20;
     cursor: pointer;
 
     @media (--media-tablet-l) {
@@ -103,6 +106,10 @@
         order: 1;
         margin: 90px auto 0 auto;
    }
+
+    @media (max-width: 375px){
+        margin: 225px auto 0 auto;
+    }
 }
 
 .arrowBtn{
@@ -157,6 +164,7 @@
 }
 
 .mainText{
+    visibility: hidden;
     max-width: 550px;
     margin-left: 135px;
 
@@ -267,6 +275,7 @@
     background: url('/src/apps/client/ui/components/Content/files/searchBgOpacity.png');
     margin: 100px 0 0 -145px;
     display: flex;
+    z-index: 20;
     position: relative;
 
     @media (max-width: 1350px) {
@@ -299,6 +308,7 @@
 .text{
     width: 295px;
     height: auto;
+    visibility: hidden;
     align-self: flex-end;
     margin: -55px 190px 0 0;
     display: flex;

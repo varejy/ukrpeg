@@ -50,7 +50,7 @@ class Content extends Component {
     };
 
     render () {
-        const { langMap, langRoute, lang, mediaWidth, mediaHeight } = this.props;
+        const { langMap, langRoute, mediaWidth, mediaHeight } = this.props;
         const text = propOr('content', {}, langMap);
         const isLandscape = mediaWidth > mediaHeight;
         const isMobile = mediaWidth < TABLET_WIDTH;
@@ -66,23 +66,12 @@ class Content extends Component {
                     })}>
                         <Link to={`${langRoute}/rvv`} className={styles.moreBtn}>
                             <p className={styles.arrowBtn}>
-                                <img src='/src/apps/client/ui/components/Content/files/arrow.png' className={styles.arrowImg} />
+                                <img src='/src/apps/client/ui/components/Content/files/arrow.png' alt='arrow' className={styles.arrowImg} />
                             </p>
                             <div className={styles.btn}>{text.buttonText}</div>
                         </Link>
-                        <div className={styles.mainText}>
-                            <h1 className={styles.title}>{text.title}</h1>
-                            <hr className={styles.horizontalLine} />
-                            <p className={styles.description}>{text.description}</p>
-                        </div>
                     </div>
                     <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit}/>
-                    <div className={styles.text} style={{ marginTop: `-${lang === 'ua' ? 55 : 145}px` }}>
-                        <h1 className={styles.heading} />
-                        <p className={styles.info}>{text.text}</p>
-                    </div>
-                    <div className={styles.graphic}>
-                    </div>
                 </div>
             </div>
         </div>;
