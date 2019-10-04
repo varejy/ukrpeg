@@ -7,18 +7,21 @@ import classNames from 'classnames';
 
 import { connect } from 'react-redux';
 
+const TABLET_WIDTH = 1024;
 const MAX_LOGOS_PER_SLIDE = 5;
 const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
-        companies: application.partners
+        companies: application.partners,
+        mediaWidth: application.media.width
     };
 };
 
 class Companies extends Component {
     static propTypes = {
         langMap: PropTypes.object.isRequired,
-        companies: PropTypes.array
+        companies: PropTypes.array,
+        mediaWidth: PropTypes.number.isRequired
     };
 
     state = {
@@ -37,10 +40,11 @@ class Companies extends Component {
     };
 
     render () {
-        const { langMap, companies } = this.props;
+        const { langMap, companies, mediaWidth } = this.props;
         const { left, wrapperWidth } = this.state;
         const text = propOr('companies', {}, langMap);
         const maxSlides = Math.ceil(companies.length / MAX_LOGOS_PER_SLIDE);
+        const isMobile = mediaWidth < TABLET_WIDTH;
 
         return <div className={styles.companies}>
             <div className={styles.wrapper}>
@@ -56,13 +60,16 @@ class Companies extends Component {
                             <ul className={styles.companiesList}
                                 style={{ left: `-${left}px` }}
                                 ref={ wrapper => { this.wrapper = wrapper; }}>
-                                {companies.map((item, i) => {
-                                    return (
-                                        <li key={i} className={styles.itemBox}>
-                                            <img src={item.path} className={styles.logo} alt={item.name} />
-                                        </li>
-                                    );
-                                })}
+                                {!isMobile
+                                    ? companies.map((item, i) => {
+                                        return (
+                                            <li key={i} className={styles.itemBox}>
+                                                <img src={item.path} className={styles.logo} alt={item.name} />
+                                            </li>
+                                        );
+                                    })
+                                    : {/* тут логика рендера партнеров для мобилки */}
+                                }
                             </ul>
                         </div>
                         <div className={classNames(styles.arrow, styles.arrowRight, {
