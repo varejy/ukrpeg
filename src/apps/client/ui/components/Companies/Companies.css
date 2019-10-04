@@ -4,6 +4,7 @@
 @value lightGreyHover from '../../../../../css/colors.css';
 @value lightGreenHover from '../../../../../css/colors.css';
 @value lightGreyBorder from '../../../../../css/colors.css';
+@value limeGreen from '../../../../../css/colors.css';
 
 .companies{
     width: 100%;
@@ -76,8 +77,8 @@
     display: flex;
     position: relative;
     justify-content: start;
+    transition: left 800ms ease-in-out;
     width: 100%;
-    overflow: hidden;
 
     @media (--media-tablet-l) {
         flex-wrap: wrap;
@@ -100,12 +101,12 @@
     display: flex;
     flex-shrink: 0;
     align-items: center;
-    margin-bottom: 30px;
 
     @media (--media-tablet-l) {
         height: 50px;
         padding: 5px 10px;
         align-self: center;
+        margin-bottom: 30px;
     }
 
     @media (--media-tablet-s) {
@@ -135,25 +136,75 @@
     }
 }
 
+.slider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @media (max-width: 1349px){
+        position: unset;
+    }
+}
+
 .sliderContainer{
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 0 60px;
+    margin-left: -60px;
+    overflow: hidden;
+}
+
+.arrowIcon{
+    width: auto;
+    height: 12px;
+
+    @media (max-width: 780px){
+        width: auto;
+        height: 10px;
+    }
 }
 
 .arrow{
-    position: absolute;
+    position: relative;
     z-index: 15;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid limeGreen;
+    visibility: hidden;
+    flex-shrink: 0;
+
+    @media (max-width: 1023px){
+        border: none;
+    }
+}
+
+.arrowLeftVisible, .arrowRightVisible{
+    visibility: visible;
 }
 
 .arrowLeft{
-    left: 0;
+    left: -84px;
     transform: rotate(-90deg);
+
+    @media (max-width: 1349px){
+        left: -60px;
+    }
+
+    @media (max-width: 1023px){
+        left: 0px;
+    }
 }
 
 .arrowRight{
-    right: 0;
+    right: -17px;
     transform: rotate(90deg);
+
+    @media (max-width: 1349px){
+        right: 0px;
+    }
 }
