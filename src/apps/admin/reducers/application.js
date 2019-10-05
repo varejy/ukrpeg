@@ -2,6 +2,7 @@ import {
     SET_AUTHENTICATED,
     SET_CATEGORIES,
     SET_PARTNERS,
+    SET_SLIDES,
     SET_EURO_LAW,
     SET_UA_LAW,
     SET_ABOUT
@@ -12,7 +13,8 @@ const initialState = {
     newsCategories: [],
     partners: [],
     categories: [],
-    lawList: []
+    lawList: [],
+    slides: []
 };
 
 export default function (state = initialState, action) {
@@ -25,6 +27,8 @@ export default function (state = initialState, action) {
         return { ...state, partners: action.payload };
     case SET_ABOUT:
         return { ...state, about: action.payload };
+    case SET_SLIDES:
+        return { ...state, slides: action.payload };
     case SET_EURO_LAW:
         return { ...state, euroLawList: action.payload };
     case SET_UA_LAW:

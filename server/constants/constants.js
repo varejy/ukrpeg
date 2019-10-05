@@ -10,4 +10,6 @@ export const NEWS_AVATAR_FIELD_NAME_REGEX = /news-.*-avatar/g;
 export const EDITOR_FILE_NAME_REGEX = /editor-file/g;
 export const PARTNER_FILE_FIELD_NAME_REGEX = /partner-file-/g;
 export const ABOUT_FILE_FIELD_NAME_REGEX = /about-file-/g;
+export const SLIDER_FILE_FIELD_NAME_REGEX = /slider-file-/g;
+export const SLIDER_ADDITIONAL_FILE_FIELD_NAME_REGEX = /slider-additional-file-/g;
 export const RVV_FILE_FIELD_NAME_REGEX = /rvv-file-/g;

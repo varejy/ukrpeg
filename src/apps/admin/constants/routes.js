@@ -1,5 +1,6 @@
 export default [
     { id: 'news', path: '/admin', exact: true, title: 'Новости' },
+    { id: 'slider', path: '/admin/slider', exact: true, title: 'Главный слайдер' },
     { id: 'laws', path: '/admin/about', exact: true, title: 'О нас' },
     { id: 'laws', path: '/admin/laws/euro', exact: true, title: 'Законодательство ЕС' },
     { id: 'laws', path: '/admin/laws/ua', exact: true, title: 'Законодательство UA' },

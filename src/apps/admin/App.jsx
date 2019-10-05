@@ -9,6 +9,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { matchPath } from 'react-router';
 
 import RvvPage from './ui/pages/RvvPage/RvvPage.jsx';
+import MainSliderPage from './ui/pages/MainSliderPage/MainSliderPage.jsx';
 import EuroLawsPage from './ui/pages/EuroLawsPage/EuroLawsPage';
 import UaLawsPage from './ui/pages/UaLawsPage/UaLawsPage';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
@@ -83,6 +84,7 @@ class App extends Component {
             <Header />
             <Switch>
                 <Route exact path='/admin' component={NewsPage} />
+                <Route exact path='/admin/slider' component={MainSliderPage} />
                 <Route exact path='/admin/about' component={AboutPage} />
                 <Route exact path='/admin/rvv' component={RvvPage}/>
                 <Route exact path='/admin/laws/euro' component={EuroLawsPage} />
