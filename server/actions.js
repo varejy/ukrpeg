@@ -8,6 +8,7 @@ import getEuroLaws from '../src/apps/client/services/server/getEuroLaws';
 import getUaLaws from '../src/apps/client/services/server/getUaLaws';
 import getPartners from '../src/apps/client/services/server/getPartners';
 import getAbout from '../src/apps/client/services/server/getAbout';
+import getSlides from '../src/apps/client/services/server/getSlides';
 
 export default [
     getMobileDetect,
@@ -20,5 +21,6 @@ export default [
     getUaLaws,
     getPartners,
     getAbout,
+    getSlides,
     getRvv
 ];
