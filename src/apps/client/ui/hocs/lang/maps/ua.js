@@ -9,6 +9,10 @@ export default {
         laws: 'Законодавство',
         contacts: 'Контакти'
     },
+    subMenu: {
+        lawsUA: 'Нормативно-правова база',
+        lawsEU: 'Заканодавство ЭС'
+    },
     header: {
         phone: '+3 8095 456 56 55'
     },
@@ -86,8 +90,11 @@ export default {
         resultPages: `Сторінки`,
         resultNews: `Новини`
     },
-    law: {
+    lawUA: {
         title: `Нормативні документи`
+    },
+    lawEU: {
+        title: `Законодавство ЄС`
     },
     noFoundPage: {
         desc: `Сторінка не знайдена`

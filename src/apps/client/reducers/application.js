@@ -8,7 +8,9 @@ import {
     SET_ACTIVE_CATEGORY_INDEX,
     SET_SEO,
     SET_PARTNERS,
-    SET_ABOUT
+    SET_ABOUT,
+    SET_SLIDES,
+    SET_MAIN_SLIDES
 } from '../types/types';
 
 import { DEFAULT_LANG, DEFAULT_LANG_ROUTE } from '../constants/constants';
@@ -24,7 +26,9 @@ const initialState = {
     categories: [],
     burgerMenu: false,
     activeCategoryIndex: 0,
-    partners: []
+    partners: [],
+    slides: [],
+    mainSlides: []
 };
 
 export default function (state = initialState, action) {
@@ -49,6 +53,10 @@ export default function (state = initialState, action) {
         return { ...state, partners: action.payload };
     case SET_ABOUT:
         return { ...state, about: action.payload };
+    case SET_SLIDES:
+        return { ...state, slides: action.payload };
+    case SET_MAIN_SLIDES:
+        return { ...state, mainSlides: action.payload };
     default:
         return state;
     }

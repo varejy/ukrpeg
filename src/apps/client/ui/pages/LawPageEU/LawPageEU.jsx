@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Law from '../../components/Law/Law';
-import styles from './LawPage.css';
+import LawEU from '../../components/LawEU/LawEU';
+import styles from './LawPageEU.css';
 import classNames from 'classnames';
 
-class LawPage extends Component {
+class LawPageEU extends Component {
     render () {
         return <section className={styles.lawPageContainer}>
             <div className={styles.gridContainer}>
@@ -13,9 +13,9 @@ class LawPage extends Component {
                 <div className={classNames(styles.column, styles.column4)}/>
                 <div className={classNames(styles.column, styles.column5)}/>
             </div>
-            <Law />
+            <LawEU />
         </section>;
     }
 }
 
-export default LawPage;
+export default LawPageEU;

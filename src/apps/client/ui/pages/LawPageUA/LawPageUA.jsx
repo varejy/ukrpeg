@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import Content from '../../components/Content/Content';
-import Companies from '../../components/Companies/Companies';
-import Articles from '../../components/Articles/Articles';
-import Carousel from '../../components/Carousel/Carousel';
-import styles from './MainPage.css';
+import LawUA from '../../components/LawUA/LawUA';
+import styles from './LawPageUA.css';
 import classNames from 'classnames';
 
-class MainPage extends Component {
+class LawPageUA extends Component {
     render () {
-        return <section className={styles.mainPageContainer}>
+        return <section className={styles.lawPageContainer}>
             <div className={styles.gridContainer}>
                 <div className={classNames(styles.column, styles.column1)}/>
                 <div className={classNames(styles.column, styles.column2)}/>
@@ -16,12 +13,9 @@ class MainPage extends Component {
                 <div className={classNames(styles.column, styles.column4)}/>
                 <div className={classNames(styles.column, styles.column5)}/>
             </div>
-            <Carousel/>
-            <Content />
-            <Companies />
-            <Articles />
+            <LawUA />
         </section>;
     }
 }
 
-export default MainPage;
+export default LawPageUA;

@@ -6,7 +6,7 @@ import multipart from '../../../../helpers/multipart';
 
 import noop from '@tinkoff/utils/function/noop';
 
-const SLIDER_ID = 'slider_id';
+const SLIDER_ID = 'partners_id';
 
 const uploader = multipart(PARTNER_FILE_FIELD_NAME_REGEX);
 
