@@ -13,67 +13,10 @@ import SearchInput from '../SearchInput/SearchInput';
 const TIME_TO_NEXT_SWITCHING = 8000;
 const SWITCHING_DURATION = 800;
 const TABLET_WIDTH = 1024;
-const SLIDES = [
-    {
-        path: '/src/apps/client/ui/components/Content/files/main.jpg',
-        additionalPicture: '/src/apps/client/ui/components/Content/files/c.png',
-        texts: {
-            ua: {
-                title: 'РВВ - В ДІЇ',
-                description: 'Концепція створення ефективної системи збирання, сортування, рециклінгу та відновлення відходів упаковки',
-                subTitle: 'Подзаголовок 1',
-                // eslint-disable-next-line max-len
-                subTitleDescription: 'Розширена         \n відповідальність виробника (РВВ) -      \n ефективний метод управління відходами   \n упаковки, які складають до 30% ТПВ'
-            },
-            en: {
-                title: 'RVV IS IN ACTION',
-                description: 'The concept of creating an efficient system for the collection, sorting, recycling and recovery of packaging waste',
-                subTitle: 'Subtitle 1',
-                subTitleDescription: 'Subtitle Description 1'
-            }
-        }
-    },
-    {
-        path: '/src/apps/client/ui/components/Content/files/main.jpg',
-        additionalPicture: '/src/apps/client/ui/components/Content/files/c.png',
-        texts: {
-            ua: {
-                title: 'Заголовок 2',
-                description: 'Описание 2',
-                subTitle: 'Подзаголовок 2',
-                subTitleDescription: 'Описание к подзаголовку 2'
-            },
-            en: {
-                title: 'Title 2',
-                description: 'Description 2',
-                subTitle: 'Subtitle 2',
-                subTitleDescription: 'Subtitle Description 2'
-            }
-        }
-    },
-    {
-        path: '/src/apps/client/ui/components/Content/files/main.jpg',
-        additionalPicture: '/src/apps/client/ui/components/Content/files/c.png',
-        texts: {
-            ua: {
-                title: 'Заголовок 3',
-                description: 'Описание 3',
-                subTitle: 'Подзаголовок 3',
-                subTitleDescription: 'Описание к подзаголовку 3'
-            },
-            en: {
-                title: 'Title 3',
-                description: 'Description 3',
-                subTitle: 'Subtitle 3',
-                subTitleDescription: 'Subtitle Description 3'
-            }
-        }
-    }
-];
 
 const mapStateToProps = ({ application }) => {
     return {
-        slides: application.mainSlides,
+        slides: application.slides,
         langMap: application.langMap,
         langRoute: application.langRoute,
         lang: application.lang,
@@ -98,15 +41,19 @@ class Carousel extends Component {
         super(...args);
 
         this.animation = false;
-        this.maxSlideIndex = SLIDES.length - 1;
+        this.maxSlideIndex = this.props.slides.length - 1;
         this.state = {
             activeSlideIndex: 0,
             sliderLeft: 0
         };
     }
 
-    maxSlide = SLIDES.length - 1;
+    maxSlide = this.props.slides.length - 1;
     maxLeft = this.maxSlide * this.props.mediaWidth;
+
+    componentDidMount () {
+        this.startSlider();
+    }
 
     componentWillReceiveProps (nextProps) {
         const scrollbarWidth = calcScrollbarWidth();
@@ -118,10 +65,6 @@ class Carousel extends Component {
                 sliderLeft: (document.documentElement.clientWidth * activeSlideIndex) + scrollbarWidth * activeSlideIndex
             });
         }
-    }
-
-    componentDidMount () {
-        this.startSlider();
     }
 
     componentWillUnmount () {
@@ -227,16 +170,16 @@ class Carousel extends Component {
     };
 
     render () {
+        const { lang, mediaWidth, mediaHeight, slides } = this.props;
         const { activeSlideIndex } = this.state;
-        const { lang, mediaWidth, mediaHeight } = this.props;
         const isLandscape = mediaWidth > mediaHeight;
         const isMobile = mediaWidth < TABLET_WIDTH;
 
         return <div className={styles.carousel}>
             <div className={styles.sliderTrack} ref={ref => { this.sliderTrack = ref; }}>
-                { SLIDES.map((slide, i) => <div className={classNames(styles.content, slide)} key={i}>
+                { slides.map((slide, i) => <div className={classNames(styles.content, slide)} key={i}>
                     <div className={classNames(styles.wrapper, styles.imageWrapper)}>
-                        <div className={classNames(styles.photoBlock, styles.image)} style={{ backgroundImage: `url(${slide.path})` }}>
+                        <div className={classNames(styles.photoBlock, styles.image)} style={{ backgroundImage: `url(${slide.photo})` }}>
                             <div className={classNames(styles.topBlock, {
                                 [styles.topBlockLandscape]: isLandscape && isMobile
                             })}>
@@ -248,10 +191,10 @@ class Carousel extends Component {
                             </div>
                             <SearchInput searchFieldClassName={styles.searchField} onSubmit={this.handleInputSubmit}/>
                             <div className={styles.text}>
-                                <h1 className={styles.heading} />
-                                <p className={styles.info}>{slide.texts[`${lang}`].subTitleDescription}</p>
+                                <h1 className={styles.heading}>{slide.texts[`${lang}`].subTitle}</h1>
+                                <p className={styles.info}>{slide.texts[`${lang}`].subDescription}</p>
                             </div>
-                            <div className={styles.graphic} style={{ backgroundImage: `url(${slide.additionalPicture})` }}>
+                            <div className={styles.graphic} style={{ backgroundImage: `url(${slide.additionalPhoto})` }}>
                             </div>
                         </div>
                     </div>
@@ -260,7 +203,7 @@ class Carousel extends Component {
             <div className={classNames(styles.dots, {
                 [styles.dotsLandscape]: isLandscape && isMobile
             })}>
-                { SLIDES.map((slide, i) =>
+                { slides.map((slide, i) =>
                     <div key={i} className={classNames(styles.dot, { [styles.dotActive]: i === activeSlideIndex })} onClick={this.setActiveSlide(i)} />) }
             </div>
         </div>;
