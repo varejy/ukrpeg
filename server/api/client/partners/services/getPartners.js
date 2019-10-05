@@ -2,7 +2,7 @@ import { OKEY_STATUS_CODE, SERVER_ERROR_STATUS_CODE } from '../../../../constant
 import getSliderQuery from '../queries/getPartner';
 import createSlider from '../queries/createPartner';
 
-const SLIDER_ID = 'slider_id';
+const SLIDER_ID = 'partners_id';
 
 export default function getSlides (req, res) {
     getSliderQuery(SLIDER_ID)
