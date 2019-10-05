@@ -14,7 +14,8 @@ const STATIC_ROUTES = [
     { id: 'about', path: '/:lang(en)?/about', exact: true },
     { id: 'news', path: '/:lang(en)?/news', exact: true },
     { id: 'rvv', path: '/:lang(en)?/rvv', exact: true },
-    { id: 'laws', path: '/:lang(en)?/laws', exact: true },
+    { id: 'lawsUA', path: '/:lang(en)?/laws/ua', exact: true },
+    { id: 'lawsEU', path: '/:lang(en)?/laws/eu', exact: true },
     { id: 'contacts', path: '/:lang(en)?/contacts', exact: true },
     { id: 'search', path: '/:lang(en)?/search', exact: true }
 ];

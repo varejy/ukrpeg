@@ -16,7 +16,8 @@ import RVVPage from './ui/pages/RVVPage/RVVPage.jsx';
 import NewsPage from './ui/pages/NewsPage/NewsPage.jsx';
 import AboutPage from './ui/pages/AboutPage/AboutPage.jsx';
 import ContactPage from './ui/pages/ContactPage/ContactPage.jsx';
-import LawPage from './ui/pages/LawPage/LawPage.jsx';
+import LawPageUA from './ui/pages/LawPageUA/LawPageUA.jsx';
+import LawPageEU from './ui/pages/LawPageEU/LawPageEU.jsx';
 import SearchPage from './ui/pages/SearchPage/SearchPage.jsx';
 import NoFoundPage from './ui/pages/NoFoundPage/NoFoundPage.jsx';
 
@@ -30,7 +31,7 @@ import { DEFAULT_LANG } from './constants/constants';
 
 import styles from './App.css';
 
-const mapStateToProps = ({ application, laws }) => {
+const mapStateToProps = ({ application }) => {
     return {
         lang: application.lang,
         langRoute: application.langRoute,
@@ -86,7 +87,8 @@ class App extends Component {
                         <Route exact path='/:lang(en)?/news/:alias' render={this.renderComponent(NewsPage)} />
                         <Route exact path='/:lang(en)?/about' render={this.renderComponent(AboutPage)} />
                         <Route exact path='/:lang(en)?/contacts' render={this.renderComponent(ContactPage)} />
-                        <Route exact path='/:lang(en)?/laws' render={this.renderComponent(LawPage)} />
+                        <Route exact path='/:lang(en)?/laws/ua' render={this.renderComponent(LawPageUA)} />
+                        <Route exact path='/:lang(en)?/laws/eu' render={this.renderComponent(LawPageEU)} />
                         <Route exact path='/:lang(en)?/search' render={this.renderComponent(SearchPage)} />
                         <Route exact render={this.renderComponent(NoFoundPage)} />
                     </Switch>

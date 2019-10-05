@@ -5,7 +5,7 @@ import propOr from '@tinkoff/utils/object/propOr';
 import styles from './Header.css';
 import { withRouter, matchPath } from 'react-router';
 
-import { menu } from '../../../constants/routes';
+import { menu, subMenu } from '../../../constants/routes';
 import { Link, NavLink } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -53,7 +53,8 @@ class Header extends Component {
         newsCategories: PropTypes.array.isRequired,
         setActiveCategoryIndex: PropTypes.func.isRequired,
         mediaWidth: PropTypes.number.isRequired,
-        mediaHeight: PropTypes.number.isRequired
+        mediaHeight: PropTypes.number.isRequired,
+        location: PropTypes.object.isRequired
     };
 
     static defaultProps = {
@@ -74,15 +75,26 @@ class Header extends Component {
         this.state = {
             burgerMenuOpen: false,
             newsCategoriesOpen: false,
-            newsCategories: categoriesFull
+            lawsCategoriesOpen: false,
+            newsCategories: categoriesFull,
+            lawsHover: false
         };
     }
+
+    handleLawsHover = () => {
+        this.setState({ lawsHovered: true });
+    };
+
+    handleLawsBlur = () => {
+        this.setState({ lawsHovered: false });
+    };
 
     handleMenuClick = () => {
         const { burgerMenu, setMenuOpen } = this.props;
         this.setState({
             burgerMenuOpen: !this.state.burgerMenuOpen,
-            newsCategoriesOpen: false
+            newsCategoriesOpen: false,
+            lawsCategoriesOpen: false
         });
 
         setMenuOpen(!burgerMenu);
@@ -116,16 +128,32 @@ class Header extends Component {
         });
     };
 
+    handleLawsCategoriesOpen = event => {
+        this.setState({
+            lawsCategoriesOpen: !this.state.lawsCategoriesOpen
+        });
+    };
+
     handleMenuCategoryClick = (index) => () => {
         this.props.setActiveCategoryIndex(index);
         this.handleMenuClick();
         this.handleCategoriesOpen();
     };
 
+    handleMenuLawsCategoryClick = () => {
+        this.handleMenuClick();
+        this.handleLawsCategoriesOpen();
+    };
+
+    handleMobileMenuLawsCategoryClick = () => {
+        this.setState({ lawsHovered: false });
+    };
+
     render () {
-        const { langMap, langRoute, lang, pathname, mediaWidth, mediaHeight } = this.props;
-        const { burgerMenuOpen, newsCategoriesOpen, newsCategories } = this.state;
+        const { langMap, langRoute, lang, pathname, mediaWidth, mediaHeight, location } = this.props;
+        const { burgerMenuOpen, newsCategoriesOpen, lawsCategoriesOpen, newsCategories, lawsHovered } = this.state;
         const menuItems = propOr('menu', {}, langMap);
+        const subMenuItems = propOr('subMenu', {}, langMap);
         const text = propOr('header', {}, langMap);
         const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
         const newsLinkHeight = mediaWidth > SMALL_MOBILE_WIDTH ? NEWS_LINK_BIG_HEIGHT : NEWS_LINK_SMALL_HEIGHT;
@@ -143,17 +171,28 @@ class Header extends Component {
                                 <NavLink
                                     key={i}
                                     exact={link.exact}
-                                    to={!burgerMenuOpen ? `${langRoute}${link.path}` : link.id !== 'news' && `${langRoute}${link.path}`}
-                                    activeClassName={!burgerMenuOpen && styles.activeLink}
-                                    className={styles.link}
-                                    onClick={burgerMenuOpen ? link.id === 'news' ? this.handleCategoriesOpen : this.handleMenuClick : undefined}
+                                    to={!burgerMenuOpen ? link.id !== 'laws' ? `${langRoute}${link.path}` : `${location.pathname}`
+                                        : link.id !== 'news' && link.id !== 'laws' && `${langRoute}${link.path}`}
+                                    activeClassName={!burgerMenuOpen &&
+                                    link.id === 'laws' ? (location.pathname === `${langRoute}/laws/eu` || location.pathname === `${langRoute}/laws/ua`)
+                                            ? styles.activeLink : '' : styles.activeLink}
+                                    className={classNames(styles.link, {
+                                        [styles.lawsLink]: link.id === 'laws' && !burgerMenuOpen
+                                    })}
+                                    onClick={burgerMenuOpen
+                                        ? link.id === 'news' ? this.handleCategoriesOpen
+                                            : link.id === 'laws' ? this.handleLawsCategoriesOpen
+                                                : this.handleMenuClick : undefined}
+                                    onMouseOver={link.id === 'laws' ? this.handleLawsHover : undefined}
+                                    onMouseOut={link.id === 'laws' ? this.handleLawsBlur : undefined}
                                 >
                                     <div className={styles.linkContainer}>
                                         {menuItems[link.id]}
-                                        {burgerMenuOpen && link.id === 'news' &&
-                                    <img className={!newsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp}
-                                        src='/src/apps/client/ui/components/Header/files/arrowDown.png'
-                                        alt="arrowIcon"
+                                        {burgerMenuOpen && (link.id === 'news' || link.id === 'laws') &&
+                                    <img className={link.id === 'news' ? !newsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp
+                                        : !lawsCategoriesOpen ? styles.arrowBtnNews : styles.arrowBtnNewsUp}
+                                    src='/src/apps/client/ui/components/Header/files/arrowDown.png'
+                                    alt="arrowIcon"
                                     />
                                         }</div>
                                     <div className={classNames(styles.newsCategoriesList, {
@@ -178,6 +217,48 @@ class Header extends Component {
                                             })
                                         }
                                     </div>
+                                    <div className={classNames(styles.newsCategoriesList, {
+                                        [styles.newsCategoriesListAnimated]: (lawsCategoriesOpen && link.id === 'laws')
+                                    })}
+                                    style={{ height: `${(lawsCategoriesOpen && link.id === 'laws') ? newsLinkHeight * subMenu.length : 0}px` }}
+                                    > { link.id === 'laws' &&
+                                    subMenu.map((link, n) => {
+                                        return (
+                                            <NavLink
+                                                key={n}
+                                                exact={link.exact}
+                                                to={`${langRoute}${link.path}`}
+                                                className={classNames(styles.newsLink, styles.newsLinkCategory, {
+                                                    [styles.newsLinkCategoryAnimated]: lawsCategoriesOpen
+                                                })}
+                                                style={{ transitionDelay: `${n * 0.05}s` }}
+                                                onClick={(lawsCategoriesOpen && burgerMenuOpen) ? this.handleMenuLawsCategoryClick : undefined}
+                                            >
+                                                {subMenuItems[link.id]}
+                                            </NavLink>);
+                                    })
+                                        }
+                                    </div>
+                                    {
+                                        (link.id === 'laws' && !burgerMenuOpen) && <div className={classNames(styles.subLinks, {
+                                            [styles.subLinksVisible]: lawsHovered
+                                        })}>
+                                            {
+                                                subMenu.map((subLink, k) =>
+                                                    <NavLink
+                                                        key={k}
+                                                        exact={link.exact}
+                                                        to={!burgerMenuOpen && `${langRoute}${subLink.path}`}
+                                                        activeClassName=""
+                                                        className={styles.subLink}
+                                                        onClick={this.handleMobileMenuLawsCategoryClick}
+                                                    >
+                                                        {subMenuItems[subLink.id]}
+                                                    </NavLink>
+                                                )
+                                            }
+                                        </div>
+                                    }
                                 </NavLink>
                             );
                         })}
