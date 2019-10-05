@@ -145,6 +145,10 @@ class Header extends Component {
         this.handleLawsCategoriesOpen();
     };
 
+    handleMobileMenuLawsCategoryClick = () => {
+        this.setState({ lawsHovered: false });
+    };
+
     render () {
         const { langMap, langRoute, lang, pathname, mediaWidth, mediaHeight, location } = this.props;
         const { burgerMenuOpen, newsCategoriesOpen, lawsCategoriesOpen, newsCategories, lawsHovered } = this.state;
@@ -247,6 +251,7 @@ class Header extends Component {
                                                         to={!burgerMenuOpen && `${langRoute}${subLink.path}`}
                                                         activeClassName=""
                                                         className={styles.subLink}
+                                                        onClick={this.handleMobileMenuLawsCategoryClick}
                                                     >
                                                         {subMenuItems[subLink.id]}
                                                     </NavLink>
