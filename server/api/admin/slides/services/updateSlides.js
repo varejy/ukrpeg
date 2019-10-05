@@ -10,7 +10,6 @@ import updateSlider from '../../../client/slides/queries/updateSlides';
 import multipart from '../../../../helpers/multipart';
 
 import noop from '@tinkoff/utils/function/noop';
-import clone from '@tinkoff/utils/clone';
 
 const SLIDER_ID = 'slider_id';
 
@@ -74,9 +73,5 @@ export default function updateSlides (req, res) {
 
                 return res.status(SERVER_ERROR_STATUS_CODE).end();
             });
-
-        // uploaderAdditional(req, res, (err) => {
-        //
-        // })
     });
 }

@@ -37,7 +37,7 @@ class MainSlideForm extends Component {
                 files: slide && slide.additionalPhoto ? [slide.additionalPhoto] : [],
                 removedFiles: []
             },
-            lang: 'ua',
+            lang: 'ua'
         };
 
         this.state = {
