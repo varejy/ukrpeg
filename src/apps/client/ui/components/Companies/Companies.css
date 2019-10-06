@@ -139,7 +139,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    /*margin-left: -60px;*/
+    width: 100%;
     overflow: hidden;
 }
 
@@ -154,7 +154,6 @@
 }
 
 .arrow{
-    /*position: relative;*/
     z-index: 15;
     width: 60px;
     height: 60px;
