@@ -48,22 +48,13 @@ class Carousel extends Component {
         };
     }
 
-    maxSlide = this.props.slides.length - 1;
-    maxLeft = this.maxSlide * this.props.mediaWidth;
-
     componentDidMount () {
         this.startSlider();
     }
 
     componentWillReceiveProps (nextProps) {
-        const scrollbarWidth = calcScrollbarWidth();
         if (nextProps.mediaWidth !== this.props.mediaWidth) {
-            const { activeSlideIndex } = this.state;
-
-            this.maxLeft = (document.documentElement.clientWidth * this.maxSlide) + scrollbarWidth * this.maxSlide;
-            this.setState({
-                sliderLeft: (document.documentElement.clientWidth * activeSlideIndex) + scrollbarWidth * activeSlideIndex
-            });
+            this.setActiveSlide(this.state.activeSlideIndex)();
         }
     }
 
@@ -113,10 +104,11 @@ class Carousel extends Component {
 
     stopSlider = () => clearTimeout(this.sliderTimoutId);
 
-    setActiveSlide = (nextActiveSlideIndex) => () => {
+    setActiveSlide = (nextActiveSlideIndex) => event => {
         const { activeSlideIndex } = this.state;
 
-        if (this.animation || activeSlideIndex === nextActiveSlideIndex) {
+        // event && activeSlideIndex === nextActiveSlideIndex - был произведен браузерный клик
+        if (this.animation || event && activeSlideIndex === nextActiveSlideIndex) {
             return;
         }
 
