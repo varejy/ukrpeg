@@ -17,13 +17,13 @@ const uploader = multipart(SLIDER_FILE_FIELD_NAME_REGEX, SLIDER_ADDITIONAL_FILE_
 
 export default function updateSlides (req, res) {
     uploader(req, res, (err) => {
-        const files = req.files;
-        const slider = JSON.parse(req.body.slider);
-        const removedSlides = JSON.parse(req.body.removedSlides);
-
         if (err) {
             return res.status(SERVER_ERROR_STATUS_CODE).end();
         }
+
+        const files = req.files;
+        const slider = JSON.parse(req.body.slider);
+        const removedSlides = JSON.parse(req.body.removedSlides);
 
         const outdatedSlidesPath = [];
         const resultSlides = slider.map((slide) => {
