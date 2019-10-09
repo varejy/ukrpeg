@@ -25,10 +25,6 @@ export default function updateSlides (req, res) {
             return res.status(SERVER_ERROR_STATUS_CODE).end();
         }
 
-        if (err) {
-            return res.status(SERVER_ERROR_STATUS_CODE).end();
-        }
-
         const outdatedSlidesPath = [];
         const resultSlides = slider.map((slide) => {
             if (slide.removedFiles) {
