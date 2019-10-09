@@ -49,11 +49,11 @@ class Companies extends Component {
     handleArrowClick = (direction) => () => {
         const { mediaWidth } = this.props;
         const { left, wrapperWidth } = this.state;
-        debugger;
+
         const companiesPerSlide = mediaWidth <= MOBILE_WIDTH
             ? MAX_LOGOS_PER_SLIDE_MOBILE : mediaWidth <= SMALL_DESKTOP_WIDTH ? MAX_LOGOS_PER_SLIDE_SMALL : MAX_LOGOS_PER_SLIDE;
         const companyWidth = wrapperWidth / companiesPerSlide;
-        console.log(wrapperWidth, companiesPerSlide, companyWidth);
+
         let newLeft = left;
 
         if (direction === 'left') {

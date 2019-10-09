@@ -3,6 +3,7 @@
 @value darkBlueBasic from '../../../../../css/colors.css';
 @value lightGreyHover from '../../../../../css/colors.css';
 @value greyTextBasic from '../../../../../css/colors.css';
+@value limeGreen from '../../../../../css/colors.css';
 
 .about{
     width: 100%;
@@ -105,7 +106,9 @@
     margin-left: 20px;
     order: 1;
     position: relative;
+    flex-shrink: 0;
     z-index: 11;
+
 
     @media (max-width: 1350px) {
       width: 51%;
@@ -117,6 +120,69 @@
         width: 100%;
         max-width: 100%;
     }
+}
+
+.image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+[data-animation=image] {
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+
+    @media (max-width: 780px){
+        height: 190px;
+    }
+}
+
+[data-animation=image] .in, [data-animation=image] .out {
+    overflow: hidden;
+}
+
+[data-animation=image].animated .in, [data-animation=image].animated .out {
+    -webkit-transform: none;
+    transform: none;
+}
+
+[data-animation=image].animated:before {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+[data-animation=image] .in{
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+[data-animation=image] .out {
+    -webkit-transform: translateX(-110%);
+    transform: translateX(-110%);
+}
+
+[data-animation=image] .in, [data-animation=image] .out, [data-animation=image]:before {
+    transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out,-webkit-transform 1s ease-in-out;
+    transition-delay: 0.6s;
+}
+[data-animation=image]:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    content: "";
+    background-color: limeGreen;
+    -webkit-transform: translateX(-100%) scaleX(.33);
+    transform: translateX(-100%) scaleX(.33);
+    -webkit-transform-origin: right center;
+    transform-origin: right center;
 }
 
 .video {

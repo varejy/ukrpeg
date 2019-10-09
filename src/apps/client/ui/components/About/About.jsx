@@ -19,6 +19,10 @@ const mapStateToProps = ({ application }) => {
 };
 
 class About extends Component {
+    state = {
+        animation: false
+    };
+
     static propTypes = {
         langMap: PropTypes.object.isRequired,
         lang: PropTypes.string.isRequired,
@@ -29,8 +33,17 @@ class About extends Component {
         about: []
     };
 
+    componentDidMount () {
+        setTimeout(() => {
+            this.setState({
+                animation: true
+            });
+        }, 0);
+    }
+
     render () {
         const { langMap, lang, about } = this.props;
+        const { animation } = this.state;
         const text = propOr('about', {}, langMap);
 
         return <div className={styles.about}>
@@ -41,7 +54,19 @@ class About extends Component {
                         return (
                             <div key={i} className={styles.contentBlock}>
                                 { item.contentType === 'photo'
-                                    ? <img src={item.photo} className={styles.img} />
+                                    ? <div data-animation="image" className={classNames(styles.img, {
+                                        [styles.animated]: animation
+                                    })}>
+                                        <div className={styles.out}>
+                                            <div className={styles.in}>
+                                                <div className={classNames(styles.imgInner, {
+                                                    [styles.animated]: animation
+                                                })} data-animation="image">
+                                                    <img className={styles.image} src={item.photo} alt='image'/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     : <div className={classNames(styles.img, styles.video)}>
                                         <div className={styles.iframeContainer}>
                                             <iframe
