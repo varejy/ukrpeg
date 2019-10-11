@@ -176,9 +176,7 @@ class Header extends Component {
                                     activeClassName={!burgerMenuOpen &&
                                     link.id === 'laws' ? (location.pathname === `${langRoute}/laws/eu` || location.pathname === `${langRoute}/laws/ua`)
                                             ? styles.activeLink : '' : styles.activeLink}
-                                    className={classNames(styles.link, {
-                                        [styles.lawsLink]: link.id === 'laws' && !burgerMenuOpen
-                                    })}
+                                    className={styles.link}
                                     onClick={burgerMenuOpen
                                         ? link.id === 'news' ? this.handleCategoriesOpen
                                             : link.id === 'laws' ? this.handleLawsCategoriesOpen
