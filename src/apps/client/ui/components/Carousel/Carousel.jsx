@@ -21,7 +21,8 @@ const mapStateToProps = ({ application }) => {
         langRoute: application.langRoute,
         lang: application.lang,
         mediaWidth: application.media.width,
-        mediaHeight: application.media.height
+        mediaHeight: application.media.height,
+        landscape: application.media.landscape
     };
 };
 
@@ -30,7 +31,8 @@ class Carousel extends Component {
         slides: PropTypes.array,
         mediaWidth: PropTypes.number.isRequired,
         mediaHeight: PropTypes.number.isRequired,
-        lang: PropTypes.string.isRequired
+        lang: PropTypes.string.isRequired,
+        landscape: PropTypes.bool.isRequired
     };
 
     static defaultProps = {
@@ -44,19 +46,33 @@ class Carousel extends Component {
         this.maxSlideIndex = this.props.slides.length - 1;
         this.state = {
             activeSlideIndex: 0,
-            sliderLeft: 0
+            sliderLeft: 0,
+            contentHeight: null
         };
     }
 
     componentDidMount () {
         this.startSlider();
+        this.setSlideHeight();
     }
 
     componentWillReceiveProps (nextProps) {
         if (nextProps.mediaWidth !== this.props.mediaWidth) {
             this.setActiveSlide(this.state.activeSlideIndex)();
         }
+
+        if (nextProps.landscape !== this.props.landscape) {
+            this.setSlideHeight(nextProps);
+        }
     }
+
+    setSlideHeight = () => {
+        const vh = window.innerHeight * 0.01 * 100;
+
+        this.setState({
+            contentHeight: vh
+        });
+    };
 
     componentWillUnmount () {
         this.isUnmount = true;
@@ -163,7 +179,7 @@ class Carousel extends Component {
 
     render () {
         const { lang, mediaWidth, mediaHeight, slides } = this.props;
-        const { activeSlideIndex } = this.state;
+        const { activeSlideIndex, contentHeight } = this.state;
         const isLandscape = mediaWidth > mediaHeight;
         const isMobile = mediaWidth < TABLET_WIDTH;
 
@@ -171,7 +187,10 @@ class Carousel extends Component {
             <div className={styles.sliderTrack} ref={ref => { this.sliderTrack = ref; }}>
                 { slides.map((slide, i) => <div className={classNames(styles.content, slide)} key={i}>
                     <div className={classNames(styles.wrapper, styles.imageWrapper)}>
-                        <div className={classNames(styles.photoBlock, styles.image)} style={{ backgroundImage: `url(${slide.photo})` }}>
+                        <div className={classNames(styles.photoBlock, styles.image)} style={{
+                            backgroundImage: `url(${slide.photo})`,
+                            ...isMobile && contentHeight ? { height: contentHeight } : {}
+                        }}>
                             <div className={classNames(styles.topBlock, {
                                 [styles.topBlockLandscape]: isLandscape && isMobile
                             })}>

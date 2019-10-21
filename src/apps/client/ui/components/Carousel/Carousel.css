@@ -50,19 +50,16 @@
     @media (--media-tablet-l) {
         padding: 200px 50px;
         height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
     }
 
     @media (--media-tablet-s) {
         padding: 190px 50px;
         height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
     }
 
     @media (--media-phone) {
         padding: 170px 30px;
         height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
     }
 }
 
@@ -165,7 +162,7 @@
     z-index: 25;
 
     @media (max-width: 1350px) {
-        margin-left: 140px;
+        margin-left: 180px;
     }
 
     @media (--media-tablet-l) {

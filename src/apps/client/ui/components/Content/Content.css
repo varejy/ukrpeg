@@ -48,19 +48,16 @@
     @media (--media-tablet-l) {
         padding: 200px 50px;
         height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
     }
 
     @media (--media-tablet-s) {
         padding: 190px 50px;
         height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
     }
 
     @media (--media-phone) {
         padding: 170px 30px;
         height: 100vh;
-        height: calc(var(--vh, 1vh) * 100);
     }
 }
 

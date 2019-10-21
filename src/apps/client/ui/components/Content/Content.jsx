@@ -16,9 +16,9 @@ const mapStateToProps = ({ application }) => {
     return {
         langMap: application.langMap,
         langRoute: application.langRoute,
-        lang: application.lang,
         mediaWidth: application.media.width,
-        mediaHeight: application.media.height
+        mediaHeight: application.media.height,
+        landscape: application.media.landscape
     };
 };
 
@@ -27,9 +27,9 @@ class Content extends Component {
         langMap: PropTypes.object.isRequired,
         history: PropTypes.object.isRequired,
         langRoute: PropTypes.string,
-        lang: PropTypes.string.isRequired,
         mediaWidth: PropTypes.number.isRequired,
-        mediaHeight: PropTypes.number.isRequired
+        mediaHeight: PropTypes.number.isRequired,
+        landscape: PropTypes.bool.isRequired
     };
 
     static defaultProps = {
@@ -38,7 +38,26 @@ class Content extends Component {
 
     state = {
         inputZoom: false,
-        inputValue: ''
+        inputValue: '',
+        contentHeight: null
+    };
+
+    componentDidMount () {
+        this.setSlideHeight();
+    }
+
+    componentWillReceiveProps (nextProps, nextContext) {
+        if (nextProps.landscape !== this.props.landscape) {
+            this.setSlideHeight(nextProps);
+        }
+    }
+
+    setSlideHeight = () => {
+        const vh = window.innerHeight * 0.01 * 100;
+
+        this.setState({
+            contentHeight: vh
+        });
     };
 
     handleInputSubmit = inputValue => {
@@ -51,6 +70,7 @@ class Content extends Component {
 
     render () {
         const { langMap, langRoute, mediaWidth, mediaHeight } = this.props;
+        const { contentHeight } = this.state;
         const text = propOr('content', {}, langMap);
         const isLandscape = mediaWidth > mediaHeight;
         const isMobile = mediaWidth < TABLET_WIDTH;
@@ -60,7 +80,7 @@ class Content extends Component {
                 <img className={styles.circles} src='/src/apps/client/ui/components/Content/files/circles.png' alt="circles"/>
             </div>
             <div className={styles.wrapper}>
-                <div className={styles.photoBlock}>
+                <div className={styles.photoBlock} style={isMobile && contentHeight ? { height: contentHeight } : {}}>
                     <div className={classNames(styles.topBlock, {
                         [styles.topBlockLandscape]: isLandscape && isMobile
                     })}>

@@ -168,6 +168,10 @@
     justify-content: flex-start;
     text-transform: uppercase;
     padding: 10px 20px;
+
+    @media (max-width: 1350px) {
+        padding: 10px 6px;
+    }
 }
 
 .subLink:hover{
