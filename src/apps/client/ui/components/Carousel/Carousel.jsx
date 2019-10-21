@@ -21,7 +21,6 @@ const mapStateToProps = ({ application }) => {
         langRoute: application.langRoute,
         lang: application.lang,
         mediaWidth: application.media.width,
-        mediaHeight: application.media.height,
         landscape: application.media.landscape
     };
 };
@@ -30,7 +29,6 @@ class Carousel extends Component {
     static propTypes = {
         slides: PropTypes.array,
         mediaWidth: PropTypes.number.isRequired,
-        mediaHeight: PropTypes.number.isRequired,
         lang: PropTypes.string.isRequired,
         landscape: PropTypes.bool.isRequired
     };
@@ -178,9 +176,8 @@ class Carousel extends Component {
     };
 
     render () {
-        const { lang, mediaWidth, mediaHeight, slides } = this.props;
+        const { lang, mediaWidth, slides, landscape } = this.props;
         const { activeSlideIndex, contentHeight } = this.state;
-        const isLandscape = mediaWidth > mediaHeight;
         const isMobile = mediaWidth < TABLET_WIDTH;
 
         return <div className={styles.carousel}>
@@ -192,7 +189,7 @@ class Carousel extends Component {
                             ...isMobile && contentHeight ? { height: contentHeight } : {}
                         }}>
                             <div className={classNames(styles.topBlock, {
-                                [styles.topBlockLandscape]: isLandscape && isMobile
+                                [styles.topBlockLandscape]: landscape && isMobile
                             })}>
                                 <div className={styles.mainText}>
                                     <h1 className={styles.title}>{slide.texts[`${lang}`].title}</h1>
@@ -212,7 +209,7 @@ class Carousel extends Component {
                 </div>) }
             </div>
             <div className={classNames(styles.dots, {
-                [styles.dotsLandscape]: isLandscape && isMobile
+                [styles.dotsLandscape]: landscape && isMobile
             })}>
                 { slides.map((slide, i) =>
                     <div key={i} className={classNames(styles.dot, { [styles.dotActive]: i === activeSlideIndex })} onClick={this.setActiveSlide(i)} />) }

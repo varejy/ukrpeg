@@ -23,6 +23,8 @@ class SearchInput extends Component {
         inputValue: ''
     };
 
+    input = React.createRef();
+
     handleInputChange = event => {
         this.setState({
             inputValue: event.target.value
@@ -49,6 +51,7 @@ class SearchInput extends Component {
 
     handleInputSubmit = event => {
         event.preventDefault();
+        this.input.current.focus();
         const { inputValue } = this.state;
 
         this.props.onSubmit(inputValue);
@@ -63,6 +66,7 @@ class SearchInput extends Component {
                 <img src='/src/apps/client/ui/components/Content/files/searchIcon.png' className={styles.searchIconImg} />
             </button>
             <input
+                ref={this.input}
                 onFocus={this.handleFocusInput}
                 onBlur={this.handleBlurInput}
                 value={inputValue}

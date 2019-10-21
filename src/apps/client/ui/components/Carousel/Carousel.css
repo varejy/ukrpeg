@@ -49,17 +49,14 @@
 
     @media (--media-tablet-l) {
         padding: 200px 50px;
-        height: 100vh;
     }
 
     @media (--media-tablet-s) {
         padding: 190px 50px;
-        height: 100vh;
     }
 
     @media (--media-phone) {
         padding: 170px 30px;
-        height: 100vh;
     }
 }
 
@@ -427,7 +424,7 @@
 
     @media (max-width: 780px){
         left: 50vw;
-        bottom: 80px;
+        bottom: 80px !important;
     }
 }
 
