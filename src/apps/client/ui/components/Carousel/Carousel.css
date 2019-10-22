@@ -15,6 +15,10 @@
     position: relative;
     z-index: 11;
 
+    @media (max-width: 1200px){
+        margin-top: 143px;
+    }
+
     @media (--media-tablet-l) {
         margin-top: 0;
     }

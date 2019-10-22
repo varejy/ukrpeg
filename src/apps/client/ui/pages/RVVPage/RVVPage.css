@@ -31,7 +31,7 @@ html, body {
     z-index: 10;
     top: 102px;
 
-    @media (max-width: 1023px){
+    @media (max-width: 1200px){
         top: 0;
     }
 }
@@ -139,6 +139,10 @@ html, body {
     padding-top: 130px;
     width: 100%;
     display: block;
+
+    @media (max-width: 1200px){
+        padding-top: 143px;
+    }
 
     @media (max-width: 780px){
         display: none;
@@ -655,6 +659,7 @@ html, body {
     @media (max-width: 1024px){
         flex-direction: column;
         justify-content: flex-start;
+        align-items: center;
         margin: 0 auto;
     }
 
@@ -673,6 +678,10 @@ html, body {
     @media (max-width: 1349px){
         max-width: 230px;
         margin-bottom: 50px;
+    }
+
+    @media (max-width: 1024px){
+        margin-bottom: 120px;
     }
 
     @media (max-width: 780px){
@@ -721,6 +730,10 @@ html, body {
     line-height: normal;
     letter-spacing: 0.92px;
     width: 100%;
+
+    @media (max-width: 1024px){
+        text-align: center;
+    }
 
     @media (max-width: 780px){
         text-align: center;

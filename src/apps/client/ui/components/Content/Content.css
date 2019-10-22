@@ -13,6 +13,10 @@
     position: absolute;
     z-index: 20;
 
+    @media (max-width: 1200px){
+        margin-top: 143px;
+    }
+
     @media (--media-tablet-l) {
         margin-top: 0;
    }
@@ -283,6 +287,10 @@
         width: 570px;
     }
 
+    @media (max-width: 1200px){
+        width: 50%;
+    }
+
     @media (--media-tablet-l) {
         height: auto;
         width: 100%;
@@ -361,7 +369,7 @@
 .circlesContainer{
     display: none;
 
-    @media (max-width: 1024px){
+    @media (max-width: 1023px){
         display: block;
         position: absolute;
         top: 0;

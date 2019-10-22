@@ -30,11 +30,12 @@ class Carousel extends Component {
         slides: PropTypes.array,
         mediaWidth: PropTypes.number.isRequired,
         lang: PropTypes.string.isRequired,
-        landscape: PropTypes.bool.isRequired
+        landscape: PropTypes.bool
     };
 
     static defaultProps = {
-        slides: []
+        slides: [],
+        landscape: false
     };
 
     constructor (...args) {
