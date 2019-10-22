@@ -120,13 +120,14 @@
 }
 
 .slider{
+    padding-bottom: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 
     @media (max-width: 1349px){
-        position: unset;
+        position: relative;
     }
 
     @media (max-width: 1023px){
@@ -175,6 +176,16 @@
 
     @media (max-width: 1023px){
         display: flex;
+        position: absolute;
+        top: 90px;
+        right: calc(-65px + 30%);
+    }
+}
+
+.arrowMobileContainer .arrowIcon{
+    @media (max-width: 1023px){
+        width: auto;
+        height: 10px;
     }
 }
 
