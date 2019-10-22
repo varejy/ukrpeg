@@ -386,6 +386,14 @@
     @media (max-width: 500px){
         width: 80%;
     }
+
+    @media (max-width: 400px){
+        width: 90%;
+    }
+
+    @media (max-width: 350px){
+        width: 100%;
+    }
 }
 
 .circles{

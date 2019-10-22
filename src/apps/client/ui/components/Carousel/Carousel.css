@@ -455,6 +455,11 @@
     &:not(:first-child) {
          margin-left: 24px;
     }
+
+     @media (max-width: 425px){
+         width: 10px;
+         height: 10px;
+     }
 }
 
 .dotActive {
