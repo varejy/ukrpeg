@@ -70,7 +70,7 @@ class Articles extends Component {
 
         if (desktop) {
             if (direction === 'next') {
-                if (currentNewsDesktopIndex < this.maxSlideDesktop) {
+                if (currentNewsDesktopIndex < (this.maxSlideDesktop - 1)) {
                     this.setState({
                         sliderTop: (currentNewsDesktopIndex + 1) * DESKTOP_SLIDE_HEIGHT,
                         currentNewsDesktopIndex: currentNewsDesktopIndex + 1
@@ -86,7 +86,7 @@ class Articles extends Component {
             }
         } else {
             if (direction === 'next') {
-                if (currentNewsMobileIndex < this.maxSlideMobile) {
+                if (currentNewsMobileIndex < (this.maxSlideMobile - 1)) {
                     this.setState({
                         sliderLeft: (currentNewsMobileIndex + 1) * mediaWidth,
                         currentNewsMobileIndex: currentNewsMobileIndex + 1
@@ -133,7 +133,7 @@ class Articles extends Component {
                                 : currentNewsMobileIndex === 0 ? styles.arrowBtn : styles.activeArrowBtn}
                             onClick={this.handleClickSlide('prev')}
                         >
-                            <img className={styles.arrowBtnImg}
+                            <img className={styles.arrowBtnImg} alt='arrow'
                                 src={desktop ? currentNewsDesktopIndex !== 0 ? '/src/apps/client/ui/components/Articles/files/arrowGreenUp.png'
                                     : '/src/apps/client/ui/components/Articles/files/arrowGreyUp.png'
                                     : currentNewsMobileIndex !== 0 ? '/src/apps/client/ui/components/Articles/files/arrowGreenUp.png'
@@ -142,15 +142,17 @@ class Articles extends Component {
                         </button>
                         <button
                             className={desktop
-                                ? currentNewsDesktopIndex === this.maxSlideDesktop ? styles.arrowBtn : styles.activeArrowBtn
-                                : currentNewsMobileIndex === this.maxSlideMobile ? styles.arrowBtn : styles.activeArrowBtn}
+                                ? currentNewsDesktopIndex === (this.maxSlideDesktop - 1) ? styles.arrowBtn : styles.activeArrowBtn
+                                : currentNewsMobileIndex === (this.maxSlideMobile - 1) ? styles.arrowBtn : styles.activeArrowBtn}
                             onClick={this.handleClickSlide('next')}
                         >
-                            <img className={styles.arrowBtnImg}
+                            <img className={styles.arrowBtnImg} alt='arrow'
                                 src={desktop
-                                    ? currentNewsDesktopIndex !== this.maxSlideDesktop ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
+                                    ? currentNewsDesktopIndex !== (this.maxSlideDesktop - 1)
+                                        ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
                                         : '/src/apps/client/ui/components/Articles/files/arrowGreyDown.png'
-                                    : currentNewsMobileIndex !== this.maxSlideMobile ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
+                                    : currentNewsMobileIndex !== (this.maxSlideMobile - 1)
+                                        ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
                                         : '/src/apps/client/ui/components/Articles/files/arrowGreyDown.png'}
                             />
                         </button>
