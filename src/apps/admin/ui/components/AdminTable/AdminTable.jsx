@@ -48,7 +48,8 @@ const materialStyles = theme => ({
         }
     },
     valueActions: {
-        visibility: 'hidden'
+        visibility: 'hidden',
+        display: 'flex'
     }
 });
 
@@ -83,7 +84,7 @@ class AdminTable extends React.Component {
         onFiltersOpen: noop,
         onProductClone: noop,
         filters: true,
-        copyItem: true
+        copyItem: false
     };
 
     constructor (...args) {
