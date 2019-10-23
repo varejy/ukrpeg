@@ -19,7 +19,7 @@
     z-index: 2;
     top: 102px;
 
-    @media (max-width: 1023px){
+    @media (max-width: 1200px){
         top: 0;
     }
 }

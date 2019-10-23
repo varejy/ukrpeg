@@ -16,10 +16,10 @@
     margin: 0 auto;
     position: fixed;
     height: 100vh;
-    z-index: 2;
+    z-index: 10;
     top: 102px;
 
-    @media (max-width: 1023px){
+    @media (max-width: 1200px){
         top: 0;
     }
 }
