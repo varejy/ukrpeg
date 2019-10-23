@@ -85,15 +85,15 @@ class NewsContent extends Component {
                         )
                     }
                 </div>
+                {
+                    newsCategoryRendered.length > MAX_CARDS_PER_SLIDE && <div className={styles.pagination}>
+                        <Pagination
+                            activePoint={activePoint}
+                            points={MAX_SLIDES}
+                            onChange={this.handlePaginationChange}/>
+                    </div>
+                }
             </div>
-            {
-                newsCategoryRendered.length > MAX_CARDS_PER_SLIDE && <div className={styles.pagination}>
-                    <Pagination
-                        activePoint={activePoint}
-                        points={MAX_SLIDES}
-                        onChange={this.handlePaginationChange}/>
-                </div>
-            }
             <div className={classNames(styles.sliderContainer, styles.sliderContainerMobile)}>
                 <div className={styles.newsCardsContainer}>
                     {

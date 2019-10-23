@@ -24,6 +24,10 @@
 .newsContentContainer{
     padding-top: 130px;
 
+    @media (max-width: 1200px){
+        padding-top: 143px;
+    }
+
     @media (max-width: 1080px){
         padding-top: 30px;
         width: 100%;
@@ -42,7 +46,7 @@
     z-index: 10;
     top: 102px;
 
-    @media (max-width: 1023px){
+    @media (max-width: 1200px){
         top: 0;
     }
 }
@@ -114,6 +118,10 @@
     position: relative;
     left: 6px;
     z-index: 11;
+
+    @media (max-width: 1200px){
+        padding-top: 143px;
+    }
 
     @media (max-width: 1080px){
         display: none;

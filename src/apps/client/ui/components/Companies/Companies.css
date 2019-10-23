@@ -37,7 +37,7 @@
 .title{
     padding: 25px 0 20px 20px;
     border-left: 6px solid lightGreenBasic;
-    margin-left: -20px;
+    margin-left: -26px;
     color: darkBlueBasic;
     font-size: 14px;
     line-height: 14px;
@@ -50,7 +50,7 @@
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
 
     @media (max-width: 1350px){
-        margin-left: -5px;
+        margin-left: -26px;
     }
 
     @media (--media-tablet-l) {
@@ -120,13 +120,14 @@
 }
 
 .slider{
+    padding-bottom: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 
     @media (max-width: 1349px){
-        position: unset;
+        position: relative;
     }
 
     @media (max-width: 1023px){
@@ -175,6 +176,16 @@
 
     @media (max-width: 1023px){
         display: flex;
+        position: absolute;
+        top: 90px;
+        right: calc(-65px + 30%);
+    }
+}
+
+.arrowMobileContainer .arrowIcon{
+    @media (max-width: 1023px){
+        width: auto;
+        height: 10px;
     }
 }
 
@@ -184,7 +195,7 @@
 
 .arrowLeft{
     left: -84px;
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
 
     @media (max-width: 1349px){
         left: -60px;

@@ -133,7 +133,12 @@ class Articles extends Component {
                                 : currentNewsMobileIndex === 0 ? styles.arrowBtn : styles.activeArrowBtn}
                             onClick={this.handleClickSlide('prev')}
                         >
-                            <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' />
+                            <img className={styles.arrowBtnImg}
+                                src={desktop ? currentNewsDesktopIndex !== 0 ? '/src/apps/client/ui/components/Articles/files/arrowGreenUp.png'
+                                    : '/src/apps/client/ui/components/Articles/files/arrowGreyUp.png'
+                                    : currentNewsMobileIndex !== 0 ? '/src/apps/client/ui/components/Articles/files/arrowGreenUp.png'
+                                        : '/src/apps/client/ui/components/Articles/files/arrowGreyUp.png'}
+                            />
                         </button>
                         <button
                             className={desktop
@@ -141,7 +146,13 @@ class Articles extends Component {
                                 : currentNewsMobileIndex === this.maxSlideMobile ? styles.arrowBtn : styles.activeArrowBtn}
                             onClick={this.handleClickSlide('next')}
                         >
-                            <img className={styles.arrowBtnImg} src='/src/apps/client/ui/components/Articles/files/arrowDown.png' />
+                            <img className={styles.arrowBtnImg}
+                                src={desktop
+                                    ? currentNewsDesktopIndex !== this.maxSlideDesktop ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
+                                        : '/src/apps/client/ui/components/Articles/files/arrowGreyDown.png'
+                                    : currentNewsMobileIndex !== this.maxSlideMobile ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
+                                        : '/src/apps/client/ui/components/Articles/files/arrowGreyDown.png'}
+                            />
                         </button>
                     </div>
                 </div>

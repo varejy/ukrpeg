@@ -27,11 +27,12 @@ class Content extends Component {
         history: PropTypes.object.isRequired,
         langRoute: PropTypes.string,
         mediaWidth: PropTypes.number.isRequired,
-        landscape: PropTypes.bool.isRequired
+        landscape: PropTypes.bool
     };
 
     static defaultProps = {
-        langRoute: ''
+        langRoute: '',
+        landscape: false
     };
 
     state = {

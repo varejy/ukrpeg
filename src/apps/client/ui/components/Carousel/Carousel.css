@@ -15,6 +15,10 @@
     position: relative;
     z-index: 11;
 
+    @media (max-width: 1200px){
+        margin-top: 143px;
+    }
+
     @media (--media-tablet-l) {
         margin-top: 0;
     }
@@ -451,6 +455,11 @@
     &:not(:first-child) {
          margin-left: 24px;
     }
+
+     @media (max-width: 425px){
+         width: 10px;
+         height: 10px;
+     }
 }
 
 .dotActive {

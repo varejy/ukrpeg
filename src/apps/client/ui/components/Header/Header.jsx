@@ -20,6 +20,7 @@ const SMALL_MOBILE_WIDTH = 370;
 const NEWS_LINK_BIG_HEIGHT = 40;
 const NEWS_LINK_SMALL_HEIGHT = 28;
 const MAIN_NEWS_LINK_HEIGHT = 81;
+const TABLET_WIDTH = 1024;
 const mapStateToProps = ({ application }, ownProps) => {
     return {
         langMap: application.langMap,
@@ -158,6 +159,7 @@ class Header extends Component {
         const defineMenuMode = matchPath(pathname, { path: '/:lang(en)?', exact: true });
         const newsLinkHeight = mediaWidth > SMALL_MOBILE_WIDTH ? NEWS_LINK_BIG_HEIGHT : NEWS_LINK_SMALL_HEIGHT;
         const isLandscape = mediaWidth > mediaHeight;
+        const isTablet = mediaWidth < TABLET_WIDTH;
 
         return <div className={styles.header}>
             <div className={styles.headBg}>
@@ -272,9 +274,9 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className={!burgerMenuOpen ? styles.burgerMenu : styles.burgerMenuOpen} onClick={this.handleMenuClick} >
-                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
-                        <hr className={!burgerMenuOpen ? (defineMenuMode ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? ((defineMenuMode && isTablet) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? ((defineMenuMode && isTablet) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
+                        <hr className={!burgerMenuOpen ? ((defineMenuMode && isTablet) ? styles.menuLines : styles.menuLinesPages) : styles.menuLinesCross} />
                     </div>
                     <div className={!burgerMenuOpen ? styles.socialhidden : styles.social}
                         style={{ bottom: `${isLandscape ? 0.7 * -MAIN_NEWS_LINK_HEIGHT * menu.length +

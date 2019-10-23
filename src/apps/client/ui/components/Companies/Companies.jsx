@@ -49,11 +49,10 @@ class Companies extends Component {
     handleArrowClick = (direction) => () => {
         const { mediaWidth } = this.props;
         const { left, wrapperWidth } = this.state;
-        debugger;
+
         const companiesPerSlide = mediaWidth <= MOBILE_WIDTH
             ? MAX_LOGOS_PER_SLIDE_MOBILE : mediaWidth <= SMALL_DESKTOP_WIDTH ? MAX_LOGOS_PER_SLIDE_SMALL : MAX_LOGOS_PER_SLIDE;
         const companyWidth = wrapperWidth / companiesPerSlide;
-        console.log(wrapperWidth, companiesPerSlide, companyWidth);
         let newLeft = left;
 
         if (direction === 'left') {
@@ -86,7 +85,10 @@ class Companies extends Component {
                         <div className={classNames(styles.arrow, styles.arrowDesktop, styles.arrowLeft, {
                             [styles.arrowLeftVisible]: leftArrowVisible
                         })} onClick={leftArrowVisible ? this.handleArrowClick('left') : undefined}>
-                            <img className={styles.arrowIcon} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' alt='arrow'/>
+                            <img className={styles.arrowIcon}
+                                src={leftArrowVisible ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
+                                    : '/src/apps/client/ui/components/Articles/files/arrowGreyDown.png'}
+                                alt='arrow'/>
                         </div>
                         <div className={styles.sliderContainer}>
                             <ul className={styles.companiesList}
@@ -106,18 +108,27 @@ class Companies extends Component {
                         <div className={classNames(styles.arrow, styles.arrowDesktop, styles.arrowRight, {
                             [styles.arrowRightVisible]: rightArrowVisible
                         })} onClick={rightArrowVisible ? this.handleArrowClick('right') : undefined}>
-                            <img className={styles.arrowIcon} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' alt='arrow'/>
+                            <img className={styles.arrowIcon}
+                                src={rightArrowVisible ? '/src/apps/client/ui/components/Articles/files/arrowGreenUp.png'
+                                    : '/src/apps/client/ui/components/Articles/files/arrowGreyUp.png'}
+                                alt='arrow'/>
                         </div>
                         <div className={styles.arrowMobileContainer}>
                             <div className={classNames(styles.arrow, styles.arrowLeft, {
                                 [styles.arrowLeftVisible]: leftArrowVisible
                             })} onClick={leftArrowVisible ? this.handleArrowClick('left') : undefined}>
-                                <img className={styles.arrowIcon} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' alt='arrow'/>
+                                <img className={styles.arrowIcon}
+                                    src={leftArrowVisible ? '/src/apps/client/ui/components/Articles/files/arrowGreenDown.png'
+                                        : '/src/apps/client/ui/components/Articles/files/arrowGreyDown.png'}
+                                    alt='arrow'/>
                             </div>
                             <div className={classNames(styles.arrow, styles.arrowRight, {
                                 [styles.arrowRightVisible]: rightArrowVisible
                             })} onClick={rightArrowVisible ? this.handleArrowClick('right') : undefined}>
-                                <img className={styles.arrowIcon} src='/src/apps/client/ui/components/Articles/files/arrowUp.png' alt='arrow'/>
+                                <img className={styles.arrowIcon}
+                                    src={rightArrowVisible ? '/src/apps/client/ui/components/Articles/files/arrowGreenUp.png'
+                                        : '/src/apps/client/ui/components/Articles/files/arrowGreyUp.png'}
+                                    alt='arrow'/>
                             </div>
                         </div>
                     </div>
