@@ -36,7 +36,7 @@
     margin-left: -15px;
     color: darkBlueBasic;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 17px;
     letter-spacing: 1.15px;
     font-family: 'Gotham Medium', "Arial Black", sans-serif;
 
@@ -48,14 +48,15 @@
         margin: 60px 50px;
         padding: 20px 0 20px 20px;
         font-size: 14px;
-        line-height: 14px;
+        line-height: 17px;
     }
 
     @media (--media-tablet-s) {
         margin: 40px;
         padding: 15px 0 15px 20px;
         font-size: 12px;
-        line-height: 14px;
+        line-height: 15px;
+        width: 80%;
     }
 
     @media (--media-phone) {
@@ -67,8 +68,8 @@
 
     @media (--media-phone-s) {
         margin: 20px 20px 20px;
-        font-size: 10px;
-        line-height: 14px;
+        font-size: 12px;
+        line-height: 15px;
     }
 }
 
@@ -102,7 +103,7 @@
 .listItem{
     font-size: 14px;
     letter-spacing: 1.15px;
-    line-height: 14px;
+    line-height: 17px;
     color: blackBasic;
     margin-bottom: 17px;
     font-family: 'Gotham Light', "Arial Black", sans-serif;
@@ -114,12 +115,12 @@
 
     @media (--media-tablet-l) {
         font-size: 14px;
-        line-height: 14px;
+        line-height: 17px;
     }
 
     @media (--media-tablet-s) {
         font-size: 12px;
-        line-height: normal;
+        line-height: 15px;
         letter-spacing: 0.6px;
     }
 }

@@ -135,7 +135,7 @@
         padding:20px 33px;
         font-size: 14px;
         letter-spacing: .5px;
-        line-height: 16px;
+        line-height: 17px;
     }
 
     @media (--media-tablet-s) {
@@ -181,6 +181,7 @@
 
 .title{
     font-size: 78px;
+    line-height: 93.6px;
     letter-spacing: normal;
     font-weight: bold;
     text-transform: uppercase;
@@ -188,19 +189,23 @@
 
     @media (max-width: 1350px) {
         font-size: 70px;
+        line-height: 84px;
     }
 
     @media (--media-tablet-l) {
         font-size: 56px;
+        line-height: 67.2px;
         text-align: center;
     }
 
     @media (--media-tablet-s) {
         font-size: 40px;
+        line-height: 48px;
     }
 
     @media (--media-phone) {
         font-size: 35px;
+        line-height: 42px;
     }
 }
 
@@ -230,11 +235,12 @@
 .description{
     font-size: 24px;
     letter-spacing: 1.19px;
-    line-height: normal;
+    line-height: 29px;
     font-family: 'Gotham Medium';
 
     @media (max-width: 1350px) {
         font-size: 22px;
+        line-height: 27px;
     }
 
     @media (--media-tablet-l) {
@@ -249,7 +255,7 @@
     @media (--media-tablet-s) {
         padding: 0 30px;
         font-size: 13.5px;
-        line-height: 20px;
+        line-height: 17px;
     }
 
     @media (--media-phone) {
@@ -316,11 +322,11 @@
 
 .heading{
     margin: 0 60px 25px 0;
-    margin-bottom: 25px;
     color: #f8c400;
     font-family: Verdana, sans-serif;
     font-weight: bold;
     font-size: 47px;
+    line-height: 57px;
     height: 40px;
     background-repeat: no-repeat;
     background-size: contain;

@@ -105,6 +105,7 @@ html, body {
 
     @media (max-width: 780px){
         left: -3px;
+        width: 80%;
     }
 
     @media (max-width: 425px){
@@ -125,11 +126,12 @@ html, body {
     font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.15px;
     text-align: left;
-    line-height: 14px;
+    line-height: 17px;
     max-width: 90%;
 
     @media (max-width: 780px) {
         font-size: 12px;
+        line-height: 15px;
         letter-spacing: 0.85px;
     }
 }
@@ -216,7 +218,7 @@ html, body {
     top: 0;
     left: 86px;
     padding: 5px 7px;
-    line-height: normal;
+    line-height: 17px;
     margin-top: -5px;
 }
 
@@ -262,7 +264,7 @@ html, body {
     justify-self: center;
 
     @media (max-width: 780px){
-        width: 100%;
+        width: 80%;
         margin: 0 0 0 30px;
         padding: 0;
     }
@@ -336,7 +338,7 @@ html, body {
     width: 80%;
     font-family: 'Gotham Light', Arial;
     font-size: 14px;
-    line-height: normal;
+    line-height: 17px;
     letter-spacing: 1.15px;
     color: blackBasic;
     text-align: left;
@@ -345,6 +347,7 @@ html, body {
     @media (max-width: 780px){
         font-family: 'Gotham Pro', Arial;
         font-size: 12px;
+        line-height: 15px;
         letter-spacing: 0.6px;
         text-align: center;
         width: 100%;
@@ -397,7 +400,7 @@ html, body {
         width: 100%;
         letter-spacing: 0.6px;
         font-size: 12px;
-        line-height: normal;
+        line-height: 15px;
         font-family: 'Gotham Medium', 'Arial Black';
     }
 
@@ -408,7 +411,7 @@ html, body {
 
 .project .titleContainer{
     @media (max-width: 780px){
-        width: 100%;
+        width: 80%;
         margin-left: 30px;
         padding: 0;
         margin-bottom: 30px;
@@ -522,7 +525,7 @@ html, body {
     font-family: 'Gotham Medium', Arial;
     font-size: 14px;
     padding: 0 7px;
-    line-height: normal;
+    line-height: 17px;
     letter-spacing: 1.15px;
     justify-self: flex-end;
     width: 70%;
@@ -619,7 +622,7 @@ html, body {
     }
 
     @media (max-width: 780px){
-        width: 100%;
+        width: 80%;
         padding: 0;
         margin-left: 30px;
     }
@@ -635,7 +638,7 @@ html, body {
 
 .whiteTitle{
     font-size: 14px;
-    line-height: 14px;
+    line-height: 17px;
     font-family: 'Gotham Medium', "Arial Black";
     letter-spacing: 1.15px;
     text-align: left;
@@ -643,6 +646,7 @@ html, body {
 
     @media (max-width: 780px) {
         font-size: 12px;
+        line-height: 15px;
         letter-spacing: 0.85px;
     }
 }
@@ -727,7 +731,7 @@ html, body {
     font-family: 'Gotham Bold', 'Arial Black';
     color: whiteBasic;
     font-size: 18px;
-    line-height: normal;
+    line-height: 22px;
     letter-spacing: 0.92px;
     width: 100%;
 
@@ -739,6 +743,7 @@ html, body {
         text-align: center;
         font-family: 'Gotham Medium', 'Arial Black';
         font-size: 12px;
+        line-height: 15px;
         letter-spacing: 0.6px;
     }
 }
@@ -823,7 +828,7 @@ html, body {
     z-index: 11;
 
     @media (max-width: 780px){
-        width: 100%;
+        width: 80%;
         padding-left: 0;
         margin-left: 30px;
         padding-top: 53px;
@@ -861,7 +866,7 @@ html, body {
     @media (max-width: 780px){
         font-family: 'Gotham Light', Arial;
         font-size: 12px;
-        line-height: normal;
+        line-height: 15px;
         letter-spacing: 0.6px;
     }
 }
@@ -954,7 +959,7 @@ html, body {
     width: 60%;
     font-family: 'Gotham Light', Arial;
     font-size: 14px;
-    line-height: normal;
+    line-height: 17px;
     letter-spacing: 1.15px;
     text-align: left;
     position: relative;
@@ -970,7 +975,7 @@ html, body {
     @media (max-width: 780px){
         width: 100%;
         font-size: 12px;
-        line-height: normal;
+        line-height: 15px;
         letter-spacing: 0.6px;
 
     }
@@ -1028,6 +1033,10 @@ html, body {
     padding-left: 0;
     margin: 27px 0;
     position: relative;
+
+    @media (max-width: 780px){
+        width: 100%;
+    }
 }
 
 .containerPlansMobile{
@@ -1042,6 +1051,10 @@ html, body {
 .containerPlansMobile .titleContainer{
     padding: 0;
     margin-left: 30px;
+
+    @media (max-width: 780px){
+        width: 100%;
+    }
 }
 
 .containerPlansMobile .patternContainerBig{

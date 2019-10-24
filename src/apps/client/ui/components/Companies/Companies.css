@@ -40,7 +40,7 @@
     margin-left: -26px;
     color: darkBlueBasic;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 17px;
     letter-spacing: 1.15px;
     position: relative;
     height: 60px;
@@ -55,17 +55,21 @@
 
     @media (--media-tablet-l) {
         font-size: 14px;
-        line-height: 14px;
+        line-height: 17px;
         letter-spacing: 1px;
         margin-left: -3px;
         padding: 10px 0 10px 20px;
         border-left: 6px solid lightGreenBasic;
    }
 
+    @media (max-width: 780px){
+        width: 80%;
+    }
+
     @media (--media-phone) {
         letter-spacing: 0.84px;
         font-size: 12px;
-        line-height: 14px;
+        line-height: 15px;
    }
 }
 

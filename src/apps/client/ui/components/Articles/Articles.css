@@ -50,7 +50,7 @@
     margin-left: -26px;
     color: darkBlueBasic;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 17px;
     letter-spacing: 1.15px;
     cursor: pointer;
     position: relative;
@@ -66,7 +66,7 @@
 
     @media (--media-tablet-l) {
         font-size: 14px;
-        line-height: 14px;
+        line-height: 17px;
         letter-spacing: 1px;
         margin-left: -2px;
         padding: 10px 0 10px 20px;
@@ -75,7 +75,9 @@
 
     @media (--media-tablet-s) {
         font-size: 12px;
+        line-height: 15px;
         letter-spacing: 0.84px;
+        width: 80%;
    }
 }
 
@@ -162,6 +164,7 @@
 .date{
     margin-bottom: 18px;
     font-size: 14px;
+    line-height: 17px;
     color: darkBlueBasic;
     z-index: 11;
     position: relative;
@@ -171,7 +174,7 @@
 
     @media (--media-tablet-l) {
         font-size: 12px;
-        line-height: 14px;
+        line-height: 15px;
         letter-spacing: 0.73px;
         margin-bottom: 10px;
    }
@@ -180,13 +183,14 @@
 .description{
     color: blackBasic;
     font-size: 14px;
-    line-height: normal;
+    line-height: 17px;
     z-index: 11;
     font-family: 'Gotham Medium', 'Arial Black', sans-serif;
     letter-spacing: .4px;
 
     @media (--media-tablet-l) {
         font-size: 14px;
+        line-height: 17px;
         letter-spacing: 0.71px;
     }
 }
