@@ -40,7 +40,7 @@
     color: darkBlueBasic;
     font-family: "Gotham Medium", "Arial Black";
     font-size: 14px;
-    line-height: 14px;
+    line-height: 17px;
     letter-spacing: 1.15px;
 
     @media (max-width: 1350px){
@@ -51,21 +51,22 @@
         margin: 80px 50px 60px 50px;
         padding: 20px 0 20px 22px;
         font-size: 14px;
-        line-height: 14px;
+        line-height: 17px;
     }
 
     @media (--media-tablet-s) {
         margin: 60px 40px 40px 40px;
-        padding: 15px 0 15px 16px;
+        padding: 15px 0 15px 20px;
         font-size: 12px;
-        line-height: 14px;
+        line-height: 15px;
+        width: 80%;
     }
 
     @media (--media-phone) {
         margin: 60px 30px 40px 30px;
-        padding: 10px 0 10px 11px;
+        padding: 10px 0 10px 20px;
         font-size: 12px;
-        line-height: 14px;
+        line-height: 15px;
     }
 }
 
@@ -135,27 +136,28 @@
 
     @media (--media-tablet-l) {
         font-size: 15px;
-        line-height: 17px;
+        line-height: 18px;
     }
 
     @media (--media-tablet-s) {
         font-size: 14px;
-        line-height: 16px;
+        line-height: 17px;
     }
 
     @media (--media-phone) {
         font-size: 13px;
-        line-height: 15px;
+        line-height: 16px;
     }
 
     @media (--media-phone-s) {
         font-size: 11px;
-        line-height: 13px;
+        line-height: 14px;
     }
 }
 
 .cityName{
     font-size: 27px;
+    line-height: 33px;
     font-family: 'Gotham Light', Arial;
     letter-spacing: 0.68px;
 }
@@ -226,28 +228,28 @@
 
     @media (--media-tablet-l) {
         font-size: 15px;
-        line-height: 17px;
+        line-height: 18px;
         padding: 30px 50px;
         margin: 0;
     }
 
     @media (--media-tablet-s) {
         font-size: 14px;
-        line-height: 16px;
+        line-height: 17px;
         padding: 30px 40px;
         margin: 0;
     }
 
     @media (--media-phone) {
         font-size: 13px;
-        line-height: 15px;
+        line-height: 16px;
         padding: 30px 40px;
         margin: 0;
     }
 
     @media (--media-phone-s) {
         font-size: 11px;
-        line-height: 13px;
+        line-height: 14px;
         padding: 30px;
     }
 }
@@ -259,6 +261,7 @@
     font-family: "Gotham Light", Arial;
     padding: 38px 0;
     font-size: 27px;
+    line-height: 33px;
     letter-spacing: 2.18px;
 
     @media (max-width: 1350px) {
@@ -269,7 +272,7 @@
         margin: 0 50px;
         padding: 20px 40px;
         font-size: 28px;
-        line-height: 32px;
+        line-height: 34px;
         width: fit-content;
     }
 
@@ -277,20 +280,20 @@
         margin: 0 40px;
         padding: 20px 30px;
         font-size: 24px;
-        line-height: 28px;
+        line-height: 29px;
         width: auto;
     }
 
     @media (--media-phone) {
         padding: 20px 20px;
         font-size: 20px;
-        line-height: 23px;
+        line-height: 24px;
     }
 
     @media (--media-phone-s) {
         margin: 0 30px;
         padding: 20px 15px;
         font-size: 18px;
-        line-height: 21px;
+        line-height: 22px;
     }
 }

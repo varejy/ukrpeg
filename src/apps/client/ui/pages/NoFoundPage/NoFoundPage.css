@@ -14,5 +14,6 @@
 .text{
   color: limeGreen;
   font-size: 52px;
+    line-height: normal;
   margin-bottom: 20px;
 }

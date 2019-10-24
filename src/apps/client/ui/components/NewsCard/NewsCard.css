@@ -53,6 +53,7 @@
 
     @media (max-width: 1080px){
         font-size: 12px;
+        line-height: 15px;
         margin: 22px auto 17px auto;
     }
 }
@@ -64,7 +65,7 @@
     justify-content: flex-start;
     font-family: 'Gotham Pro', Arial;
     font-size: 12px;
-    line-height: normal;
+    line-height: 15px;
     text-align: left;
     letter-spacing: 0.56px;
     color: blackBasic;
@@ -72,6 +73,7 @@
 
     @media (max-width: 1080px){
         font-size: 14px;
+        line-height: 17px;
         margin: 0 auto;
         padding-bottom: 22px;
     }
