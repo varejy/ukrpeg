@@ -80,7 +80,8 @@ export default {
         titleThird: 'Vyshgorod pilot project',
         titleFourth: 'Main efforts and resources of Coalition are focused on three main directions:',
         titleFifth: 'Key facts',
-        titleSixth: 'Ukrainian Packaging and Environmental Coalition consists of powerful branch representatives:'
+        titleSixth: 'Ukrainian Packaging and Environmental Coalition consists of powerful branch representatives:',
+        pilotMembers: 'Participants of the pilot project'
     },
     search: {
         getSearchResultText: (text, result) => `Your search "${text}" returned ${result} results`,

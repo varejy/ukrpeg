@@ -363,8 +363,13 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 160px;
 
     @media (max-width: 780px){
+        margin-top: 0;
+    }
+
+    @media (max-width: 1200px){
         z-index: 11;
     }
 }

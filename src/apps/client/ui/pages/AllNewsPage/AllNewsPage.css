@@ -23,6 +23,7 @@
 
 .newsContentContainer{
     padding-top: 130px;
+    width: 100%;
 
     @media (max-width: 1200px){
         padding-top: 143px;

@@ -10,7 +10,7 @@
     width: 100%;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .sliderContainerDesktop {
@@ -33,6 +33,10 @@
     flex-wrap: wrap;
     overflow-x: hidden;
     padding-bottom: 130px;
+
+    @media (max-width: 1350px){
+        max-width: 535px;
+    }
 
     @media (max-width: 1080px){
         max-width: 100%;

@@ -72,10 +72,21 @@ class RVVPage extends Component {
                 <div className={classNames(styles.column, styles.column4)}/>
                 <div className={classNames(styles.column, styles.column5)}/>
             </div>
+            <div className={styles.projectContainer}>
+                <div className={styles.project}>
+                    <div className={styles.titleContainer}>
+                        <div className={styles.rectangleGreen}/>
+                        <div className={styles.title}>{rvv.pProject.texts[lang].title}</div>
+                    </div>
+                    <div className={styles.projectInfo}>
+                        {rvv.pProject.texts[lang].description}
+                    </div>
+                </div>
+            </div>
             <div className={styles.partnersMobile}>
                 <div className={styles.titleContainer}>
                     <div className={styles.rectangleGreen}/>
-                    <div className={styles.title}>Учасники пілотного проекту</div>
+                    <div className={styles.title}>{text.pilotMembers}</div>
                 </div>
                 <div className={styles.partnersList}>
                     {
@@ -176,17 +187,6 @@ class RVVPage extends Component {
                                 )
                             }
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.projectContainer}>
-                <div className={styles.project}>
-                    <div className={styles.titleContainer}>
-                        <div className={styles.rectangleGreen}/>
-                        <div className={styles.title}>{rvv.pProject.texts[lang].title}</div>
-                    </div>
-                    <div className={styles.projectInfo}>
-                        {rvv.pProject.texts[lang].description}
                     </div>
                 </div>
             </div>
