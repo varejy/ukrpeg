@@ -20,6 +20,7 @@ import noop from '@tinkoff/utils/function/noop';
 import pick from '@tinkoff/utils/object/pick';
 import prop from '@tinkoff/utils/object/prop';
 import pathOr from '@tinkoff/utils/object/pathOr';
+import format from 'date-fns/format';
 
 const NEWS_VALUES = ['hidden', 'alias'];
 
@@ -88,6 +89,7 @@ class NewsForm extends Component {
                 files: news.avatar ? [news.avatar] : [],
                 removedFiles: []
             },
+            date: news.date ? format(news.date, 'YYYY-MM-DD') : format(new Date(), 'YYYY-MM-DD'),
             ua_name: ua.name || '',
             en_name: en.name || '',
             en_shortDescription: en.shortDescription || '',
@@ -130,6 +132,7 @@ class NewsForm extends Component {
             alias,
             hidden,
             views,
+            date,
             id
         }) => {
         return {
@@ -137,6 +140,7 @@ class NewsForm extends Component {
             views: +views,
             categoryId,
             alias,
+            date: +new Date(date),
             id,
             texts: {
                 en: {

@@ -7,7 +7,8 @@ const VALUES = [
     'categoryId',
     'hidden',
     'views',
-    'texts'
+    'texts',
+    'date'
 ];
 
 export default function prepareNews (body) {

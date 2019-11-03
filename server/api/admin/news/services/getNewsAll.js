@@ -5,7 +5,10 @@ import getAllNews from '../../../client/news/queries/getAllNews';
 export default function getNews (req, res) {
     getAllNews()
         .then(newsAll => {
-            res.status(OKEY_STATUS_CODE).send(newsAll);
+            const sortedNews = newsAll
+                .sort((prev, next) => prev.date - next.date);
+
+            res.status(OKEY_STATUS_CODE).send(sortedNews);
         })
         .catch(() => {
             res.status(SERVER_ERROR_STATUS_CODE).end();

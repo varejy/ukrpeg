@@ -9,9 +9,8 @@ import saveNewsQuery from '../../../client/news/queries/saveNews';
 export default function saveNews (req, res) {
     const news = prepareNews(req.body);
     const id = uniqid();
-    const date = +Date.now();
 
-    saveNewsQuery({ ...news, id, date })
+    saveNewsQuery({ ...news, id })
         .then(news => {
             res.status(OKEY_STATUS_CODE).send(news);
         })

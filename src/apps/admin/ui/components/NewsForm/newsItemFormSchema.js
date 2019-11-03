@@ -8,6 +8,7 @@ import FormFieldFiles from '../Form/fields/FormFieldFiles/FormFieldFiles';
 import FormFieldLangs from '../Form/fields/FormFieldLangs/FormFieldLangs';
 import FormFieldDivider from '../Form/fields/FormFieldDivider/FormFieldDivider';
 import FormFieldKeywords from '../Form/fields/FormFieldWords/FormFieldWords';
+import FormFieldDate from '../Form/fields/FormFieldDate/FormFieldDate.jsx';
 
 export default function ({ data: { title, categoriesOptions, categoryHidden } = {}, settings: { lang } } = {}) {
     return {
@@ -34,6 +35,17 @@ export default function ({ data: { title, categoriesOptions, categoryHidden } = 
                             fields: ['en_name', 'ua_name', 'en_shortDescription', 'ua_shortDescription', 'en_description', 'ua_description']
                         }
                     }
+                ]
+            },
+            {
+                component: FormFieldDate,
+                name: 'date',
+                schema: {
+                    label: 'Дата публикации'
+                },
+                validators: [
+                    { name: 'required', options: { text: 'Добавьте количество просмотров' } },
+                    { name: 'min', options: { minValue: 0 } }
                 ]
             },
             {

@@ -19,6 +19,7 @@ import Authentication from './ui/components/Authentication/Authentication.jsx';
 import Recovery from './ui/components/Recovery/Recovery.jsx';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PartnersPage from './ui/pages/PartnersPage/PartnersPage';
+import CredentialsPage from './ui/pages/CredentialsPage/CredentialsPage';
 import SeoPage from './ui/pages/SeoPage/SeoPage.jsx';
 
 import isNull from '@tinkoff/utils/is/nil';
@@ -92,6 +93,7 @@ class App extends Component {
                 <Route exact path='/admin/news' component={NewsPage} />
                 <Route exact path='/admin/partners' component={PartnersPage}/>
                 <Route exact path='/admin/seo' component={SeoPage} />
+                <Route exact path='/admin/credentials' component={CredentialsPage} />
             </Switch>
         </main>;
     }
