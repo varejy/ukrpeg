@@ -264,7 +264,6 @@ class RVVPage extends Component {
                 </div>
             </div>
             <div className={styles.containerIdea}>
-                <div className={styles.patternContainerBig} />
                 <div className={styles.idea}>
                     <div className={styles.ideaContainer}>
                         <div className={styles.imageContainer}>
