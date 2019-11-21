@@ -8,6 +8,8 @@ import compression from 'compression';
 import expressStaticGzip from 'express-static-gzip';
 import { renderToString } from 'react-dom/server';
 
+import verification from './helpers/verification';
+
 import map from '@tinkoff/utils/array/map';
 
 import adminAuthenticationApi from './api/admin/authentication';
@@ -50,6 +52,9 @@ const app = express();
 
 // mongodb
 mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
+
+// verification
+app.use(verification);
 
 // static
 app.get(/\.chunk\.(js|css)$/, expressStaticGzip(rootPath, {
