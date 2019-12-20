@@ -14,7 +14,7 @@ export default {
         lawsEU: 'Заканодавство ЭС'
     },
     header: {
-        phone: '+3 8095 456 56 55'
+        phone: '+38 067 568 90 70'
     },
     content: {
         title: 'РВВ - в дії',
@@ -51,18 +51,13 @@ export default {
                 desc: `пн-пт 09.00 - 17.00`
             },
             adress: {
-                street: `Улица Садовая 28`,
-                index: `06040`,
+                street: `Вул. Межигірська 82`,
+                index: `04080`,
                 phone: `телефон: `,
-                phoneNumber: `(093) 747 22 02`
-            },
-            city: {
-                title: `Vyshgorod`,
-                desc: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore`
+                phoneNumber: '(067) 568 90 70'
             },
             mail: {
-                title: `Почта УКРПЕК`,
+                title: `Пошта УКРПЕК`,
                 desc: `support@ukrpec.com`
             }
         }

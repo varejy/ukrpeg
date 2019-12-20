@@ -14,7 +14,7 @@ export default {
         lawsEU: 'Laws European Union'
     },
     header: {
-        phone: '+3 8095 456 56 55'
+        phone: '+38 067 568 90 70'
     },
     content: {
         title: 'RVV is in action',
@@ -51,15 +51,10 @@ export default {
                 desc: `пн-пт 09.00 - 17.00`
             },
             adress: {
-                street: `Sadovaya Street 28`,
-                index: `06040`,
+                street: `Mezhigirskaya Street 82`,
+                index: `04080`,
                 phone: `phone: `,
-                phoneNumber: `(093) 747 22 02`
-            },
-            city: {
-                title: `Vyshgorod`,
-                desc: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-          sed diam nonummy nibh euismod tincidunt ut laoreet dolore`
+                phoneNumber: `(067) 568 90 70`
             },
             mail: {
                 title: `UKRPEG mail`,

@@ -23,7 +23,7 @@ class Contact extends Component {
     }
 
     setMap = () => {
-        const address = new window.google.maps.LatLng(50.4320917, 30.5698671);
+        const address = new window.google.maps.LatLng(50.4768256, 30.50081608);
         const mapOptions = {
             zoom: 13,
             minZoom: 11,
@@ -36,7 +36,7 @@ class Contact extends Component {
         const marker = new window.google.maps.Marker({
             position: address,
             icon: {
-                url: 'src/apps/client/ui/components/Contact/files/marker.png',
+                url: '/src/apps/client/ui/components/Contact/files/marker.png',
                 labelOrigin: new window.google.maps.Point(13, -8)
             },
             title: 'Ukrpeg'
@@ -65,10 +65,6 @@ class Contact extends Component {
                                 <a href={`tel:${text.info.adress.phoneNumber}`} className={styles.boldText}>{text.info.adress.phoneNumber}</a>
                             </p>
                         </div>
-                    </div>
-                    <div className={styles.coverBlock}>
-                        <p className={styles.cityName}>{text.info.city.title}</p>
-                        <p className={styles.blockText}>{text.info.city.desc}</p>
                     </div>
                 </div>
                 <div className={styles.emailInfo}>
