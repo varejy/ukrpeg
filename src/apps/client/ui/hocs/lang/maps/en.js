@@ -58,7 +58,7 @@ export default {
             },
             mail: {
                 title: `UKRPEG mail`,
-                desc: `support@ukrpec.com`
+                desc: `andriy.pavlenko@ukrpec.org`
             }
         }
     },
