@@ -8,6 +8,7 @@ export default function (html, helmet, preloadedState = {}) {
             <meta charset="utf-8">
             <meta http-equiv='x-ua-compatible' content='ie=edge'>
             <meta name='viewport' content='width=device-width, initial-scale=1'>
+            <meta name="it-rating" content="it-rat-ea54688a3c94ceb070b4d3455bae5d25" />
             ${helmet.title.toString()}
             ${helmet.meta.toString()}
             <link rel='stylesheet' type='text/css' href='/public/client.chunk.css'>
